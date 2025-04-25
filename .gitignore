@@ -1,0 +1,44 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Experiment logs
+# *.log
+# *.csv
+
+# Virtual environments
+# .venv/
+# env/
+# venv/
+# ENV/
+
+# MacOS files
+.DS_Store
+
+# Python egg info
+*.egg-info/
+dist/
+build/
+
+# Output files
+# *.json
+# *.out
+# *.tmp
+# results/
+# logs/
+
+# API keys and credentials (make sure to use a .env file instead)
+.env
+apikey.txt
+
+# Backup files
+*~
+*.bak
+
+# VSCode & PyCharm settings
+.vscode/
+.idea/
