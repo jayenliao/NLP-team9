@@ -12,7 +12,7 @@ This is the final project of NLP, a course at National Taiwan University (Spring
 
 ### Timeline
 
-- Proposal: 09:45 on May 15
+- Proposal: 19:20 on May 14 (online)
 - Final Submission: June 13
 
 ## Methodology
