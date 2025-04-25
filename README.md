@@ -80,3 +80,113 @@ This is the final project of NLP, a course at National Taiwan University (Spring
 │   ├── requirements.txt  # Required dependencies
 └────── README.md         # This file
 ```
+
+## Git Workflow Guideline
+
+### Git Commit Types (Conventional Commits)
+
+Follow the [Conventional Commits](https://www.conventionalcommits.org/) standard. Use this format:
+
+```
+<type>(scope): <short summary>
+```
+
+#### Common Commit Types:
+
+| Type       | When to Use                                                                 |
+|------------|------------------------------------------------------------------------------|
+| `feat`     | New feature                                                                  |
+| `fix`      | Bug fix                                                                      |
+| `docs`     | Documentation changes                                                        |
+| `style`    | Formatting only (e.g., spacing, semicolons), no code change                  |
+| `refactor` | Code change that neither fixes a bug nor adds a feature                     |
+| `perf`     | Performance improvement                                                      |
+| `test`     | Adding or updating tests                                                     |
+| `chore`    | Routine tasks (e.g., build scripts, package updates)                         |
+| `ci`       | CI/CD pipeline or GitHub Actions changes                                     |
+| `build`    | Build system or external dependencies updates                                |
+| `revert`   | Revert a previous commit                                                     |
+
+#### Examples:
+
+```bash
+feat(auth): add OAuth2 login flow
+fix(api): correct 500 error on null input
+docs(readme): update installation guide
+style(linter): apply black formatting
+refactor(utils): simplify date conversion function
+```
+
+---
+
+### Git PR Workflow
+
+#### 1. **Branch Naming**
+
+Use descriptive branch names, following this convention:
+
+```
+<type>/<ticket-id-on-Notion>-<short-description>
+```
+
+Example:
+
+```
+feat/17-user-auth
+fix/21-button-click-bug
+docs/29-update-usage-intructions
+```
+
+#### 2. **Creating a PR**
+
+How to compose a PR:
+
+- Title: use the same format as your latest commit
+- Body:
+  - **Summary** (optional, recommended for a long PR)
+  - **What**: What this PR does?
+  - **Why**: Why this change is necessary?
+  - **How to test**: (optional) Steps to test the PR.
+  - **Linked Issues** (optional)
+  - **Checklist** (optional)
+
+```markdown
+## Summary (optional)
+
+### What
+Implements OAuth2 login for user accounts
+
+### Why
+To allow third-party authentication and reduce sign-up friction
+
+### How to test (optional)
+- Go to XXX.
+- Use command `python xxx.py --data xxx` to XXX.
+- Ensure XXX / Confirm an output saved under XXX.
+
+### Linked Issues (optional)
+Closes #17
+
+### Checklist (optional)
+- [x] Unit tests
+- [x] Lint passed
+- [ ] Docs updated
+```
+
+### Review & Merge Process
+
+1. **Open PR as Draft** if not finished
+2. Add reviewers once ready
+3. Address all comments and push changes
+<!-- 4. **Rebase or squash** before merging (to keep history clean)
+5. Merge with:
+   - `Squash & merge` for single commit in `main`
+   - `Rebase & merge` for linear history (if rebased manually)
+   - Avoid `Create a merge commit` unless you need full history -->
+
+### Tips
+
+- Pull first, commit early, push often, but PR only when ready for review.
+- Use `.gitignore` to avoid tracking heavy logs, datasets, credentials.
+- Never commit secrets or large data.
+<!-- - Use `git rebase -i` to clean up commits before final push. -->
