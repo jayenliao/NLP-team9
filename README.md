@@ -126,15 +126,14 @@ refactor(utils): simplify date conversion function
 Use descriptive branch names, following this convention:
 
 ```
-<type>/<ticket-id-on-Notion>-<short-description>
+<name>/<ticket-id-on-Notion>-<short-description>
 ```
 
 Example:
 
 ```
-feat/17-user-auth
-fix/21-button-click-bug
-docs/29-update-usage-intructions
+ethan/17-gemini-api
+jay/15-data_selection
 ```
 
 #### 2. **Creating a PR**
