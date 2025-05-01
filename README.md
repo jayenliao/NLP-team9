@@ -42,7 +42,7 @@ This is the final project of NLP, a course at National Taiwan University (Spring
 - Create a conda virtual env and activate it.
 
     ```bash
-    conda create --name nlp_team9 python3
+    conda create --name nlp_team9 python=3.10 -y
     conda activate nlp_team9
     ```
 
