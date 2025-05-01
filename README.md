@@ -56,6 +56,12 @@ This is the final project of NLP, a course at National Taiwan University (Spring
 
 ```plaintext
 ├──nlp-team9/      # The repo root
+│   ├── data/        # The folder to put dat and relevant file(s)
+│   │   ├── categories.py      # Four main topics with 17 categories and 57 subcategories are listed here.
+│   │   ├── ds.selected.pkl    # The dict with all 34 (17 subtasks x 2 languages) required datasets.
+│   │   ├── EDA.ipynb          # Download, check, collect, and save the datasets.
+│   │   └── save_datasets.py   # Download, collect, and save the datasets.
+│
 │   ├── prompts/                # 存放不同 input/output 格式的 prompt templates
 │   │   ├── base_prompt.txt        # Free-text 格式 prompt
 │   │   ├── json_prompt.txt        # JSON 格式 prompt
