@@ -1,3 +1,4 @@
+# experiments/run_gemini.py
 import os
 from google import genai
 from dotenv import load_dotenv
@@ -14,7 +15,7 @@ def test_gemini_connection():
     # Load API key
     google_api_key, _ = load_api_keys()
     if not google_api_key:
-        print("No Gemini API key. Skipping.")
+        print("No Gemini API key.")
         return
 
     try:
