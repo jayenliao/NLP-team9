@@ -1,0 +1,13 @@
+Answer the following multiple choice question based on the provided XML structure. The last line of your response should be of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD.
+Think step by step before an answering.
+
+```xml
+<question>
+  <text>{Question}</text>
+  <options>
+    <option id="A">{A}</option>
+    <option id="B">{B}</option>
+    <option id="C">{C}</option>
+    <option id="D">{D}</option>
+  </options>
+</question>

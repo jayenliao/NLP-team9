@@ -1,3 +1,4 @@
+# experiments/run_mistral.py
 import os
 from mistralai import Mistral
 from dotenv import load_dotenv
@@ -14,7 +15,7 @@ def test_mistral_connection():
     # Load API key
     _, mistral_api_key = load_api_keys()
     if not mistral_api_key:
-        print("No Mistral API key. Skipping.")
+        print("No Mistral API key.")
         return
 
     try:

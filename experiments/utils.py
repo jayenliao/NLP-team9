@@ -3,7 +3,8 @@
 import pickle
 import os
 from dotenv import load_dotenv
-import random
+from mistralai import Mistral
+from google import genai
 
 def load_prepared_dataset():
     """
@@ -32,7 +33,7 @@ def load_api_keys():
     """
     Loads API keys from the .env file.
     """
-    load_dotenv() # This looks for .env in the current directory and loads variables
+    load_dotenv() 
     google_api_key = os.getenv("GOOGLE_API_KEY")
     mistral_api_key = os.getenv("MISTRAL_API_KEY")
 
