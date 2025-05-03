@@ -6,8 +6,6 @@ transformers
 
 huggingface_hub
 requests 
-pandas
-numpy
 python-dotenv
 google-genai 
 mistralai 
