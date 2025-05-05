@@ -7,6 +7,9 @@ from google import genai as google_genai
 from mistralai import Mistral
 from utils import load_api_keys 
 
+import logging
+logger = logging.getLogger(__name__)
+
 def load_prompt_template(format_name: str) -> str | None:
     """Loads the content of a prompt template file."""
     template_dir = os.path.join(os.path.dirname(__file__), '..', 'prompts')
@@ -38,16 +41,95 @@ def format_prompt(template_content: str, data_item: dict, option_order: list[str
     except Exception: # Generic catch-all
         return None
 
+# --- Define Answer Prefixes  ---
+# Based on simple-evals MULTILINGUAL_ANSWER_REGEXES
+# only English and French for now
+ANSWER_PREFIXES = [
+    r"Answer\s*:",         # English
+    r"Réponse\s*:",        # French
+    # Add other relevant prefixes from simple-evals list if you add more languages
+]
+# Combine prefixes into a non-capturing group using '|' (OR)
+COMBINED_ANSWER_PREFIX_REGEX = r"(?:" + "|".join(ANSWER_PREFIXES) + r")"
+
 def parse_response(api_response_text: str) -> str | None:
-    """Parses the API response text to extract the answer choice (A, B, C, or D)."""
-    if not api_response_text:
-        return None
-    # Regex to find 'Answer: $LETTER' at the start/end of a line, case-insensitive
-    match = re.search(r"^\s*Answer:\s*([A-D])\s*$", api_response_text, re.IGNORECASE | re.MULTILINE)
+    """
+    Parses the API response text to extract the answer choice (A, B, C, or D),
+    handling multilingual prefixes for "Answer:".
+
+    Looks for a line starting with known 'Answer:' equivalents followed by A, B, C, or D.
+    It tries to be flexible regarding whitespace and case.
+
+    Args:
+        api_response_text: The raw text output from the LLM.
+
+    Returns:
+        The normalized extracted answer ('A', 'B', 'C', 'D') or None if parsing fails.
+    """
+    
+    # Regex Reference:
+    # ^                 - Start of a line (due to re.MULTILINE)
+    # \s* - Optional leading whitespace
+    # (?:...)           - Non-capturing group for the OR condition of prefixes
+    #   Answer\s*:      - English prefix
+    #   |               - OR
+    #   Réponse\s*:     - French prefix
+    # \s* - Optional whitespace after the prefix/colon
+    # ([A-D])           - Capturing group 1: Exactly one character that is A, B, C, or D
+    #                     (We assume the model follows instructions to use A-D)
+    # \s* - Optional trailing whitespace
+    # $                 - End of the line (due to re.MULTILINE)
+    # We use COMBINED_ANSWER_PREFIX_REGEX which expands to (?:Answer\s*:|Réponse\s*:)
+    
+    # pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])\s*$" #from common.py, but too strict
+
+    pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])"
+    match = re.search(pattern, api_response_text, re.IGNORECASE | re.MULTILINE)
+
     if match:
-        return match.group(1).upper()
-    else:
-        return None
+        extracted_raw = match.group(1) # Get the captured group (the letter A-D)
+        normalized_answer = extracted_raw
+        return normalized_answer
+    
+    # If want to add more languages like Japanese use this
+    #     # Normalize the extracted letter (e.g., to uppercase, handle potential future non-Latin chars)
+    #     normalized_answer = normalize_extracted_answer(extracted_raw)
+    #     if normalized_answer in ['A', 'B', 'C', 'D']:
+    #          logger.info(f"Successfully parsed and normalized answer: {normalized_answer}")
+    #          return normalized_answer
+    #     else:
+    #          logger.warning(f"Pattern matched but normalization resulted in unexpected value: '{normalized_answer}' from raw '{extracted_raw}'.")
+    #          return None # Or handle as needed
+    # else:
+    #     logger.warning(f"Parsing response failed: Could not find pattern matching known prefixes and [A-D].")
+    #     return None
+
+# # --- normalize_extracted_answer function in case want to add japanese (from simple-evals) ---
+# def normalize_extracted_answer(extracted_answer: str) -> str:
+#     """
+#     Normalizes the extracted answer string.
+#     For now, mainly handles potential non-Latin chars if the regex were broader,
+#     and standardizes to uppercase Latin A-D, stripping whitespace.
+#     (Adapted from simple-evals common.py)
+#     """
+
+#     # Basic normalization: uppercase and strip whitespace
+#     normalized = extracted_answer.upper().strip()
+
+#     # Add specific character replacements if the regex were capturing non-Latin chars
+#     # (Based on simple-evals: Arabic, Bengali, Japanese Full-width)
+#     replacements = {
+#         "أ": "A", "ب": "B", "ج": "C", "د": "D", # Arabic
+#         "অ": "A", "ব": "B", "ড": "C", "ঢ": "D", # Bengali
+#         "Ａ": "A", "Ｂ": "B", "Ｃ": "C", "Ｄ": "D", # Japanese Full-width
+#     }
+
+#     for original, replacement in replacements.items():
+#         normalized = normalized.replace(original, replacement)
+
+#     # Return the final standardized character, stripped of any extra space added during replacement
+#     return normalized.strip()
+
 
 def structure_result(
     data_item: dict,
@@ -62,28 +144,33 @@ def structure_result(
     log_probabilities: dict | None = None,
     question_index: int = -1
 ) -> dict:
-    """Structures the results of a single experiment trial into a dictionary."""
-    ground_truth_label = None
+    """
+    Structures the results of a single experiment trial into a dictionary.
+    (Simplified version using standardized data_item keys from updated save_datsets.py)
+    """
+    logger.debug("Structuring result (using standardized keys).")
+
+    # --- Determine Ground Truth (Simplified) ---
+    ground_truth_label = "UNKNOWN"
     is_correct = None
     try:
-        # Determine ground truth
+        # Assumes 'answer_label' key ('A'/'B'/'C'/'D') exists due to standardization
         if 'answer_label' in data_item:
-            ground_truth_label = data_item['answer_label']
-        elif 'answer' in data_item and isinstance(data_item['answer'], int):
-            ground_truth_label = chr(ord('A') + data_item['answer'])
-        elif 'Answer' in data_item and isinstance(data_item['Answer'], str):
-             ground_truth_label = data_item['Answer'].upper()
+             ground_truth_label = data_item['answer_label']
         else:
-            ground_truth_label = "UNKNOWN"
+             logger.warning(f"Standardized key 'answer_label' not found in data_item! Keys: {list(data_item.keys())}")
 
-        if extracted_answer is not None and ground_truth_label not in ["UNKNOWN", "ERROR"]:
+        if extracted_answer is not None and ground_truth_label != "UNKNOWN":
             is_correct = (extracted_answer == ground_truth_label)
-    except Exception:
+
+    except Exception as e:
+        logger.error(f"Error determining ground truth or correctness: {e}", exc_info=True)
         ground_truth_label = "ERROR"
         is_correct = None
 
-    # Determine Question ID
-    q_id = data_item.get('id', data_item.get('index', data_item.get('Unnamed: 0', f"idx_{question_index}")))
+    # --- Determine Question ID (Simplified) ---
+    # Use 'id' key exists from standardization
+    q_id = data_item.get('id', f"idx_{question_index}") # Use .get just in case, fallback to index
 
     result = {
         "trial_id": str(uuid.uuid4()),
@@ -101,6 +188,7 @@ def structure_result(
         "ground_truth_answer": ground_truth_label,
         "is_correct": is_correct
     }
+    logger.debug(f"Result structured: {result}")
     return result
 
 def get_api_client(model_family: str) -> Any | None:
@@ -144,10 +232,8 @@ def call_llm_api(client: Any, model_family: str, model_name: str, prompt: str) -
             raw_response = response
             success = True
         else:
-            # Error handled by returning initial values (None, False)
             pass
     except Exception:
-        # Error handled by returning initial values (None, False)
         pass 
 
     return raw_response, success
