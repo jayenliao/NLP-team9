@@ -1,0 +1,13 @@
+Answer the following multiple choice question based on the provided JSON structure. The last line of your response should be of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD.
+Think step by step before an answering.
+
+```json
+{
+  "question": "{Question}",
+  "options": {
+    "A": "{A}",
+    "B": "{B}",
+    "C": "{C}",
+    "D": "{D}"
+  }
+}
