@@ -137,58 +137,105 @@ def structure_result(
     language: str,
     model_name: str,
     input_format: str,
-    option_permutation: list[str],
+    option_permutation: list[str], # e.g., ['C', 'A', 'D', 'B']
     api_raw_response: Any | None,
     api_call_successful: bool,
-    extracted_answer: str | None,
-    log_probabilities: dict | None = None,
+    extracted_answer: str | None, # e.g., 'B' (the positional answer chosen)
+    log_probabilities: dict | None = None, # We'll keep this None as requested
     question_index: int = -1
 ) -> dict:
     """
     Structures the results of a single experiment trial into a dictionary.
-    (Simplified version using standardized data_item keys from updated save_datsets.py)
+    Calculates the original label corresponding to the model's choice
+    based on the permutation.
     """
-    logger.debug("Structuring result (using standardized keys).")
+    logger.debug("Structuring result...")
 
-    # --- Determine Ground Truth (Simplified) ---
     ground_truth_label = "UNKNOWN"
+    model_choice_original_label = None
     is_correct = None
+
+    # 1. Determine Ground Truth from the standardized data
     try:
         # Assumes 'answer_label' key ('A'/'B'/'C'/'D') exists due to standardization
         if 'answer_label' in data_item:
              ground_truth_label = data_item['answer_label']
+             logger.debug(f"Ground truth label: {ground_truth_label}")
         else:
-             logger.warning(f"Standardized key 'answer_label' not found in data_item! Keys: {list(data_item.keys())}")
-
-        if extracted_answer is not None and ground_truth_label != "UNKNOWN":
-            is_correct = (extracted_answer == ground_truth_label)
+             logger.warning(f"Standardized key 'answer_label' not found in data_item! Keys: {list(data_item.keys())}. Cannot determine ground truth.")
 
     except Exception as e:
-        logger.error(f"Error determining ground truth or correctness: {e}", exc_info=True)
-        ground_truth_label = "ERROR"
-        is_correct = None
+        logger.error(f"Error determining ground truth: {e}", exc_info=True)
+        ground_truth_label = "ERROR_GT" # Use a distinct value for errors
 
-    # --- Determine Question ID (Simplified) ---
-    # Use 'id' key exists from standardization
+    # 2. Determine the Original Label of the Model's Choice based on permutation
+    if api_call_successful and extracted_answer in ['A', 'B', 'C', 'D']:
+        try:
+            # Find the 0-based index corresponding to the extracted positional answer
+            # 'A' -> 0, 'B' -> 1, 'C' -> 2, 'D' -> 3
+            choice_index = ord(extracted_answer.upper()) - ord('A')
+
+            # Use this index to find the original label from the permutation list
+            if 0 <= choice_index < len(option_permutation):
+                model_choice_original_label = option_permutation[choice_index]
+                logger.debug(f"Extracted answer (positional): '{extracted_answer}', "
+                             f"Permutation: {option_permutation}, "
+                             f"Calculated original label: '{model_choice_original_label}'")
+            else:
+                 logger.warning(f"Extracted answer '{extracted_answer}' resulted in an invalid index {choice_index} "
+                                f"for permutation {option_permutation}. Cannot determine original label.")
+                 model_choice_original_label = "ERROR_MAP" # Indicate mapping error
+
+        except Exception as e:
+            logger.error(f"Error mapping extracted answer to original label: {e}", exc_info=True)
+            model_choice_original_label = "ERROR_MAP"
+    elif api_call_successful and extracted_answer is not None:
+         logger.warning(f"Extracted answer '{extracted_answer}' is not A, B, C, or D. Cannot determine original label.")
+         model_choice_original_label = "INVALID_EXT" # Indicate invalid extraction
+    elif not api_call_successful:
+        logger.debug("API call failed or no response, cannot determine model choice.")
+        model_choice_original_label = None # Explicitly None if API failed
+    else: # Extracted answer was None even if API call successful
+         logger.debug("API call successful but no answer extracted, cannot determine model choice.")
+         model_choice_original_label = None
+
+
+    # 3. Determine Correctness by comparing ORIGINAL labels
+    if model_choice_original_label and model_choice_original_label not in ["ERROR_MAP", "INVALID_EXT"] and \
+       ground_truth_label != "UNKNOWN" and ground_truth_label != "ERROR_GT":
+        try:
+            is_correct = (model_choice_original_label == ground_truth_label)
+            logger.debug(f"Comparing model original '{model_choice_original_label}' with ground truth '{ground_truth_label}'. Correct: {is_correct}")
+        except Exception as e:
+             logger.error(f"Error comparing labels for correctness: {e}", exc_info=True)
+             is_correct = None # Error during comparison
+    else:
+        logger.debug("Cannot determine correctness (missing model choice, ground truth, or error occurred).")
+        is_correct = None # Cannot determine correctness
+
+    # 4. Determine Question ID
     q_id = data_item.get('id', f"idx_{question_index}") # Use .get just in case, fallback to index
 
+    # 5. Assemble the final result dictionary
     result = {
-        "trial_id": str(uuid.uuid4()),
+        "trial_id": str(uuid.uuid4()), # Keep unique ID for each trial (permutation)
         "question_id": q_id,
-        "question_index": question_index,
+        "question_index": question_index, # Index within the dataset slice being run
         "subtask": subtask,
         "language": language,
         "model_name": model_name,
         "input_format": input_format,
-        "option_permutation": "".join(option_permutation),
+        "option_permutation": "".join(option_permutation), # Save the permutation used
         "api_call_successful": api_call_successful,
         "api_raw_response": str(api_raw_response) if api_raw_response is not None else None,
-        "extracted_answer": extracted_answer,
-        "log_probabilities": log_probabilities,
-        "ground_truth_answer": ground_truth_label,
-        "is_correct": is_correct
+        "extracted_answer": extracted_answer, # The positional answer (A/B/C/D relative to permutation)
+        "model_choice_original_label": model_choice_original_label, # **The added field** (Original A/B/C/D based on content)
+        "log_probabilities": log_probabilities, # Keeping as None
+        "ground_truth_answer": ground_truth_label, # The original correct label ('A'/'B'/'C'/'D')
+        "is_correct": is_correct # Boolean or None
     }
-    logger.debug(f"Result structured: {result}")
+    logger.info(f"Result structured for q_idx {question_index}, perm {''.join(option_permutation)}: "
+                f"Extracted='{extracted_answer}', Orig='{model_choice_original_label}', GT='{ground_truth_label}', Correct={is_correct}")
     return result
 
 def get_api_client(model_family: str) -> Any | None:
