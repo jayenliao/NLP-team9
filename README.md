@@ -63,7 +63,7 @@ nlp-team9/
 │ ├── EDA.ipynb # Exploratory Data Analysis
 │ └── save_datasets.py # Generates ds_selected.pkl
 │
-├── prompts/ # Prompt templates
+├── prompts/                # Prompt templates
 │ └── prompt_templates.py    # Prompts templates for all formate and languages
 │
 ├── commands/ # example commands for running experiments, we may re-organize this folder
