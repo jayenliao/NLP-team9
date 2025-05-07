@@ -63,9 +63,7 @@ This is the final project of NLP, a course at National Taiwan University (Spring
 │   │   └── save_datasets.py   # Download, collect, and save the datasets.
 │
 │   ├── prompts/                # 存放不同 input/output 格式的 prompt templates
-│   │   ├── base_prompt.txt        # Free-text 格式 prompt
-│   │   ├── json_prompt.txt        # JSON 格式 prompt
-│   │   └── xml_prompt.txt         # XML 格式 prompt
+│   │   └── prompt_templates.py    # Prompts templates for all formate and languages
 │
 │   ├── experiments/            # Scripts for running experiments
 │   │   ├── run_mistral.py         # Main program for calling Mistral API
