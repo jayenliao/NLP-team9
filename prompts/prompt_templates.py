@@ -6,18 +6,18 @@ Problem:
 '''
 
 INTRO = {
-    "EN-US": "Answer the following multiple choice question.",
-    "FR-FR": "Répondez à la question à choix multiples suivante."
+    "en": "Answer the following multiple choice question.",
+    "fr": "Répondez à la question à choix multiples suivante."
 }
 
 INSTRUCTION = {
-    "EN-US": "The last line of your response should be of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering.",
-    "FR-FR": "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre."
+    "en": "The last line of your response should be of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering.",
+    "fr": "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre."
 }
 
 CHOICE = {
-    "EN-US": "choices",
-    "FR-FR": "choix"
+    "en": "choices",
+    "fr": "choix"
 }
 
 # Template
