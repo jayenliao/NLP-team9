@@ -1,5 +1,10 @@
 # Wording for different language
 
+'''
+Problem:
+- Should type name in structured prompts in different languages? (Currently all English)
+'''
+
 INTRO = {
     "EN-US": "Answer the following multiple choice question.",
     "FR-FR": "Répondez à la question à choix multiples suivante."
@@ -37,12 +42,12 @@ QUERY_TEMPLATE_XML = """
 
 <question>
   <text>{Question}</text>
-  <choises>
+  <choices>
     <A>{A}</A>
     <B>{B}</B>
     <C>{C}</C>
     <D>{D}</D>
-  </choises>
+  </choices>
 </question>
 """.strip()
 
@@ -52,7 +57,7 @@ QUERY_TEMPLATE_JSON = """
 
 {
   "question": "{Question}",
-  "choises": {
+  "choices": {
     "A": "{A}",
     "B": "{B}",
     "C": "{C}",

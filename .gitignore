@@ -42,3 +42,10 @@ apikey.txt
 # VSCode & PyCharm settings
 .vscode/
 .idea/
+
+# Temp Reference Files
+./prompts/common.py
+./prompts/evaluation.py
+./prompts/mmlu_eval.py
+./prompts/run_mmlu_eval.py
+./prompts/types.py
