@@ -1,0 +1,542 @@
+[
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "gemini_all_1_1_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "gemini_all_1_24_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "gemini_all_5_1_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "gemini_all_5_24_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "gemini_all_100_1_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "gemini_all_100_24_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "gemini_abstract_algebra_1_1_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "gemini_abstract_algebra_1_1_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "gemini_abstract_algebra_1_24_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "gemini_abstract_algebra_1_24_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "gemini_abstract_algebra_5_1_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "gemini_abstract_algebra_5_1_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "gemini_abstract_algebra_5_24_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "gemini_abstract_algebra_5_24_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "gemini_abstract_algebra_100_1_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "gemini_abstract_algebra_100_1_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "gemini_abstract_algebra_100_24_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "gemini_abstract_algebra_100_24_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "gemini_anotamy_1_1_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "gemini_anotamy_1_1_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "gemini_anotamy_1_24_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "gemini_anotamy_1_24_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "gemini_anotamy_5_1_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "gemini_anotamy_5_1_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "gemini_anotamy_5_24_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "gemini_anotamy_5_24_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "gemini_anotamy_100_1_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "gemini_anotamy_100_1_5"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "gemini_anotamy_100_24_2"
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anotamy",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "gemini_anotamy_100_24_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "mistral_all_1_1_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "mistral_all_1_24_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "mistral_all_5_1_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "mistral_all_5_24_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "mistral_all_100_1_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "mistral_all_100_24_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "mistral_abstract_algebra_1_1_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "mistral_abstract_algebra_1_1_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "mistral_abstract_algebra_1_24_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "mistral_abstract_algebra_1_24_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "mistral_abstract_algebra_5_1_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "mistral_abstract_algebra_5_1_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "mistral_abstract_algebra_5_24_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "mistral_abstract_algebra_5_24_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "mistral_abstract_algebra_100_1_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "mistral_abstract_algebra_100_1_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "mistral_abstract_algebra_100_24_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "mistral_abstract_algebra_100_24_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "mistral_anotamy_1_1_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 1,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "mistral_anotamy_1_1_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "mistral_anotamy_1_24_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 1,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "mistral_anotamy_1_24_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "mistral_anotamy_5_1_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 5,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "mistral_anotamy_5_1_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "mistral_anotamy_5_24_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 5,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "mistral_anotamy_5_24_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 2,
+    "exp_name": "mistral_anotamy_100_1_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 100,
+    "num_permutations": 1,
+    "delay": 5,
+    "exp_name": "mistral_anotamy_100_1_5"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 2,
+    "exp_name": "mistral_anotamy_100_24_2"
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anotamy",
+    "num_questions": 100,
+    "num_permutations": 24,
+    "delay": 5,
+    "exp_name": "mistral_anotamy_100_24_5"
+  }
+]
