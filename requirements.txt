@@ -3,7 +3,7 @@ pandas
 numpy
 torch
 transformers
-
+tqdm
 huggingface_hub
 requests 
 python-dotenv

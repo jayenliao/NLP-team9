@@ -6,6 +6,7 @@ import argparse
 import json
 import time
 import itertools
+from tqdm import tqdm
 
 from core_runner import (
     load_prompt_template, format_prompt, parse_response,
@@ -93,21 +94,23 @@ def main():
     total_processed_count = 0
     try:
         with open(output_path, 'a', encoding='utf-8') as f_out:
-            for subtask in subtasks_to_run:
-                logger.info(f"Processing subtask: {subtask}")
+            for subtask in tqdm(subtasks_to_run, desc="Subtasks Progress"):
+                logger.info(f"--- Processing Subtask: {subtask} ---")
 
                 if subtask not in full_dataset or args.language not in full_dataset[subtask]:
+                    logger.warning(f"Subtask {subtask} or language {args.language} not found in dataset. Skipping.")
                     continue
 
                 task_data = full_dataset[subtask][args.language]
                 end_index = min(args.start_index + args.num_questions, len(task_data))
 
                 if args.start_index >= len(task_data) or args.start_index >= end_index:
+                    logger.info(f"Start index {args.start_index} is beyond available data for subtask {subtask} ({len(task_data)} items). Skipping.")
                     continue
 
                 logger.info(f"Processing questions {args.start_index} to {end_index - 1}")
-
-                for i in range(args.start_index, end_index):
+                question_indices_to_process = range(args.start_index, end_index)
+                for i in tqdm(question_indices_to_process, desc=f"  {subtask} Qs", leave=False): # leave=False for nested bars
                     data_item = task_data[i]
                     question_index_in_run = i
 
@@ -117,17 +120,15 @@ def main():
                     original_labels = ['A', 'B', 'C', 'D']
                     num_perms_to_run = min(args.num_permutations, 24)
                     if args.num_permutations > 24:
-                        logger.warning(f"Requested {args.num_permutations} permutations, using max 24.")
+                        logger.warning(f"--num_permutations requested {args.num_permutations}, but maximum is 24. Using 24.")
 
                     perm_iterator = itertools.islice(itertools.permutations(original_labels), num_perms_to_run)
-
+                
                     for p_idx, current_permutation_tuple in enumerate(perm_iterator):
                         total_permutations_in_run = num_perms_to_run
                         current_permutation = list(current_permutation_tuple)
                         perm_string = "".join(current_permutation)
-
-                        logger.info(f"Running permutation {p_idx + 1}/{total_permutations_in_run} ({perm_string}) for Q:{question_index_in_run}")
-
+                        logger.info(f"    Running Permutation {p_idx + 1}/{total_permutations_in_run} ({perm_string}) for Q_idx:{question_index_in_run}")
                         # Format Prompt
                         current_prompt = format_prompt(template_content, data_item, current_permutation)
                         if not current_prompt:
