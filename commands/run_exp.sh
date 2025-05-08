@@ -8,7 +8,7 @@ DEFAULT_MODEL_FAMILY="gemini"
 DEFAULT_MODEL_NAME="gemini-2.0-flash-lite"
 DEFAULT_PROMPT_FORMAT="base"
 DEFAULT_LANGUAGE="en"
-DEFAULT_SUBTASK="all"
+DEFAULT_SUBTASK="abstract_algebra"
 DEFAULT_NUM_QUESTIONS=1
 DEFAULT_NUM_PERMUTATIONS=1
 DEFAULT_OUTPUT_FILE=""
@@ -19,7 +19,7 @@ print_help() {
   echo "Usage: commands/run_exp.sh [exp_name1 exp_name2 ...] --{lang} --{format} [--key value ...]"
   echo
   echo "If no exp_name is provided, the small experiment will be executed, but you can still manually specify values"
-  echo "If no lang/format specified, default would be fr/base"
+  echo "If no lang/format specified, default would be en/base"
   echo "Options:"
   echo "  -h, --help             Show this help message"
   echo "  --list                 List all available experiment names"
@@ -90,7 +90,7 @@ if [ ${#EXP_NAMES[@]} -eq 0 ]; then
   bash "$ENTRY_SCRIPT" \
     --model_family "gemini" \
     --model_name "gemini-2.0-flash-lite" \
-    --language "fr" \
+    --language "en" \
     --prompt_format "base" \
     --subtask "abstract_algebra" \
     --output_file "" \
