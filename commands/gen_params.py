@@ -66,10 +66,23 @@ def generate_combinations(properties, constraints):
         and not violates_exclude_constraints(c, exclude_rules)
         # and satisfies_constraints(c, constraint_rules)
     ]
-
+    i = 0
     if concat_fields:
         for combo in valid_combos:
-            combo["exp_name"] = "_".join(str(combo[k]) for k in concat_fields)
+            if combo["subtask"] == "all" and combo["num_questions"] == 100 and combo["num_permutations"] == 24 and combo["delay"] == 5:
+                combo["exp_name"] = combo["model_family"] + "_" + "full"
+                combo["output_file"] = combo["exp_name"] + "_output.jsonl"
+                # print(combo)
+            elif combo["subtask"] == "all" and combo["num_questions"] == 1 and combo["num_permutations"] == 1 and combo["delay"] == 2:
+                combo["exp_name"] = combo["model_family"] + "_" + "small"
+                combo["output_file"] = combo["exp_name"] + "_output.jsonl"
+                # print(combo)            
+            else:
+                combo["exp_name"] = "_".join(str(combo[k]) for k in concat_fields)
+            for k in combo:
+                combo[k] = str(combo[k])
+            combo["id"] = i
+            i += 1
 
     return valid_combos
 
@@ -89,7 +102,7 @@ def main():
         "constraints": data.get("constraints", [])
     }
     combinations = generate_combinations(data, constraints)
-
+    
     if args.output:
         with open(args.output, "w", encoding="utf-8") as f:
             if args.format == "json":
