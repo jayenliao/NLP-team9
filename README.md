@@ -68,6 +68,12 @@ nlp-team9/
 │ ├── json_prompt.txt
 │ └── xml_prompt.txt
 │
+├── commands/ # example commands for running experiments, we may re-organize this folder
+│ ├── full_eval_en.sh  # running the full experiment (all subtasks) of mistral/en/json
+│ ├── full_eval_fr.sh  # running the full experiment of mistral/fr/json
+│ ├── small_test_en.sh  # running the experiment of a subtask of gemini/en/base
+│ └── small_test_fr.sh  # running the experiment of a subtask of gemini/en/base
+│
 ├── experiments/ # Core experiment logic
 │ ├── core_runner.py # Prompt formatting, API calls, response parsing
 │ ├── run_experiment.py # Main experiment script
