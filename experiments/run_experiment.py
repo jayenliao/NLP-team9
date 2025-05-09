@@ -82,9 +82,8 @@ def main():
         timestamp = time.strftime("%Y%m%d-%H%M%S")
         filename = f"{args.model_family}_{args.model_name}_{args.language}_{args.prompt_format}_{timestamp}.jsonl"
     else:
-        print("output_file:", args.output_file)
         filename = args.output_file if args.output_file.endswith(".jsonl") else f"{args.output_file}.jsonl"
-        print("real filename:", filename)
+
     output_path_dir = os.path.join(os.path.dirname(__file__), '..', args.output_dir)
     os.makedirs(output_path_dir, exist_ok=True)
     output_path = os.path.join(output_path_dir, filename)

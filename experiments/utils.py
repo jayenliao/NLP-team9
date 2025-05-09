@@ -7,7 +7,6 @@ from mistralai import Mistral
 from google import genai
 
 import sys
-import os
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(ROOT_DIR)
@@ -68,6 +67,8 @@ def load_api_keys():
 #         print(f"First subtask: {first_subtask}")
 #         first_question_en = dataset[first_subtask]['en'][0]
 #         print("Example English question:", first_question_en)
+
+
 def format_multichoice_question(row, style='plain', lang="en"):
     # print("in utils")
     ###################################
