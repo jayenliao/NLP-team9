@@ -3,11 +3,9 @@ pandas
 numpy
 torch
 transformers
-
+tqdm
 huggingface_hub
 requests 
-pandas
-numpy
 python-dotenv
 google-genai 
 mistralai 

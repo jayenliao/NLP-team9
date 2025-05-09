@@ -52,39 +52,47 @@ This is the final project of NLP, a course at National Taiwan University (Spring
     pip3 install -r requirements.txt
     ```
 
-### Source Code Structure (Draft)
+### Source Code Structure
 
 ```plaintext
-├──nlp-team9/      # The repo root
-│   ├── data/        # The folder to put dat and relevant file(s)
-│   │   ├── categories.py      # Four main topics with 17 categories and 57 subcategories are listed here.
-│   │   ├── ds.selected.pkl    # The dict with all 34 (17 subtasks x 2 languages) required datasets.
-│   │   ├── EDA.ipynb          # Download, check, collect, and save the datasets.
-│   │   └── save_datasets.py   # Download, collect, and save the datasets.
+nlp-team9/
 │
-│   ├── prompts/                # 存放不同 input/output 格式的 prompt templates
-│   │   ├── base_prompt.txt        # Free-text 格式 prompt
-│   │   ├── json_prompt.txt        # JSON 格式 prompt
-│   │   └── xml_prompt.txt         # XML 格式 prompt
+├── data/ # Dataset preparation and storage
+│ ├── categories.py # MMMLU category mappings
+│ ├── ds_selected.pkl # Processed dataset (17 subtasks, 2 langs, 100 Qs each)
+│ ├── EDA.ipynb # Exploratory Data Analysis
+│ └── save_datasets.py # Generates ds_selected.pkl
 │
-│   ├── experiments/            # Scripts for running experiments
-│   │   ├── run_mistral.py         # Main program for calling Mistral API
-│   │   ├── run_gemini.py          # Main program for calling Gemini API
-│   │   └── utils.py               # Utils for dealing with dataset loading, format transformation, logging, etc.
+├── prompts/ # Prompt templates
+│ ├── base_prompt.txt
+│ ├── json_prompt.txt
+│ └── xml_prompt.txt
 │
-│   ├── results/               # 儲存所有實驗結果（**TODO**用 JSON or CSV or ????）
-│   │   ├── base_en_mistral.json   # Results of Free-text format / English / Mistral
-│   │   ├── json_ja_gemini.json    # Results of JSON format / Japanese / Gemini
-│   │   └── ...                    # 依模型、語言、格式命名
+├── commands/ # example commands for running experiments, we may re-organize this folder
+│ ├── full_eval_en.sh  # running the full experiment (all subtasks) of mistral/en/json
+│ ├── full_eval_fr.sh  # running the full experiment of mistral/fr/json
+│ ├── small_test_en.sh  # running the experiment of a subtask of gemini/en/base
+│ └── small_test_fr.sh  # running the experiment of a subtask of gemini/en/base
 │
-│   ├── analysis/                # Scripts for doing analysis and visualization
-│   │   ├── compute_ckld.py           # 計算 CKLD（Choice KL Divergence）
-│   │   ├── fluctuation_rate.py       # 計算 Fluctuation Rate
-│   │   └── summarize_results.ipynb   # 不同語言/格式的視覺化分析
+├── experiments/ # Core experiment logic
+│ ├── core_runner.py # Prompt formatting, API calls, response parsing
+│ ├── run_experiment.py # Main experiment script
+│ ├── utils.py # Helper functions
+│ ├── run_gemini.py # Gemini API test
+│ └── run_mistral.py # Mistral API test
 │
-│   ├── .gitignore
-│   ├── requirements.txt  # Required dependencies
-└────── README.md         # This file
+├── results/ # Output JSONL files
+│ └── shared_output_format.py # Output structure
+│
+├── logs/ # Experiment logs
+│ └── experiment.log # Default log file
+│
+├── analysis/ # (Planned) Result analysis scripts
+│
+├── .env # API keys
+├── .gitignore # Git-ignored files
+├── requirements.txt # Dependencies
+└── README.md # Project overview
 ```
 
 ## Git Workflow Guideline
