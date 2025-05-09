@@ -52,16 +52,16 @@ QUERY_TEMPLATE_XML = """
 """.strip()
 
 QUERY_TEMPLATE_JSON = """
-// {Intro}
-// {Instruction}
+// "{Intro}"
+// "{Instruction}"
 
-{
+{{
   "question": "{Question}",
-  "choices": {
+  "choices": {{
     "A": "{A}",
     "B": "{B}",
     "C": "{C}",
     "D": "{D}"
-  }
-}
+  }}
+ }}
 """.strip()

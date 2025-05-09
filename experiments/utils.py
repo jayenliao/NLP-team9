@@ -6,6 +6,12 @@ from dotenv import load_dotenv
 from mistralai import Mistral
 from google import genai
 
+import sys
+import os
+
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(ROOT_DIR)
+
 from prompts.prompt_templates import (
     QUERY_TEMPLATE_PLAIN,
     QUERY_TEMPLATE_JSON,
@@ -63,6 +69,7 @@ def load_api_keys():
 #         first_question_en = dataset[first_subtask]['en'][0]
 #         print("Example English question:", first_question_en)
 def format_multichoice_question(row, style='plain', lang="en"):
+    # print("in utils")
     ###################################
     # Input:                          #
     # - row: Question, A, B, C, D     #
@@ -70,14 +77,26 @@ def format_multichoice_question(row, style='plain', lang="en"):
     # - lang: "EN-US", "FR-FR"        #
     # Output: formatted prompt        #
     ###################################
-    intro = INTRO[lang]
-    instruction = INSTRUCTION[lang]
-    template = None
-    # choice = CHOICE[lang]
-    if style == 'json':
-        template = QUERY_TEMPLATE_JSON
-    elif style == 'xml':
-        template = QUERY_TEMPLATE_XML
-    else:
-        template = QUERY_TEMPLATE_PLAIN
-    return template.format(Intro = intro, Instruction = instruction, **row) #Choice = choice
+    try:
+        intro = INTRO[lang]
+        instruction = INSTRUCTION[lang]
+        template = None
+        # print(row)
+        # choice = CHOICE[lang]
+        if style == 'json':
+            template = QUERY_TEMPLATE_JSON
+        elif style == 'xml':
+            template = QUERY_TEMPLATE_XML
+        else:
+            template = QUERY_TEMPLATE_PLAIN
+        row['Intro'] = intro
+        row['Instruction'] = instruction
+        # print(template)
+        # print(type(template))
+        test = template.format(**row)
+        # print(test)
+        return test #Choice = choice
+    except (KeyError, IndexError): # Handle missing keys or incorrect list sizes
+        return None
+    except Exception: # Generic catch-all
+        return None

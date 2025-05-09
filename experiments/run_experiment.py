@@ -82,8 +82,9 @@ def main():
         timestamp = time.strftime("%Y%m%d-%H%M%S")
         filename = f"{args.model_family}_{args.model_name}_{args.language}_{args.prompt_format}_{timestamp}.jsonl"
     else:
+        print("output_file:", args.output_file)
         filename = args.output_file if args.output_file.endswith(".jsonl") else f"{args.output_file}.jsonl"
-
+        print("real filename:", filename)
     output_path_dir = os.path.join(os.path.dirname(__file__), '..', args.output_dir)
     os.makedirs(output_path_dir, exist_ok=True)
     output_path = os.path.join(output_path_dir, filename)
@@ -130,11 +131,11 @@ def main():
                         perm_string = "".join(current_permutation)
                         logger.info(f"    Running Permutation {p_idx + 1}/{total_permutations_in_run} ({perm_string}) for Q_idx:{question_index_in_run}")
                         # Format Prompt
-                        current_prompt = format_prompt(template_content, data_item, current_permutation)
+                        current_prompt = format_prompt(template_content, data_item, current_permutation, args.language, args.prompt_format)
                         if not current_prompt:
                             logger.warning(f"Skipping Q:{question_index_in_run}, Perm:{perm_string} - Failed to format prompt.")
                             continue
-
+                        # print(current_prompt)
                         # Call LLM API
                         api_response, api_ok = call_llm_api(client, args.model_family, args.model_name, current_prompt)
                         if not api_ok:
@@ -146,6 +147,8 @@ def main():
                             response_text = None
                             try:
                                 if args.model_family == 'gemini':
+                                    # print(api_response.text)
+                                    # print(api_response)
                                     response_text = api_response.text
                                 elif args.model_family == 'mistral':
                                     response_text = api_response.choices[0].message.content
