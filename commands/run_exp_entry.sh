@@ -8,7 +8,7 @@ LANGUAGE="en"
 SUBTASK="abstract_algebra"
 NUM_QUESTIONS=1
 NUM_PERMUTATIONS=1
-OUTPUT_FILE=""
+OUTPUT_FILE="default.jsonl"
 DELAY=2
 DRY_RUN=0
 

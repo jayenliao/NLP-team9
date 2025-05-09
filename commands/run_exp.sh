@@ -10,7 +10,7 @@ DEFAULT_LANGUAGE="en"
 DEFAULT_SUBTASK="abstract_algebra"
 DEFAULT_NUM_QUESTIONS=1
 DEFAULT_NUM_PERMUTATIONS=1
-DEFAULT_OUTPUT_FILE=""
+DEFAULT_OUTPUT_FILE="default.jsonl"
 DEFAULT_DELAY=2
 
 SETUP_EVAL=0
@@ -257,7 +257,7 @@ if [ ${#EXP_NAMES[@]} -eq 0 ]; then
     --language "en" \
     --prompt_format "base" \
     --subtask "abstract_algebra" \
-    --output_file "" \
+    --output_file "default.jsonl" \
     --num_questions "1" \
     --num_permutations "1" \
     --delay "2" \
