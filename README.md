@@ -64,7 +64,7 @@ nlp-team9/
 │ └── save_datasets.py # Generates ds_selected.pkl
 │
 ├── prompts/                # Prompt templates
-│ └── prompt_templates.py    # Prompts templates for all formate and languages
+│ └── prompt_templates.py    # Prompts templates for all formats and languages
 │
 ├── commands/ # example commands for running experiments, we may re-organize this folder
 │ ├── full_eval_en.sh  # running the full experiment (all subtasks) of mistral/en/json
