@@ -86,7 +86,7 @@ nlp-team9/
 │ └── experiment.log # Default log file
 │
 ├── analysis/ # (Planned) Result analysis scripts
-│
+│ └── analyze_results.py # Calculate accuracy score
 ├── .env # API keys
 ├── .gitignore # Git-ignored files
 ├── requirements.txt # Dependencies
