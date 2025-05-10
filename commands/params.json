@@ -7,7 +7,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_all_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 0
   },
   {
@@ -29,7 +28,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_all_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 2
   },
   {
@@ -51,7 +49,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_all_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 4
   },
   {
@@ -73,7 +70,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_all_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 6
   },
   {
@@ -95,7 +91,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_all_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 8
   },
   {
@@ -117,7 +112,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_all_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 10
   },
   {
@@ -139,7 +133,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 12
   },
   {
@@ -161,7 +154,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 14
   },
   {
@@ -183,7 +175,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 16
   },
   {
@@ -205,7 +196,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 18
   },
   {
@@ -227,7 +217,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 20
   },
   {
@@ -249,7 +238,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 22
   },
   {
@@ -271,7 +259,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_anatomy_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 24
   },
   {
@@ -282,7 +269,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_anatomy_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 25
   },
   {
@@ -293,7 +279,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_anatomy_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 26
   },
   {
@@ -304,7 +289,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_anatomy_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 27
   },
   {
@@ -315,7 +299,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_anatomy_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 28
   },
   {
@@ -326,7 +309,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_anatomy_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 29
   },
   {
@@ -337,7 +319,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_anatomy_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 30
   },
   {
@@ -348,7 +329,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_anatomy_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 31
   },
   {
@@ -359,7 +339,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_anatomy_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 32
   },
   {
@@ -370,7 +349,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_anatomy_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 33
   },
   {
@@ -381,7 +359,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_anatomy_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 34
   },
   {
@@ -392,7 +369,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_anatomy_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 35
   },
   {
@@ -403,7 +379,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_astronomy_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 36
   },
   {
@@ -414,7 +389,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_astronomy_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 37
   },
   {
@@ -425,7 +399,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_astronomy_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 38
   },
   {
@@ -436,7 +409,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_astronomy_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 39
   },
   {
@@ -447,7 +419,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_astronomy_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 40
   },
   {
@@ -458,7 +429,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_astronomy_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 41
   },
   {
@@ -469,7 +439,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_astronomy_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 42
   },
   {
@@ -480,7 +449,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_astronomy_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 43
   },
   {
@@ -491,7 +459,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_astronomy_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 44
   },
   {
@@ -502,7 +469,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_astronomy_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 45
   },
   {
@@ -513,7 +479,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_astronomy_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 46
   },
   {
@@ -524,7 +489,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_astronomy_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 47
   },
   {
@@ -535,7 +499,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_business_ethics_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 48
   },
   {
@@ -546,7 +509,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_business_ethics_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 49
   },
   {
@@ -557,7 +519,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_business_ethics_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 50
   },
   {
@@ -568,7 +529,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_business_ethics_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 51
   },
   {
@@ -579,7 +539,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_business_ethics_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 52
   },
   {
@@ -590,7 +549,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_business_ethics_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 53
   },
   {
@@ -601,7 +559,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_business_ethics_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 54
   },
   {
@@ -612,7 +569,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_business_ethics_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 55
   },
   {
@@ -623,7 +579,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_business_ethics_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 56
   },
   {
@@ -634,7 +589,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_business_ethics_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 57
   },
   {
@@ -645,7 +599,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_business_ethics_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 58
   },
   {
@@ -656,7 +609,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_business_ethics_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 59
   },
   {
@@ -667,7 +619,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_biology_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 60
   },
   {
@@ -678,7 +629,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_biology_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 61
   },
   {
@@ -689,7 +639,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_biology_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 62
   },
   {
@@ -700,7 +649,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_biology_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 63
   },
   {
@@ -711,7 +659,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_biology_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 64
   },
   {
@@ -722,7 +669,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_biology_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 65
   },
   {
@@ -733,7 +679,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_biology_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 66
   },
   {
@@ -744,7 +689,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_biology_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 67
   },
   {
@@ -755,7 +699,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_biology_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 68
   },
   {
@@ -766,7 +709,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_biology_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 69
   },
   {
@@ -777,7 +719,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_biology_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 70
   },
   {
@@ -788,7 +729,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_biology_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 71
   },
   {
@@ -799,7 +739,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 72
   },
   {
@@ -810,7 +749,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 73
   },
   {
@@ -821,7 +759,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 74
   },
   {
@@ -832,7 +769,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 75
   },
   {
@@ -843,7 +779,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 76
   },
   {
@@ -854,7 +789,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 77
   },
   {
@@ -865,7 +799,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 78
   },
   {
@@ -876,7 +809,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 79
   },
   {
@@ -887,7 +819,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 80
   },
   {
@@ -898,7 +829,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 81
   },
   {
@@ -909,7 +839,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 82
   },
   {
@@ -920,7 +849,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 83
   },
   {
@@ -931,7 +859,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 84
   },
   {
@@ -942,7 +869,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 85
   },
   {
@@ -953,7 +879,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 86
   },
   {
@@ -964,7 +889,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 87
   },
   {
@@ -975,7 +899,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 88
   },
   {
@@ -986,7 +909,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 89
   },
   {
@@ -997,7 +919,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 90
   },
   {
@@ -1008,7 +929,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 91
   },
   {
@@ -1019,7 +939,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 92
   },
   {
@@ -1030,7 +949,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 93
   },
   {
@@ -1041,7 +959,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 94
   },
   {
@@ -1052,7 +969,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 95
   },
   {
@@ -1063,7 +979,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_econometrics_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 96
   },
   {
@@ -1074,7 +989,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_econometrics_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 97
   },
   {
@@ -1085,7 +999,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_econometrics_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 98
   },
   {
@@ -1096,7 +1009,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_econometrics_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 99
   },
   {
@@ -1107,7 +1019,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_econometrics_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 100
   },
   {
@@ -1118,7 +1029,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_econometrics_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 101
   },
   {
@@ -1129,7 +1039,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_econometrics_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 102
   },
   {
@@ -1140,7 +1049,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_econometrics_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 103
   },
   {
@@ -1151,7 +1059,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_econometrics_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 104
   },
   {
@@ -1162,7 +1069,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_econometrics_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 105
   },
   {
@@ -1173,7 +1079,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_econometrics_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 106
   },
   {
@@ -1184,7 +1089,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_econometrics_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 107
   },
   {
@@ -1195,7 +1099,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 108
   },
   {
@@ -1206,7 +1109,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 109
   },
   {
@@ -1217,7 +1119,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 110
   },
   {
@@ -1228,7 +1129,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 111
   },
   {
@@ -1239,7 +1139,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 112
   },
   {
@@ -1250,7 +1149,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 113
   },
   {
@@ -1261,7 +1159,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 114
   },
   {
@@ -1272,7 +1169,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 115
   },
   {
@@ -1283,7 +1179,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 116
   },
   {
@@ -1294,7 +1189,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 117
   },
   {
@@ -1305,7 +1199,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 118
   },
   {
@@ -1316,7 +1209,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 119
   },
   {
@@ -1327,7 +1219,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_formal_logic_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 120
   },
   {
@@ -1338,7 +1229,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_formal_logic_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 121
   },
   {
@@ -1349,7 +1239,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_formal_logic_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 122
   },
   {
@@ -1360,7 +1249,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_formal_logic_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 123
   },
   {
@@ -1371,7 +1259,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_formal_logic_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 124
   },
   {
@@ -1382,7 +1269,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_formal_logic_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 125
   },
   {
@@ -1393,7 +1279,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_formal_logic_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 126
   },
   {
@@ -1404,7 +1289,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_formal_logic_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 127
   },
   {
@@ -1415,7 +1299,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_formal_logic_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 128
   },
   {
@@ -1426,7 +1309,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_formal_logic_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 129
   },
   {
@@ -1437,7 +1319,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_formal_logic_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 130
   },
   {
@@ -1448,7 +1329,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_formal_logic_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 131
   },
   {
@@ -1459,7 +1339,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_global_facts_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 132
   },
   {
@@ -1470,7 +1349,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_global_facts_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 133
   },
   {
@@ -1481,7 +1359,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_global_facts_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 134
   },
   {
@@ -1492,7 +1369,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_global_facts_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 135
   },
   {
@@ -1503,7 +1379,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_global_facts_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 136
   },
   {
@@ -1514,7 +1389,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_global_facts_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 137
   },
   {
@@ -1525,7 +1399,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_global_facts_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 138
   },
   {
@@ -1536,7 +1409,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_global_facts_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 139
   },
   {
@@ -1547,7 +1419,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_global_facts_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 140
   },
   {
@@ -1558,7 +1429,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_global_facts_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 141
   },
   {
@@ -1569,7 +1439,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_global_facts_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 142
   },
   {
@@ -1580,7 +1449,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_global_facts_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 143
   },
   {
@@ -1591,7 +1459,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 144
   },
   {
@@ -1602,7 +1469,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 145
   },
   {
@@ -1613,7 +1479,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 146
   },
   {
@@ -1624,7 +1489,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 147
   },
   {
@@ -1635,7 +1499,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 148
   },
   {
@@ -1646,7 +1509,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 149
   },
   {
@@ -1657,7 +1519,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 150
   },
   {
@@ -1668,7 +1529,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 151
   },
   {
@@ -1679,7 +1539,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 152
   },
   {
@@ -1690,7 +1549,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 153
   },
   {
@@ -1701,7 +1559,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 154
   },
   {
@@ -1712,7 +1569,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 155
   },
   {
@@ -1723,7 +1579,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 156
   },
   {
@@ -1734,7 +1589,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 157
   },
   {
@@ -1745,7 +1599,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 158
   },
   {
@@ -1756,7 +1609,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 159
   },
   {
@@ -1767,7 +1619,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 160
   },
   {
@@ -1778,7 +1629,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 161
   },
   {
@@ -1789,7 +1639,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 162
   },
   {
@@ -1800,7 +1649,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 163
   },
   {
@@ -1811,7 +1659,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 164
   },
   {
@@ -1822,7 +1669,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 165
   },
   {
@@ -1833,7 +1679,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 166
   },
   {
@@ -1844,7 +1689,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 167
   },
   {
@@ -1855,7 +1699,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 168
   },
   {
@@ -1866,7 +1709,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 169
   },
   {
@@ -1877,7 +1719,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 170
   },
   {
@@ -1888,7 +1729,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 171
   },
   {
@@ -1899,7 +1739,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 172
   },
   {
@@ -1910,7 +1749,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 173
   },
   {
@@ -1921,7 +1759,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 174
   },
   {
@@ -1932,7 +1769,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 175
   },
   {
@@ -1943,7 +1779,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 176
   },
   {
@@ -1954,7 +1789,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 177
   },
   {
@@ -1965,7 +1799,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 178
   },
   {
@@ -1976,7 +1809,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 179
   },
   {
@@ -1987,7 +1819,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 180
   },
   {
@@ -1998,7 +1829,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 181
   },
   {
@@ -2009,7 +1839,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 182
   },
   {
@@ -2020,7 +1849,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 183
   },
   {
@@ -2031,7 +1859,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 184
   },
   {
@@ -2042,7 +1869,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 185
   },
   {
@@ -2053,7 +1879,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 186
   },
   {
@@ -2064,7 +1889,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 187
   },
   {
@@ -2075,7 +1899,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 188
   },
   {
@@ -2086,7 +1909,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 189
   },
   {
@@ -2097,7 +1919,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 190
   },
   {
@@ -2108,7 +1929,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 191
   },
   {
@@ -2119,7 +1939,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 192
   },
   {
@@ -2130,7 +1949,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 193
   },
   {
@@ -2141,7 +1959,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 194
   },
   {
@@ -2152,7 +1969,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 195
   },
   {
@@ -2163,7 +1979,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 196
   },
   {
@@ -2174,7 +1989,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 197
   },
   {
@@ -2185,7 +1999,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 198
   },
   {
@@ -2196,7 +2009,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 199
   },
   {
@@ -2207,7 +2019,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 200
   },
   {
@@ -2218,7 +2029,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 201
   },
   {
@@ -2229,7 +2039,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 202
   },
   {
@@ -2240,7 +2049,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 203
   },
   {
@@ -2251,7 +2059,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_international_law_1_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 204
   },
   {
@@ -2262,7 +2069,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_international_law_1_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 205
   },
   {
@@ -2273,7 +2079,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_international_law_1_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 206
   },
   {
@@ -2284,7 +2089,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_international_law_1_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 207
   },
   {
@@ -2295,7 +2099,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_international_law_50_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 208
   },
   {
@@ -2306,7 +2109,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_international_law_50_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 209
   },
   {
@@ -2317,7 +2119,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_international_law_50_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 210
   },
   {
@@ -2328,7 +2129,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_international_law_50_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 211
   },
   {
@@ -2339,7 +2139,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_international_law_100_1_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 212
   },
   {
@@ -2350,7 +2149,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_international_law_100_1_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 213
   },
   {
@@ -2361,7 +2159,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_international_law_100_24_2",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 214
   },
   {
@@ -2372,7 +2169,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_international_law_100_24_5",
-    "output_file": "gemini-2.0-flash-lite",
     "id": 215
   },
   {
@@ -2383,7 +2179,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_all_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 216
   },
   {
@@ -2405,7 +2200,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_all_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 218
   },
   {
@@ -2427,7 +2221,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_all_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 220
   },
   {
@@ -2449,7 +2242,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_all_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 222
   },
   {
@@ -2471,7 +2263,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_all_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 224
   },
   {
@@ -2493,7 +2284,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_all_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 226
   },
   {
@@ -2515,7 +2305,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 228
   },
   {
@@ -2537,7 +2326,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 230
   },
   {
@@ -2559,7 +2347,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 232
   },
   {
@@ -2581,7 +2368,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 234
   },
   {
@@ -2603,7 +2389,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 236
   },
   {
@@ -2625,7 +2410,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 238
   },
   {
@@ -2647,7 +2431,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_anatomy_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 240
   },
   {
@@ -2658,7 +2441,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_anatomy_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 241
   },
   {
@@ -2669,7 +2451,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_anatomy_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 242
   },
   {
@@ -2680,7 +2461,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_anatomy_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 243
   },
   {
@@ -2691,7 +2471,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_anatomy_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 244
   },
   {
@@ -2702,7 +2481,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_anatomy_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 245
   },
   {
@@ -2713,7 +2491,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_anatomy_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 246
   },
   {
@@ -2724,7 +2501,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_anatomy_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 247
   },
   {
@@ -2735,7 +2511,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_anatomy_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 248
   },
   {
@@ -2746,7 +2521,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_anatomy_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 249
   },
   {
@@ -2757,7 +2531,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_anatomy_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 250
   },
   {
@@ -2768,7 +2541,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_anatomy_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 251
   },
   {
@@ -2779,7 +2551,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_astronomy_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 252
   },
   {
@@ -2790,7 +2561,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_astronomy_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 253
   },
   {
@@ -2801,7 +2571,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_astronomy_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 254
   },
   {
@@ -2812,7 +2581,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_astronomy_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 255
   },
   {
@@ -2823,7 +2591,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_astronomy_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 256
   },
   {
@@ -2834,7 +2601,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_astronomy_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 257
   },
   {
@@ -2845,7 +2611,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_astronomy_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 258
   },
   {
@@ -2856,7 +2621,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_astronomy_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 259
   },
   {
@@ -2867,7 +2631,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_astronomy_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 260
   },
   {
@@ -2878,7 +2641,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_astronomy_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 261
   },
   {
@@ -2889,7 +2651,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_astronomy_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 262
   },
   {
@@ -2900,7 +2661,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_astronomy_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 263
   },
   {
@@ -2911,7 +2671,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_business_ethics_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 264
   },
   {
@@ -2922,7 +2681,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_business_ethics_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 265
   },
   {
@@ -2933,7 +2691,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_business_ethics_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 266
   },
   {
@@ -2944,7 +2701,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_business_ethics_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 267
   },
   {
@@ -2955,7 +2711,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_business_ethics_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 268
   },
   {
@@ -2966,7 +2721,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_business_ethics_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 269
   },
   {
@@ -2977,7 +2731,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_business_ethics_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 270
   },
   {
@@ -2988,7 +2741,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_business_ethics_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 271
   },
   {
@@ -2999,7 +2751,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_business_ethics_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 272
   },
   {
@@ -3010,7 +2761,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_business_ethics_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 273
   },
   {
@@ -3021,7 +2771,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_business_ethics_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 274
   },
   {
@@ -3032,7 +2781,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_business_ethics_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 275
   },
   {
@@ -3043,7 +2791,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_biology_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 276
   },
   {
@@ -3054,7 +2801,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_biology_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 277
   },
   {
@@ -3065,7 +2811,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_biology_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 278
   },
   {
@@ -3076,7 +2821,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_biology_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 279
   },
   {
@@ -3087,7 +2831,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_biology_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 280
   },
   {
@@ -3098,7 +2841,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_biology_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 281
   },
   {
@@ -3109,7 +2851,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_biology_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 282
   },
   {
@@ -3120,7 +2861,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_biology_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 283
   },
   {
@@ -3131,7 +2871,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_biology_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 284
   },
   {
@@ -3142,7 +2881,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_biology_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 285
   },
   {
@@ -3153,7 +2891,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_biology_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 286
   },
   {
@@ -3164,7 +2901,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_biology_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 287
   },
   {
@@ -3175,7 +2911,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 288
   },
   {
@@ -3186,7 +2921,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 289
   },
   {
@@ -3197,7 +2931,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 290
   },
   {
@@ -3208,7 +2941,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 291
   },
   {
@@ -3219,7 +2951,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 292
   },
   {
@@ -3230,7 +2961,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 293
   },
   {
@@ -3241,7 +2971,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 294
   },
   {
@@ -3252,7 +2981,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 295
   },
   {
@@ -3263,7 +2991,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 296
   },
   {
@@ -3274,7 +3001,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 297
   },
   {
@@ -3285,7 +3011,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 298
   },
   {
@@ -3296,7 +3021,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 299
   },
   {
@@ -3307,7 +3031,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 300
   },
   {
@@ -3318,7 +3041,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 301
   },
   {
@@ -3329,7 +3051,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 302
   },
   {
@@ -3340,7 +3061,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 303
   },
   {
@@ -3351,7 +3071,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 304
   },
   {
@@ -3362,7 +3081,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 305
   },
   {
@@ -3373,7 +3091,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 306
   },
   {
@@ -3384,7 +3101,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 307
   },
   {
@@ -3395,7 +3111,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 308
   },
   {
@@ -3406,7 +3121,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 309
   },
   {
@@ -3417,7 +3131,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 310
   },
   {
@@ -3428,7 +3141,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 311
   },
   {
@@ -3439,7 +3151,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_econometrics_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 312
   },
   {
@@ -3450,7 +3161,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_econometrics_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 313
   },
   {
@@ -3461,7 +3171,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_econometrics_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 314
   },
   {
@@ -3472,7 +3181,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_econometrics_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 315
   },
   {
@@ -3483,7 +3191,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_econometrics_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 316
   },
   {
@@ -3494,7 +3201,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_econometrics_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 317
   },
   {
@@ -3505,7 +3211,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_econometrics_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 318
   },
   {
@@ -3516,7 +3221,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_econometrics_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 319
   },
   {
@@ -3527,7 +3231,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_econometrics_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 320
   },
   {
@@ -3538,7 +3241,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_econometrics_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 321
   },
   {
@@ -3549,7 +3251,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_econometrics_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 322
   },
   {
@@ -3560,7 +3261,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_econometrics_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 323
   },
   {
@@ -3571,7 +3271,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 324
   },
   {
@@ -3582,7 +3281,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 325
   },
   {
@@ -3593,7 +3291,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 326
   },
   {
@@ -3604,7 +3301,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 327
   },
   {
@@ -3615,7 +3311,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 328
   },
   {
@@ -3626,7 +3321,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 329
   },
   {
@@ -3637,7 +3331,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 330
   },
   {
@@ -3648,7 +3341,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 331
   },
   {
@@ -3659,7 +3351,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 332
   },
   {
@@ -3670,7 +3361,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 333
   },
   {
@@ -3681,7 +3371,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 334
   },
   {
@@ -3692,7 +3381,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 335
   },
   {
@@ -3703,7 +3391,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_formal_logic_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 336
   },
   {
@@ -3714,7 +3401,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_formal_logic_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 337
   },
   {
@@ -3725,7 +3411,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_formal_logic_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 338
   },
   {
@@ -3736,7 +3421,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_formal_logic_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 339
   },
   {
@@ -3747,7 +3431,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_formal_logic_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 340
   },
   {
@@ -3758,7 +3441,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_formal_logic_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 341
   },
   {
@@ -3769,7 +3451,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_formal_logic_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 342
   },
   {
@@ -3780,7 +3461,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_formal_logic_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 343
   },
   {
@@ -3791,7 +3471,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_formal_logic_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 344
   },
   {
@@ -3802,7 +3481,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_formal_logic_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 345
   },
   {
@@ -3813,7 +3491,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_formal_logic_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 346
   },
   {
@@ -3824,7 +3501,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_formal_logic_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 347
   },
   {
@@ -3835,7 +3511,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_global_facts_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 348
   },
   {
@@ -3846,7 +3521,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_global_facts_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 349
   },
   {
@@ -3857,7 +3531,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_global_facts_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 350
   },
   {
@@ -3868,7 +3541,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_global_facts_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 351
   },
   {
@@ -3879,7 +3551,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_global_facts_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 352
   },
   {
@@ -3890,7 +3561,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_global_facts_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 353
   },
   {
@@ -3901,7 +3571,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_global_facts_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 354
   },
   {
@@ -3912,7 +3581,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_global_facts_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 355
   },
   {
@@ -3923,7 +3591,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_global_facts_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 356
   },
   {
@@ -3934,7 +3601,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_global_facts_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 357
   },
   {
@@ -3945,7 +3611,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_global_facts_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 358
   },
   {
@@ -3956,7 +3621,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_global_facts_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 359
   },
   {
@@ -3967,7 +3631,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 360
   },
   {
@@ -3978,7 +3641,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 361
   },
   {
@@ -3989,7 +3651,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 362
   },
   {
@@ -4000,7 +3661,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 363
   },
   {
@@ -4011,7 +3671,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 364
   },
   {
@@ -4022,7 +3681,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 365
   },
   {
@@ -4033,7 +3691,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 366
   },
   {
@@ -4044,7 +3701,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 367
   },
   {
@@ -4055,7 +3711,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 368
   },
   {
@@ -4066,7 +3721,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 369
   },
   {
@@ -4077,7 +3731,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 370
   },
   {
@@ -4088,7 +3741,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 371
   },
   {
@@ -4099,7 +3751,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 372
   },
   {
@@ -4110,7 +3761,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 373
   },
   {
@@ -4121,7 +3771,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 374
   },
   {
@@ -4132,7 +3781,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 375
   },
   {
@@ -4143,7 +3791,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 376
   },
   {
@@ -4154,7 +3801,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 377
   },
   {
@@ -4165,7 +3811,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 378
   },
   {
@@ -4176,7 +3821,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 379
   },
   {
@@ -4187,7 +3831,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 380
   },
   {
@@ -4198,7 +3841,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 381
   },
   {
@@ -4209,7 +3851,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 382
   },
   {
@@ -4220,7 +3861,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 383
   },
   {
@@ -4231,7 +3871,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 384
   },
   {
@@ -4242,7 +3881,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 385
   },
   {
@@ -4253,7 +3891,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 386
   },
   {
@@ -4264,7 +3901,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 387
   },
   {
@@ -4275,7 +3911,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 388
   },
   {
@@ -4286,7 +3921,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 389
   },
   {
@@ -4297,7 +3931,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 390
   },
   {
@@ -4308,7 +3941,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 391
   },
   {
@@ -4319,7 +3951,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 392
   },
   {
@@ -4330,7 +3961,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 393
   },
   {
@@ -4341,7 +3971,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 394
   },
   {
@@ -4352,7 +3981,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 395
   },
   {
@@ -4363,7 +3991,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 396
   },
   {
@@ -4374,7 +4001,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 397
   },
   {
@@ -4385,7 +4011,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 398
   },
   {
@@ -4396,7 +4021,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 399
   },
   {
@@ -4407,7 +4031,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 400
   },
   {
@@ -4418,7 +4041,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 401
   },
   {
@@ -4429,7 +4051,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 402
   },
   {
@@ -4440,7 +4061,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 403
   },
   {
@@ -4451,7 +4071,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 404
   },
   {
@@ -4462,7 +4081,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 405
   },
   {
@@ -4473,7 +4091,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 406
   },
   {
@@ -4484,7 +4101,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 407
   },
   {
@@ -4495,7 +4111,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 408
   },
   {
@@ -4506,7 +4121,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 409
   },
   {
@@ -4517,7 +4131,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 410
   },
   {
@@ -4528,7 +4141,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 411
   },
   {
@@ -4539,7 +4151,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 412
   },
   {
@@ -4550,7 +4161,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 413
   },
   {
@@ -4561,7 +4171,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 414
   },
   {
@@ -4572,7 +4181,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 415
   },
   {
@@ -4583,7 +4191,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 416
   },
   {
@@ -4594,7 +4201,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 417
   },
   {
@@ -4605,7 +4211,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 418
   },
   {
@@ -4616,7 +4221,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 419
   },
   {
@@ -4627,7 +4231,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_international_law_1_1_2",
-    "output_file": "mistral-small-latest",
     "id": 420
   },
   {
@@ -4638,7 +4241,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_international_law_1_1_5",
-    "output_file": "mistral-small-latest",
     "id": 421
   },
   {
@@ -4649,7 +4251,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_international_law_1_24_2",
-    "output_file": "mistral-small-latest",
     "id": 422
   },
   {
@@ -4660,7 +4261,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_international_law_1_24_5",
-    "output_file": "mistral-small-latest",
     "id": 423
   },
   {
@@ -4671,7 +4271,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_international_law_50_1_2",
-    "output_file": "mistral-small-latest",
     "id": 424
   },
   {
@@ -4682,7 +4281,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_international_law_50_1_5",
-    "output_file": "mistral-small-latest",
     "id": 425
   },
   {
@@ -4693,7 +4291,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_international_law_50_24_2",
-    "output_file": "mistral-small-latest",
     "id": 426
   },
   {
@@ -4704,7 +4301,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_international_law_50_24_5",
-    "output_file": "mistral-small-latest",
     "id": 427
   },
   {
@@ -4715,7 +4311,6 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_international_law_100_1_2",
-    "output_file": "mistral-small-latest",
     "id": 428
   },
   {
@@ -4726,7 +4321,6 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_international_law_100_1_5",
-    "output_file": "mistral-small-latest",
     "id": 429
   },
   {
@@ -4737,7 +4331,6 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_international_law_100_24_2",
-    "output_file": "mistral-small-latest",
     "id": 430
   },
   {
@@ -4748,7 +4341,6 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_international_law_100_24_5",
-    "output_file": "mistral-small-latest",
     "id": 431
   }
 ]

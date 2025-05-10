@@ -38,7 +38,7 @@ done
 # fi
 
 # Determine final output file name
-if [[ -z "$OUTPUT_FILE" || "$OUTPUT_FILE" == "None" ]]; then
+if [[ "$OUTPUT_FILE" = "" ]]; then
   timestamp=$(date +"%Y%m%d-%H%M%S")
   OUTPUT_FILE="${MODEL_NAME}_${LANGUAGE}_${PROMPT_FORMAT}_${timestamp}.jsonl"
 else
@@ -47,12 +47,10 @@ else
     OUTPUT_FILE="${OUTPUT_FILE}_${timestamp}.jsonl"
   fi
 fi
-
 # Dry-run display
 if [ "$DRY_RUN" -eq 1 ]; then
   echo "Dry-run: would execute:"
   echo "python experiments/run_experiment.py \\"
-
   keys=(--model_family --model_name --language --prompt_format --subtasks \
         --num_questions --num_permutations --output_file --delay)
   values=("$MODEL_FAMILY" "$MODEL_NAME" "$LANGUAGE" "$PROMPT_FORMAT" "$SUBTASK" \

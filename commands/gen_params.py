@@ -81,7 +81,7 @@ def generate_combinations(properties, constraints):
                 # print(combo)
             else:         
                 combo["exp_name"] = "_".join(str(combo[k]) for k in concat_fields)
-                combo["output_file"] = combo["model_name"]
+                #combo["output_file"] 
             for k in combo:
                 combo[k] = str(combo[k])
             combo["id"] = i

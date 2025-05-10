@@ -133,12 +133,12 @@ if [[ "$1" == "--search" ]]; then
     fi
   done
 
-  JQ_CMD='["id", "exp_name", "model_name", "subtask", "#_questions", "#_permutations", "delay"],
+  JQ_CMD='["id", "model_name", "subtask", "#_questions", "#_permutations", "delay"],
   (to_entries
    | map(select(.value | type == "object"))
    | .[]
    | select('"$JQ_FILTER"')
-   | [ .key, .value.exp_name, .value.model_name, .value.subtask, .value.num_questions, .value.num_permutations, .value.delay ]) | @tsv'
+   | [ .key, .value.model_name, .value.subtask, .value.num_questions, .value.num_permutations, .value.delay ]) | @tsv'
 
   OUTPUT=$(jq -r "$JQ_CMD" "$JSON_FILE")
 
