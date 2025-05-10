@@ -37,6 +37,16 @@ done
 #   exit 1
 # fi
 
+# Determine final output file name
+if [[ -z "$OUTPUT_FILE" || "$OUTPUT_FILE" == "None" ]]; then
+  timestamp=$(date +"%Y%m%d-%H%M%S")
+  OUTPUT_FILE="${MODEL_NAME}_${LANGUAGE}_${PROMPT_FORMAT}_${timestamp}.jsonl"
+else
+  if [[ "$OUTPUT_FILE" != *.jsonl ]]; then
+    timestamp=$(date +"%Y%m%d-%H%M%S")
+    OUTPUT_FILE="${OUTPUT_FILE}_${timestamp}.jsonl"
+  fi
+fi
 
 # Dry-run display
 if [ "$DRY_RUN" -eq 1 ]; then
@@ -61,17 +71,6 @@ if [ "$DRY_RUN" -eq 1 ]; then
   exit 0
 fi
 
-# Determine final output file name
-if [[ -z "$OUTPUT_FILE" || "$OUTPUT_FILE" == "None" ]]; then
-  timestamp=$(date +"%Y%m%d-%H%M%S")
-  filename="${MODEL_FAMILY}_${MODEL_NAME}_${LANGUAGE}_${PROMPT_FORMAT}_${timestamp}.jsonl"
-else
-  if [[ "$OUTPUT_FILE" == *.jsonl ]]; then
-    filename="$OUTPUT_FILE"
-  else
-    filename="${OUTPUT_FILE}.jsonl"
-  fi
-fi
 
 # Run the experiment
 python experiments/run_experiment.py \
@@ -87,4 +86,4 @@ python experiments/run_experiment.py \
 
 
 echo "Full evaluation script for $MODEL_FAMILY $LANGUAGE $PROMPT_FORMAT completed."
-echo "Output in results/$filename"
+echo "Output in results/$OUTPUT_FILE"

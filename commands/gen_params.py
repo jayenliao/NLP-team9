@@ -59,7 +59,6 @@ def generate_combinations(properties, constraints):
     include_rules = constraints.get("include_if", [])
     exclude_rules = constraints.get("exclude_if", [])
     constraint_rules = constraints.get("constraints", [])
-
     valid_combos = [
         c for c in all_combos
         if satisfies_include_constraints(c, include_rules)
@@ -69,16 +68,20 @@ def generate_combinations(properties, constraints):
     i = 0
     if concat_fields:
         for combo in valid_combos:
-            if combo["subtask"] == "all" and combo["num_questions"] == 100 and combo["num_permutations"] == 24 and combo["delay"] == 5:
-                combo["exp_name"] = combo["model_family"] + "_" + "full"
-                combo["output_file"] = combo["exp_name"] + "_output.jsonl"
+            if combo["subtask"] == "all" and combo["delay"] == 5:
+                #if combo["num_questions"] == 100 or combo["num_questions"] == 1:
+                basename = "default-" + "".join(["t17", "q" + str(combo["num_questions"]), "p" + str(combo["num_permutations"])])
+                combo["exp_name"] =  basename + "-" + combo["model_family"]
+                combo["output_file"] = combo["model_name"] + "_" + basename
                 # print(combo)
-            elif combo["subtask"] == "all" and combo["num_questions"] == 1 and combo["num_permutations"] == 1 and combo["delay"] == 2:
-                combo["exp_name"] = combo["model_family"] + "_" + "small"
-                combo["output_file"] = combo["exp_name"] + "_output.jsonl"
-                # print(combo)            
-            else:
+            elif combo["subtask"] == "abstract_algebra" and combo["delay"] == 5:
+                basename = "default-" + "".join([ "t1", "q" + str(combo["num_questions"]), "p" + str(combo["num_permutations"])])
+                combo["exp_name"] = basename + "-" + combo["model_family"]
+                combo["output_file"] = combo["model_name"] + "_" + basename
+                # print(combo)
+            else:         
                 combo["exp_name"] = "_".join(str(combo[k]) for k in concat_fields)
+                combo["output_file"] = combo["model_name"]
             for k in combo:
                 combo[k] = str(combo[k])
             combo["id"] = i
