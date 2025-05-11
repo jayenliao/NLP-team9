@@ -63,10 +63,8 @@ nlp-team9/
 │ ├── EDA.ipynb # Exploratory Data Analysis
 │ └── save_datasets.py # Generates ds_selected.pkl
 │
-├── prompts/ # Prompt templates
-│ ├── base_prompt.txt
-│ ├── json_prompt.txt
-│ └── xml_prompt.txt
+├── prompts/                # Prompt templates
+│ └── prompt_templates.py    # Prompts templates for all formats and languages
 │
 ├── commands/ # example commands for running experiments, we may re-organize this folder
 │ ├── full_eval_en.sh  # running the full experiment (all subtasks) of mistral/en/json
@@ -88,7 +86,7 @@ nlp-team9/
 │ └── experiment.log # Default log file
 │
 ├── analysis/ # (Planned) Result analysis scripts
-│
+│ └── analyze_results.py # Calculate accuracy score
 ├── .env # API keys
 ├── .gitignore # Git-ignored files
 ├── requirements.txt # Dependencies

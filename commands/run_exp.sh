@@ -10,7 +10,7 @@ DEFAULT_LANGUAGE="en"
 DEFAULT_SUBTASK="abstract_algebra"
 DEFAULT_NUM_QUESTIONS=1
 DEFAULT_NUM_PERMUTATIONS=1
-DEFAULT_OUTPUT_FILE=""
+DEFAULT_OUTPUT_FILE="default.jsonl"
 DEFAULT_DELAY=2
 
 SETUP_EVAL=0
@@ -36,10 +36,12 @@ print_help() {
   echo "                      Example: --num_questions 5 --delay 0"
   echo
   echo "Evaluation Presets (override ID list):"
-  echo "  --full-gemini       Run pre-defined full Gemini evaluation"
-  echo "  --full-mistral      Run pre-defined full Mistral evaluation"
-  echo "  --small-gemini      Run pre-defined small Gemini evaluation"
-  echo "  --small-mistral     Run pre-defined small Mistral evaluation"
+  echo "  t\$q\$p\$ stands for # of subtasks/questions/permutations. t1 runs abstrackt_algebra."
+  echo "  --default-t1q1p1-gemini       Run pre-defined tiny Gemini evaluation"
+  echo "  --default-t1q1p1-mistral      Run pre-defined tiny Mistral evaluation"
+  echo "  --default-t1q1p1-gemini       Run pre-defined tiny Gemini evaluation"
+  echo "  --default-t1q1p1-gemini       Run pre-defined tiny Gemini evaluation"
+  echo "  --default-t1q1p1-gemini       Run pre-defined tiny Gemini evaluation"
   echo
   echo "Metadata Browsing:"
   echo "  --list              Show the first 15 available experiments with IDs"
@@ -161,20 +163,54 @@ OVERRIDES=()
 
 while [[ "$1" != "" ]]; do
   case "$1" in
-    --full-gemini)
+    --default-t1q1p1-mistral)
       SETUP_EVAL=1
+      EXP_NAME="default-t1q1p1-mistral"
       shift
       ;;
-    --full-mistral)
+    --default-t1q1p24-mistral)
       SETUP_EVAL=2
+      EXP_NAME="default-t1q1p24-mistral"
       shift
       ;;
-    --small-gemini)
+    --default-t17q1p1-mistral)
       SETUP_EVAL=3
+      EXP_NAME="default-t17q1p1-mistral"
       shift
       ;;
-    --small-mistral)
+    ----default-t1q100p24-mistral)
       SETUP_EVAL=4
+      EXP_NAME="default-t1q100p24-mistral"
+      shift
+      ;;
+    --default-t17q1p100-mistral)
+      SETUP_EVAL=5
+      EXP_NAME="default-t17q1p100-mistral"
+      shift
+      ;;
+    --default-t1q1p1-gemini)
+      SETUP_EVAL=6
+      EXP_NAME="default-t1q1p1-gemini"
+      shift
+      ;;
+    --default-t1q1p24-gemini)
+      SETUP_EVAL=7
+      EXP_NAME="default-t1q1p24-gemini"
+      shift
+      ;;
+    --default-t17q1p1-gemini)
+      SETUP_EVAL=8
+      EXP_NAME="default-t17q1p1-gemini"
+      shift
+      ;;
+    ----default-t1q100p24-gemini)
+      SETUP_EVAL=9
+      EXP_NAME="default-t1q100p24-gemini"
+      shift
+      ;;
+    --default-t17q1p100-gemini)
+      SETUP_EVAL=10
+      EXP_NAME="default-t17q1p100-gemini"
       shift
       ;;
     --fr)
@@ -211,13 +247,18 @@ while [[ "$1" != "" ]]; do
 done
 
 if [ $SETUP_EVAL != 0 ]; then
-  EXP_NAME="gemini_full"
-  case $SETUP_EVAL in
-    1)  EXP_NAME="gemini_full";;
-    2)  EXP_NAME="mistral_full";;
-    3)  EXP_NAME="gemini_small";;
-    4)  EXP_NAME="mistral_small";;
-  esac
+  # EXP_NAME=""
+
+  # if [$SETUP_EVAL > 5]; then
+  #   SETUP_EVAL=$SETUP_EVAL - 5
+  #   model_family="gemini"
+  #   model_name="gemini-2.0-flash-lite"
+  # else
+  #   model_family="mistral"
+  #   model_name="mistral-small-latest"
+  # fi
+
+  
   echo "Running experiment: $EXP_NAME"
 
   JQ_BASE=".[] | select(.exp_name == \"$EXP_NAME\")"
@@ -257,7 +298,7 @@ if [ ${#EXP_NAMES[@]} -eq 0 ]; then
     --language "en" \
     --prompt_format "base" \
     --subtask "abstract_algebra" \
-    --output_file "" \
+    --output_file "default.jsonl" \
     --num_questions "1" \
     --num_permutations "1" \
     --delay "2" \

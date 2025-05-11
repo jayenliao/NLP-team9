@@ -5,7 +5,7 @@ import uuid
 from typing import Any
 from google import genai as google_genai
 from mistralai import Mistral
-from utils import load_api_keys 
+from utils import load_api_keys, format_multichoice_question
 
 import logging
 logger = logging.getLogger(__name__)
@@ -21,7 +21,7 @@ def load_prompt_template(format_name: str) -> str | None:
     except Exception: 
         return None
 
-def format_prompt(template_content: str, data_item: dict, option_order: list[str]) -> str | None:
+def format_prompt(template_content: str, data_item: dict, option_order: list[str], lang: str, style: str) -> str | None:
     """Formats the prompt template with question data and specified option order."""
     try:
         if len(data_item['choices']) != 4 or len(option_order) != 4:
@@ -35,7 +35,8 @@ def format_prompt(template_content: str, data_item: dict, option_order: list[str
             'C': original_choices[option_order[2]],
             'D': original_choices[option_order[3]],
         }
-        return template_content.format(**format_context)
+        # return template_content.format(**format_context)
+        return format_multichoice_question(format_context, style=style, lang=lang)
     except (KeyError, IndexError): # Handle missing keys or incorrect list sizes
         return None
     except Exception: # Generic catch-all

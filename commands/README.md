@@ -104,7 +104,7 @@ You can find experiments using keyword-based AND search:
 You can quickly regenerate the `commands/params.json` using:
 
 ```bash
-make generate-result
+make gen-params
 ```
 This runs:
 ```bash

@@ -1,9 +1,9 @@
 {
     "model_family": ["gemini", "mistral"],
     "model_name": ["gemini-2.0-flash-lite", "mistral-small-latest"],
-    "subtask": ["all", "abstract_algebra", "anotamy", "abstract_algebra", "anatomy", "astronomy", "business_ethics", "college_biology", "college_chemistry", "college_computer_science", "econometrics", "electrical_engineering", "formal_logic", "global_facts", "high_school_european_history", "high_school_geography", "high_school_government_and_politics", "high_school_psychology", "human_sexuality", "international_law"],
-    "num_questions": { "range": [1, 101, 1] },
-    "num_permutations": { "range": [1, 25, 1] },
+    "subtask": ["all", "abstract_algebra", "anatomy", "astronomy", "business_ethics", "college_biology", "college_chemistry", "college_computer_science", "econometrics", "electrical_engineering", "formal_logic", "global_facts", "high_school_european_history", "high_school_geography", "high_school_government_and_politics", "high_school_psychology", "human_sexuality", "international_law"],
+    "num_questions": [1, 50, 100],
+    "num_permutations": { "range": [1, 25, 23] },
     "delay": [2, 5],
     "concat_fields": ["model_family", "subtask", "num_questions", "num_permutations", "delay"],
     "constraints": [

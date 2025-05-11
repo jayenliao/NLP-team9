@@ -130,11 +130,11 @@ def main():
                         perm_string = "".join(current_permutation)
                         logger.info(f"    Running Permutation {p_idx + 1}/{total_permutations_in_run} ({perm_string}) for Q_idx:{question_index_in_run}")
                         # Format Prompt
-                        current_prompt = format_prompt(template_content, data_item, current_permutation)
+                        current_prompt = format_prompt(template_content, data_item, current_permutation, args.language, args.prompt_format)
                         if not current_prompt:
                             logger.warning(f"Skipping Q:{question_index_in_run}, Perm:{perm_string} - Failed to format prompt.")
                             continue
-
+                        # print(current_prompt)
                         # Call LLM API
                         api_response, api_ok = call_llm_api(client, args.model_family, args.model_name, current_prompt)
                         if not api_ok:
@@ -146,6 +146,8 @@ def main():
                             response_text = None
                             try:
                                 if args.model_family == 'gemini':
+                                    # print(api_response.text)
+                                    # print(api_response)
                                     response_text = api_response.text
                                 elif args.model_family == 'mistral':
                                     response_text = api_response.choices[0].message.content
