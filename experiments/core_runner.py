@@ -84,7 +84,8 @@ def parse_response(api_response_text: str) -> str | None:
     
     # pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])\s*$" #from common.py, but too strict
 
-    pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])"
+    # pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])"
+    pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])" #Added regex for bold answers
     match = re.search(pattern, api_response_text, re.IGNORECASE | re.MULTILINE)
 
     if match:
