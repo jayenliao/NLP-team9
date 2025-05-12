@@ -63,7 +63,7 @@ def main(args):
         print(data.loc[data["api_raw_response"].isnull()][["question_id", "option_permutation"]].to_markdown(index=True))
 
     # Ask user if they want to inspect parse answer failures
-    user_input = get_user_input("\nShow samples with pure answer-parsing failure (sucessful API call)? (y/n): ")
+    user_input = get_user_input("\nShow samples with pure answer-parsing failure (successful API call)? (y/n): ")
     if user_input == 'y':
         print()
         print(data.loc[id_selected, ["question_id", "option_permutation"]].to_markdown(index=True))
