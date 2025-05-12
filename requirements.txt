@@ -5,7 +5,8 @@ torch
 transformers
 tqdm
 huggingface_hub
-requests 
+requests
 python-dotenv
-google-genai 
-mistralai 
+google-genai
+mistralai
+tabulate
