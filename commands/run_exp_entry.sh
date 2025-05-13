@@ -40,21 +40,19 @@ done
 # Determine final output file name
 if [[ "$OUTPUT_FILE" = "" ]]; then
   timestamp=$(date +"%Y%m%d-%H%M%S")
-  OUTPUT_FILE="${MODEL_NAME}_${LANGUAGE}_${PROMPT_FORMAT}_${timestamp}.jsonl"
+  OUTPUT_DIR="${MODEL_NAME}_${LANGUAGE}_${PROMPT_FORMAT}_${timestamp}"
 else
-  if [[ "$OUTPUT_FILE" != *.jsonl ]]; then
-    timestamp=$(date +"%Y%m%d-%H%M%S")
-    OUTPUT_FILE="${OUTPUT_FILE}_${timestamp}.jsonl"
-  fi
+  timestamp=$(date +"%Y%m%d-%H%M%S")
+  OUTPUT_DIR="${OUTPUT_FILE}_${timestamp}"
 fi
 # Dry-run display
 if [ "$DRY_RUN" -eq 1 ]; then
   echo "Dry-run: would execute:"
   echo "python experiments/run_experiment.py \\"
   keys=(--model_family --model_name --language --prompt_format --subtasks \
-        --num_questions --num_permutations --output_file --delay)
+        --num_questions --num_permutations --output_dir --output_file --delay)
   values=("$MODEL_FAMILY" "$MODEL_NAME" "$LANGUAGE" "$PROMPT_FORMAT" "$SUBTASK" \
-          "$NUM_QUESTIONS" "$NUM_PERMUTATIONS" "$OUTPUT_FILE" "$DELAY")
+          "$NUM_QUESTIONS" "$NUM_PERMUTATIONS" "$OUTPUT_DIR" "raw.jsonl" "$DELAY")
 
   for ((i = 0; i < ${#keys[@]}; i++)); do
     key="${keys[$i]}"
@@ -79,9 +77,10 @@ python experiments/run_experiment.py \
   --subtasks "$SUBTASK" \
   --num_questions "$NUM_QUESTIONS" \
   --num_permutations "$NUM_PERMUTATIONS" \
-  --output_file "$OUTPUT_FILE" \
+  --output_dir "$OUTPUT_DIR" \
+  --output_file "raw.jsonl" \
   --delay "$DELAY"
 
 
 echo "Full evaluation script for $MODEL_FAMILY $LANGUAGE $PROMPT_FORMAT completed."
-echo "Output in results/$OUTPUT_FILE"
+echo "Output in results/$OUTPUT_DIR/$OUTPUT_FILE"

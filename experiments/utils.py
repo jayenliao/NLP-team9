@@ -1,11 +1,11 @@
 # experiments/utils.py
 
 import pickle
+import time
 import os
 from dotenv import load_dotenv
 from mistralai import Mistral
 from google import genai
-
 import sys
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -101,3 +101,4 @@ def format_multichoice_question(row, style='plain', lang="en"):
         return None
     except Exception: # Generic catch-all
         return None
+
