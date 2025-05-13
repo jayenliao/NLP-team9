@@ -67,17 +67,23 @@ nlp-team9/
 │ └── prompt_templates.py    # Prompts templates for all formats and languages
 │
 ├── commands/ # example commands for running experiments, we may re-organize this folder
-│ ├── full_eval_en.sh  # running the full experiment (all subtasks) of mistral/en/json
-│ ├── full_eval_fr.sh  # running the full experiment of mistral/fr/json
-│ ├── small_test_en.sh  # running the experiment of a subtask of gemini/en/base
-│ └── small_test_fr.sh  # running the experiment of a subtask of gemini/en/base
+│ ├── param_set.json    # Experiment configuration constraints
+│ ├── params.json       # Experiment configurations
+│ ├── gen_params.py     # Generate all possible exp configurations to params.json
+│ ├── run_exp.sh        # Main runner script
+│ └── run_exp_entry.sh  # Single experiment execution script
 │
 ├── experiments/ # Core experiment logic
-│ ├── core_runner.py # Prompt formatting, API calls, response parsing
+│ ├── core_runner.py    # Prompt formatting, API calls, response parsing
 │ ├── run_experiment.py # Main experiment script
-│ ├── utils.py # Helper functions
-│ ├── run_gemini.py # Gemini API test
-│ └── run_mistral.py # Mistral API test
+│ ├── run_question_selected.py # Run single question with a specific permutation
+│ ├── utils.py          # Helper functions
+│ ├── run_gemini.py     # Gemini API test
+│ ├── run_mistral.py    # Mistral API test
+│ ├── fix_filter.py     # Filter failed cases from raw outputs
+│ ├── fix_rerun.py      # Rerun api-failed cases
+│ ├── fix_check_manual.py     # Check for manually-revised cases
+│ └── fix_concact.py    # Concact all cases
 │
 ├── results/ # Output JSONL files
 │ └── shared_output_format.py # Output structure
@@ -95,6 +101,7 @@ nlp-team9/
 
 ### Experiment Flow
 #### Run Experiment
+0. Before start, check whether `./commands/params.json` exists. If not, run `make gen-params`
 1. Search the experiment id with `./commands/run_exp.sh --search [requirements]`. For example, `./commands/run_exp.sh --search gemini history`. Use `./commands/run_exp.sh -h` command for more information.
 2. Run the experiment by `./commands/run_exp.sh {id} --{lang} --{format}`
 3. Results would be save at `./results/{model_name}_{lang}_{format}_{time_stamp}/raw.jsonl`
@@ -116,7 +123,10 @@ make filter-results
 ```bash
 make rerun
 ```
-3. Manualy revise failed case in other-failed. The experiment list to manually revise is keep in `results/0_logs/To-Manual-Fix`. Since rerunned cases might need manual revisement, please revise while `make rerun` isn't running for the experiment.
+3. Manualy revise failed case in `result/{experiment name}/other-failed.json`. 
+  - The experiment list to manually revise is keep in `results/0_logs/To-Manual-Fix`. 
+  - You only have to extract models raw answer from api_response. If the model didn't respond "A"/"B"/"C"/"D", write "F" in `extracted_answer` field
+  - Since rerunned cases might need manual revisement, please revise while `make rerun` isn't running for the experiment.
 4. After revised, run this command to check if all cases are correctly revised. 
 ```bash
 make check-manual
