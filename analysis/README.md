@@ -6,7 +6,7 @@ Here are tools for analyzing experiment results.
 
 To be filled in ...
 
-## `error_analysis.py`: Model Prediction Error Analysis
+## `get_failure_rate.py`: Model Prediction Error Analysis
 
 - Automatically loads the result file based on model name, language, and format
 - Summarizes statistics about:
@@ -21,7 +21,7 @@ To be filled in ...
 
 ```
 .
-├── error_analysis.py        # Compute various failure rates for
+├── get_failure_rate.py        # Compute various failure rates for
 ├── results/                 # Directory containing .jsonl output files
 │   ├── {model}_{lang}_{format}_*.jsonl
 
@@ -34,7 +34,7 @@ You can either specify a file name directly or allow the script to automatically
 #### Basic Usage
 
 ```bash
-python analysis/error_analysis.py --model_name gemini-2.0-flash-lite --lang en --format json
+python analysis/get_failure_rate.py --model_name gemini-2.0-flash-lite --lang en --format json
 ```
 
 The script will automatically find the matching `.jsonl` file in the `results/` directory.
@@ -42,7 +42,7 @@ The script will automatically find the matching `.jsonl` file in the `results/` 
 #### Specify Exact File
 
 ```bash
-python analysis/error_analysis.py --fn results/gemini-2.0-flash-lite_en_json_20250509-110927.jsonl
+python analysis/get_failure_rate.py --fn results/gemini-2.0-flash-lite_en_json_20250509-110927.jsonl
 ```
 
 ### Arguments
