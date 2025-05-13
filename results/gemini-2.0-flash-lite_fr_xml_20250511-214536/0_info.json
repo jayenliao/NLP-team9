@@ -1,0 +1,9 @@
+{
+    "model_name": "gemini-2.0-flash-lite",
+    "language": "fr",
+    "input_format": "base",
+    "time": "2025-05-13T09:57:53",
+    "filter_state": "filtered",
+    "api_failed_state": "haven't rerunned",
+    "other_failed_state": "none"
+}

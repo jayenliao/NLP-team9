@@ -1,0 +1,19 @@
+{
+    "accuracies": {
+        "overall_accuracy": 0.85625,
+        "grouped_accuracies": {
+            "by_subtask": {
+                "high_school_european_history": 0.85625
+            },
+            "by_model": {
+                "gemini-2.0-flash-lite": 0.85625
+            },
+            "by_input_format": {
+                "xml": 0.85625
+            },
+            "by_language": {
+                "en": 0.85625
+            }
+        }
+    }
+}

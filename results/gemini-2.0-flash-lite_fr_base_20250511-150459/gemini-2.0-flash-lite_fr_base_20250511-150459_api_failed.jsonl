@@ -1,0 +1,4 @@
+{"question_index": 0, "subtask": "high_school_european_history", "option_permutation": "ABCD", "ground_truth_answer": "C"}
+{"question_index": 0, "subtask": "high_school_european_history", "option_permutation": "ACBD", "ground_truth_answer": "C"}
+{"question_index": 0, "subtask": "high_school_european_history", "option_permutation": "ACDB", "ground_truth_answer": "C"}
+{"question_index": 0, "subtask": "high_school_european_history", "option_permutation": "BDAC", "ground_truth_answer": "C"}
