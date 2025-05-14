@@ -45,9 +45,4 @@ apikey.txt
 
 show_data_structure.py
 logs/
-<<<<<<< HEAD
 results/
-# results/failed
-=======
-results/
->>>>>>> 00ae264 (chore(.gitignore): add results/ to ignore result files)

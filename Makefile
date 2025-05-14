@@ -1,4 +1,5 @@
 gen-params:
+<<<<<<< HEAD
 	python commands/gen_params.py commands/param_set.json -o commands/params.json --format json
 
 filter-results:
@@ -23,3 +24,6 @@ print-to-concact:
 	python experiments/fix_print_list.py concact
 print-to-analyze:
 	python experiments/fix_print_list.py analyze		
+=======
+	python commands/gen_params.py commands/param_set.json -o commands/params.json --format json
+>>>>>>> c82644e (chore(all): rebasing main)
