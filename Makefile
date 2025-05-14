@@ -1,5 +1,6 @@
 gen-params:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	python commands/gen_params.py commands/param_set.json -o commands/params.json --format json
 
 filter-results:
@@ -27,3 +28,18 @@ print-to-analyze:
 =======
 	python commands/gen_params.py commands/param_set.json -o commands/params.json --format json
 >>>>>>> c82644e (chore(all): rebasing main)
+=======
+	python commands/gen_params.py commands/param_set.json -o commands/params.json --format json
+
+filter-results:
+	python ./experiments/fix_1_filter.py
+
+rerun:
+	python experiments/fix_2_rerun.py
+
+check-manual:
+	python experiments/fix_3_check_manual.py
+
+concact:
+	python experiments/fix_4_concact.py
+>>>>>>> f8f11c9 (chore(.gitignore): rebasing)

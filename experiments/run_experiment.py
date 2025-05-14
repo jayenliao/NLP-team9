@@ -202,10 +202,17 @@ def main():
     finally:
         logger.info("Experiment finished")
         logger.info(f"Total questions processed: {total_processed_count}")
+<<<<<<< HEAD
         base_log_dir = "./results/__logs__"
         if not os.path.exists(base_log_dir):
             os.makedirs(base_log_dir)
         to_fix = os.path.join(base_log_dir, '0-to-Filter')
+=======
+        base_log_dir = "./results/0_logs"
+        if not os.path.exists(base_log_dir):
+            os.makedirs(base_log_dir)
+        to_fix = os.path.join(base_log_dir, 'To-Fix')
+>>>>>>> f8f11c9 (chore(.gitignore): rebasing)
         if os.path.exists(to_fix):
             with open(to_fix, 'a') as f:
                 f.write(f"{args.output_dir}\n")
