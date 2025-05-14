@@ -4,7 +4,7 @@ import shutil
 from datetime import datetime
 
 # Paths
-logs_dir = "results/0_logs"
+logs_dir = "results/__logs__"
 backup_dir = os.path.join(logs_dir, "backup")
 results_dir = "results"
 
@@ -32,20 +32,20 @@ def save_experiment_list(file_name, experiments):
 
 # Concatenate results
 def concatenate_results():
-    to_manual_fix = load_experiment_list("To-Manual-Fix")
-    to_rerun = load_experiment_list("To-Rerun")
-    to_fix = load_experiment_list("To-Fix")
-    to_concact = load_experiment_list("To-Concact")
-    to_analyze = load_experiment_list("To-Analyze")
+    to_manual_fix = load_experiment_list("2-to-Manual-Fix")
+    to_rerun = load_experiment_list("1-to-Rerun")
+    to_fix = load_experiment_list("0-to-Filter")
+    to_concact = load_experiment_list("3-to-Concact")
+    to_analyze = load_experiment_list("4-to-Analyze")
 
     updated_to_concact = []
 
     for experiment in to_concact:
         if experiment in to_manual_fix or experiment in to_rerun or experiment in to_fix:
             print(f"Experiment {experiment} is not ready since it is listed in "
-                  f"{'To-Manual-Fix' if experiment in to_manual_fix else ''}"
-                  f"{'To-Rerun' if experiment in to_rerun else ''}"
-                  f"{'To-Fix' if experiment in to_fix else ''}.")
+                  f"{'2-to-Manual-Fix' if experiment in to_manual_fix else ''}"
+                  f"{'1-to-Rerun' if experiment in to_rerun else ''}"
+                  f"{'0-to-Filter' if experiment in to_fix else ''}.")
             continue
 
         experiment_dir = os.path.join(results_dir, experiment)
@@ -89,14 +89,14 @@ def concatenate_results():
         fix_file = os.path.join(experiment_dir, "fix.jsonl")
         with open(fix_file, "w") as f:
             for obj in filtered_data:
-                f.write(json.dumps(obj) + "\n")
+                f.write(json.dumps(obj, ensure_ascii=False) + "\n")
 
         print(f"Experiment {experiment} concatenated successfully.")
         to_analyze.append(experiment)
 
     # Update experiment lists
-    save_experiment_list("To-Concact", updated_to_concact)
-    save_experiment_list("To-Analyze", to_analyze)
+    save_experiment_list("3-to-Concact", updated_to_concact)
+    save_experiment_list("4-to-Analyze", to_analyze)
 
 if __name__ == "__main__":
     backup_logs()

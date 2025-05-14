@@ -6,11 +6,11 @@ import datetime
 
 # Paths
 base_dir = "./results/"
-base_log_dir = "./results/0_logs/"
-backup_dir = base_log_dir + "To-Rerun.backup"
-to_rerun_file = "results/0_logs/To-Rerun"
-to_concat_file = "results/0_logs/To-Concact"
-to_manual_fix = "results/0_logs/To-Manual-Fix"
+base_log_dir = "./results/__logs__/"
+backup_dir = base_log_dir + "1-to-Rerun.backup"
+to_rerun_file = base_log_dir + "1-to-Rerun"
+to_concat_file = base_log_dir + "3-to-Concact"
+to_manual_fix = base_log_dir + "2-to-Manual-Fix"
 
 ori_manual_fix_list = []
 rerun_after_rerun = []
@@ -73,24 +73,31 @@ for experiment in experiments_to_rerun:
             f.write(json.dumps(result) + "\n")
 
     # Write other_failed.json
-    if manual_fix:
+    if manual_fix and experiment not in ori_manual_fix_list:
         with open(to_manual_fix, "a") as f:
             f.write(experiment + "\n")
         with open(other_failed_path, "w") as f:
-            json.dump(other_failed_results, f, indent=4)
+            json.dump(other_failed_results, f, indent=4, ensure_ascii=False)
 
-
+    if manual_fix and experiment in ori_manual_fix_list:
+        with open(other_failed_path, "r") as f:
+            other_failed_data = json.load(f)
+        other_failed_data.extend(other_failed_results)
+        with open(other_failed_path, "w") as f:
+            json.dump(other_failed_data, f, indent=4, ensure_ascii=False)
+            
     # Update api_failed.jsonl
     with open(api_failed_path, "w") as f:
         for line in remaining_failed:
             f.write(line)
 
-    # Update To-Rerun and To-Concact
+    # Update 1-to-Rerun and 3-to-Concact
+    if not rerun_success:
+        with open(to_rerun_file, "a") as f:
+            f.write(experiment + "\n")
     if rerun_success and not manual_fix and experiment not in ori_manual_fix_list:
         with open(to_concat_file, "a") as f:
             f.write(experiment + "\n")
-    else:
-        rerun_after_rerun.append(experiment)
 
 # backup the original To-Run
 if not os.path.exists(backup_dir):
@@ -100,7 +107,7 @@ backup_path = os.path.join(backup_dir, f"{timestamp}.txt")
 shutil.copy(to_rerun_file, backup_path)
 print(f"Backed up original To-Run to {backup_path}")
 
-# Save updated To-Rerun
+# Save updated 1-to-Rerun
 with open(to_rerun_file, "w") as f:
     for experiment in rerun_after_rerun:
         f.write(experiment + "\n")

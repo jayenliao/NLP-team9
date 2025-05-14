@@ -4,12 +4,12 @@ import shutil
 from datetime import datetime
 
 # File paths
-base_path = "results/0_logs/"
-manual_fix_path = os.path.join(base_path, "To-Manual-Fix")
-rerun_path = os.path.join(base_path, "To-Rerun")
-concat_path = os.path.join(base_path, "To-Concact")
-backup_manual_fix_path = os.path.join(base_path, "To-Manual-Fix.backup")
-backup_concat_path = os.path.join(base_path, "To-Concact.backup")
+base_path = "results/__logs__/"
+manual_fix_path = os.path.join(base_path, "2-to-Manual-Fix")
+rerun_path = os.path.join(base_path, "1-to-Rerun")
+concat_path = os.path.join(base_path, "3-to-Concact")
+backup_manual_fix_path = os.path.join(base_path, "2-to-Manual-Fix.backup")
+backup_concat_path = os.path.join(base_path, "3-to-Concact.backup")
 
 # Ensure backup directories exist
 os.makedirs(backup_manual_fix_path, exist_ok=True)
@@ -47,24 +47,30 @@ def update_correctness_one(extracted_answer, option_permutation, ground_truth_la
                 # print(f"Extracted answer '{extracted_answer}' resulted in an invalid index {choice_index} "
                 #             f"for permutation {option_permutation}. Cannot determine original label.")
                 model_choice_original_label = "ERROR_MAP" # Indicate mapping error
-    else:
+    elif extracted_answer is not None:
         is_correct = False
         model_choice_original_label = "INVALID_EXT" # Indicate invalid extracted answer
-    if model_choice_original_label and model_choice_original_label not in ["ERROR_MAP", "INVALID_EXT"] and \
-    ground_truth_label != "UNKNOWN" and ground_truth_label != "ERROR_GT":
-        try:
-            is_correct = (model_choice_original_label == ground_truth_label)
-            # print(f"Comparing model original '{model_choice_original_label}' with ground truth '{ground_truth_label}'. Correct: {is_correct}")
-        except Exception as e:
-                # print(f"Error comparing labels for correctness: {e}", exc_info=True)
-                is_correct = None # Error during comparison
     else:
-        # print("Cannot determine correctness (missing model choice, ground truth, or error occurred).")
+        is_correct = None
+        model_choice_original_label = "NONE"
+    
+    if ground_truth_label != "UNKNOWN" and ground_truth_label != "ERROR_GT":
+        if model_choice_original_label and model_choice_original_label not in ["ERROR_MAP", "INVALID_EXT", "NONE"]:
+            try:
+                is_correct = (model_choice_original_label == ground_truth_label)
+                # print(f"Comparing model original '{model_choice_original_label}' with ground truth '{ground_truth_label}'. Correct: {is_correct}")
+            except Exception as e:
+                    print(f"Error comparing labels for correctness: {e}", exc_info=True)
+                    is_correct = None # Error during comparison
+        elif model_choice_original_label == "NONE":
+            is_correct = False # Invalid extracted answer or mapping error
+    else:
+        print("Cannot determine correctness (missing ground truth, or error occurred).")
         is_correct = None # Cannot determine correctness
     return is_correct, model_choice_original_label
 
 def update_correctness(file_path):
-    with open(file_path, "r") as file:
+    with open(file_path, "r", encoding='utf-8') as file:
         data = json.load(file)
 
     for obj in data:
@@ -75,8 +81,8 @@ def update_correctness(file_path):
                 obj.get("ground_truth_answer", "UNKNOWN")
             )
         
-    with open(file_path, "w") as file:
-        json.dump(data, file, indent=2)
+    with open(file_path, "w", encoding='utf-8') as file:
+        json.dump(data, file, indent=2, ensure_ascii=False)
 # Check if the JSON file is correctly revised
 def is_correctly_revised(file_path):
     with open(file_path, "r") as file:
