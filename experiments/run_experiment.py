@@ -84,7 +84,7 @@ def main():
     else:
         filename = args.output_file if args.output_file.endswith(".jsonl") else f"{args.output_file}.jsonl"
 
-    output_path_dir = os.path.join(os.path.dirname(__file__), '..', args.output_dir)
+    output_path_dir = os.path.join(os.path.dirname(__file__), '..', "results/", args.output_dir)
     os.makedirs(output_path_dir, exist_ok=True)
     output_path = os.path.join(output_path_dir, filename)
     logger.info(f"Saving results to: {output_path}")
@@ -202,6 +202,16 @@ def main():
     finally:
         logger.info("Experiment finished")
         logger.info(f"Total questions processed: {total_processed_count}")
+        base_log_dir = "./results/__logs__"
+        if not os.path.exists(base_log_dir):
+            os.makedirs(base_log_dir)
+        to_fix = os.path.join(base_log_dir, '0-to-Filter')
+        if os.path.exists(to_fix):
+            with open(to_fix, 'a') as f:
+                f.write(f"{args.output_dir}\n")
+        else:
+            with open(to_fix, 'w') as f:
+                f.write(f"{args.output_dir}\n")
 
 if __name__ == "__main__":
     main()

@@ -67,17 +67,23 @@ nlp-team9/
 │ └── prompt_templates.py    # Prompts templates for all formats and languages
 │
 ├── commands/ # example commands for running experiments, we may re-organize this folder
-│ ├── full_eval_en.sh  # running the full experiment (all subtasks) of mistral/en/json
-│ ├── full_eval_fr.sh  # running the full experiment of mistral/fr/json
-│ ├── small_test_en.sh  # running the experiment of a subtask of gemini/en/base
-│ └── small_test_fr.sh  # running the experiment of a subtask of gemini/en/base
+│ ├── param_set.json    # Experiment configuration constraints
+│ ├── params.json       # Experiment configurations
+│ ├── gen_params.py     # Generate all possible exp configurations to params.json
+│ ├── run_exp.sh        # Main runner script
+│ └── run_exp_entry.sh  # Single experiment execution script
 │
 ├── experiments/ # Core experiment logic
-│ ├── core_runner.py # Prompt formatting, API calls, response parsing
+│ ├── core_runner.py    # Prompt formatting, API calls, response parsing
 │ ├── run_experiment.py # Main experiment script
-│ ├── utils.py # Helper functions
-│ ├── run_gemini.py # Gemini API test
-│ └── run_mistral.py # Mistral API test
+│ ├── run_question_selected.py # Run single question with a specific permutation
+│ ├── utils.py          # Helper functions
+│ ├── run_gemini.py     # Gemini API test
+│ ├── run_mistral.py    # Mistral API test
+│ ├── fix_filter.py     # Filter failed cases from raw outputs
+│ ├── fix_rerun.py      # Rerun api-failed cases
+│ ├── fix_check_manual.py     # Check for manually-revised cases
+│ └── fix_concact.py    # Concact all cases
 │
 ├── results/ # Output JSONL files
 │ └── shared_output_format.py # Output structure
@@ -93,6 +99,51 @@ nlp-team9/
 └── README.md # Project overview
 ```
 
+### Experiment Flow
+#### Run Experiment
+0. Before start, check whether `./commands/params.json` exists. If not, run `make gen-params`
+1. Search the experiment id with `./commands/run_exp.sh --search [requirements]`. For example, `./commands/run_exp.sh --search gemini history`. Use `./commands/run_exp.sh -h` command for more information.
+2. Run the experiment by `./commands/run_exp.sh {id} --{lang} --{format}`
+3. Results would be save at `./results/{model_name}_{lang}_{format}_{time_stamp}/raw.jsonl`
+
+#### Fix Experiment Results
+0. Before {commit d614ba3}'s result: 
+    1. For each experiment result file `{name}.jsonl`, save it in `results/{name}` and rename it into `raw.jsonl`. 
+    2. Add `0-to-Filter` at `results/__logs__`
+    3. Add each experiment name into `results/__logs__/0-to-Filter`. Example look of `0-to-Filter`:
+    ```plain
+    mistral-small-latest_fr_base_20250512-225608
+    mistral-small-latest_en_base_20250512-225559
+    ```
+1. Filter out failure case
+```bash
+make filter-results
+```
+2. Rerun api-failed case
+```bash
+make rerun
+```
+3. Manualy revise failed case in `result/{experiment name}/other-failed.json`. 
+  - The experiment list to manually revise is keep in `results/__logs__/2-to-Manual-Fix`. 
+  - You only have to extract models raw answer from api_response. If the model didn't respond "A"/"B"/"C"/"D", write "F" in `extracted_answer` field
+  - Since rerunned cases might need manual revisement, please revise while `make rerun` isn't running for the experiment.
+4. After revised, run this command to check if all cases are correctly revised. 
+```bash
+make check-failure
+```
+5. Concact all results
+```bash
+make concact
+```
+6. The revised would be save in `result/{experiment name}/fix.jsonl` and is ready to be analyzed. To see experiment lists that are ready to be analyzed, see `results/__logs__/4-to-Analyze`
+
+7. For each step, you can directly check the list of experiments to do in terminal by `make print-to-{arg}`. \
+   The args are:
+   - `filter` for step 1's `0-to-Filter` list of experiments that had just finished experiments and haven't check for failure cast
+   - `rerun` for step 2's `1-to-Rerun` list of experiments to wait for rerun.
+   - `manual-fix` for step 3's `2-to-Manual-Fix` list of experiments for manual fixing.
+   - `concact` for step 5's `3-to-Concact` list of experiments with failure cases fixed before concacting
+   - `analyze` for step 5's `4-to-Analyze` list of experiments that is ready to be analyze.
 ## Git Workflow Guideline
 
 ### Git Commit Types (Conventional Commits)
