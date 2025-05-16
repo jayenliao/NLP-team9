@@ -10,7 +10,8 @@ from tqdm import tqdm
 
 from core_runner import (
     load_prompt_template, format_prompt, parse_response,
-    structure_result, get_api_client, call_llm_api
+    structure_result, get_api_client, call_llm_api,
+    generate_circular_content_permutations
 )
 from utils import load_prepared_dataset, load_api_keys
 
@@ -40,6 +41,7 @@ def main():
     parser.add_argument("--subtasks", type=str, default='all', help="Comma-separated list of subtasks, or 'all'.")
     parser.add_argument("--num_questions", type=int, default=100, help="Number of questions per subtask.")
     parser.add_argument('--num_permutations', type=int, default=24, help='Number of option permutations to run per question (default: 24, max: 24)')
+    parser.add_argument('--permutation_strategy', type=str, default='all_24', choices=['all_24', 'circular_content_4'], help="Strategy for generating option permutations: 'all_24' (up to --num_permutations from itertools.permutations), 'circular_content_4' (4 circular content shifts under fixed A,B,C,D display).")
     parser.add_argument("--start_index", type=int, default=0, help="0-based index of the first question.")
     parser.add_argument("--output_dir", type=str, default='results', help="Directory to save results files.")
     parser.add_argument("--output_file", type=str, default=None, help="Specific name for the output JSONL file.")
@@ -118,17 +120,78 @@ def main():
 
                     # Permutation Loop
                     original_labels = ['A', 'B', 'C', 'D']
-                    num_perms_to_run = min(args.num_permutations, 24)
-                    if args.num_permutations > 24:
-                        logger.warning(f"--num_permutations requested {args.num_permutations}, but maximum is 24. Using 24.")
-
-                    perm_iterator = itertools.islice(itertools.permutations(original_labels), num_perms_to_run)
-                
-                    for p_idx, current_permutation_tuple in enumerate(perm_iterator):
-                        total_permutations_in_run = num_perms_to_run
-                        current_permutation = list(current_permutation_tuple)
-                        perm_string = "".join(current_permutation)
-                        logger.info(f"    Running Permutation {p_idx + 1}/{total_permutations_in_run} ({perm_string}) for Q_idx:{question_index_in_run}")
+                    if args.permutation_strategy == 'circular_content_4':
+                        permutation_lists = generate_circular_content_permutations(original_labels)
+                        total_permutations_in_run = len(permutation_lists)
+                        logger.info(f"    Using 'circular_content_4' strategy (4 permutations).")
+                        for p_idx, current_permutation in enumerate(permutation_lists):
+                            perm_string = "".join(current_permutation)
+                            logger.info(f"    Running Permutation {p_idx + 1}/{total_permutations_in_run} ({perm_string}) for Q_idx:{question_index_in_run}")
+                            # Format Prompt
+                            current_prompt = format_prompt(template_content, data_item, current_permutation, args.language, args.prompt_format)
+                            if not current_prompt:
+                                logger.warning(f"Skipping Q:{question_index_in_run}, Perm:{perm_string} - Failed to format prompt.")
+                                continue
+                            # Call LLM API
+                            api_response, api_ok = call_llm_api(client, args.model_family, args.model_name, current_prompt)
+                            if not api_ok:
+                                logger.warning(f"API call failed for Q:{question_index_in_run}, Perm:{perm_string}")
+                            # Parse Response
+                            parsed_answer = None
+                            if api_ok and api_response:
+                                response_text = None
+                                try:
+                                    if args.model_family == 'gemini':
+                                        response_text = api_response.text
+                                    elif args.model_family == 'mistral':
+                                        response_text = api_response.choices[0].message.content
+                                except AttributeError:
+                                    logger.warning(f"Attribute error for Q:{question_index_in_run}, Perm:{perm_string}. Response: {api_response}")
+                                    response_text = None
+                                except Exception as e:
+                                    logger.error(f"Error accessing response for Q:{question_index_in_run}, Perm:{perm_string}: {e}")
+                                    response_text = None
+                                if response_text:
+                                    parsed_answer = parse_response(response_text)
+                                    if parsed_answer:
+                                        logger.info(f"Parsed answer for Q:{question_index_in_run}, Perm:{perm_string}: '{parsed_answer}'")
+                                    else:
+                                        logger.warning(f"Failed to parse answer for Q:{question_index_in_run}, Perm:{perm_string}: {response_text[:100]}...")
+                                else:
+                                    logger.warning(f"No response text for Q:{question_index_in_run}, Perm:{perm_string}")
+                            # Structure Result
+                            result_dict = structure_result(
+                                data_item=data_item,
+                                subtask=subtask,
+                                language=args.language,
+                                model_name=args.model_name,
+                                input_format=args.prompt_format,
+                                option_permutation=current_permutation,
+                                api_raw_response=api_response,
+                                api_call_successful=api_ok,
+                                extracted_answer=parsed_answer,
+                                log_probabilities=None,
+                                question_index=question_index_in_run
+                            )
+                            try:
+                                json_string = json.dumps(result_dict, ensure_ascii=False)
+                                f_out.write(json_string + '\n')
+                                f_out.flush()
+                                total_processed_count += 1
+                            except Exception as e:
+                                logger.error(f"Failed to write result for Q:{question_index_in_run}, Perm:{perm_string}: {e}")
+                                logger.debug(f"Problematic result_dict: {result_dict}")
+                            time.sleep(args.delay)
+                    else:
+                        num_perms_to_run = min(args.num_permutations, 24)
+                        if args.num_permutations > 24:
+                            logger.warning(f"--num_permutations requested {args.num_permutations}, but maximum is 24. Using 24.")
+                        perm_iterator = itertools.islice(itertools.permutations(original_labels), num_perms_to_run)
+                        for p_idx, current_permutation_tuple in enumerate(perm_iterator):
+                            total_permutations_in_run = num_perms_to_run
+                            current_permutation = list(current_permutation_tuple)
+                            perm_string = "".join(current_permutation)
+                            logger.info(f"    Running Permutation {p_idx + 1}/{total_permutations_in_run} ({perm_string}) for Q_idx:{question_index_in_run}")
                         # Format Prompt
                         current_prompt = format_prompt(template_content, data_item, current_permutation, args.language, args.prompt_format)
                         if not current_prompt:

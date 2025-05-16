@@ -1,4 +1,26 @@
 # experiments/core_runner.py
+
+def generate_circular_content_permutations(original_labels: list[str]) -> list[list[str]]:
+    """
+    Generates 4 circular permutations of how original choice content is assigned
+    to fixed prompt display labels A, B, C, D.
+
+    Each inner list represents an 'option_order' (for formatting the prompt)
+    or 'option_permutation' (for structuring the result).
+    Example: if original_labels = ['A','B','C','D'],
+    - ['A','B','C','D'] means: Display_A gets content_of_OrigA, Display_B gets content_of_OrigB, ...
+    - ['D','A','B','C'] means: Display_A gets content_of_OrigD, Display_B gets content_of_OrigA, ...
+    """
+    if len(original_labels) != 4:
+        raise ValueError("This function is designed for 4 labels e.g. ['A', 'B', 'C', 'D'].")
+    perms = []
+    current_content_assignment_order = list(original_labels)
+    for _ in range(len(original_labels)):
+        perms.append(list(current_content_assignment_order))
+        last_original_label = current_content_assignment_order.pop()
+        current_content_assignment_order.insert(0, last_original_label)
+    return perms
+
 import os
 import re
 import uuid

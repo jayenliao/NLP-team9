@@ -52,6 +52,26 @@ This is the final project of NLP, a course at National Taiwan University (Spring
     pip3 install -r requirements.txt
     ```
 
+### Permutation Strategies
+
+You can specify how the MCQ option permutations are generated using the `--permutation_strategy` argument:
+
+- `all_24` (default): Use up to 24 permutations (full or limited by `--num_permutations`).
+- `circular_content_4`: Use only the 4 circular shifts of content under fixed A,B,C,D display labels (for positional bias analysis).
+
+**Example:**
+```bash
+python experiments/run_experiment.py \
+    --model_family gemini \
+    --model_name gemini-2.0-flash-lite \
+    --language en \
+    --prompt_format base \
+    --subtasks college_biology \
+    --num_questions 5 \
+    --permutation_strategy circular_content_4 \
+    --delay 1
+```
+
 ### Source Code Structure
 
 ```plaintext
