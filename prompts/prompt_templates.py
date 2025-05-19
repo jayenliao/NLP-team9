@@ -20,6 +20,43 @@ CHOICE = {
     "fr": "choix"
 }
 
+EXPLANATION = {
+    "en": "Explain here.",
+    "fr": "Expliquez ici."
+}
+
+ANSWER_XML = """
+<answer format="xml">
+  <template>
+    <![CDATA[
+<response>
+  <answer>A | B | C | D</answer>
+  <explanation>{Explaination}</explanation>
+</response>
+    ]]>
+  </template>
+</answer>
+""".strip()
+
+ANSWER_JSON = """
+{
+  "answer": {
+    "format": "json",
+    "template": {
+      "response": {
+        "answer": "A | B | C | D",
+        "explanation": "{Explaination}"
+      }
+    }
+  }
+}
+""".strip()
+ANSWERFORMAT = {
+    "base": {
+        "en": "'Answer: $LETTER' (without quotes) where LETTER is one of ABCD",
+        "fr": "« Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD"
+    } 
+}
 # Template
 
 QUERY_TEMPLATE_PLAIN = """
@@ -32,6 +69,8 @@ A) {A}
 B) {B}
 C) {C}
 D) {D}
+
+{Answer_format}
 """.strip()
 
 QUERY_TEMPLATE_XML = """
@@ -48,6 +87,9 @@ QUERY_TEMPLATE_XML = """
     <C>{C}</C>
     <D>{D}</D>
   </choices>
+  <answer_format>
+    <format>{AnswerFormat}</format>
+  </answer_format>
 </question>
 """.strip()
 
@@ -62,6 +104,7 @@ QUERY_TEMPLATE_JSON = """
     "B": "{B}",
     "C": "{C}",
     "D": "{D}"
-  }}
+  }},
+  "answer_format": "{AnswerFormat}"
  }}
 """.strip()
