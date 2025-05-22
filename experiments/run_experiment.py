@@ -11,7 +11,8 @@ from collections import deque # For circular shifts
 
 # Assuming core_runner and utils are in the same directory or PYTHONPATH is set
 from core_runner import (
-    load_prompt_template, format_prompt, parse_response,
+    # load_prompt_template,
+    format_prompt, parse_response,
     structure_result, get_api_client, call_llm_api
 )
 from utils import load_prepared_dataset, load_api_keys
@@ -115,11 +116,10 @@ def main():
         logger.critical("Fatal: Failed to load prepared dataset (expected ds_selected.pkl).")
         return
 
-    logger.info(f"Loading prompt file for format: {args.prompt_format}_prompt.txt (Note: actual template used by format_prompt might depend on 'style' argument)")
-    template_content_from_file = load_prompt_template(args.prompt_format) # args.prompt_format is 'base', 'json', or 'xml'
-    if not template_content_from_file:
-        logger.warning(f"Warning: Failed to load prompt template file for '{args.prompt_format}_prompt.txt'. "
-                       "The experiment will proceed if format_prompt uses internally defined templates based on the 'style' (prompt_format argument).")
+    # template_content = load_prompt_template(args.prompt_format, args.output_format)
+    # if not template_content:
+    #     print(f"Fatal: Failed to load prompt template 'i: {args.prompt_format}, o: {args.output_format}'.")
+    #     return
 
     # Determine Subtasks
     if args.subtasks.lower() == 'all':
@@ -135,7 +135,7 @@ def main():
     # Prepare Output File Path
     if args.output_file is None:
         timestamp = time.strftime("%Y%m%d-%H%M%S")
-        filename = f"{args.model_family}_{args.model_name}_{args.language}_{args.prompt_format}_{args.permutation_type}_{timestamp}.jsonl"
+        filename = f"{args.model_family}_{args.model_name}_{args.language}_i-{args.prompt_format}_o-{args.output_format}_{args.permutation_type}_{timestamp}.jsonl"
     else:
         filename = args.output_file if args.output_file.endswith(".jsonl") else f"{args.output_file}.jsonl"
 
@@ -261,6 +261,7 @@ def main():
                             language=args.language,
                             model_name=args.model_name,
                             input_format=args.prompt_format,
+                            output_format=args.output_format,
                             option_permutation=current_option_order, # The list like ['D', 'A', 'B', 'C']
                             api_raw_response=str(api_response) if api_response is not None else None,
                             api_call_successful=api_ok,

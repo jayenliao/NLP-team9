@@ -11,8 +11,13 @@ INTRO = {
 }
 
 INSTRUCTION = {
-    "en": "The last line of your response should be of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering.",
+    "en": "The last line of your response should be your answer of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering.",
     "fr": "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre."
+}
+
+INSTRUCTION_FORMATTED = {
+    "en": "The last line of your response should be your answer in the format specified below. Think step by step before answering.",
+    "fr": "La dernière ligne de votre réponse doit être votre réponse au format spécifié ci-dessous. Réfléchissez étape par étape avant de répondre."
 }
 
 CHOICE = {
@@ -26,32 +31,16 @@ EXPLANATION = {
 }
 
 ANSWER_XML = """
-<answer format="xml">
-  <template>
-    <![CDATA[
-<response>
-  <answer>A | B | C | D</answer>
-  <explanation>{Explaination}</explanation>
-</response>
-    ]]>
-  </template>
-</answer>
+<answer>A | B | C | D</answer>
 """.strip()
 
 ANSWER_JSON = """
-{
-  "answer": {
-    "format": "json",
-    "template": {
-      "response": {
-        "answer": "A | B | C | D",
-        "explanation": "{Explaination}"
-      }
-    }
+  {
+    "answer": "A | B | C | D",
   }
-}
 """.strip()
-ANSWERFORMAT = {
+
+ANSWER_BASE = {
     "base": {
         "en": "'Answer: $LETTER' (without quotes) where LETTER is one of ABCD",
         "fr": "« Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD"
@@ -59,7 +48,7 @@ ANSWERFORMAT = {
 }
 # Template
 
-QUERY_TEMPLATE_PLAIN = """
+QUERY_TEMPLATE_BASE_BASE_EN = """
 {Intro}
 {Instruction}
 
@@ -70,10 +59,56 @@ B) {B}
 C) {C}
 D) {D}
 
-{Answer_format}
+Answer Format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD.
 """.strip()
 
-QUERY_TEMPLATE_XML = """
+QUERY_TEMPLATE_BASE_BASE_FR = """
+{Intro}
+{Instruction}
+
+{Question}
+
+A) {A}
+B) {B}
+C) {C}
+D) {D}
+
+Answer Format: « Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD
+""".strip()
+
+QUERY_TEMPLATE_BASE_JSON = """
+{Intro}
+{Instruction}
+
+{Question}
+
+A) {A}
+B) {B}
+C) {C}
+D) {D}
+
+Answer Format: 
+  {{
+    "answer": "A | B | C | D",
+  }}
+""".strip()
+
+QUERY_TEMPLATE_BASE_XML = """
+{Intro}
+{Instruction}
+
+{Question}
+
+A) {A}
+B) {B}
+C) {C}
+D) {D}
+
+Answer Format: 
+  <answer>A | B | C | D</answer>
+""".strip()
+
+QUERY_TEMPLATE_XML_BASE_EN = """
 <!--
 {Intro}
 {Instruction}
@@ -88,12 +123,84 @@ QUERY_TEMPLATE_XML = """
     <D>{D}</D>
   </choices>
   <answer_format>
-    <format>{AnswerFormat}</format>
+    <format>
+      'Answer: $LETTER' (without quotes) where LETTER is one of ABCD
+    </format>
   </answer_format>
 </question>
 """.strip()
 
-QUERY_TEMPLATE_JSON = """
+QUERY_TEMPLATE_XML_JSON = """
+<!--
+{Intro}
+{Instruction}
+-->
+
+<question>
+  <text>{Question}</text>
+  <choices>
+    <A>{A}</A>
+    <B>{B}</B>
+    <C>{C}</C>
+    <D>{D}</D>
+  </choices>
+  <answer_format>
+    <format>
+      {{
+        "answer": "A | B | C | D",
+      }}
+    </format>
+  </answer_format>
+</question>
+""".strip()
+
+QUERY_TEMPLATE_XML_XML = """
+<!--
+{Intro}
+{Instruction}
+-->
+
+<question>
+  <text>{Question}</text>
+  <choices>
+    <A>{A}</A>
+    <B>{B}</B>
+    <C>{C}</C>
+    <D>{D}</D>
+  </choices>
+  <answer_format>
+    <format>
+      <answer>A | B | C | D</answer>
+    </format>
+  </answer_format>
+</question>
+""".strip()
+
+
+QUERY_TEMPLATE_XML_BASE_FR = """
+<!--
+{Intro}
+{Instruction}
+-->
+
+<question>
+  <text>{Question}</text>
+  <choices>
+    <A>{A}</A>
+    <B>{B}</B>
+    <C>{C}</C>
+    <D>{D}</D>
+  </choices>
+  <answer_format>
+    <format>
+      « Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD
+    </format>
+  </answer_format>
+</question>
+""".strip()
+
+
+QUERY_TEMPLATE_JSON_BASE_EN = """
 // "{Intro}"
 // "{Instruction}"
 
@@ -105,6 +212,56 @@ QUERY_TEMPLATE_JSON = """
     "C": "{C}",
     "D": "{D}"
   }},
-  "answer_format": "{AnswerFormat}"
+  "answer_format": "'Answer: $LETTER' (without quotes) where LETTER is one of ABCD."
+ }}
+""".strip()
+
+QUERY_TEMPLATE_JSON_BASE_FR = """
+// "{Intro}"
+// "{Instruction}"
+
+{{
+  "question": "{Question}",
+  "choices": {{
+    "A": "{A}",
+    "B": "{B}",
+    "C": "{C}",
+    "D": "{D}"
+  }},
+  "answer_format": "« Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD."
+ }}
+""".strip()
+
+QUERY_TEMPLATE_JSON_JSON = """
+// "{Intro}"
+// "{Instruction}"
+
+{{
+  "question": "{Question}",
+  "choices": {{
+    "A": "{A}",
+    "B": "{B}",
+    "C": "{C}",
+    "D": "{D}"
+  }},
+  "answer_format": {{
+    "answer": "A | B | C | D",
+  }}
+ }}
+""".strip()
+
+QUERY_TEMPLATE_JSON_XML = """
+// "{Intro}"
+// "{Instruction}"
+
+{{
+  "question": "{Question}",
+  "choices": {{
+    "A": "{A}",
+    "B": "{B}",
+    "C": "{C}",
+    "D": "{D}"
+  }},
+  "answer_format": <answer>A | B | C | D</answer>
  }}
 """.strip()

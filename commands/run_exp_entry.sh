@@ -4,6 +4,7 @@
 MODEL_FAMILY="gemini"
 MODEL_NAME="gemini-2.0-flash-lite"
 PROMPT_FORMAT="base"
+OUTPUT_FORMAT="base"
 LANGUAGE="en"
 SUBTASK="abstract_algebra"
 NUM_QUESTIONS=1
@@ -21,6 +22,7 @@ while [[ "$#" -gt 0 ]]; do
     --subtask) SUBTASK="$2"; shift ;;
     --output_file) OUTPUT_FILE="$2"; shift ;;
     --prompt_format) PROMPT_FORMAT="$2"; shift ;;
+    --output_format) OUTPUT_FORMAT="$2"; shift ;;
     --num_questions) NUM_QUESTIONS="$2"; shift ;;
     --num_permutations) NUM_PERMUTATIONS="$2"; shift ;;
     --delay) DELAY="$2"; shift ;;
@@ -40,7 +42,7 @@ done
 # Determine final output file name
 if [[ "$OUTPUT_FILE" = "" ]]; then
   timestamp=$(date +"%Y%m%d-%H%M%S")
-  OUTPUT_DIR="${MODEL_NAME}_${LANGUAGE}_${PROMPT_FORMAT}_${timestamp}"
+  OUTPUT_DIR="${MODEL_NAME}_${LANGUAGE}_i-${PROMPT_FORMAT}_o-${OUTPUT_FORMAT}_${timestamp}"
 else
   timestamp=$(date +"%Y%m%d-%H%M%S")
   OUTPUT_DIR="${OUTPUT_FILE}_${timestamp}"
@@ -49,9 +51,9 @@ fi
 if [ "$DRY_RUN" -eq 1 ]; then
   echo "Dry-run: would execute:"
   echo "python experiments/run_experiment.py \\"
-  keys=(--model_family --model_name --language --prompt_format --subtasks \
+  keys=(--model_family --model_name --language --prompt_format --output_format --subtasks \
         --num_questions --num_permutations --output_dir --output_file --delay)
-  values=("$MODEL_FAMILY" "$MODEL_NAME" "$LANGUAGE" "$PROMPT_FORMAT" "$SUBTASK" \
+  values=("$MODEL_FAMILY" "$MODEL_NAME" "$LANGUAGE" "$PROMPT_FORMAT" "$OUTPUT_FORMAT" "$SUBTASK" \
           "$NUM_QUESTIONS" "$NUM_PERMUTATIONS" "$OUTPUT_DIR" "raw.jsonl" "$DELAY")
 
   for ((i = 0; i < ${#keys[@]}; i++)); do
@@ -74,6 +76,7 @@ python experiments/run_experiment.py \
   --model_name "$MODEL_NAME" \
   --language "$LANGUAGE" \
   --prompt_format "$PROMPT_FORMAT" \
+  --output_format "$OUTPUT_FORMAT" \
   --subtasks "$SUBTASK" \
   --num_questions "$NUM_QUESTIONS" \
   --num_permutations "$NUM_PERMUTATIONS" \
@@ -82,5 +85,5 @@ python experiments/run_experiment.py \
   --delay "$DELAY"
 
 
-echo "Full evaluation script for $MODEL_FAMILY $LANGUAGE $PROMPT_FORMAT completed."
+echo "Full evaluation script for $MODEL_FAMILY $LANGUAGE i:$PROMPT_FORMAT o:$OUTPUT_FORMAT completed."
 echo "Output in results/$OUTPUT_DIR/$OUTPUT_FILE"

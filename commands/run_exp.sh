@@ -6,6 +6,7 @@ ENTRY_SCRIPT="commands/run_exp_entry.sh"
 DEFAULT_MODEL_FAMILY="gemini"
 DEFAULT_MODEL_NAME="gemini-2.0-flash-lite"
 DEFAULT_PROMPT_FORMAT="base"
+DEFAULT_OUTPUT_FORMAT="base"
 DEFAULT_LANGUAGE="en"
 DEFAULT_SUBTASK="abstract_algebra"
 DEFAULT_NUM_QUESTIONS=1
@@ -233,6 +234,30 @@ while [[ "$1" != "" ]]; do
       OVERRIDES+=("--prompt_format" "json")
       shift
       ;;
+    --i-base)
+      OVERRIDES+=("--prompt_format" "base")
+      shift
+      ;;
+    --i-xml)
+      OVERRIDES+=("--prompt_format" "xml")
+      shift
+      ;;
+    --i-json)
+      OVERRIDES+=("--prompt_format" "json")
+      shift
+      ;;
+    --o-base)
+      OVERRIDES+=("--output_format" "base")
+      shift
+      ;;
+    --o-xml)
+      OVERRIDES+=("--output_format" "xml")
+      shift
+      ;;
+    --o-json)
+      OVERRIDES+=("--output_format" "json")
+      shift
+      ;;
     --dry-run)
       OVERRIDES+=("--dry-run")
       shift
@@ -267,6 +292,7 @@ if [ $SETUP_EVAL != 0 ]; then
   model_name=$(jq -r "$JQ_BASE | .model_name // \"\"" "$JSON_FILE")
   language=$(jq -r "$JQ_BASE | .language // \"\"" "$JSON_FILE")
   prompt_format=$(jq -r "$JQ_BASE | .prompt_format // \"\"" "$JSON_FILE")
+  output_format=$(jq -r "$JQ_BASE | .output_format // \"\"" "$JSON_FILE")
   subtask=$(jq -r "$JQ_BASE | .subtask // \"\"" "$JSON_FILE")
   output_file=$(jq -r "$JQ_BASE | .output_file // \"\"" "$JSON_FILE")
   num_questions=$(jq -r "$JQ_BASE | .num_questions // \"\"" "$JSON_FILE")
@@ -275,12 +301,14 @@ if [ $SETUP_EVAL != 0 ]; then
 
   language="${language:-$DEFAULT_LANGUAGE}"
   prompt_format="${prompt_format:-$DEFAULT_PROMPT_FORMAT}"
+  output_format="${output_format:-$DEFAULT_OUTPUT_FORMAT}"
 
   bash "$ENTRY_SCRIPT" \
             --model_family "$model_family" \
             --model_name "$model_name" \
             --language "$language" \
             --prompt_format "$prompt_format" \
+            --output_format "$output_format" \
             --subtask "$subtask" \
             --output_file "$output_file" \
             --num_questions "$num_questions" \
@@ -297,6 +325,7 @@ if [ ${#EXP_NAMES[@]} -eq 0 ]; then
     --model_name "gemini-2.0-flash-lite" \
     --language "en" \
     --prompt_format "base" \
+    --output_format "base" \
     --subtask "abstract_algebra" \
     --output_file "default.jsonl" \
     --num_questions "1" \
@@ -317,6 +346,7 @@ else
         model_name=$(jq -r "$JQ_BASE | .model_name // \"\"" "$JSON_FILE")
         language=$(jq -r "$JQ_BASE | .language // \"\"" "$JSON_FILE")
         prompt_format=$(jq -r "$JQ_BASE | .prompt_format // \"\"" "$JSON_FILE")
+        output_format=$(jq -r "$JQ_BASE | .output_format // \"\"" "$JSON_FILE")
         subtask=$(jq -r "$JQ_BASE | .subtask // \"\"" "$JSON_FILE")
         output_file=$(jq -r "$JQ_BASE | .output_file // \"\"" "$JSON_FILE")
         num_questions=$(jq -r "$JQ_BASE | .num_questions // \"\"" "$JSON_FILE")
@@ -328,6 +358,7 @@ else
         model_name="${model_name:-$DEFAULT_MODEL_NAME}"
         language="${language:-$DEFAULT_LANGUAGE}"
         prompt_format="${prompt_format:-$DEFAULT_PROMPT_FORMAT}"
+        output_format="${output_format:-$DEFAULT_OUTPUT_FORMAT}"
         subtask="${subtask:-$DEFAULT_SUBTASK}"
         output_file="${output_file:-}"
         num_questions="${num_questions:-$DEFAULT_NUM_PERMUTATIONS}"
@@ -340,6 +371,7 @@ else
             --model_name "$model_name" \
             --language "$language" \
             --prompt_format "$prompt_format" \
+            --output_format "$output_format" \
             --subtask "$subtask" \
             --output_file "$output_file" \
             --num_questions "$num_questions" \

@@ -10,18 +10,18 @@ from utils import load_api_keys, format_multichoice_question
 import logging
 logger = logging.getLogger(__name__)
 
-def load_prompt_template(format_name: str) -> str | None:
-    """Loads the content of a prompt template file."""
-    template_dir = os.path.join(os.path.dirname(__file__), '..', 'prompts')
-    template_filename = f"{format_name}_prompt.txt"
-    template_path = os.path.join(template_dir, template_filename)
-    try:
-        with open(template_path, 'r', encoding='utf-8') as f:
-            return f.read()
-    except Exception: 
-        return None
+# def load_prompt_templat(format_name: str) -> str | None:
+#     """Loads the content of a prompt template file."""
+#     template_dir = os.path.join(os.path.dirname(__file__), '..', 'prompts')
+#     template_filename = f"{format_name}_prompt.txt"
+#     template_path = os.path.join(template_dir, template_filename)
+#     try:
+#         with open(template_path, 'r', encoding='utf-8') as f:
+#             return f.read()
+#     except Exception: 
+#         return None
 
-def format_prompt(template_content: str, data_item: dict, option_order: list[str], lang: str, style: str) -> str | None:
+def format_prompt(data_item: dict, option_order: list[str], lang: str, in_style: str, out_style) -> str | None:
     """Formats the prompt template with question data and specified option order."""
     try:
         if len(data_item['choices']) != 4 or len(option_order) != 4:
@@ -36,7 +36,7 @@ def format_prompt(template_content: str, data_item: dict, option_order: list[str
             'D': original_choices[option_order[3]],
         }
         # return template_content.format(**format_context)
-        return format_multichoice_question(format_context, style=style, lang=lang)
+        return format_multichoice_question(format_context, in_style=in_style, out_style=out_style, lang=lang)
     except (KeyError, IndexError): # Handle missing keys or incorrect list sizes
         return None
     except Exception: # Generic catch-all
