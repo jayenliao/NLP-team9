@@ -139,6 +139,7 @@ def structure_result(
     language: str,
     model_name: str,
     input_format: str,
+    output_format: str,
     option_permutation: list[str], # e.g., ['C', 'A', 'D', 'B']
     api_raw_response: Any | None,
     api_call_successful: bool,
@@ -227,6 +228,7 @@ def structure_result(
         "language": language,
         "model_name": model_name,
         "input_format": input_format,
+        "output_format": output_format,
         "option_permutation": "".join(option_permutation), # Save the permutation used
         "api_call_successful": api_call_successful,
         "api_raw_response": str(api_raw_response) if api_raw_response is not None else None,

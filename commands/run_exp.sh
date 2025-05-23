@@ -11,6 +11,7 @@ DEFAULT_LANGUAGE="en"
 DEFAULT_SUBTASK="abstract_algebra"
 DEFAULT_NUM_QUESTIONS=1
 DEFAULT_NUM_PERMUTATIONS=1
+DEFAULT_NUM_PERMUTATIONS="factorial"
 DEFAULT_OUTPUT_FILE="default.jsonl"
 DEFAULT_DELAY=2
 
@@ -27,9 +28,14 @@ print_help() {
   echo "  --fr                Use French prompts"
   echo
   echo "Prompt Format Options:"
-  echo "  --base              Plain text prompt format"
-  echo "  --json              JSON-based prompt format"
-  echo "  --xml               XML-based prompt format"
+  echo "  --i-base              Plain text prompt format"
+  echo "  --i-json              JSON-based prompt format"
+  echo "  --i-xml               XML-based prompt format"
+  echo
+  echo "Output Format Options:"
+  echo "  --o-base              Plain text prompt format"
+  echo "  --o-json              JSON-based prompt format"
+  echo "  --o-xml               XML-based prompt format"
   echo
   echo "Execution Control:"
   echo "  --dry-run           Print the full command without executing"
@@ -50,7 +56,8 @@ print_help() {
   echo
   echo "  --search <kw1> [kw2 ...] [all]   Search experiments matching ALL keywords."
   echo "                                   Keywords search across: exp_name, model_name,"
-  echo "                                   subtask, num_questions, num_permutations, delay."
+  echo "                                   subtask, num_questions, permutation_type,"
+  echo "                                   num_permutations, delay."
   echo "                                   You may also specify field-specific filters:"
   echo "                                     field:value (e.g. model_name:gemini)"
   echo "                                   Examples:"
@@ -75,15 +82,15 @@ if [[ "$1" == "--list" ]]; then
   if [[ "$MODE" == "all" ]]; then
     echo "Listing all $TOTAL experiments:"
     jq -r '
-      ["id", "model_name", "subtask", "#_questions", "#_permutations", "delay"],
-      (to_entries | map(select(.value | type == "object")) | .[] | [ .key, .value.model_name, .value.subtask, .value.num_questions, .value.num_permutations, .value.delay ])
+      ["id", "model_name", "subtask", "#_questions", "permutation_type", "#_permutations", "delay"],
+      (to_entries | map(select(.value | type == "object")) | .[] | [ .key, .value.model_name, .value.subtask, .value.num_questions, .value.permutation_type, .value.num_permutations, .value.delay ])
       | @tsv
     ' "$JSON_FILE" | column -t
   else
     echo "Showing first 15 of $TOTAL experiments:"
     jq -r '
-      ["id", "model_name", "subtask", "#_questions", "#_permutations", "delay"],
-      (to_entries | map(select(.value | type == "object")) | .[] | [ .key, .value.model_name, .value.subtask, .value.num_questions, .value.num_permutations, .value.delay ])
+      ["id", "model_name", "subtask", "#_questions", "permutation_type", "#_permutations", "delay"],
+      (to_entries | map(select(.value | type == "object")) | .[] | [ .key, .value.model_name, .value.subtask, .value.num_questions, .value.permutation_type, .value.num_permutations, .value.delay ])
       | @tsv
     ' "$JSON_FILE" | head -n 16 | column -t
     echo "(Use --list all to see full list)"
@@ -109,7 +116,7 @@ if [[ "$1" == "--search" ]]; then
 
   echo "Searching for experiments matching: $*"
 
-  SEARCHABLE_FIELDS=("exp_name" "model_name" "subtask" "num_questions" "num_permutations" "delay")
+  SEARCHABLE_FIELDS=("exp_name" "model_name" "subtask" "num_questions" "permutation_type" s"num_permutations" "delay")
   JQ_FILTER='true'
 
   for raw_kw in "$@"; do
@@ -134,12 +141,12 @@ if [[ "$1" == "--search" ]]; then
     fi
   done
 
-  JQ_CMD='["id", "model_name", "subtask", "#_questions", "#_permutations", "delay"],
+  JQ_CMD='["id", "model_name", "subtask", "#_questions", "permutation_type", "#_permutations", "delay"],
   (to_entries
    | map(select(.value | type == "object"))
    | .[]
    | select('"$JQ_FILTER"')
-   | [ .key, .value.model_name, .value.subtask, .value.num_questions, .value.num_permutations, .value.delay ]) | @tsv'
+   | [ .key, .value.model_name, .value.subtask, .value.num_questions, .value.permutation_type, .value.num_permutations, .value.delay ]) | @tsv'
 
   OUTPUT=$(jq -r "$JQ_CMD" "$JSON_FILE")
 
@@ -296,6 +303,7 @@ if [ $SETUP_EVAL != 0 ]; then
   subtask=$(jq -r "$JQ_BASE | .subtask // \"\"" "$JSON_FILE")
   output_file=$(jq -r "$JQ_BASE | .output_file // \"\"" "$JSON_FILE")
   num_questions=$(jq -r "$JQ_BASE | .num_questions // \"\"" "$JSON_FILE")
+  permutation_type=$(jq -r "$JQ_BASE | .permutation_type // \"\"" "$JSON_FILE")
   num_permutations=$(jq -r "$JQ_BASE | .num_permutations // \"\"" "$JSON_FILE")
   delay=$(jq -r "$JQ_BASE | .delay // \"\"" "$JSON_FILE")
 
@@ -312,7 +320,8 @@ if [ $SETUP_EVAL != 0 ]; then
             --subtask "$subtask" \
             --output_file "$output_file" \
             --num_questions "$num_questions" \
-            --num_permutations "$num_permutations" \
+            --permutation_type "$permutation_type" \
+            --num_factorial_permutations "$num_permutations" \
             --delay "$delay" \
             "${OVERRIDES[@]}"
 
@@ -329,7 +338,8 @@ if [ ${#EXP_NAMES[@]} -eq 0 ]; then
     --subtask "abstract_algebra" \
     --output_file "default.jsonl" \
     --num_questions "1" \
-    --num_permutations "1" \
+    --permutation_type "factorial" \
+    --num_factorial_permutations "1" \
     --delay "2" \
     "${OVERRIDES[@]}"
 
@@ -351,6 +361,7 @@ else
         output_file=$(jq -r "$JQ_BASE | .output_file // \"\"" "$JSON_FILE")
         num_questions=$(jq -r "$JQ_BASE | .num_questions // \"\"" "$JSON_FILE")
         num_permutations=$(jq -r "$JQ_BASE | .num_permutations // \"\"" "$JSON_FILE")
+        permutation_type=$(jq -r "$JQ_BASE | .permutation_type // \"\"" "$JSON_FILE")
         delay=$(jq -r "$JQ_BASE | .delay // \"\"" "$JSON_FILE")
 
         # Provide fallbacks for missing values (only if variable is empty)
@@ -363,6 +374,7 @@ else
         output_file="${output_file:-}"
         num_questions="${num_questions:-$DEFAULT_NUM_PERMUTATIONS}"
         num_permutations="${num_permutations:-$DEFAULT_NUM_QUESTIONS}"
+        permutation_type="${permutation_type:-$DEFAULT_NUM_PERMUTATIONS}"
         delay="${delay:-$DEFAULT_DELAY}"
 
         # Call entry script with base parameters and additional overrides
@@ -374,8 +386,9 @@ else
             --output_format "$output_format" \
             --subtask "$subtask" \
             --output_file "$output_file" \
+            --permutation_type "$permutation_type" \
             --num_questions "$num_questions" \
-            --num_permutations "$num_permutations" \
+            --num_factorial_permutations "$num_permutations" \
             --delay "$delay" \
             "${OVERRIDES[@]}"
 

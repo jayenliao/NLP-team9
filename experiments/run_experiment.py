@@ -84,6 +84,7 @@ def main():
     parser.add_argument("--model_name", type=str, required=True, help="Specific model name (e.g., 'gemini-1.5-flash-latest', 'mistral-small-latest').")
     parser.add_argument("--language", type=str, default='en', choices=['en', 'fr'], help="Language code ('en' or 'fr').")
     parser.add_argument("--prompt_format", type=str, default='base', choices=['base', 'json', 'xml'], help="Prompt format ('base', 'json', 'xml'). This corresponds to 'style' in format_prompt.")
+    parser.add_argument("--output_format", type=str, default='base', choices=['base', 'json', 'xml'], help="Prompt format ('base', 'json', 'xml'). This corresponds to 'style' in format_prompt.")
     parser.add_argument("--subtasks", type=str, default='all', help="Comma-separated list of subtasks, or 'all'.")
     parser.add_argument("--num_questions", type=int, default=100, help="Number of questions per subtask to process from the start_index.")
     
@@ -211,11 +212,11 @@ def main():
                         logger.info(f"    Q_idx:{i}, Permutation {p_idx + 1}/{total_permutations_for_this_question} (Order: {perm_string})")
                         
                         current_prompt = format_prompt(
-                            template_content_from_file, # May be unused if style dictates template
                             data_item,
                             current_option_order, # This is the key list for remapping choices
                             args.language,
-                            args.prompt_format # This is the 'style' for format_multichoice_question
+                            args.prompt_format, # This is the 'style' for format_multichoice_question
+                            args.output_format
                         )
                         if not current_prompt:
                             logger.warning(f"Failed to format prompt for Q_idx:{i}, Perm:{perm_string}. Skipping this trial.")
@@ -312,6 +313,7 @@ if __name__ == "__main__":
     --model_name gemini-1.5-flash-latest \
     --language en \
     --prompt_format base \
+    --output_format base \
     --subtasks abstract_algebra \
     --num_questions 2 \
     --permutation_type circular \
@@ -323,6 +325,7 @@ if __name__ == "__main__":
     --model_name mistral-small-latest \
     --language fr \
     --prompt_format xml \
+    --output_format json \
     --subtasks anatomy \
     --num_questions 1 \
     --permutation_type factorial \
