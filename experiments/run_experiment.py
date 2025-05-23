@@ -229,8 +229,10 @@ def main():
                             logger.warning(f"API call failed for Q_idx:{i}, Perm:{perm_string}. Raw response will be logged if available.")
 
                         parsed_answer = None # Positional answer (A/B/C/D) relative to the permuted prompt
+                        
+                        response_text = None
                         if api_ok and api_response:
-                            response_text = None
+                            # response_text = None
                             try:
                                 if args.model_family == 'gemini':
                                     if hasattr(api_response, 'text'): # Simplest case
@@ -268,7 +270,8 @@ def main():
                             api_call_successful=api_ok,
                             extracted_answer=parsed_answer, # e.g., 'A', 'B', 'C', or 'D'
                             log_probabilities=None,
-                            question_index=i # Absolute index from the dataset for this subtask/language
+                            question_index=i, # Absolute index from the dataset for this subtask/language
+                            api_response_text = response_text, # Raw text from the API response
                         )
 
                         try:

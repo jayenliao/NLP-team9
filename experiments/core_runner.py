@@ -145,7 +145,8 @@ def structure_result(
     api_call_successful: bool,
     extracted_answer: str | None, # e.g., 'B' (the positional answer chosen)
     log_probabilities: dict | None = None, # We'll keep this None as requested
-    question_index: int = -1
+    question_index: int = -1,
+    api_response_text: str | None = None
 ) -> dict:
     """
     Structures the results of a single experiment trial into a dictionary.
@@ -231,12 +232,13 @@ def structure_result(
         "output_format": output_format,
         "option_permutation": "".join(option_permutation), # Save the permutation used
         "api_call_successful": api_call_successful,
-        "api_raw_response": str(api_raw_response) if api_raw_response is not None else None,
         "extracted_answer": extracted_answer, # The positional answer (A/B/C/D relative to permutation)
         "model_choice_original_label": model_choice_original_label, # **The added field** (Original A/B/C/D based on content)
         "log_probabilities": log_probabilities, # Keeping as None
         "ground_truth_answer": ground_truth_label, # The original correct label ('A'/'B'/'C'/'D')
-        "is_correct": is_correct # Boolean or None
+        "is_correct": is_correct, # Boolean or None
+        "api_response_text": api_response_text, # Raw text from the API
+        "api_raw_response": str(api_raw_response) if api_raw_response is not None else None,
     }
     logger.info(f"Result structured for q_idx {question_index}, perm {''.join(option_permutation)}: "
                 f"Extracted='{extracted_answer}', Orig='{model_choice_original_label}', GT='{ground_truth_label}', Correct={is_correct}")
