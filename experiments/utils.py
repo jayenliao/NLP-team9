@@ -142,7 +142,7 @@ def format_multichoice_question(row, in_style='base', out_style='base', lang="en
     #     return None
 
 if __name__ == "__main__":
-    # Example usage
+    # Test for format_multichoice_question
     row = {
         'Question': 'What is the capital of France?',
         'A': 'Berlin',
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     }
 
     in_type = 'base'
-    out_type = 'base'
+    out_type = 'xml'
     lang_type = ['en', 'fr']
 
     for lang in lang_type:

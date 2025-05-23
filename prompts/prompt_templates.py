@@ -88,9 +88,12 @@ C) {C}
 D) {D}
 
 Answer Format: 
+```json
   {{
+    "step_by_step_reasoning": ...,
     "answer": "A | B | C | D",
   }}
+```
 """.strip()
 
 QUERY_TEMPLATE_BASE_XML = """
@@ -105,7 +108,12 @@ C) {C}
 D) {D}
 
 Answer Format: 
-  <answer>A | B | C | D</answer>
+```xml
+  <response>
+    <step_by_step_reasoning>...</step_by_step_reasoning>
+    <answer>A | B | C | D</answer>
+  </response>
+```
 """.strip()
 
 QUERY_TEMPLATE_XML_BASE_EN = """

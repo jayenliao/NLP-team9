@@ -296,10 +296,12 @@ def main():
         logs_for_filter_dir = os.path.join(project_root, "results", "__logs__")
         os.makedirs(logs_for_filter_dir, exist_ok=True)
         to_fix_log_path = os.path.join(logs_for_filter_dir, '0-to-Filter-Runs.log')
-
+        to_fix_path = os.path.join(logs_for_filter_dir, '0-to-Filter')
         try:
             with open(to_fix_log_path, 'a', encoding='utf-8') as f_log_filter:
                 f_log_filter.write(f"Run completed at {time.strftime('%Y-%m-%d %H:%M:%S')}: Output directory '{output_path_dir}', File '{filename}'\n")
+            with open(to_fix_path, 'a', encoding='utf-8') as f_log_filter:
+                f_log_filter.write(f"{args.output_dir}\n")
         except Exception as e_log_write:
             logger.error(f"Failed to write to '{to_fix_log_path}': {e_log_write}")
 
