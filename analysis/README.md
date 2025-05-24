@@ -14,7 +14,7 @@ python3 analysis/analyze_results.py \
     --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
 ```
 
-#### Sepecify accuracy metrics
+#### Specify accuracy metrics
 
 ```bash
 python3 analysis/analyze_results.py \
