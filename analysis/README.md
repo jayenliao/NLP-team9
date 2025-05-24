@@ -10,7 +10,7 @@ Here are tools for analyzing experiment results.
 
 ```bash
 python3 analysis/analyze_results.py \
-    "results/gemini-2.0-flash-lite_en_*.jsonl" \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
     --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
 ```
 
@@ -18,7 +18,7 @@ python3 analysis/analyze_results.py \
 
 ```bash
 python3 analysis/analyze_results.py \
-    "results/gemini-2.0-flash-lite_en_*.jsonl" \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
     --accuracy_metrics overall_accuracy by_model_name by_input_format \
     --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
 ```
@@ -29,7 +29,7 @@ python3 analysis/analyze_results.py \
 
 ```bash
 python3 analysis/analyze_results.py \
-    "results/gemini-2.0-flash-lite_en_*.jsonl" \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
     --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
 ```
 
@@ -37,7 +37,7 @@ python3 analysis/analyze_results.py \
 
 ```bash
 python3 analysis/analyze_results.py \
-    "results/gemini-2.0-flash-lite_en_*.jsonl" \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
     --confidence_metrics confidence_high \
     --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
 ```
@@ -46,7 +46,7 @@ python3 analysis/analyze_results.py \
 
 ```bash
 python3 analysis/analyze_results.py \
-    "results/gemini-2.0-flash-lite_en_*.jsonl" \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
     --confidence_metrics confidence_high \
     --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
     --confidence_to_csv
