@@ -75,9 +75,7 @@ class ResultsAnalyzer:
 
     def validate_data_for_accuracy(self) -> bool:
         """Validates that the DataFrame has columns required for accuracy analysis."""
-        if self.df is None or self.df.empty:
-            logger.error("DataFrame is not loaded or is empty. Cannot validate.")
-            return False
+        assert self.df is not None and not self.df.empty, "DataFrame is not loaded or is empty. Cannot validate."
 
         missing_cols = self.required_columns_for_accuracy - set(self.df.columns)
         if missing_cols:
@@ -87,10 +85,12 @@ class ResultsAnalyzer:
 
     def calculate_overall_accuracy(self) -> Optional[float]:
         """Calculates overall accuracy from the 'is_correct' column."""
-        if self.df is None or 'is_correct' not in self.df.columns:
-            return None
+        assert self.df is not None, "DataFrame must be loaded before calculating accuracy."
+        assert 'is_correct' in self.df.columns, "is_correct column is required for accuracy calculation."
+
         # Ensure 'is_correct' is boolean or numeric for mean calculation; handle potential strings
-        valid_scores = pd.to_numeric(self.df['is_correct'], errors='coerce').dropna()
+        valid_scores = pd.to_numeric(self.df['is_correct'].dropna(), errors='coerce')
+
         return valid_scores.mean() if not valid_scores.empty else 0.0
 
     def calculate_grouped_accuracies(self, group_by_definitions: Dict[str, List[str]]) -> Dict[str, Optional[Dict]]:
@@ -99,8 +99,8 @@ class ResultsAnalyzer:
         :param group_by_definitions: A dictionary where keys are analysis names
                                      and values are lists of columns to group by.
         """
-        if self.df is None:
-            return {name: None for name in group_by_definitions}
+        assert self.df is not None, "DataFrame must be loaded before calculating accuracy."
+        assert 'is_correct' in self.df.columns, "is_correct column is required for accuracy calculation."
 
         grouped_accuracies_report: Dict[str, Optional[Dict]] = {}
         for analysis_name, group_by_cols in group_by_definitions.items():
@@ -184,8 +184,8 @@ class ResultsAnalyzer:
     def run_analysis(self, output_metrics_file: str) -> None:
         """Main analysis pipeline runner."""
         success_loading = self.load_data()
-        sucess_validating = self.validate_data_for_accuracy()
-        if not (success_loading and sucess_validating):
+        success_validating = self.validate_data_for_accuracy()
+        if not (success_loading and success_validating):
             logger.error("Analysis aborted due to data loading or validation issues.")
             return
 
