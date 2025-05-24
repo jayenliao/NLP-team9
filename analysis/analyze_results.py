@@ -18,15 +18,14 @@ CORE_REQUIRED_COLUMNS: Set[str] = {'is_correct'}
 # Definitions for grouped accuracy analyses.
 # The key is a descriptive name for the analysis, value is a list of columns to group by.
 # This can be expanded as more grouping dimensions (e.g., 'requested_output_format') are added.
-ACCURACY_GROUPBY_DEFINITIONS: Dict[str, List[str]] = {
-    'by_subtask': ['subtask'],
-    'by_model': ['model_name'],
-    'by_input_format': ['input_format'], # Current input format
-    'by_language': ['language'],
-    # TODO: Add 'by_requested_output_format' when that data field is available
-    # 'by_input_output_format_pair': ['input_format', 'requested_output_format'],
-}
-
+# ACCURACY_GROUPBY_DEFINITIONS: Dict[str, List[str]] = {
+#     'by_subtask': ['subtask'],
+#     'by_model_name': ['model_name'],
+#     'by_input_format': ['input_format'], # Current input format
+#     'by_language': ['language'],
+#     # TODO: Add 'by_requested_output_format' when that data field is available
+#     # 'by_input_output_format_pair': ['input_format', 'requested_output_format'],
+# }
 
 class ResultsAnalyzer:
     """
@@ -34,13 +33,23 @@ class ResultsAnalyzer:
     focusing on accuracy calculations with placeholders for future expansions.
     """
 
-    def __init__(self, input_pattern: str):
+    def __init__(
+        self,
+        input_pattern: str,
+        accuracy_metrics: List[str],
+    ):
         self.input_pattern: str = input_pattern
         self.df: Optional[pd.DataFrame] = None
+        self.accuracy_metrics = accuracy_metrics
+
         # Dynamically determine all columns needed for configured accuracy groupings
         self.required_columns_for_accuracy: Set[str] = CORE_REQUIRED_COLUMNS.copy()
-        for cols in ACCURACY_GROUPBY_DEFINITIONS.values():
-            self.required_columns_for_accuracy.update(cols)
+        self.accuracy_groupby_definitions = dict()
+        for metric in self.accuracy_metrics:
+            if metric != 'overall_accuracy':
+                col = metric.split('by_')[-1]
+                self.accuracy_groupby_definitions[metric] = [col]
+                self.required_columns_for_accuracy.update([col])
 
     def load_data(self) -> bool:
         """Loads and combines all JSONL result files into a pandas DataFrame."""
@@ -93,7 +102,10 @@ class ResultsAnalyzer:
 
         return valid_scores.mean() if not valid_scores.empty else 0.0
 
-    def calculate_grouped_accuracies(self, group_by_definitions: Dict[str, List[str]]) -> Dict[str, Optional[Dict]]:
+    def calculate_grouped_accuracies(
+        self,
+        group_by_definitions: Dict[str, List[str]]
+    ) -> Dict[str, Optional[Dict]]:
         """
         Calculates accuracies grouped by specified column sets.
         :param group_by_definitions: A dictionary where keys are analysis names
@@ -183,21 +195,21 @@ class ResultsAnalyzer:
 
     def run_analysis(self, output_metrics_file: str) -> None:
         """Main analysis pipeline runner."""
+
         success_loading = self.load_data()
         success_validating = self.validate_data_for_accuracy()
         if not (success_loading and success_validating):
             logger.error("Analysis aborted due to data loading or validation issues.")
             return
 
+        accuracy_summary = dict()
         logger.info("Calculating accuracy metrics...")
-        overall_accuracy = self.calculate_overall_accuracy()
-        grouped_accuracies = self.calculate_grouped_accuracies(ACCURACY_GROUPBY_DEFINITIONS)
-
-        accuracy_summary = {
-            'overall_accuracy': overall_accuracy,
-            'grouped_accuracies': grouped_accuracies
-        }
-        logger.info(f"Overall Accuracy: {overall_accuracy:.4f}" if overall_accuracy is not None else "Overall Accuracy: N/A")
+        if 'overall_accuracy' in self.accuracy_metrics:
+            overall_accuracy = self.calculate_overall_accuracy()
+            logger.info(f"Overall Accuracy: {overall_accuracy:.4f}" if overall_accuracy is not None else "Overall Accuracy: N/A")
+            accuracy_summary['overall_accuracy'] = overall_accuracy
+        grouped_accuracies = self.calculate_grouped_accuracies(self.accuracy_groupby_definitions)
+        accuracy_summary['grouped_accuracies'] = grouped_accuracies
 
         # TODO: Invoke and integrate other analysis components when they are implemented
         # E.g., fluctuation_metrics = self.calculate_fluctuation_metrics()
@@ -211,17 +223,31 @@ class ResultsAnalyzer:
 
 def main():
     parser = argparse.ArgumentParser(description="Analyze NLP experiment results (Accuracy Focus).")
-    parser.add_argument("input_pattern",
-                        help="Glob pattern for input JSONL files (e.g., 'results/*.jsonl')")
-    parser.add_argument("--output_metrics_file",
-                        default="results_summary/accuracy_metrics.json",
-                        help="Path to save the summary of accuracy metrics.")
+
+    parser.add_argument("input_pattern", help="Glob pattern for input JSONL files (e.g., 'results/*.jsonl')")
+
+    parser.add_argument(
+        "--accuracy_metrics", nargs='+', default=[
+            'overall_accuracy',
+            'by_subtask',
+            'by_model_name',
+            'by_input_format',
+            'by_language',
+        ],
+        help="List of accuracy metrics to calculate (e.g., 'overall_accuracy', 'by_subtask').")
+
+    parser.add_argument(
+        "--output_metrics_file",
+        default="results_summary/accuracy_metrics.json",
+        help="Path to save the summary of accuracy metrics."
+    )
+
     # TODO: Add arguments for other output files (e.g., fluctuation details) when those analyses are added.
     # parser.add_argument("--output_fluctuation_details_file", default="results_summary/fluctuation_details.csv")
 
     args = parser.parse_args()
 
-    analyzer = ResultsAnalyzer(args.input_pattern)
+    analyzer = ResultsAnalyzer(args.input_pattern, args.accuracy_metrics)
     analyzer.run_analysis(args.output_metrics_file)
 
 if __name__ == "__main__":
