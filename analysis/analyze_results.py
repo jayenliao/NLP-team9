@@ -63,12 +63,12 @@ class ResultsAnalyzer:
             except Exception:
                 logger.debug(f"Failed to read or process {file_path}")
                 # Continue to next file if one fails, or return False if a stricter policy is needed
-        
+
         if not all_results:
             logger.warning("No data loaded from any files.")
             self.df = pd.DataFrame()
             return False
-            
+
         self.df = pd.DataFrame(all_results)
         logger.info(f"Successfully loaded {len(self.df)} records from {len(file_paths)} file(s).")
         return True
@@ -78,7 +78,7 @@ class ResultsAnalyzer:
         if self.df is None or self.df.empty:
             logger.error("DataFrame is not loaded or is empty. Cannot validate.")
             return False
-        
+
         missing_cols = self.required_columns_for_accuracy - set(self.df.columns)
         if missing_cols:
             logger.error(f"Missing required columns for accuracy analysis: {missing_cols}")
@@ -108,7 +108,7 @@ class ResultsAnalyzer:
                 logger.warning(f"Missing one or more grouping columns for '{analysis_name}': {group_by_cols}. Skipping.")
                 grouped_accuracies_report[analysis_name] = None
                 continue
-            
+
             # Ensure 'is_correct' is numeric before grouping
             temp_df = self.df.copy()
             temp_df['is_correct'] = pd.to_numeric(temp_df['is_correct'], errors='coerce')
@@ -117,10 +117,10 @@ class ResultsAnalyzer:
             if valid_df.empty:
                 grouped_accuracies_report[analysis_name] = {}
                 continue
-                
+
             result_series = valid_df.groupby(group_by_cols)['is_correct'].mean()
             grouped_accuracies_report[analysis_name] = result_series.to_dict()
-            
+
         return grouped_accuracies_report
 
     # --- Placeholder Sections for Future Expansion ---
@@ -183,7 +183,9 @@ class ResultsAnalyzer:
 
     def run_analysis(self, output_metrics_file: str) -> None:
         """Main analysis pipeline runner."""
-        if not self.load_data() or not self.validate_data_for_accuracy():
+        success_loading = self.load_data()
+        sucess_validating = self.validate_data_for_accuracy()
+        if not (success_loading and sucess_validating):
             logger.error("Analysis aborted due to data loading or validation issues.")
             return
 
@@ -196,22 +198,22 @@ class ResultsAnalyzer:
             'grouped_accuracies': grouped_accuracies
         }
         logger.info(f"Overall Accuracy: {overall_accuracy:.4f}" if overall_accuracy is not None else "Overall Accuracy: N/A")
-        
+
         # TODO: Invoke and integrate other analysis components when they are implemented
         # E.g., fluctuation_metrics = self.calculate_fluctuation_metrics()
         # E.g., confidence_summary = self.analyze_confidence_vs_bias()
 
         final_report = self.generate_summary_report(accuracy_summary)
         self.save_report_to_file(final_report, output_metrics_file)
-        
+
         logger.info("Accuracy analysis complete.")
 
 
 def main():
     parser = argparse.ArgumentParser(description="Analyze NLP experiment results (Accuracy Focus).")
-    parser.add_argument("input_pattern", 
+    parser.add_argument("input_pattern",
                         help="Glob pattern for input JSONL files (e.g., 'results/*.jsonl')")
-    parser.add_argument("--output_metrics_file", 
+    parser.add_argument("--output_metrics_file",
                         default="results_summary/accuracy_metrics.json",
                         help="Path to save the summary of accuracy metrics.")
     # TODO: Add arguments for other output files (e.g., fluctuation details) when those analyses are added.
