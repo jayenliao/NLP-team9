@@ -34,16 +34,15 @@ class ResultsAnalyzer:
     focusing on accuracy calculations with placeholders for future expansions.
     """
 
-    def __init__(
-        self,
-        input_pattern: str,
-        accuracy_metrics: List[str],
-        confidence_metrics: List[str]
-    ):
-        self.input_pattern: str = input_pattern
+    def __init__(self, args: argparse.Namespace):
+        self.input_pattern: str = args.input_pattern
+        self.accuracy_metrics: list = args.accuracy_metrics
+        self.confidence_metrics: list = args.confidence_metrics
+        self.output_file_path: str = args.output_file_path
+        self.confidence_to_csv: bool = args.confidence_to_csv
+        self.output_path = Path(self.output_file_path)
+        self.output_path.parent.mkdir(parents=True, exist_ok=True)
         self.df: Optional[pd.DataFrame] = None
-        self.accuracy_metrics = accuracy_metrics
-        self.confidence_metrics = confidence_metrics
 
         # Dynamically determine all columns needed for configured accuracy groupings
         self.required_columns_for_accuracy: Set[str] = CORE_REQUIRED_COLUMNS.copy()
@@ -164,7 +163,7 @@ class ResultsAnalyzer:
         # logger.info("Fluctuation analysis placeholder invoked.")
         return None
 
-    def calculate_confidence(self) -> Optional[Dict[str, Any]]:
+    def calculate_confidence(self, to_csv:bool=False) -> Optional[Dict[str, Any]]:
         """
         Placeholder for analyzing the relationship between model confidence and order bias.
         This would require a 'model_confidence' column and results from fluctuation/bias analysis.
@@ -175,11 +174,9 @@ class ResultsAnalyzer:
 
         candidate_cols = {'subtask', 'model_name', 'input_format', 'language'}
         cols = list(candidate_cols.intersection(self.df.columns))
-
         unique_vals = [self.df[col].dropna().unique() for col in cols]
 
         results = dict()
-
         for combination in product(*unique_vals):
             condition = True
             key = {}
@@ -191,17 +188,28 @@ class ResultsAnalyzer:
             if df_group.empty:
                 continue
 
-            key_str = str(tuple([v for v in key.values()]))
+            key_list = [v for v in key.values()]
+            key_str = str(tuple())
             results[key_str] = {"count": len(df_group)}
             confidence = self.__calculate_confidence(df_group)
             if "confidence_high" in confidence:
-                confidence_high = confidence["confidence_high"]["confidence_high"]
-                results[key_str]["overall_confidence_high"] = confidence_high.mean()
-                results[key_str]["detailed_confidence_high"] = confidence_high.to_dict()
+                confidence_high = confidence["confidence_high"]
+                results[key_str]["overall_confidence_high"] = confidence_high["confidence_high"].mean()
+                results[key_str]["detailed_confidence_high"] = confidence_high["confidence_high"].to_dict()
+                if to_csv:
+                    suffix = "_".join([str(v) for v in key_list])
+                    fn = f"results_summary/confidence_high_{suffix}.csv"
+                    confidence_high.to_csv(fn, index=False)
+                    logger.info(f"Confidence high metrics saved to CSV for {fn}")
             if "confidence_low" in confidence:
                 confidence_low = confidence["confidence_low"]
                 results[key_str]["avg_confidence_low"] = confidence_low.mean().to_dict()
                 results[key_str]["detailed_confidence_low"] = confidence_low.to_dict()
+                if to_csv:
+                    suffix = "_".join([str(v) for v in key_list])
+                    fn = f"results_summary/confidence_low_{suffix}.csv"
+                    confidence_low.to_csv(fn, index=False)
+                    logger.info(f"Confidence low metrics saved to CSV for {fn}")
 
         return results
 
@@ -259,18 +267,16 @@ class ResultsAnalyzer:
         logger.info(f"Summary Report Keys: {list(report.keys())}")
         return report
 
-    def save_report_to_file(self, report_data: Dict[str, Any], output_file_path: str) -> None:
+    def save_report_to_file(self, report_data: Dict[str, Any]) -> None:
         """Saves the summary report to a JSON file."""
-        output_path = Path(output_file_path)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
         try:
-            with output_path.open('w', encoding='utf-8') as f:
+            with self.output_path.open('w', encoding='utf-8') as f:
                 json.dump(report_data, f, indent=4, default=str) # default=str for non-serializable types if any
-            logger.info(f"Full analysis report saved to {output_path}")
+            logger.info(f"Full analysis report saved to {self.output_path}")
         except Exception as e:
-            logger.error(f"Failed to save report to {output_path}: {e}")
+            logger.error(f"Failed to save report to {self.output_path}: {e}")
 
-    def run_analysis(self, output_metrics_file: str) -> None:
+    def run_analysis(self) -> None:
         """Main analysis pipeline runner."""
 
         success_loading = self.load_data()
@@ -287,13 +293,13 @@ class ResultsAnalyzer:
             accuracy_summary['overall_accuracy'] = overall_accuracy
         grouped_accuracies = self.calculate_grouped_accuracies(self.accuracy_groupby_definitions)
         accuracy_summary['grouped_accuracies'] = grouped_accuracies
-        confidence = self.calculate_confidence()
+        confidence = self.calculate_confidence(self.confidence_to_csv)
 
         # TODO: Invoke and integrate other analysis components when they are implemented
         # E.g., fluctuation_metrics = self.calculate_fluctuation_metrics()
 
         final_report = self.generate_summary_report(accuracy_summary, confidence)
-        self.save_report_to_file(final_report, output_metrics_file)
+        self.save_report_to_file(final_report)
 
         logger.info("Accuracy analysis complete.")
 
@@ -321,18 +327,21 @@ def main():
         help="List of confidence metrics to calculate (e.g., 'confidence_high', 'confidence_low').")
 
     parser.add_argument(
-        "--output_metrics_file",
+        "--output_file_path",
         default="results_summary/accuracy_metrics.json",
         help="Path to save the summary of accuracy metrics."
     )
+
+    parser.add_argument("--confidence_to_csv", action='store_true', help="Save confidence metrics to CSV format.")
+
 
     # TODO: Add arguments for other output files (e.g., fluctuation details) when those analyses are added.
     # parser.add_argument("--output_fluctuation_details_file", default="results_summary/fluctuation_details.csv")
 
     args = parser.parse_args()
 
-    analyzer = ResultsAnalyzer(args.input_pattern, args.accuracy_metrics, args.confidence_metrics)
-    analyzer.run_analysis(args.output_metrics_file)
+    analyzer = ResultsAnalyzer(args)
+    analyzer.run_analysis()
 
 if __name__ == "__main__":
     main()
