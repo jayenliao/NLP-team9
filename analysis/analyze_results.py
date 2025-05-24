@@ -16,18 +16,6 @@ logger = logging.getLogger(__name__)
 # Columns absolutely required for the current accuracy analysis
 CORE_REQUIRED_COLUMNS: Set[str] = {'is_correct'}
 
-# Definitions for grouped accuracy analyses.
-# The key is a descriptive name for the analysis, value is a list of columns to group by.
-# This can be expanded as more grouping dimensions (e.g., 'requested_output_format') are added.
-# ACCURACY_GROUPBY_DEFINITIONS: Dict[str, List[str]] = {
-#     'by_subtask': ['subtask'],
-#     'by_model_name': ['model_name'],
-#     'by_input_format': ['input_format'], # Current input format
-#     'by_language': ['language'],
-#     # TODO: Add 'by_requested_output_format' when that data field is available
-#     # 'by_input_output_format_pair': ['input_format', 'requested_output_format'],
-# }
-
 class ResultsAnalyzer:
     """
     Handles loading, validating, and analyzing NLP experiment results,
@@ -225,9 +213,6 @@ class ResultsAnalyzer:
         confidence = dict()
 
         if "confidence_high" in self.confidence_metrics:
-            # Placeholder for high confidence analysis
-            # This would involve grouping by 'question_id', 'option_permutation', etc.
-            # and calculating confidence metrics based on the model's predictions.
             logger.info("High confidence analysis placeholder invoked.")
             acc_by_pos = df.groupby(["question_id", "correct_pos"])["is_correct"].mean()
             acc_by_pos = acc_by_pos.unstack("correct_pos").rename_axis(index=None, columns="correct_pos")
@@ -235,9 +220,6 @@ class ResultsAnalyzer:
             confidence["confidence_high"] = acc_by_pos
 
         if "confidence_low" in self.confidence_metrics:
-            # Placeholder for low confidence analysis
-            # This would involve similar grouping and calculation as high confidence,
-            # but focusing on cases where the model's confidence is low.
             logger.info("Low confidence analysis placeholder invoked.")
             std_by_pos = df.groupby(["question_id", "correct_pos"])["is_correct"].std()
             std_by_pos = std_by_pos.unstack("correct_pos").rename_axis(index=None, columns="correct_pos")
