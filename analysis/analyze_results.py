@@ -177,7 +177,7 @@ class ResultsAnalyzer:
                 continue
 
             key_list = [v for v in key.values()]
-            key_str = str(tuple())
+            key_str = str(tuple(key_list))
             results[key_str] = {"count": len(df_group)}
             confidence = self.__calculate_confidence(df_group)
             if "confidence_high" in confidence:
