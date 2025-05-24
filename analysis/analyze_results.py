@@ -45,7 +45,7 @@ class ResultsAnalyzer:
             self.required_columns_for_accuracy.update({
                 "question_id", "option_permutation", "ground_truth_answer"
             })
-        print(self.required_columns_for_accuracy)
+        logger.debug(f"Required columns for accuracy: {self.required_columns_for_accuracy}")
 
     def load_data(self) -> bool:
         """Loads and combines all JSONL result files into a pandas DataFrame."""
