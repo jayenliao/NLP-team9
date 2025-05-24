@@ -4,7 +4,8 @@ import argparse
 import os
 import glob
 import logging
-from typing import Optional, List, Dict, Set, Any
+from typing import Optional, List, Dict, Set, Any, Tuple
+from itertools import product
 from pathlib import Path
 
 # --- Logging Setup (Minimal for now, can be expanded if needed) ---
@@ -37,19 +38,27 @@ class ResultsAnalyzer:
         self,
         input_pattern: str,
         accuracy_metrics: List[str],
+        confidence_metrics: List[str]
     ):
         self.input_pattern: str = input_pattern
         self.df: Optional[pd.DataFrame] = None
         self.accuracy_metrics = accuracy_metrics
+        self.confidence_metrics = confidence_metrics
 
         # Dynamically determine all columns needed for configured accuracy groupings
         self.required_columns_for_accuracy: Set[str] = CORE_REQUIRED_COLUMNS.copy()
-        self.accuracy_groupby_definitions = dict()
-        for metric in self.accuracy_metrics:
-            if metric != 'overall_accuracy':
-                col = metric.split('by_')[-1]
-                self.accuracy_groupby_definitions[metric] = [col]
-                self.required_columns_for_accuracy.update([col])
+        if self.accuracy_metrics:
+            self.accuracy_groupby_definitions = dict()
+            for metric in self.accuracy_metrics:
+                if metric != 'overall_accuracy':
+                    col = metric.split('by_')[-1]
+                    self.accuracy_groupby_definitions[metric] = [col]
+                    self.required_columns_for_accuracy.update([col])
+        if self.confidence_metrics:
+            self.required_columns_for_accuracy.update({
+                "question_id", "option_permutation", "ground_truth_answer"
+            })
+        print(self.required_columns_for_accuracy)
 
     def load_data(self) -> bool:
         """Loads and combines all JSONL result files into a pandas DataFrame."""
@@ -155,28 +164,97 @@ class ResultsAnalyzer:
         # logger.info("Fluctuation analysis placeholder invoked.")
         return None
 
-    def analyze_confidence_vs_bias(self) -> Optional[Dict[str, Any]]:
+    def calculate_confidence(self) -> Optional[Dict[str, Any]]:
         """
         Placeholder for analyzing the relationship between model confidence and order bias.
         This would require a 'model_confidence' column and results from fluctuation/bias analysis.
         """
-        # TODO: Implement confidence vs. bias analysis.
-        # Requires a 'model_confidence' column and fluctuation/bias metrics.
-        # logger.info("Confidence vs. bias analysis placeholder invoked.")
-        return None
+        assert self.df is not None, "DataFrame must be loaded before calculating confidence metrics."
+        assert not self.df.empty, "DataFrame is empty. Cannot perform confidence analysis."
+        assert 'question_id' in self.df.columns, "question_id column is required for confidence analysis."
 
-    def generate_summary_report(self, accuracy_metrics: Dict[str, Any]) -> Dict[str, Any]:
+        candidate_cols = {'subtask', 'model_name', 'input_format', 'language'}
+        cols = list(candidate_cols.intersection(self.df.columns))
+
+        unique_vals = [self.df[col].dropna().unique() for col in cols]
+
+        results = dict()
+
+        for combination in product(*unique_vals):
+            condition = True
+            key = {}
+            for col, val in zip(cols, combination):
+                condition &= (self.df[col] == val)
+                key[col] = val
+            df_group = self.df[condition]
+
+            if df_group.empty:
+                continue
+
+            key_str = str(tuple([v for v in key.values()]))
+            results[key_str] = {"count": len(df_group)}
+            confidence = self.__calculate_confidence(df_group)
+            if "confidence_high" in confidence:
+                confidence_high = confidence["confidence_high"]["confidence_high"]
+                results[key_str]["overall_confidence_high"] = confidence_high.mean()
+                results[key_str]["detailed_confidence_high"] = confidence_high.to_dict()
+            if "confidence_low" in confidence:
+                confidence_low = confidence["confidence_low"]
+                results[key_str]["avg_confidence_low"] = confidence_low.mean().to_dict()
+                results[key_str]["detailed_confidence_low"] = confidence_low.to_dict()
+
+        return results
+
+
+    def __calculate_confidence(self, df:pd.DataFrame) -> Dict[str, Any]:
+        # Get the position of the ground truth answer in the option permutation
+        df = df.copy()
+        df["correct_pos"] = df.apply(
+            lambda r: r["option_permutation"].index(r["ground_truth_answer"]) + 1,
+            axis=1
+        )
+
+        confidence = dict()
+
+        if "confidence_high" in self.confidence_metrics:
+            # Placeholder for high confidence analysis
+            # This would involve grouping by 'question_id', 'option_permutation', etc.
+            # and calculating confidence metrics based on the model's predictions.
+            logger.info("High confidence analysis placeholder invoked.")
+            acc_by_pos = df.groupby(["question_id", "correct_pos"])["is_correct"].mean()
+            acc_by_pos = acc_by_pos.unstack("correct_pos").rename_axis(index=None, columns="correct_pos")
+            acc_by_pos["confidence_high"] = acc_by_pos.std(axis=1)
+            confidence["confidence_high"] = acc_by_pos
+
+        if "confidence_low" in self.confidence_metrics:
+            # Placeholder for low confidence analysis
+            # This would involve similar grouping and calculation as high confidence,
+            # but focusing on cases where the model's confidence is low.
+            logger.info("Low confidence analysis placeholder invoked.")
+            std_by_pos = df.groupby(["question_id", "correct_pos"])["is_correct"].std()
+            std_by_pos = std_by_pos.unstack("correct_pos").rename_axis(index=None, columns="correct_pos")
+            confidence["confidence_low"] = std_by_pos
+
+        return confidence
+
+    def generate_summary_report(
+        self,
+        accuracy_metrics: Optional[Dict[str, Any]],
+        confidence_metrics: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
         """
         Generates a dictionary summarizing all calculated metrics.
         Currently focuses on accuracy; will be expanded.
         """
-        report = {
-            "accuracies": accuracy_metrics,
-            # TODO: Add fluctuation_metrics to the report when implemented
-            # "order_bias_metrics": self.calculate_fluctuation_metrics(),
-            # TODO: Add confidence_analysis_summary to the report when implemented
-            # "confidence_vs_bias_summary": self.analyze_confidence_vs_bias(),
-        }
+        report = {}
+        if self.accuracy_metrics:
+            report["accuracy_metrics"] = accuracy_metrics
+        if self.confidence_metrics:
+            report["confidence_metrics"] = confidence_metrics
+
+        # TODO: Add fluctuation_metrics to the report when implemented
+        # "order_bias_metrics": self.calculate_fluctuation_metrics(),
+
         # Minimal logging of the report structure for now
         logger.info(f"Summary Report Keys: {list(report.keys())}")
         return report
@@ -189,9 +267,8 @@ class ResultsAnalyzer:
             with output_path.open('w', encoding='utf-8') as f:
                 json.dump(report_data, f, indent=4, default=str) # default=str for non-serializable types if any
             logger.info(f"Full analysis report saved to {output_path}")
-        except Exception:
-            logger.debug(f"Error saving report to {output_path}")
-
+        except Exception as e:
+            logger.error(f"Failed to save report to {output_path}: {e}")
 
     def run_analysis(self, output_metrics_file: str) -> None:
         """Main analysis pipeline runner."""
@@ -210,12 +287,12 @@ class ResultsAnalyzer:
             accuracy_summary['overall_accuracy'] = overall_accuracy
         grouped_accuracies = self.calculate_grouped_accuracies(self.accuracy_groupby_definitions)
         accuracy_summary['grouped_accuracies'] = grouped_accuracies
+        confidence = self.calculate_confidence()
 
         # TODO: Invoke and integrate other analysis components when they are implemented
         # E.g., fluctuation_metrics = self.calculate_fluctuation_metrics()
-        # E.g., confidence_summary = self.analyze_confidence_vs_bias()
 
-        final_report = self.generate_summary_report(accuracy_summary)
+        final_report = self.generate_summary_report(accuracy_summary, confidence)
         self.save_report_to_file(final_report, output_metrics_file)
 
         logger.info("Accuracy analysis complete.")
@@ -237,6 +314,13 @@ def main():
         help="List of accuracy metrics to calculate (e.g., 'overall_accuracy', 'by_subtask').")
 
     parser.add_argument(
+        "--confidence_metrics", nargs='+', default=[
+            'confidence_high',
+            'confidence_low'
+        ],
+        help="List of confidence metrics to calculate (e.g., 'confidence_high', 'confidence_low').")
+
+    parser.add_argument(
         "--output_metrics_file",
         default="results_summary/accuracy_metrics.json",
         help="Path to save the summary of accuracy metrics."
@@ -247,7 +331,7 @@ def main():
 
     args = parser.parse_args()
 
-    analyzer = ResultsAnalyzer(args.input_pattern, args.accuracy_metrics)
+    analyzer = ResultsAnalyzer(args.input_pattern, args.accuracy_metrics, args.confidence_metrics)
     analyzer.run_analysis(args.output_metrics_file)
 
 if __name__ == "__main__":
