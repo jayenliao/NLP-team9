@@ -28,10 +28,33 @@
     "subtask": "all",
     "num_questions": "1",
     "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_all_1_4_2",
+    "id": 2
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "default-t17q1p4-gemini",
+    "output_file": "gemini-2.0-flash-lite_default-t17q1p4",
+    "id": 3
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": "1",
+    "permutation_type": "factorial",
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_all_1_24_2",
-    "id": 2
+    "id": 4
   },
   {
     "model_family": "gemini",
@@ -43,30 +66,30 @@
     "delay": "5",
     "exp_name": "default-t17q1p24-gemini",
     "output_file": "gemini-2.0-flash-lite_default-t17q1p24",
-    "id": 3
-  },
-  {
-    "model_family": "gemini",
-    "model_name": "gemini-2.0-flash-lite",
-    "subtask": "all",
-    "num_questions": "1",
-    "permutation_type": "circular",
-    "num_permutations": "1",
-    "delay": "2",
-    "exp_name": "gemini_all_1_1_2",
-    "id": 4
-  },
-  {
-    "model_family": "gemini",
-    "model_name": "gemini-2.0-flash-lite",
-    "subtask": "all",
-    "num_questions": "1",
-    "permutation_type": "circular",
-    "num_permutations": "1",
-    "delay": "5",
-    "exp_name": "default-t17q1p1-gemini",
-    "output_file": "gemini-2.0-flash-lite_default-t17q1p1",
     "id": 5
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": "1",
+    "permutation_type": "circular",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_all_1_4_2",
+    "id": 6
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": "1",
+    "permutation_type": "circular",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "default-t17q1p4-gemini",
+    "output_file": "gemini-2.0-flash-lite_default-t17q1p4",
+    "id": 7
   },
   {
     "model_family": "gemini",
@@ -77,7 +100,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_all_100_1_2",
-    "id": 6
+    "id": 8
   },
   {
     "model_family": "gemini",
@@ -89,7 +112,30 @@
     "delay": "5",
     "exp_name": "default-t17q100p1-gemini",
     "output_file": "gemini-2.0-flash-lite_default-t17q100p1",
-    "id": 7
+    "id": 9
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_all_100_4_2",
+    "id": 10
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "all",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "default-t17q100p4-gemini",
+    "output_file": "gemini-2.0-flash-lite_default-t17q100p4",
+    "id": 11
   },
   {
     "model_family": "gemini",
@@ -100,7 +146,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_all_100_24_2",
-    "id": 8
+    "id": 12
   },
   {
     "model_family": "gemini",
@@ -112,7 +158,7 @@
     "delay": "5",
     "exp_name": "default-t17q100p24-gemini",
     "output_file": "gemini-2.0-flash-lite_default-t17q100p24",
-    "id": 9
+    "id": 13
   },
   {
     "model_family": "gemini",
@@ -120,10 +166,10 @@
     "subtask": "all",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_all_100_1_2",
-    "id": 10
+    "exp_name": "gemini_all_100_4_2",
+    "id": 14
   },
   {
     "model_family": "gemini",
@@ -131,11 +177,11 @@
     "subtask": "all",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "default-t17q100p1-gemini",
-    "output_file": "gemini-2.0-flash-lite_default-t17q100p1",
-    "id": 11
+    "exp_name": "default-t17q100p4-gemini",
+    "output_file": "gemini-2.0-flash-lite_default-t17q100p4",
+    "id": 15
   },
   {
     "model_family": "gemini",
@@ -146,7 +192,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_1_1_2",
-    "id": 12
+    "id": 16
   },
   {
     "model_family": "gemini",
@@ -158,7 +204,30 @@
     "delay": "5",
     "exp_name": "default-t1q1p1-gemini",
     "output_file": "gemini-2.0-flash-lite_default-t1q1p1",
-    "id": 13
+    "id": 17
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_abstract_algebra_1_4_2",
+    "id": 18
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "default-t1q1p4-gemini",
+    "output_file": "gemini-2.0-flash-lite_default-t1q1p4",
+    "id": 19
   },
   {
     "model_family": "gemini",
@@ -169,7 +238,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_1_24_2",
-    "id": 14
+    "id": 20
   },
   {
     "model_family": "gemini",
@@ -181,7 +250,7 @@
     "delay": "5",
     "exp_name": "default-t1q1p24-gemini",
     "output_file": "gemini-2.0-flash-lite_default-t1q1p24",
-    "id": 15
+    "id": 21
   },
   {
     "model_family": "gemini",
@@ -189,10 +258,10 @@
     "subtask": "abstract_algebra",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_abstract_algebra_1_1_2",
-    "id": 16
+    "exp_name": "gemini_abstract_algebra_1_4_2",
+    "id": 22
   },
   {
     "model_family": "gemini",
@@ -200,11 +269,11 @@
     "subtask": "abstract_algebra",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "default-t1q1p1-gemini",
-    "output_file": "gemini-2.0-flash-lite_default-t1q1p1",
-    "id": 17
+    "exp_name": "default-t1q1p4-gemini",
+    "output_file": "gemini-2.0-flash-lite_default-t1q1p4",
+    "id": 23
   },
   {
     "model_family": "gemini",
@@ -215,7 +284,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_100_1_2",
-    "id": 18
+    "id": 24
   },
   {
     "model_family": "gemini",
@@ -227,7 +296,30 @@
     "delay": "5",
     "exp_name": "default-t1q100p1-gemini",
     "output_file": "gemini-2.0-flash-lite_default-t1q100p1",
-    "id": 19
+    "id": 25
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_abstract_algebra_100_4_2",
+    "id": 26
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "abstract_algebra",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "default-t1q100p4-gemini",
+    "output_file": "gemini-2.0-flash-lite_default-t1q100p4",
+    "id": 27
   },
   {
     "model_family": "gemini",
@@ -238,7 +330,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_abstract_algebra_100_24_2",
-    "id": 20
+    "id": 28
   },
   {
     "model_family": "gemini",
@@ -250,7 +342,7 @@
     "delay": "5",
     "exp_name": "default-t1q100p24-gemini",
     "output_file": "gemini-2.0-flash-lite_default-t1q100p24",
-    "id": 21
+    "id": 29
   },
   {
     "model_family": "gemini",
@@ -258,10 +350,10 @@
     "subtask": "abstract_algebra",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_abstract_algebra_100_1_2",
-    "id": 22
+    "exp_name": "gemini_abstract_algebra_100_4_2",
+    "id": 30
   },
   {
     "model_family": "gemini",
@@ -269,11 +361,11 @@
     "subtask": "abstract_algebra",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "default-t1q100p1-gemini",
-    "output_file": "gemini-2.0-flash-lite_default-t1q100p1",
-    "id": 23
+    "exp_name": "default-t1q100p4-gemini",
+    "output_file": "gemini-2.0-flash-lite_default-t1q100p4",
+    "id": 31
   },
   {
     "model_family": "gemini",
@@ -284,7 +376,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_anatomy_1_1_2",
-    "id": 24
+    "id": 32
   },
   {
     "model_family": "gemini",
@@ -295,7 +387,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_anatomy_1_1_5",
-    "id": 25
+    "id": 33
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anatomy",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_anatomy_1_4_2",
+    "id": 34
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anatomy",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_anatomy_1_4_5",
+    "id": 35
   },
   {
     "model_family": "gemini",
@@ -306,7 +420,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_anatomy_1_24_2",
-    "id": 26
+    "id": 36
   },
   {
     "model_family": "gemini",
@@ -317,7 +431,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_anatomy_1_24_5",
-    "id": 27
+    "id": 37
   },
   {
     "model_family": "gemini",
@@ -325,10 +439,10 @@
     "subtask": "anatomy",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_anatomy_1_1_2",
-    "id": 28
+    "exp_name": "gemini_anatomy_1_4_2",
+    "id": 38
   },
   {
     "model_family": "gemini",
@@ -336,10 +450,10 @@
     "subtask": "anatomy",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_anatomy_1_1_5",
-    "id": 29
+    "exp_name": "gemini_anatomy_1_4_5",
+    "id": 39
   },
   {
     "model_family": "gemini",
@@ -350,7 +464,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_anatomy_100_1_2",
-    "id": 30
+    "id": 40
   },
   {
     "model_family": "gemini",
@@ -361,7 +475,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_anatomy_100_1_5",
-    "id": 31
+    "id": 41
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anatomy",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_anatomy_100_4_2",
+    "id": 42
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "anatomy",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_anatomy_100_4_5",
+    "id": 43
   },
   {
     "model_family": "gemini",
@@ -372,7 +508,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_anatomy_100_24_2",
-    "id": 32
+    "id": 44
   },
   {
     "model_family": "gemini",
@@ -383,7 +519,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_anatomy_100_24_5",
-    "id": 33
+    "id": 45
   },
   {
     "model_family": "gemini",
@@ -391,10 +527,10 @@
     "subtask": "anatomy",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_anatomy_100_1_2",
-    "id": 34
+    "exp_name": "gemini_anatomy_100_4_2",
+    "id": 46
   },
   {
     "model_family": "gemini",
@@ -402,10 +538,10 @@
     "subtask": "anatomy",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_anatomy_100_1_5",
-    "id": 35
+    "exp_name": "gemini_anatomy_100_4_5",
+    "id": 47
   },
   {
     "model_family": "gemini",
@@ -416,7 +552,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_astronomy_1_1_2",
-    "id": 36
+    "id": 48
   },
   {
     "model_family": "gemini",
@@ -427,7 +563,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_astronomy_1_1_5",
-    "id": 37
+    "id": 49
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "astronomy",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_astronomy_1_4_2",
+    "id": 50
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "astronomy",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_astronomy_1_4_5",
+    "id": 51
   },
   {
     "model_family": "gemini",
@@ -438,7 +596,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_astronomy_1_24_2",
-    "id": 38
+    "id": 52
   },
   {
     "model_family": "gemini",
@@ -449,7 +607,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_astronomy_1_24_5",
-    "id": 39
+    "id": 53
   },
   {
     "model_family": "gemini",
@@ -457,10 +615,10 @@
     "subtask": "astronomy",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_astronomy_1_1_2",
-    "id": 40
+    "exp_name": "gemini_astronomy_1_4_2",
+    "id": 54
   },
   {
     "model_family": "gemini",
@@ -468,10 +626,10 @@
     "subtask": "astronomy",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_astronomy_1_1_5",
-    "id": 41
+    "exp_name": "gemini_astronomy_1_4_5",
+    "id": 55
   },
   {
     "model_family": "gemini",
@@ -482,7 +640,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_astronomy_100_1_2",
-    "id": 42
+    "id": 56
   },
   {
     "model_family": "gemini",
@@ -493,7 +651,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_astronomy_100_1_5",
-    "id": 43
+    "id": 57
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "astronomy",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_astronomy_100_4_2",
+    "id": 58
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "astronomy",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_astronomy_100_4_5",
+    "id": 59
   },
   {
     "model_family": "gemini",
@@ -504,7 +684,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_astronomy_100_24_2",
-    "id": 44
+    "id": 60
   },
   {
     "model_family": "gemini",
@@ -515,7 +695,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_astronomy_100_24_5",
-    "id": 45
+    "id": 61
   },
   {
     "model_family": "gemini",
@@ -523,10 +703,10 @@
     "subtask": "astronomy",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_astronomy_100_1_2",
-    "id": 46
+    "exp_name": "gemini_astronomy_100_4_2",
+    "id": 62
   },
   {
     "model_family": "gemini",
@@ -534,10 +714,10 @@
     "subtask": "astronomy",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_astronomy_100_1_5",
-    "id": 47
+    "exp_name": "gemini_astronomy_100_4_5",
+    "id": 63
   },
   {
     "model_family": "gemini",
@@ -548,7 +728,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_business_ethics_1_1_2",
-    "id": 48
+    "id": 64
   },
   {
     "model_family": "gemini",
@@ -559,7 +739,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_business_ethics_1_1_5",
-    "id": 49
+    "id": 65
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "business_ethics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_business_ethics_1_4_2",
+    "id": 66
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "business_ethics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_business_ethics_1_4_5",
+    "id": 67
   },
   {
     "model_family": "gemini",
@@ -570,7 +772,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_business_ethics_1_24_2",
-    "id": 50
+    "id": 68
   },
   {
     "model_family": "gemini",
@@ -581,7 +783,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_business_ethics_1_24_5",
-    "id": 51
+    "id": 69
   },
   {
     "model_family": "gemini",
@@ -589,10 +791,10 @@
     "subtask": "business_ethics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_business_ethics_1_1_2",
-    "id": 52
+    "exp_name": "gemini_business_ethics_1_4_2",
+    "id": 70
   },
   {
     "model_family": "gemini",
@@ -600,10 +802,10 @@
     "subtask": "business_ethics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_business_ethics_1_1_5",
-    "id": 53
+    "exp_name": "gemini_business_ethics_1_4_5",
+    "id": 71
   },
   {
     "model_family": "gemini",
@@ -614,7 +816,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_business_ethics_100_1_2",
-    "id": 54
+    "id": 72
   },
   {
     "model_family": "gemini",
@@ -625,7 +827,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_business_ethics_100_1_5",
-    "id": 55
+    "id": 73
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "business_ethics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_business_ethics_100_4_2",
+    "id": 74
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "business_ethics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_business_ethics_100_4_5",
+    "id": 75
   },
   {
     "model_family": "gemini",
@@ -636,7 +860,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_business_ethics_100_24_2",
-    "id": 56
+    "id": 76
   },
   {
     "model_family": "gemini",
@@ -647,7 +871,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_business_ethics_100_24_5",
-    "id": 57
+    "id": 77
   },
   {
     "model_family": "gemini",
@@ -655,10 +879,10 @@
     "subtask": "business_ethics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_business_ethics_100_1_2",
-    "id": 58
+    "exp_name": "gemini_business_ethics_100_4_2",
+    "id": 78
   },
   {
     "model_family": "gemini",
@@ -666,10 +890,10 @@
     "subtask": "business_ethics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_business_ethics_100_1_5",
-    "id": 59
+    "exp_name": "gemini_business_ethics_100_4_5",
+    "id": 79
   },
   {
     "model_family": "gemini",
@@ -680,7 +904,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_biology_1_1_2",
-    "id": 60
+    "id": 80
   },
   {
     "model_family": "gemini",
@@ -691,7 +915,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_biology_1_1_5",
-    "id": 61
+    "id": 81
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_biology",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_college_biology_1_4_2",
+    "id": 82
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_biology",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_college_biology_1_4_5",
+    "id": 83
   },
   {
     "model_family": "gemini",
@@ -702,7 +948,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_biology_1_24_2",
-    "id": 62
+    "id": 84
   },
   {
     "model_family": "gemini",
@@ -713,7 +959,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_biology_1_24_5",
-    "id": 63
+    "id": 85
   },
   {
     "model_family": "gemini",
@@ -721,10 +967,10 @@
     "subtask": "college_biology",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_college_biology_1_1_2",
-    "id": 64
+    "exp_name": "gemini_college_biology_1_4_2",
+    "id": 86
   },
   {
     "model_family": "gemini",
@@ -732,10 +978,10 @@
     "subtask": "college_biology",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_college_biology_1_1_5",
-    "id": 65
+    "exp_name": "gemini_college_biology_1_4_5",
+    "id": 87
   },
   {
     "model_family": "gemini",
@@ -746,7 +992,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_biology_100_1_2",
-    "id": 66
+    "id": 88
   },
   {
     "model_family": "gemini",
@@ -757,7 +1003,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_biology_100_1_5",
-    "id": 67
+    "id": 89
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_biology",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_college_biology_100_4_2",
+    "id": 90
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_biology",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_college_biology_100_4_5",
+    "id": 91
   },
   {
     "model_family": "gemini",
@@ -768,7 +1036,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_biology_100_24_2",
-    "id": 68
+    "id": 92
   },
   {
     "model_family": "gemini",
@@ -779,7 +1047,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_biology_100_24_5",
-    "id": 69
+    "id": 93
   },
   {
     "model_family": "gemini",
@@ -787,10 +1055,10 @@
     "subtask": "college_biology",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_college_biology_100_1_2",
-    "id": 70
+    "exp_name": "gemini_college_biology_100_4_2",
+    "id": 94
   },
   {
     "model_family": "gemini",
@@ -798,10 +1066,10 @@
     "subtask": "college_biology",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_college_biology_100_1_5",
-    "id": 71
+    "exp_name": "gemini_college_biology_100_4_5",
+    "id": 95
   },
   {
     "model_family": "gemini",
@@ -812,7 +1080,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_1_1_2",
-    "id": 72
+    "id": 96
   },
   {
     "model_family": "gemini",
@@ -823,7 +1091,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_1_1_5",
-    "id": 73
+    "id": 97
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_chemistry",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_college_chemistry_1_4_2",
+    "id": 98
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_chemistry",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_college_chemistry_1_4_5",
+    "id": 99
   },
   {
     "model_family": "gemini",
@@ -834,7 +1124,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_1_24_2",
-    "id": 74
+    "id": 100
   },
   {
     "model_family": "gemini",
@@ -845,7 +1135,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_1_24_5",
-    "id": 75
+    "id": 101
   },
   {
     "model_family": "gemini",
@@ -853,10 +1143,10 @@
     "subtask": "college_chemistry",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_college_chemistry_1_1_2",
-    "id": 76
+    "exp_name": "gemini_college_chemistry_1_4_2",
+    "id": 102
   },
   {
     "model_family": "gemini",
@@ -864,10 +1154,10 @@
     "subtask": "college_chemistry",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_college_chemistry_1_1_5",
-    "id": 77
+    "exp_name": "gemini_college_chemistry_1_4_5",
+    "id": 103
   },
   {
     "model_family": "gemini",
@@ -878,7 +1168,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_100_1_2",
-    "id": 78
+    "id": 104
   },
   {
     "model_family": "gemini",
@@ -889,7 +1179,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_100_1_5",
-    "id": 79
+    "id": 105
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_chemistry",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_college_chemistry_100_4_2",
+    "id": 106
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_chemistry",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_college_chemistry_100_4_5",
+    "id": 107
   },
   {
     "model_family": "gemini",
@@ -900,7 +1212,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_chemistry_100_24_2",
-    "id": 80
+    "id": 108
   },
   {
     "model_family": "gemini",
@@ -911,7 +1223,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_chemistry_100_24_5",
-    "id": 81
+    "id": 109
   },
   {
     "model_family": "gemini",
@@ -919,10 +1231,10 @@
     "subtask": "college_chemistry",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_college_chemistry_100_1_2",
-    "id": 82
+    "exp_name": "gemini_college_chemistry_100_4_2",
+    "id": 110
   },
   {
     "model_family": "gemini",
@@ -930,10 +1242,10 @@
     "subtask": "college_chemistry",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_college_chemistry_100_1_5",
-    "id": 83
+    "exp_name": "gemini_college_chemistry_100_4_5",
+    "id": 111
   },
   {
     "model_family": "gemini",
@@ -944,7 +1256,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_1_1_2",
-    "id": 84
+    "id": 112
   },
   {
     "model_family": "gemini",
@@ -955,7 +1267,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_1_1_5",
-    "id": 85
+    "id": 113
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_computer_science",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_college_computer_science_1_4_2",
+    "id": 114
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_computer_science",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_college_computer_science_1_4_5",
+    "id": 115
   },
   {
     "model_family": "gemini",
@@ -966,7 +1300,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_1_24_2",
-    "id": 86
+    "id": 116
   },
   {
     "model_family": "gemini",
@@ -977,7 +1311,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_1_24_5",
-    "id": 87
+    "id": 117
   },
   {
     "model_family": "gemini",
@@ -985,10 +1319,10 @@
     "subtask": "college_computer_science",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_college_computer_science_1_1_2",
-    "id": 88
+    "exp_name": "gemini_college_computer_science_1_4_2",
+    "id": 118
   },
   {
     "model_family": "gemini",
@@ -996,10 +1330,10 @@
     "subtask": "college_computer_science",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_college_computer_science_1_1_5",
-    "id": 89
+    "exp_name": "gemini_college_computer_science_1_4_5",
+    "id": 119
   },
   {
     "model_family": "gemini",
@@ -1010,7 +1344,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_100_1_2",
-    "id": 90
+    "id": 120
   },
   {
     "model_family": "gemini",
@@ -1021,7 +1355,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_100_1_5",
-    "id": 91
+    "id": 121
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_computer_science",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_college_computer_science_100_4_2",
+    "id": 122
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "college_computer_science",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_college_computer_science_100_4_5",
+    "id": 123
   },
   {
     "model_family": "gemini",
@@ -1032,7 +1388,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_college_computer_science_100_24_2",
-    "id": 92
+    "id": 124
   },
   {
     "model_family": "gemini",
@@ -1043,7 +1399,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_college_computer_science_100_24_5",
-    "id": 93
+    "id": 125
   },
   {
     "model_family": "gemini",
@@ -1051,10 +1407,10 @@
     "subtask": "college_computer_science",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_college_computer_science_100_1_2",
-    "id": 94
+    "exp_name": "gemini_college_computer_science_100_4_2",
+    "id": 126
   },
   {
     "model_family": "gemini",
@@ -1062,10 +1418,10 @@
     "subtask": "college_computer_science",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_college_computer_science_100_1_5",
-    "id": 95
+    "exp_name": "gemini_college_computer_science_100_4_5",
+    "id": 127
   },
   {
     "model_family": "gemini",
@@ -1076,7 +1432,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_econometrics_1_1_2",
-    "id": 96
+    "id": 128
   },
   {
     "model_family": "gemini",
@@ -1087,7 +1443,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_econometrics_1_1_5",
-    "id": 97
+    "id": 129
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "econometrics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_econometrics_1_4_2",
+    "id": 130
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "econometrics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_econometrics_1_4_5",
+    "id": 131
   },
   {
     "model_family": "gemini",
@@ -1098,7 +1476,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_econometrics_1_24_2",
-    "id": 98
+    "id": 132
   },
   {
     "model_family": "gemini",
@@ -1109,7 +1487,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_econometrics_1_24_5",
-    "id": 99
+    "id": 133
   },
   {
     "model_family": "gemini",
@@ -1117,10 +1495,10 @@
     "subtask": "econometrics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_econometrics_1_1_2",
-    "id": 100
+    "exp_name": "gemini_econometrics_1_4_2",
+    "id": 134
   },
   {
     "model_family": "gemini",
@@ -1128,10 +1506,10 @@
     "subtask": "econometrics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_econometrics_1_1_5",
-    "id": 101
+    "exp_name": "gemini_econometrics_1_4_5",
+    "id": 135
   },
   {
     "model_family": "gemini",
@@ -1142,7 +1520,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_econometrics_100_1_2",
-    "id": 102
+    "id": 136
   },
   {
     "model_family": "gemini",
@@ -1153,7 +1531,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_econometrics_100_1_5",
-    "id": 103
+    "id": 137
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "econometrics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_econometrics_100_4_2",
+    "id": 138
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "econometrics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_econometrics_100_4_5",
+    "id": 139
   },
   {
     "model_family": "gemini",
@@ -1164,7 +1564,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_econometrics_100_24_2",
-    "id": 104
+    "id": 140
   },
   {
     "model_family": "gemini",
@@ -1175,7 +1575,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_econometrics_100_24_5",
-    "id": 105
+    "id": 141
   },
   {
     "model_family": "gemini",
@@ -1183,10 +1583,10 @@
     "subtask": "econometrics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_econometrics_100_1_2",
-    "id": 106
+    "exp_name": "gemini_econometrics_100_4_2",
+    "id": 142
   },
   {
     "model_family": "gemini",
@@ -1194,10 +1594,10 @@
     "subtask": "econometrics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_econometrics_100_1_5",
-    "id": 107
+    "exp_name": "gemini_econometrics_100_4_5",
+    "id": 143
   },
   {
     "model_family": "gemini",
@@ -1208,7 +1608,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_1_1_2",
-    "id": 108
+    "id": 144
   },
   {
     "model_family": "gemini",
@@ -1219,7 +1619,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_1_1_5",
-    "id": 109
+    "id": 145
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "electrical_engineering",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_electrical_engineering_1_4_2",
+    "id": 146
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "electrical_engineering",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_electrical_engineering_1_4_5",
+    "id": 147
   },
   {
     "model_family": "gemini",
@@ -1230,7 +1652,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_1_24_2",
-    "id": 110
+    "id": 148
   },
   {
     "model_family": "gemini",
@@ -1241,7 +1663,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_1_24_5",
-    "id": 111
+    "id": 149
   },
   {
     "model_family": "gemini",
@@ -1249,10 +1671,10 @@
     "subtask": "electrical_engineering",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_electrical_engineering_1_1_2",
-    "id": 112
+    "exp_name": "gemini_electrical_engineering_1_4_2",
+    "id": 150
   },
   {
     "model_family": "gemini",
@@ -1260,10 +1682,10 @@
     "subtask": "electrical_engineering",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_electrical_engineering_1_1_5",
-    "id": 113
+    "exp_name": "gemini_electrical_engineering_1_4_5",
+    "id": 151
   },
   {
     "model_family": "gemini",
@@ -1274,7 +1696,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_100_1_2",
-    "id": 114
+    "id": 152
   },
   {
     "model_family": "gemini",
@@ -1285,7 +1707,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_100_1_5",
-    "id": 115
+    "id": 153
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "electrical_engineering",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_electrical_engineering_100_4_2",
+    "id": 154
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "electrical_engineering",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_electrical_engineering_100_4_5",
+    "id": 155
   },
   {
     "model_family": "gemini",
@@ -1296,7 +1740,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_electrical_engineering_100_24_2",
-    "id": 116
+    "id": 156
   },
   {
     "model_family": "gemini",
@@ -1307,7 +1751,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_electrical_engineering_100_24_5",
-    "id": 117
+    "id": 157
   },
   {
     "model_family": "gemini",
@@ -1315,10 +1759,10 @@
     "subtask": "electrical_engineering",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_electrical_engineering_100_1_2",
-    "id": 118
+    "exp_name": "gemini_electrical_engineering_100_4_2",
+    "id": 158
   },
   {
     "model_family": "gemini",
@@ -1326,10 +1770,10 @@
     "subtask": "electrical_engineering",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_electrical_engineering_100_1_5",
-    "id": 119
+    "exp_name": "gemini_electrical_engineering_100_4_5",
+    "id": 159
   },
   {
     "model_family": "gemini",
@@ -1340,7 +1784,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_formal_logic_1_1_2",
-    "id": 120
+    "id": 160
   },
   {
     "model_family": "gemini",
@@ -1351,7 +1795,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_formal_logic_1_1_5",
-    "id": 121
+    "id": 161
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "formal_logic",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_formal_logic_1_4_2",
+    "id": 162
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "formal_logic",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_formal_logic_1_4_5",
+    "id": 163
   },
   {
     "model_family": "gemini",
@@ -1362,7 +1828,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_formal_logic_1_24_2",
-    "id": 122
+    "id": 164
   },
   {
     "model_family": "gemini",
@@ -1373,7 +1839,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_formal_logic_1_24_5",
-    "id": 123
+    "id": 165
   },
   {
     "model_family": "gemini",
@@ -1381,10 +1847,10 @@
     "subtask": "formal_logic",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_formal_logic_1_1_2",
-    "id": 124
+    "exp_name": "gemini_formal_logic_1_4_2",
+    "id": 166
   },
   {
     "model_family": "gemini",
@@ -1392,10 +1858,10 @@
     "subtask": "formal_logic",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_formal_logic_1_1_5",
-    "id": 125
+    "exp_name": "gemini_formal_logic_1_4_5",
+    "id": 167
   },
   {
     "model_family": "gemini",
@@ -1406,7 +1872,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_formal_logic_100_1_2",
-    "id": 126
+    "id": 168
   },
   {
     "model_family": "gemini",
@@ -1417,7 +1883,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_formal_logic_100_1_5",
-    "id": 127
+    "id": 169
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "formal_logic",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_formal_logic_100_4_2",
+    "id": 170
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "formal_logic",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_formal_logic_100_4_5",
+    "id": 171
   },
   {
     "model_family": "gemini",
@@ -1428,7 +1916,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_formal_logic_100_24_2",
-    "id": 128
+    "id": 172
   },
   {
     "model_family": "gemini",
@@ -1439,7 +1927,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_formal_logic_100_24_5",
-    "id": 129
+    "id": 173
   },
   {
     "model_family": "gemini",
@@ -1447,10 +1935,10 @@
     "subtask": "formal_logic",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_formal_logic_100_1_2",
-    "id": 130
+    "exp_name": "gemini_formal_logic_100_4_2",
+    "id": 174
   },
   {
     "model_family": "gemini",
@@ -1458,10 +1946,10 @@
     "subtask": "formal_logic",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_formal_logic_100_1_5",
-    "id": 131
+    "exp_name": "gemini_formal_logic_100_4_5",
+    "id": 175
   },
   {
     "model_family": "gemini",
@@ -1472,7 +1960,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_global_facts_1_1_2",
-    "id": 132
+    "id": 176
   },
   {
     "model_family": "gemini",
@@ -1483,7 +1971,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_global_facts_1_1_5",
-    "id": 133
+    "id": 177
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "global_facts",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_global_facts_1_4_2",
+    "id": 178
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "global_facts",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_global_facts_1_4_5",
+    "id": 179
   },
   {
     "model_family": "gemini",
@@ -1494,7 +2004,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_global_facts_1_24_2",
-    "id": 134
+    "id": 180
   },
   {
     "model_family": "gemini",
@@ -1505,7 +2015,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_global_facts_1_24_5",
-    "id": 135
+    "id": 181
   },
   {
     "model_family": "gemini",
@@ -1513,10 +2023,10 @@
     "subtask": "global_facts",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_global_facts_1_1_2",
-    "id": 136
+    "exp_name": "gemini_global_facts_1_4_2",
+    "id": 182
   },
   {
     "model_family": "gemini",
@@ -1524,10 +2034,10 @@
     "subtask": "global_facts",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_global_facts_1_1_5",
-    "id": 137
+    "exp_name": "gemini_global_facts_1_4_5",
+    "id": 183
   },
   {
     "model_family": "gemini",
@@ -1538,7 +2048,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_global_facts_100_1_2",
-    "id": 138
+    "id": 184
   },
   {
     "model_family": "gemini",
@@ -1549,7 +2059,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_global_facts_100_1_5",
-    "id": 139
+    "id": 185
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "global_facts",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_global_facts_100_4_2",
+    "id": 186
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "global_facts",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_global_facts_100_4_5",
+    "id": 187
   },
   {
     "model_family": "gemini",
@@ -1560,7 +2092,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_global_facts_100_24_2",
-    "id": 140
+    "id": 188
   },
   {
     "model_family": "gemini",
@@ -1571,7 +2103,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_global_facts_100_24_5",
-    "id": 141
+    "id": 189
   },
   {
     "model_family": "gemini",
@@ -1579,10 +2111,10 @@
     "subtask": "global_facts",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_global_facts_100_1_2",
-    "id": 142
+    "exp_name": "gemini_global_facts_100_4_2",
+    "id": 190
   },
   {
     "model_family": "gemini",
@@ -1590,10 +2122,10 @@
     "subtask": "global_facts",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_global_facts_100_1_5",
-    "id": 143
+    "exp_name": "gemini_global_facts_100_4_5",
+    "id": 191
   },
   {
     "model_family": "gemini",
@@ -1604,7 +2136,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_1_1_2",
-    "id": 144
+    "id": 192
   },
   {
     "model_family": "gemini",
@@ -1615,7 +2147,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_1_1_5",
-    "id": 145
+    "id": 193
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_european_history",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_high_school_european_history_1_4_2",
+    "id": 194
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_european_history",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_high_school_european_history_1_4_5",
+    "id": 195
   },
   {
     "model_family": "gemini",
@@ -1626,7 +2180,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_1_24_2",
-    "id": 146
+    "id": 196
   },
   {
     "model_family": "gemini",
@@ -1637,7 +2191,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_1_24_5",
-    "id": 147
+    "id": 197
   },
   {
     "model_family": "gemini",
@@ -1645,10 +2199,10 @@
     "subtask": "high_school_european_history",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_high_school_european_history_1_1_2",
-    "id": 148
+    "exp_name": "gemini_high_school_european_history_1_4_2",
+    "id": 198
   },
   {
     "model_family": "gemini",
@@ -1656,10 +2210,10 @@
     "subtask": "high_school_european_history",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_high_school_european_history_1_1_5",
-    "id": 149
+    "exp_name": "gemini_high_school_european_history_1_4_5",
+    "id": 199
   },
   {
     "model_family": "gemini",
@@ -1670,7 +2224,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_100_1_2",
-    "id": 150
+    "id": 200
   },
   {
     "model_family": "gemini",
@@ -1681,7 +2235,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_100_1_5",
-    "id": 151
+    "id": 201
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_european_history",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_high_school_european_history_100_4_2",
+    "id": 202
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_european_history",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_high_school_european_history_100_4_5",
+    "id": 203
   },
   {
     "model_family": "gemini",
@@ -1692,7 +2268,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_european_history_100_24_2",
-    "id": 152
+    "id": 204
   },
   {
     "model_family": "gemini",
@@ -1703,7 +2279,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_european_history_100_24_5",
-    "id": 153
+    "id": 205
   },
   {
     "model_family": "gemini",
@@ -1711,10 +2287,10 @@
     "subtask": "high_school_european_history",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_high_school_european_history_100_1_2",
-    "id": 154
+    "exp_name": "gemini_high_school_european_history_100_4_2",
+    "id": 206
   },
   {
     "model_family": "gemini",
@@ -1722,10 +2298,10 @@
     "subtask": "high_school_european_history",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_high_school_european_history_100_1_5",
-    "id": 155
+    "exp_name": "gemini_high_school_european_history_100_4_5",
+    "id": 207
   },
   {
     "model_family": "gemini",
@@ -1736,7 +2312,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_1_1_2",
-    "id": 156
+    "id": 208
   },
   {
     "model_family": "gemini",
@@ -1747,7 +2323,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_1_1_5",
-    "id": 157
+    "id": 209
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_geography",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_high_school_geography_1_4_2",
+    "id": 210
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_geography",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_high_school_geography_1_4_5",
+    "id": 211
   },
   {
     "model_family": "gemini",
@@ -1758,7 +2356,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_1_24_2",
-    "id": 158
+    "id": 212
   },
   {
     "model_family": "gemini",
@@ -1769,7 +2367,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_1_24_5",
-    "id": 159
+    "id": 213
   },
   {
     "model_family": "gemini",
@@ -1777,10 +2375,10 @@
     "subtask": "high_school_geography",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_high_school_geography_1_1_2",
-    "id": 160
+    "exp_name": "gemini_high_school_geography_1_4_2",
+    "id": 214
   },
   {
     "model_family": "gemini",
@@ -1788,10 +2386,10 @@
     "subtask": "high_school_geography",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_high_school_geography_1_1_5",
-    "id": 161
+    "exp_name": "gemini_high_school_geography_1_4_5",
+    "id": 215
   },
   {
     "model_family": "gemini",
@@ -1802,7 +2400,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_100_1_2",
-    "id": 162
+    "id": 216
   },
   {
     "model_family": "gemini",
@@ -1813,7 +2411,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_100_1_5",
-    "id": 163
+    "id": 217
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_geography",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_high_school_geography_100_4_2",
+    "id": 218
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_geography",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_high_school_geography_100_4_5",
+    "id": 219
   },
   {
     "model_family": "gemini",
@@ -1824,7 +2444,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_geography_100_24_2",
-    "id": 164
+    "id": 220
   },
   {
     "model_family": "gemini",
@@ -1835,7 +2455,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_geography_100_24_5",
-    "id": 165
+    "id": 221
   },
   {
     "model_family": "gemini",
@@ -1843,10 +2463,10 @@
     "subtask": "high_school_geography",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_high_school_geography_100_1_2",
-    "id": 166
+    "exp_name": "gemini_high_school_geography_100_4_2",
+    "id": 222
   },
   {
     "model_family": "gemini",
@@ -1854,10 +2474,10 @@
     "subtask": "high_school_geography",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_high_school_geography_100_1_5",
-    "id": 167
+    "exp_name": "gemini_high_school_geography_100_4_5",
+    "id": 223
   },
   {
     "model_family": "gemini",
@@ -1868,7 +2488,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_1_1_2",
-    "id": 168
+    "id": 224
   },
   {
     "model_family": "gemini",
@@ -1879,7 +2499,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_1_1_5",
-    "id": 169
+    "id": 225
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_government_and_politics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_high_school_government_and_politics_1_4_2",
+    "id": 226
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_government_and_politics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_high_school_government_and_politics_1_4_5",
+    "id": 227
   },
   {
     "model_family": "gemini",
@@ -1890,7 +2532,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_1_24_2",
-    "id": 170
+    "id": 228
   },
   {
     "model_family": "gemini",
@@ -1901,7 +2543,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_1_24_5",
-    "id": 171
+    "id": 229
   },
   {
     "model_family": "gemini",
@@ -1909,10 +2551,10 @@
     "subtask": "high_school_government_and_politics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_high_school_government_and_politics_1_1_2",
-    "id": 172
+    "exp_name": "gemini_high_school_government_and_politics_1_4_2",
+    "id": 230
   },
   {
     "model_family": "gemini",
@@ -1920,10 +2562,10 @@
     "subtask": "high_school_government_and_politics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_high_school_government_and_politics_1_1_5",
-    "id": 173
+    "exp_name": "gemini_high_school_government_and_politics_1_4_5",
+    "id": 231
   },
   {
     "model_family": "gemini",
@@ -1934,7 +2576,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_100_1_2",
-    "id": 174
+    "id": 232
   },
   {
     "model_family": "gemini",
@@ -1945,7 +2587,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_100_1_5",
-    "id": 175
+    "id": 233
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_government_and_politics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_high_school_government_and_politics_100_4_2",
+    "id": 234
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_government_and_politics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_high_school_government_and_politics_100_4_5",
+    "id": 235
   },
   {
     "model_family": "gemini",
@@ -1956,7 +2620,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_government_and_politics_100_24_2",
-    "id": 176
+    "id": 236
   },
   {
     "model_family": "gemini",
@@ -1967,7 +2631,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_government_and_politics_100_24_5",
-    "id": 177
+    "id": 237
   },
   {
     "model_family": "gemini",
@@ -1975,10 +2639,10 @@
     "subtask": "high_school_government_and_politics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_high_school_government_and_politics_100_1_2",
-    "id": 178
+    "exp_name": "gemini_high_school_government_and_politics_100_4_2",
+    "id": 238
   },
   {
     "model_family": "gemini",
@@ -1986,10 +2650,10 @@
     "subtask": "high_school_government_and_politics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_high_school_government_and_politics_100_1_5",
-    "id": 179
+    "exp_name": "gemini_high_school_government_and_politics_100_4_5",
+    "id": 239
   },
   {
     "model_family": "gemini",
@@ -2000,7 +2664,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_1_1_2",
-    "id": 180
+    "id": 240
   },
   {
     "model_family": "gemini",
@@ -2011,7 +2675,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_1_1_5",
-    "id": 181
+    "id": 241
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_psychology",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_high_school_psychology_1_4_2",
+    "id": 242
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_psychology",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_high_school_psychology_1_4_5",
+    "id": 243
   },
   {
     "model_family": "gemini",
@@ -2022,7 +2708,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_1_24_2",
-    "id": 182
+    "id": 244
   },
   {
     "model_family": "gemini",
@@ -2033,7 +2719,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_1_24_5",
-    "id": 183
+    "id": 245
   },
   {
     "model_family": "gemini",
@@ -2041,10 +2727,10 @@
     "subtask": "high_school_psychology",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_high_school_psychology_1_1_2",
-    "id": 184
+    "exp_name": "gemini_high_school_psychology_1_4_2",
+    "id": 246
   },
   {
     "model_family": "gemini",
@@ -2052,10 +2738,10 @@
     "subtask": "high_school_psychology",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_high_school_psychology_1_1_5",
-    "id": 185
+    "exp_name": "gemini_high_school_psychology_1_4_5",
+    "id": 247
   },
   {
     "model_family": "gemini",
@@ -2066,7 +2752,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_100_1_2",
-    "id": 186
+    "id": 248
   },
   {
     "model_family": "gemini",
@@ -2077,7 +2763,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_100_1_5",
-    "id": 187
+    "id": 249
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_psychology",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_high_school_psychology_100_4_2",
+    "id": 250
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "high_school_psychology",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_high_school_psychology_100_4_5",
+    "id": 251
   },
   {
     "model_family": "gemini",
@@ -2088,7 +2796,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_high_school_psychology_100_24_2",
-    "id": 188
+    "id": 252
   },
   {
     "model_family": "gemini",
@@ -2099,7 +2807,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_high_school_psychology_100_24_5",
-    "id": 189
+    "id": 253
   },
   {
     "model_family": "gemini",
@@ -2107,10 +2815,10 @@
     "subtask": "high_school_psychology",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_high_school_psychology_100_1_2",
-    "id": 190
+    "exp_name": "gemini_high_school_psychology_100_4_2",
+    "id": 254
   },
   {
     "model_family": "gemini",
@@ -2118,10 +2826,10 @@
     "subtask": "high_school_psychology",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_high_school_psychology_100_1_5",
-    "id": 191
+    "exp_name": "gemini_high_school_psychology_100_4_5",
+    "id": 255
   },
   {
     "model_family": "gemini",
@@ -2132,7 +2840,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_1_1_2",
-    "id": 192
+    "id": 256
   },
   {
     "model_family": "gemini",
@@ -2143,7 +2851,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_1_1_5",
-    "id": 193
+    "id": 257
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "human_sexuality",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_human_sexuality_1_4_2",
+    "id": 258
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "human_sexuality",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_human_sexuality_1_4_5",
+    "id": 259
   },
   {
     "model_family": "gemini",
@@ -2154,7 +2884,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_1_24_2",
-    "id": 194
+    "id": 260
   },
   {
     "model_family": "gemini",
@@ -2165,7 +2895,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_1_24_5",
-    "id": 195
+    "id": 261
   },
   {
     "model_family": "gemini",
@@ -2173,10 +2903,10 @@
     "subtask": "human_sexuality",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_human_sexuality_1_1_2",
-    "id": 196
+    "exp_name": "gemini_human_sexuality_1_4_2",
+    "id": 262
   },
   {
     "model_family": "gemini",
@@ -2184,10 +2914,10 @@
     "subtask": "human_sexuality",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_human_sexuality_1_1_5",
-    "id": 197
+    "exp_name": "gemini_human_sexuality_1_4_5",
+    "id": 263
   },
   {
     "model_family": "gemini",
@@ -2198,7 +2928,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_100_1_2",
-    "id": 198
+    "id": 264
   },
   {
     "model_family": "gemini",
@@ -2209,7 +2939,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_100_1_5",
-    "id": 199
+    "id": 265
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "human_sexuality",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_human_sexuality_100_4_2",
+    "id": 266
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "human_sexuality",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_human_sexuality_100_4_5",
+    "id": 267
   },
   {
     "model_family": "gemini",
@@ -2220,7 +2972,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_human_sexuality_100_24_2",
-    "id": 200
+    "id": 268
   },
   {
     "model_family": "gemini",
@@ -2231,7 +2983,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_human_sexuality_100_24_5",
-    "id": 201
+    "id": 269
   },
   {
     "model_family": "gemini",
@@ -2239,10 +2991,10 @@
     "subtask": "human_sexuality",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_human_sexuality_100_1_2",
-    "id": 202
+    "exp_name": "gemini_human_sexuality_100_4_2",
+    "id": 270
   },
   {
     "model_family": "gemini",
@@ -2250,10 +3002,10 @@
     "subtask": "human_sexuality",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_human_sexuality_100_1_5",
-    "id": 203
+    "exp_name": "gemini_human_sexuality_100_4_5",
+    "id": 271
   },
   {
     "model_family": "gemini",
@@ -2264,7 +3016,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_international_law_1_1_2",
-    "id": 204
+    "id": 272
   },
   {
     "model_family": "gemini",
@@ -2275,7 +3027,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_international_law_1_1_5",
-    "id": 205
+    "id": 273
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "international_law",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_international_law_1_4_2",
+    "id": 274
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "international_law",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_international_law_1_4_5",
+    "id": 275
   },
   {
     "model_family": "gemini",
@@ -2286,7 +3060,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_international_law_1_24_2",
-    "id": 206
+    "id": 276
   },
   {
     "model_family": "gemini",
@@ -2297,7 +3071,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_international_law_1_24_5",
-    "id": 207
+    "id": 277
   },
   {
     "model_family": "gemini",
@@ -2305,10 +3079,10 @@
     "subtask": "international_law",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_international_law_1_1_2",
-    "id": 208
+    "exp_name": "gemini_international_law_1_4_2",
+    "id": 278
   },
   {
     "model_family": "gemini",
@@ -2316,10 +3090,10 @@
     "subtask": "international_law",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_international_law_1_1_5",
-    "id": 209
+    "exp_name": "gemini_international_law_1_4_5",
+    "id": 279
   },
   {
     "model_family": "gemini",
@@ -2330,7 +3104,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "gemini_international_law_100_1_2",
-    "id": 210
+    "id": 280
   },
   {
     "model_family": "gemini",
@@ -2341,7 +3115,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "gemini_international_law_100_1_5",
-    "id": 211
+    "id": 281
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "international_law",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "gemini_international_law_100_4_2",
+    "id": 282
+  },
+  {
+    "model_family": "gemini",
+    "model_name": "gemini-2.0-flash-lite",
+    "subtask": "international_law",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "gemini_international_law_100_4_5",
+    "id": 283
   },
   {
     "model_family": "gemini",
@@ -2352,7 +3148,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "gemini_international_law_100_24_2",
-    "id": 212
+    "id": 284
   },
   {
     "model_family": "gemini",
@@ -2363,7 +3159,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "gemini_international_law_100_24_5",
-    "id": 213
+    "id": 285
   },
   {
     "model_family": "gemini",
@@ -2371,10 +3167,10 @@
     "subtask": "international_law",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "gemini_international_law_100_1_2",
-    "id": 214
+    "exp_name": "gemini_international_law_100_4_2",
+    "id": 286
   },
   {
     "model_family": "gemini",
@@ -2382,10 +3178,10 @@
     "subtask": "international_law",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "gemini_international_law_100_1_5",
-    "id": 215
+    "exp_name": "gemini_international_law_100_4_5",
+    "id": 287
   },
   {
     "model_family": "mistral",
@@ -2396,7 +3192,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_all_1_1_2",
-    "id": 216
+    "id": 288
   },
   {
     "model_family": "mistral",
@@ -2408,7 +3204,30 @@
     "delay": "5",
     "exp_name": "default-t17q1p1-mistral",
     "output_file": "mistral-small-latest_default-t17q1p1",
-    "id": 217
+    "id": 289
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_all_1_4_2",
+    "id": 290
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "default-t17q1p4-mistral",
+    "output_file": "mistral-small-latest_default-t17q1p4",
+    "id": 291
   },
   {
     "model_family": "mistral",
@@ -2419,7 +3238,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_all_1_24_2",
-    "id": 218
+    "id": 292
   },
   {
     "model_family": "mistral",
@@ -2431,7 +3250,7 @@
     "delay": "5",
     "exp_name": "default-t17q1p24-mistral",
     "output_file": "mistral-small-latest_default-t17q1p24",
-    "id": 219
+    "id": 293
   },
   {
     "model_family": "mistral",
@@ -2439,10 +3258,10 @@
     "subtask": "all",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_all_1_1_2",
-    "id": 220
+    "exp_name": "mistral_all_1_4_2",
+    "id": 294
   },
   {
     "model_family": "mistral",
@@ -2450,11 +3269,11 @@
     "subtask": "all",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "default-t17q1p1-mistral",
-    "output_file": "mistral-small-latest_default-t17q1p1",
-    "id": 221
+    "exp_name": "default-t17q1p4-mistral",
+    "output_file": "mistral-small-latest_default-t17q1p4",
+    "id": 295
   },
   {
     "model_family": "mistral",
@@ -2465,7 +3284,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_all_100_1_2",
-    "id": 222
+    "id": 296
   },
   {
     "model_family": "mistral",
@@ -2477,7 +3296,30 @@
     "delay": "5",
     "exp_name": "default-t17q100p1-mistral",
     "output_file": "mistral-small-latest_default-t17q100p1",
-    "id": 223
+    "id": 297
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_all_100_4_2",
+    "id": 298
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "all",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "default-t17q100p4-mistral",
+    "output_file": "mistral-small-latest_default-t17q100p4",
+    "id": 299
   },
   {
     "model_family": "mistral",
@@ -2488,7 +3330,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_all_100_24_2",
-    "id": 224
+    "id": 300
   },
   {
     "model_family": "mistral",
@@ -2500,7 +3342,7 @@
     "delay": "5",
     "exp_name": "default-t17q100p24-mistral",
     "output_file": "mistral-small-latest_default-t17q100p24",
-    "id": 225
+    "id": 301
   },
   {
     "model_family": "mistral",
@@ -2508,10 +3350,10 @@
     "subtask": "all",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_all_100_1_2",
-    "id": 226
+    "exp_name": "mistral_all_100_4_2",
+    "id": 302
   },
   {
     "model_family": "mistral",
@@ -2519,11 +3361,11 @@
     "subtask": "all",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "default-t17q100p1-mistral",
-    "output_file": "mistral-small-latest_default-t17q100p1",
-    "id": 227
+    "exp_name": "default-t17q100p4-mistral",
+    "output_file": "mistral-small-latest_default-t17q100p4",
+    "id": 303
   },
   {
     "model_family": "mistral",
@@ -2534,7 +3376,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_1_1_2",
-    "id": 228
+    "id": 304
   },
   {
     "model_family": "mistral",
@@ -2546,7 +3388,30 @@
     "delay": "5",
     "exp_name": "default-t1q1p1-mistral",
     "output_file": "mistral-small-latest_default-t1q1p1",
-    "id": 229
+    "id": 305
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_abstract_algebra_1_4_2",
+    "id": 306
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "default-t1q1p4-mistral",
+    "output_file": "mistral-small-latest_default-t1q1p4",
+    "id": 307
   },
   {
     "model_family": "mistral",
@@ -2557,7 +3422,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_1_24_2",
-    "id": 230
+    "id": 308
   },
   {
     "model_family": "mistral",
@@ -2569,7 +3434,7 @@
     "delay": "5",
     "exp_name": "default-t1q1p24-mistral",
     "output_file": "mistral-small-latest_default-t1q1p24",
-    "id": 231
+    "id": 309
   },
   {
     "model_family": "mistral",
@@ -2577,10 +3442,10 @@
     "subtask": "abstract_algebra",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_abstract_algebra_1_1_2",
-    "id": 232
+    "exp_name": "mistral_abstract_algebra_1_4_2",
+    "id": 310
   },
   {
     "model_family": "mistral",
@@ -2588,11 +3453,11 @@
     "subtask": "abstract_algebra",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "default-t1q1p1-mistral",
-    "output_file": "mistral-small-latest_default-t1q1p1",
-    "id": 233
+    "exp_name": "default-t1q1p4-mistral",
+    "output_file": "mistral-small-latest_default-t1q1p4",
+    "id": 311
   },
   {
     "model_family": "mistral",
@@ -2603,7 +3468,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_100_1_2",
-    "id": 234
+    "id": 312
   },
   {
     "model_family": "mistral",
@@ -2615,7 +3480,30 @@
     "delay": "5",
     "exp_name": "default-t1q100p1-mistral",
     "output_file": "mistral-small-latest_default-t1q100p1",
-    "id": 235
+    "id": 313
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_abstract_algebra_100_4_2",
+    "id": 314
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "abstract_algebra",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "default-t1q100p4-mistral",
+    "output_file": "mistral-small-latest_default-t1q100p4",
+    "id": 315
   },
   {
     "model_family": "mistral",
@@ -2626,7 +3514,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_abstract_algebra_100_24_2",
-    "id": 236
+    "id": 316
   },
   {
     "model_family": "mistral",
@@ -2638,7 +3526,7 @@
     "delay": "5",
     "exp_name": "default-t1q100p24-mistral",
     "output_file": "mistral-small-latest_default-t1q100p24",
-    "id": 237
+    "id": 317
   },
   {
     "model_family": "mistral",
@@ -2646,10 +3534,10 @@
     "subtask": "abstract_algebra",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_abstract_algebra_100_1_2",
-    "id": 238
+    "exp_name": "mistral_abstract_algebra_100_4_2",
+    "id": 318
   },
   {
     "model_family": "mistral",
@@ -2657,11 +3545,11 @@
     "subtask": "abstract_algebra",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "default-t1q100p1-mistral",
-    "output_file": "mistral-small-latest_default-t1q100p1",
-    "id": 239
+    "exp_name": "default-t1q100p4-mistral",
+    "output_file": "mistral-small-latest_default-t1q100p4",
+    "id": 319
   },
   {
     "model_family": "mistral",
@@ -2672,7 +3560,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_anatomy_1_1_2",
-    "id": 240
+    "id": 320
   },
   {
     "model_family": "mistral",
@@ -2683,7 +3571,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_anatomy_1_1_5",
-    "id": 241
+    "id": 321
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anatomy",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_anatomy_1_4_2",
+    "id": 322
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anatomy",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_anatomy_1_4_5",
+    "id": 323
   },
   {
     "model_family": "mistral",
@@ -2694,7 +3604,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_anatomy_1_24_2",
-    "id": 242
+    "id": 324
   },
   {
     "model_family": "mistral",
@@ -2705,7 +3615,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_anatomy_1_24_5",
-    "id": 243
+    "id": 325
   },
   {
     "model_family": "mistral",
@@ -2713,10 +3623,10 @@
     "subtask": "anatomy",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_anatomy_1_1_2",
-    "id": 244
+    "exp_name": "mistral_anatomy_1_4_2",
+    "id": 326
   },
   {
     "model_family": "mistral",
@@ -2724,10 +3634,10 @@
     "subtask": "anatomy",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_anatomy_1_1_5",
-    "id": 245
+    "exp_name": "mistral_anatomy_1_4_5",
+    "id": 327
   },
   {
     "model_family": "mistral",
@@ -2738,7 +3648,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_anatomy_100_1_2",
-    "id": 246
+    "id": 328
   },
   {
     "model_family": "mistral",
@@ -2749,7 +3659,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_anatomy_100_1_5",
-    "id": 247
+    "id": 329
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anatomy",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_anatomy_100_4_2",
+    "id": 330
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "anatomy",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_anatomy_100_4_5",
+    "id": 331
   },
   {
     "model_family": "mistral",
@@ -2760,7 +3692,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_anatomy_100_24_2",
-    "id": 248
+    "id": 332
   },
   {
     "model_family": "mistral",
@@ -2771,7 +3703,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_anatomy_100_24_5",
-    "id": 249
+    "id": 333
   },
   {
     "model_family": "mistral",
@@ -2779,10 +3711,10 @@
     "subtask": "anatomy",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_anatomy_100_1_2",
-    "id": 250
+    "exp_name": "mistral_anatomy_100_4_2",
+    "id": 334
   },
   {
     "model_family": "mistral",
@@ -2790,10 +3722,10 @@
     "subtask": "anatomy",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_anatomy_100_1_5",
-    "id": 251
+    "exp_name": "mistral_anatomy_100_4_5",
+    "id": 335
   },
   {
     "model_family": "mistral",
@@ -2804,7 +3736,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_astronomy_1_1_2",
-    "id": 252
+    "id": 336
   },
   {
     "model_family": "mistral",
@@ -2815,7 +3747,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_astronomy_1_1_5",
-    "id": 253
+    "id": 337
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "astronomy",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_astronomy_1_4_2",
+    "id": 338
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "astronomy",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_astronomy_1_4_5",
+    "id": 339
   },
   {
     "model_family": "mistral",
@@ -2826,7 +3780,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_astronomy_1_24_2",
-    "id": 254
+    "id": 340
   },
   {
     "model_family": "mistral",
@@ -2837,7 +3791,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_astronomy_1_24_5",
-    "id": 255
+    "id": 341
   },
   {
     "model_family": "mistral",
@@ -2845,10 +3799,10 @@
     "subtask": "astronomy",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_astronomy_1_1_2",
-    "id": 256
+    "exp_name": "mistral_astronomy_1_4_2",
+    "id": 342
   },
   {
     "model_family": "mistral",
@@ -2856,10 +3810,10 @@
     "subtask": "astronomy",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_astronomy_1_1_5",
-    "id": 257
+    "exp_name": "mistral_astronomy_1_4_5",
+    "id": 343
   },
   {
     "model_family": "mistral",
@@ -2870,7 +3824,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_astronomy_100_1_2",
-    "id": 258
+    "id": 344
   },
   {
     "model_family": "mistral",
@@ -2881,7 +3835,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_astronomy_100_1_5",
-    "id": 259
+    "id": 345
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "astronomy",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_astronomy_100_4_2",
+    "id": 346
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "astronomy",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_astronomy_100_4_5",
+    "id": 347
   },
   {
     "model_family": "mistral",
@@ -2892,7 +3868,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_astronomy_100_24_2",
-    "id": 260
+    "id": 348
   },
   {
     "model_family": "mistral",
@@ -2903,7 +3879,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_astronomy_100_24_5",
-    "id": 261
+    "id": 349
   },
   {
     "model_family": "mistral",
@@ -2911,10 +3887,10 @@
     "subtask": "astronomy",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_astronomy_100_1_2",
-    "id": 262
+    "exp_name": "mistral_astronomy_100_4_2",
+    "id": 350
   },
   {
     "model_family": "mistral",
@@ -2922,10 +3898,10 @@
     "subtask": "astronomy",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_astronomy_100_1_5",
-    "id": 263
+    "exp_name": "mistral_astronomy_100_4_5",
+    "id": 351
   },
   {
     "model_family": "mistral",
@@ -2936,7 +3912,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_business_ethics_1_1_2",
-    "id": 264
+    "id": 352
   },
   {
     "model_family": "mistral",
@@ -2947,7 +3923,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_business_ethics_1_1_5",
-    "id": 265
+    "id": 353
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "business_ethics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_business_ethics_1_4_2",
+    "id": 354
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "business_ethics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_business_ethics_1_4_5",
+    "id": 355
   },
   {
     "model_family": "mistral",
@@ -2958,7 +3956,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_business_ethics_1_24_2",
-    "id": 266
+    "id": 356
   },
   {
     "model_family": "mistral",
@@ -2969,7 +3967,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_business_ethics_1_24_5",
-    "id": 267
+    "id": 357
   },
   {
     "model_family": "mistral",
@@ -2977,10 +3975,10 @@
     "subtask": "business_ethics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_business_ethics_1_1_2",
-    "id": 268
+    "exp_name": "mistral_business_ethics_1_4_2",
+    "id": 358
   },
   {
     "model_family": "mistral",
@@ -2988,10 +3986,10 @@
     "subtask": "business_ethics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_business_ethics_1_1_5",
-    "id": 269
+    "exp_name": "mistral_business_ethics_1_4_5",
+    "id": 359
   },
   {
     "model_family": "mistral",
@@ -3002,7 +4000,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_business_ethics_100_1_2",
-    "id": 270
+    "id": 360
   },
   {
     "model_family": "mistral",
@@ -3013,7 +4011,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_business_ethics_100_1_5",
-    "id": 271
+    "id": 361
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "business_ethics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_business_ethics_100_4_2",
+    "id": 362
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "business_ethics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_business_ethics_100_4_5",
+    "id": 363
   },
   {
     "model_family": "mistral",
@@ -3024,7 +4044,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_business_ethics_100_24_2",
-    "id": 272
+    "id": 364
   },
   {
     "model_family": "mistral",
@@ -3035,7 +4055,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_business_ethics_100_24_5",
-    "id": 273
+    "id": 365
   },
   {
     "model_family": "mistral",
@@ -3043,10 +4063,10 @@
     "subtask": "business_ethics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_business_ethics_100_1_2",
-    "id": 274
+    "exp_name": "mistral_business_ethics_100_4_2",
+    "id": 366
   },
   {
     "model_family": "mistral",
@@ -3054,10 +4074,10 @@
     "subtask": "business_ethics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_business_ethics_100_1_5",
-    "id": 275
+    "exp_name": "mistral_business_ethics_100_4_5",
+    "id": 367
   },
   {
     "model_family": "mistral",
@@ -3068,7 +4088,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_biology_1_1_2",
-    "id": 276
+    "id": 368
   },
   {
     "model_family": "mistral",
@@ -3079,7 +4099,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_biology_1_1_5",
-    "id": 277
+    "id": 369
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_biology",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_college_biology_1_4_2",
+    "id": 370
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_biology",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_college_biology_1_4_5",
+    "id": 371
   },
   {
     "model_family": "mistral",
@@ -3090,7 +4132,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_biology_1_24_2",
-    "id": 278
+    "id": 372
   },
   {
     "model_family": "mistral",
@@ -3101,7 +4143,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_biology_1_24_5",
-    "id": 279
+    "id": 373
   },
   {
     "model_family": "mistral",
@@ -3109,10 +4151,10 @@
     "subtask": "college_biology",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_college_biology_1_1_2",
-    "id": 280
+    "exp_name": "mistral_college_biology_1_4_2",
+    "id": 374
   },
   {
     "model_family": "mistral",
@@ -3120,10 +4162,10 @@
     "subtask": "college_biology",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_college_biology_1_1_5",
-    "id": 281
+    "exp_name": "mistral_college_biology_1_4_5",
+    "id": 375
   },
   {
     "model_family": "mistral",
@@ -3134,7 +4176,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_biology_100_1_2",
-    "id": 282
+    "id": 376
   },
   {
     "model_family": "mistral",
@@ -3145,7 +4187,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_biology_100_1_5",
-    "id": 283
+    "id": 377
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_biology",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_college_biology_100_4_2",
+    "id": 378
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_biology",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_college_biology_100_4_5",
+    "id": 379
   },
   {
     "model_family": "mistral",
@@ -3156,7 +4220,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_biology_100_24_2",
-    "id": 284
+    "id": 380
   },
   {
     "model_family": "mistral",
@@ -3167,7 +4231,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_biology_100_24_5",
-    "id": 285
+    "id": 381
   },
   {
     "model_family": "mistral",
@@ -3175,10 +4239,10 @@
     "subtask": "college_biology",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_college_biology_100_1_2",
-    "id": 286
+    "exp_name": "mistral_college_biology_100_4_2",
+    "id": 382
   },
   {
     "model_family": "mistral",
@@ -3186,10 +4250,10 @@
     "subtask": "college_biology",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_college_biology_100_1_5",
-    "id": 287
+    "exp_name": "mistral_college_biology_100_4_5",
+    "id": 383
   },
   {
     "model_family": "mistral",
@@ -3200,7 +4264,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_1_1_2",
-    "id": 288
+    "id": 384
   },
   {
     "model_family": "mistral",
@@ -3211,7 +4275,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_1_1_5",
-    "id": 289
+    "id": 385
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_chemistry",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_college_chemistry_1_4_2",
+    "id": 386
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_chemistry",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_college_chemistry_1_4_5",
+    "id": 387
   },
   {
     "model_family": "mistral",
@@ -3222,7 +4308,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_1_24_2",
-    "id": 290
+    "id": 388
   },
   {
     "model_family": "mistral",
@@ -3233,7 +4319,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_1_24_5",
-    "id": 291
+    "id": 389
   },
   {
     "model_family": "mistral",
@@ -3241,10 +4327,10 @@
     "subtask": "college_chemistry",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_college_chemistry_1_1_2",
-    "id": 292
+    "exp_name": "mistral_college_chemistry_1_4_2",
+    "id": 390
   },
   {
     "model_family": "mistral",
@@ -3252,10 +4338,10 @@
     "subtask": "college_chemistry",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_college_chemistry_1_1_5",
-    "id": 293
+    "exp_name": "mistral_college_chemistry_1_4_5",
+    "id": 391
   },
   {
     "model_family": "mistral",
@@ -3266,7 +4352,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_100_1_2",
-    "id": 294
+    "id": 392
   },
   {
     "model_family": "mistral",
@@ -3277,7 +4363,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_100_1_5",
-    "id": 295
+    "id": 393
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_chemistry",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_college_chemistry_100_4_2",
+    "id": 394
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_chemistry",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_college_chemistry_100_4_5",
+    "id": 395
   },
   {
     "model_family": "mistral",
@@ -3288,7 +4396,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_chemistry_100_24_2",
-    "id": 296
+    "id": 396
   },
   {
     "model_family": "mistral",
@@ -3299,7 +4407,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_chemistry_100_24_5",
-    "id": 297
+    "id": 397
   },
   {
     "model_family": "mistral",
@@ -3307,10 +4415,10 @@
     "subtask": "college_chemistry",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_college_chemistry_100_1_2",
-    "id": 298
+    "exp_name": "mistral_college_chemistry_100_4_2",
+    "id": 398
   },
   {
     "model_family": "mistral",
@@ -3318,10 +4426,10 @@
     "subtask": "college_chemistry",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_college_chemistry_100_1_5",
-    "id": 299
+    "exp_name": "mistral_college_chemistry_100_4_5",
+    "id": 399
   },
   {
     "model_family": "mistral",
@@ -3332,7 +4440,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_1_1_2",
-    "id": 300
+    "id": 400
   },
   {
     "model_family": "mistral",
@@ -3343,7 +4451,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_1_1_5",
-    "id": 301
+    "id": 401
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_computer_science",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_college_computer_science_1_4_2",
+    "id": 402
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_computer_science",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_college_computer_science_1_4_5",
+    "id": 403
   },
   {
     "model_family": "mistral",
@@ -3354,7 +4484,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_1_24_2",
-    "id": 302
+    "id": 404
   },
   {
     "model_family": "mistral",
@@ -3365,7 +4495,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_1_24_5",
-    "id": 303
+    "id": 405
   },
   {
     "model_family": "mistral",
@@ -3373,10 +4503,10 @@
     "subtask": "college_computer_science",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_college_computer_science_1_1_2",
-    "id": 304
+    "exp_name": "mistral_college_computer_science_1_4_2",
+    "id": 406
   },
   {
     "model_family": "mistral",
@@ -3384,10 +4514,10 @@
     "subtask": "college_computer_science",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_college_computer_science_1_1_5",
-    "id": 305
+    "exp_name": "mistral_college_computer_science_1_4_5",
+    "id": 407
   },
   {
     "model_family": "mistral",
@@ -3398,7 +4528,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_100_1_2",
-    "id": 306
+    "id": 408
   },
   {
     "model_family": "mistral",
@@ -3409,7 +4539,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_100_1_5",
-    "id": 307
+    "id": 409
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_computer_science",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_college_computer_science_100_4_2",
+    "id": 410
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "college_computer_science",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_college_computer_science_100_4_5",
+    "id": 411
   },
   {
     "model_family": "mistral",
@@ -3420,7 +4572,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_college_computer_science_100_24_2",
-    "id": 308
+    "id": 412
   },
   {
     "model_family": "mistral",
@@ -3431,7 +4583,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_college_computer_science_100_24_5",
-    "id": 309
+    "id": 413
   },
   {
     "model_family": "mistral",
@@ -3439,10 +4591,10 @@
     "subtask": "college_computer_science",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_college_computer_science_100_1_2",
-    "id": 310
+    "exp_name": "mistral_college_computer_science_100_4_2",
+    "id": 414
   },
   {
     "model_family": "mistral",
@@ -3450,10 +4602,10 @@
     "subtask": "college_computer_science",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_college_computer_science_100_1_5",
-    "id": 311
+    "exp_name": "mistral_college_computer_science_100_4_5",
+    "id": 415
   },
   {
     "model_family": "mistral",
@@ -3464,7 +4616,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_econometrics_1_1_2",
-    "id": 312
+    "id": 416
   },
   {
     "model_family": "mistral",
@@ -3475,7 +4627,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_econometrics_1_1_5",
-    "id": 313
+    "id": 417
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "econometrics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_econometrics_1_4_2",
+    "id": 418
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "econometrics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_econometrics_1_4_5",
+    "id": 419
   },
   {
     "model_family": "mistral",
@@ -3486,7 +4660,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_econometrics_1_24_2",
-    "id": 314
+    "id": 420
   },
   {
     "model_family": "mistral",
@@ -3497,7 +4671,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_econometrics_1_24_5",
-    "id": 315
+    "id": 421
   },
   {
     "model_family": "mistral",
@@ -3505,10 +4679,10 @@
     "subtask": "econometrics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_econometrics_1_1_2",
-    "id": 316
+    "exp_name": "mistral_econometrics_1_4_2",
+    "id": 422
   },
   {
     "model_family": "mistral",
@@ -3516,10 +4690,10 @@
     "subtask": "econometrics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_econometrics_1_1_5",
-    "id": 317
+    "exp_name": "mistral_econometrics_1_4_5",
+    "id": 423
   },
   {
     "model_family": "mistral",
@@ -3530,7 +4704,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_econometrics_100_1_2",
-    "id": 318
+    "id": 424
   },
   {
     "model_family": "mistral",
@@ -3541,7 +4715,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_econometrics_100_1_5",
-    "id": 319
+    "id": 425
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "econometrics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_econometrics_100_4_2",
+    "id": 426
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "econometrics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_econometrics_100_4_5",
+    "id": 427
   },
   {
     "model_family": "mistral",
@@ -3552,7 +4748,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_econometrics_100_24_2",
-    "id": 320
+    "id": 428
   },
   {
     "model_family": "mistral",
@@ -3563,7 +4759,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_econometrics_100_24_5",
-    "id": 321
+    "id": 429
   },
   {
     "model_family": "mistral",
@@ -3571,10 +4767,10 @@
     "subtask": "econometrics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_econometrics_100_1_2",
-    "id": 322
+    "exp_name": "mistral_econometrics_100_4_2",
+    "id": 430
   },
   {
     "model_family": "mistral",
@@ -3582,10 +4778,10 @@
     "subtask": "econometrics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_econometrics_100_1_5",
-    "id": 323
+    "exp_name": "mistral_econometrics_100_4_5",
+    "id": 431
   },
   {
     "model_family": "mistral",
@@ -3596,7 +4792,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_1_1_2",
-    "id": 324
+    "id": 432
   },
   {
     "model_family": "mistral",
@@ -3607,7 +4803,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_1_1_5",
-    "id": 325
+    "id": 433
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "electrical_engineering",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_electrical_engineering_1_4_2",
+    "id": 434
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "electrical_engineering",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_electrical_engineering_1_4_5",
+    "id": 435
   },
   {
     "model_family": "mistral",
@@ -3618,7 +4836,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_1_24_2",
-    "id": 326
+    "id": 436
   },
   {
     "model_family": "mistral",
@@ -3629,7 +4847,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_1_24_5",
-    "id": 327
+    "id": 437
   },
   {
     "model_family": "mistral",
@@ -3637,10 +4855,10 @@
     "subtask": "electrical_engineering",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_electrical_engineering_1_1_2",
-    "id": 328
+    "exp_name": "mistral_electrical_engineering_1_4_2",
+    "id": 438
   },
   {
     "model_family": "mistral",
@@ -3648,10 +4866,10 @@
     "subtask": "electrical_engineering",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_electrical_engineering_1_1_5",
-    "id": 329
+    "exp_name": "mistral_electrical_engineering_1_4_5",
+    "id": 439
   },
   {
     "model_family": "mistral",
@@ -3662,7 +4880,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_100_1_2",
-    "id": 330
+    "id": 440
   },
   {
     "model_family": "mistral",
@@ -3673,7 +4891,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_100_1_5",
-    "id": 331
+    "id": 441
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "electrical_engineering",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_electrical_engineering_100_4_2",
+    "id": 442
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "electrical_engineering",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_electrical_engineering_100_4_5",
+    "id": 443
   },
   {
     "model_family": "mistral",
@@ -3684,7 +4924,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_electrical_engineering_100_24_2",
-    "id": 332
+    "id": 444
   },
   {
     "model_family": "mistral",
@@ -3695,7 +4935,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_electrical_engineering_100_24_5",
-    "id": 333
+    "id": 445
   },
   {
     "model_family": "mistral",
@@ -3703,10 +4943,10 @@
     "subtask": "electrical_engineering",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_electrical_engineering_100_1_2",
-    "id": 334
+    "exp_name": "mistral_electrical_engineering_100_4_2",
+    "id": 446
   },
   {
     "model_family": "mistral",
@@ -3714,10 +4954,10 @@
     "subtask": "electrical_engineering",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_electrical_engineering_100_1_5",
-    "id": 335
+    "exp_name": "mistral_electrical_engineering_100_4_5",
+    "id": 447
   },
   {
     "model_family": "mistral",
@@ -3728,7 +4968,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_formal_logic_1_1_2",
-    "id": 336
+    "id": 448
   },
   {
     "model_family": "mistral",
@@ -3739,7 +4979,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_formal_logic_1_1_5",
-    "id": 337
+    "id": 449
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "formal_logic",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_formal_logic_1_4_2",
+    "id": 450
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "formal_logic",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_formal_logic_1_4_5",
+    "id": 451
   },
   {
     "model_family": "mistral",
@@ -3750,7 +5012,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_formal_logic_1_24_2",
-    "id": 338
+    "id": 452
   },
   {
     "model_family": "mistral",
@@ -3761,7 +5023,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_formal_logic_1_24_5",
-    "id": 339
+    "id": 453
   },
   {
     "model_family": "mistral",
@@ -3769,10 +5031,10 @@
     "subtask": "formal_logic",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_formal_logic_1_1_2",
-    "id": 340
+    "exp_name": "mistral_formal_logic_1_4_2",
+    "id": 454
   },
   {
     "model_family": "mistral",
@@ -3780,10 +5042,10 @@
     "subtask": "formal_logic",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_formal_logic_1_1_5",
-    "id": 341
+    "exp_name": "mistral_formal_logic_1_4_5",
+    "id": 455
   },
   {
     "model_family": "mistral",
@@ -3794,7 +5056,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_formal_logic_100_1_2",
-    "id": 342
+    "id": 456
   },
   {
     "model_family": "mistral",
@@ -3805,7 +5067,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_formal_logic_100_1_5",
-    "id": 343
+    "id": 457
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "formal_logic",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_formal_logic_100_4_2",
+    "id": 458
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "formal_logic",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_formal_logic_100_4_5",
+    "id": 459
   },
   {
     "model_family": "mistral",
@@ -3816,7 +5100,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_formal_logic_100_24_2",
-    "id": 344
+    "id": 460
   },
   {
     "model_family": "mistral",
@@ -3827,7 +5111,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_formal_logic_100_24_5",
-    "id": 345
+    "id": 461
   },
   {
     "model_family": "mistral",
@@ -3835,10 +5119,10 @@
     "subtask": "formal_logic",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_formal_logic_100_1_2",
-    "id": 346
+    "exp_name": "mistral_formal_logic_100_4_2",
+    "id": 462
   },
   {
     "model_family": "mistral",
@@ -3846,10 +5130,10 @@
     "subtask": "formal_logic",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_formal_logic_100_1_5",
-    "id": 347
+    "exp_name": "mistral_formal_logic_100_4_5",
+    "id": 463
   },
   {
     "model_family": "mistral",
@@ -3860,7 +5144,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_global_facts_1_1_2",
-    "id": 348
+    "id": 464
   },
   {
     "model_family": "mistral",
@@ -3871,7 +5155,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_global_facts_1_1_5",
-    "id": 349
+    "id": 465
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "global_facts",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_global_facts_1_4_2",
+    "id": 466
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "global_facts",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_global_facts_1_4_5",
+    "id": 467
   },
   {
     "model_family": "mistral",
@@ -3882,7 +5188,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_global_facts_1_24_2",
-    "id": 350
+    "id": 468
   },
   {
     "model_family": "mistral",
@@ -3893,7 +5199,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_global_facts_1_24_5",
-    "id": 351
+    "id": 469
   },
   {
     "model_family": "mistral",
@@ -3901,10 +5207,10 @@
     "subtask": "global_facts",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_global_facts_1_1_2",
-    "id": 352
+    "exp_name": "mistral_global_facts_1_4_2",
+    "id": 470
   },
   {
     "model_family": "mistral",
@@ -3912,10 +5218,10 @@
     "subtask": "global_facts",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_global_facts_1_1_5",
-    "id": 353
+    "exp_name": "mistral_global_facts_1_4_5",
+    "id": 471
   },
   {
     "model_family": "mistral",
@@ -3926,7 +5232,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_global_facts_100_1_2",
-    "id": 354
+    "id": 472
   },
   {
     "model_family": "mistral",
@@ -3937,7 +5243,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_global_facts_100_1_5",
-    "id": 355
+    "id": 473
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "global_facts",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_global_facts_100_4_2",
+    "id": 474
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "global_facts",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_global_facts_100_4_5",
+    "id": 475
   },
   {
     "model_family": "mistral",
@@ -3948,7 +5276,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_global_facts_100_24_2",
-    "id": 356
+    "id": 476
   },
   {
     "model_family": "mistral",
@@ -3959,7 +5287,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_global_facts_100_24_5",
-    "id": 357
+    "id": 477
   },
   {
     "model_family": "mistral",
@@ -3967,10 +5295,10 @@
     "subtask": "global_facts",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_global_facts_100_1_2",
-    "id": 358
+    "exp_name": "mistral_global_facts_100_4_2",
+    "id": 478
   },
   {
     "model_family": "mistral",
@@ -3978,10 +5306,10 @@
     "subtask": "global_facts",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_global_facts_100_1_5",
-    "id": 359
+    "exp_name": "mistral_global_facts_100_4_5",
+    "id": 479
   },
   {
     "model_family": "mistral",
@@ -3992,7 +5320,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_1_1_2",
-    "id": 360
+    "id": 480
   },
   {
     "model_family": "mistral",
@@ -4003,7 +5331,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_1_1_5",
-    "id": 361
+    "id": 481
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_european_history",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_high_school_european_history_1_4_2",
+    "id": 482
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_european_history",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_high_school_european_history_1_4_5",
+    "id": 483
   },
   {
     "model_family": "mistral",
@@ -4014,7 +5364,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_1_24_2",
-    "id": 362
+    "id": 484
   },
   {
     "model_family": "mistral",
@@ -4025,7 +5375,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_1_24_5",
-    "id": 363
+    "id": 485
   },
   {
     "model_family": "mistral",
@@ -4033,10 +5383,10 @@
     "subtask": "high_school_european_history",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_high_school_european_history_1_1_2",
-    "id": 364
+    "exp_name": "mistral_high_school_european_history_1_4_2",
+    "id": 486
   },
   {
     "model_family": "mistral",
@@ -4044,10 +5394,10 @@
     "subtask": "high_school_european_history",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_high_school_european_history_1_1_5",
-    "id": 365
+    "exp_name": "mistral_high_school_european_history_1_4_5",
+    "id": 487
   },
   {
     "model_family": "mistral",
@@ -4058,7 +5408,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_100_1_2",
-    "id": 366
+    "id": 488
   },
   {
     "model_family": "mistral",
@@ -4069,7 +5419,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_100_1_5",
-    "id": 367
+    "id": 489
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_european_history",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_high_school_european_history_100_4_2",
+    "id": 490
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_european_history",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_high_school_european_history_100_4_5",
+    "id": 491
   },
   {
     "model_family": "mistral",
@@ -4080,7 +5452,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_european_history_100_24_2",
-    "id": 368
+    "id": 492
   },
   {
     "model_family": "mistral",
@@ -4091,7 +5463,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_european_history_100_24_5",
-    "id": 369
+    "id": 493
   },
   {
     "model_family": "mistral",
@@ -4099,10 +5471,10 @@
     "subtask": "high_school_european_history",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_high_school_european_history_100_1_2",
-    "id": 370
+    "exp_name": "mistral_high_school_european_history_100_4_2",
+    "id": 494
   },
   {
     "model_family": "mistral",
@@ -4110,10 +5482,10 @@
     "subtask": "high_school_european_history",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_high_school_european_history_100_1_5",
-    "id": 371
+    "exp_name": "mistral_high_school_european_history_100_4_5",
+    "id": 495
   },
   {
     "model_family": "mistral",
@@ -4124,7 +5496,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_1_1_2",
-    "id": 372
+    "id": 496
   },
   {
     "model_family": "mistral",
@@ -4135,7 +5507,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_1_1_5",
-    "id": 373
+    "id": 497
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_geography",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_high_school_geography_1_4_2",
+    "id": 498
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_geography",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_high_school_geography_1_4_5",
+    "id": 499
   },
   {
     "model_family": "mistral",
@@ -4146,7 +5540,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_1_24_2",
-    "id": 374
+    "id": 500
   },
   {
     "model_family": "mistral",
@@ -4157,7 +5551,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_1_24_5",
-    "id": 375
+    "id": 501
   },
   {
     "model_family": "mistral",
@@ -4165,10 +5559,10 @@
     "subtask": "high_school_geography",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_high_school_geography_1_1_2",
-    "id": 376
+    "exp_name": "mistral_high_school_geography_1_4_2",
+    "id": 502
   },
   {
     "model_family": "mistral",
@@ -4176,10 +5570,10 @@
     "subtask": "high_school_geography",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_high_school_geography_1_1_5",
-    "id": 377
+    "exp_name": "mistral_high_school_geography_1_4_5",
+    "id": 503
   },
   {
     "model_family": "mistral",
@@ -4190,7 +5584,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_100_1_2",
-    "id": 378
+    "id": 504
   },
   {
     "model_family": "mistral",
@@ -4201,7 +5595,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_100_1_5",
-    "id": 379
+    "id": 505
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_geography",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_high_school_geography_100_4_2",
+    "id": 506
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_geography",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_high_school_geography_100_4_5",
+    "id": 507
   },
   {
     "model_family": "mistral",
@@ -4212,7 +5628,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_geography_100_24_2",
-    "id": 380
+    "id": 508
   },
   {
     "model_family": "mistral",
@@ -4223,7 +5639,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_geography_100_24_5",
-    "id": 381
+    "id": 509
   },
   {
     "model_family": "mistral",
@@ -4231,10 +5647,10 @@
     "subtask": "high_school_geography",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_high_school_geography_100_1_2",
-    "id": 382
+    "exp_name": "mistral_high_school_geography_100_4_2",
+    "id": 510
   },
   {
     "model_family": "mistral",
@@ -4242,10 +5658,10 @@
     "subtask": "high_school_geography",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_high_school_geography_100_1_5",
-    "id": 383
+    "exp_name": "mistral_high_school_geography_100_4_5",
+    "id": 511
   },
   {
     "model_family": "mistral",
@@ -4256,7 +5672,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_1_1_2",
-    "id": 384
+    "id": 512
   },
   {
     "model_family": "mistral",
@@ -4267,7 +5683,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_1_1_5",
-    "id": 385
+    "id": 513
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_government_and_politics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_high_school_government_and_politics_1_4_2",
+    "id": 514
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_government_and_politics",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_high_school_government_and_politics_1_4_5",
+    "id": 515
   },
   {
     "model_family": "mistral",
@@ -4278,7 +5716,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_1_24_2",
-    "id": 386
+    "id": 516
   },
   {
     "model_family": "mistral",
@@ -4289,7 +5727,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_1_24_5",
-    "id": 387
+    "id": 517
   },
   {
     "model_family": "mistral",
@@ -4297,10 +5735,10 @@
     "subtask": "high_school_government_and_politics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_high_school_government_and_politics_1_1_2",
-    "id": 388
+    "exp_name": "mistral_high_school_government_and_politics_1_4_2",
+    "id": 518
   },
   {
     "model_family": "mistral",
@@ -4308,10 +5746,10 @@
     "subtask": "high_school_government_and_politics",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_high_school_government_and_politics_1_1_5",
-    "id": 389
+    "exp_name": "mistral_high_school_government_and_politics_1_4_5",
+    "id": 519
   },
   {
     "model_family": "mistral",
@@ -4322,7 +5760,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_100_1_2",
-    "id": 390
+    "id": 520
   },
   {
     "model_family": "mistral",
@@ -4333,7 +5771,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_100_1_5",
-    "id": 391
+    "id": 521
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_government_and_politics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_high_school_government_and_politics_100_4_2",
+    "id": 522
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_government_and_politics",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_high_school_government_and_politics_100_4_5",
+    "id": 523
   },
   {
     "model_family": "mistral",
@@ -4344,7 +5804,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_government_and_politics_100_24_2",
-    "id": 392
+    "id": 524
   },
   {
     "model_family": "mistral",
@@ -4355,7 +5815,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_government_and_politics_100_24_5",
-    "id": 393
+    "id": 525
   },
   {
     "model_family": "mistral",
@@ -4363,10 +5823,10 @@
     "subtask": "high_school_government_and_politics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_high_school_government_and_politics_100_1_2",
-    "id": 394
+    "exp_name": "mistral_high_school_government_and_politics_100_4_2",
+    "id": 526
   },
   {
     "model_family": "mistral",
@@ -4374,10 +5834,10 @@
     "subtask": "high_school_government_and_politics",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_high_school_government_and_politics_100_1_5",
-    "id": 395
+    "exp_name": "mistral_high_school_government_and_politics_100_4_5",
+    "id": 527
   },
   {
     "model_family": "mistral",
@@ -4388,7 +5848,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_1_1_2",
-    "id": 396
+    "id": 528
   },
   {
     "model_family": "mistral",
@@ -4399,7 +5859,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_1_1_5",
-    "id": 397
+    "id": 529
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_psychology",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_high_school_psychology_1_4_2",
+    "id": 530
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_psychology",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_high_school_psychology_1_4_5",
+    "id": 531
   },
   {
     "model_family": "mistral",
@@ -4410,7 +5892,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_1_24_2",
-    "id": 398
+    "id": 532
   },
   {
     "model_family": "mistral",
@@ -4421,7 +5903,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_1_24_5",
-    "id": 399
+    "id": 533
   },
   {
     "model_family": "mistral",
@@ -4429,10 +5911,10 @@
     "subtask": "high_school_psychology",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_high_school_psychology_1_1_2",
-    "id": 400
+    "exp_name": "mistral_high_school_psychology_1_4_2",
+    "id": 534
   },
   {
     "model_family": "mistral",
@@ -4440,10 +5922,10 @@
     "subtask": "high_school_psychology",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_high_school_psychology_1_1_5",
-    "id": 401
+    "exp_name": "mistral_high_school_psychology_1_4_5",
+    "id": 535
   },
   {
     "model_family": "mistral",
@@ -4454,7 +5936,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_100_1_2",
-    "id": 402
+    "id": 536
   },
   {
     "model_family": "mistral",
@@ -4465,7 +5947,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_100_1_5",
-    "id": 403
+    "id": 537
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_psychology",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_high_school_psychology_100_4_2",
+    "id": 538
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "high_school_psychology",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_high_school_psychology_100_4_5",
+    "id": 539
   },
   {
     "model_family": "mistral",
@@ -4476,7 +5980,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_high_school_psychology_100_24_2",
-    "id": 404
+    "id": 540
   },
   {
     "model_family": "mistral",
@@ -4487,7 +5991,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_high_school_psychology_100_24_5",
-    "id": 405
+    "id": 541
   },
   {
     "model_family": "mistral",
@@ -4495,10 +5999,10 @@
     "subtask": "high_school_psychology",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_high_school_psychology_100_1_2",
-    "id": 406
+    "exp_name": "mistral_high_school_psychology_100_4_2",
+    "id": 542
   },
   {
     "model_family": "mistral",
@@ -4506,10 +6010,10 @@
     "subtask": "high_school_psychology",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_high_school_psychology_100_1_5",
-    "id": 407
+    "exp_name": "mistral_high_school_psychology_100_4_5",
+    "id": 543
   },
   {
     "model_family": "mistral",
@@ -4520,7 +6024,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_1_1_2",
-    "id": 408
+    "id": 544
   },
   {
     "model_family": "mistral",
@@ -4531,7 +6035,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_1_1_5",
-    "id": 409
+    "id": 545
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "human_sexuality",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_human_sexuality_1_4_2",
+    "id": 546
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "human_sexuality",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_human_sexuality_1_4_5",
+    "id": 547
   },
   {
     "model_family": "mistral",
@@ -4542,7 +6068,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_1_24_2",
-    "id": 410
+    "id": 548
   },
   {
     "model_family": "mistral",
@@ -4553,7 +6079,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_1_24_5",
-    "id": 411
+    "id": 549
   },
   {
     "model_family": "mistral",
@@ -4561,10 +6087,10 @@
     "subtask": "human_sexuality",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_human_sexuality_1_1_2",
-    "id": 412
+    "exp_name": "mistral_human_sexuality_1_4_2",
+    "id": 550
   },
   {
     "model_family": "mistral",
@@ -4572,10 +6098,10 @@
     "subtask": "human_sexuality",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_human_sexuality_1_1_5",
-    "id": 413
+    "exp_name": "mistral_human_sexuality_1_4_5",
+    "id": 551
   },
   {
     "model_family": "mistral",
@@ -4586,7 +6112,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_100_1_2",
-    "id": 414
+    "id": 552
   },
   {
     "model_family": "mistral",
@@ -4597,7 +6123,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_100_1_5",
-    "id": 415
+    "id": 553
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "human_sexuality",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_human_sexuality_100_4_2",
+    "id": 554
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "human_sexuality",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_human_sexuality_100_4_5",
+    "id": 555
   },
   {
     "model_family": "mistral",
@@ -4608,7 +6156,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_human_sexuality_100_24_2",
-    "id": 416
+    "id": 556
   },
   {
     "model_family": "mistral",
@@ -4619,7 +6167,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_human_sexuality_100_24_5",
-    "id": 417
+    "id": 557
   },
   {
     "model_family": "mistral",
@@ -4627,10 +6175,10 @@
     "subtask": "human_sexuality",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_human_sexuality_100_1_2",
-    "id": 418
+    "exp_name": "mistral_human_sexuality_100_4_2",
+    "id": 558
   },
   {
     "model_family": "mistral",
@@ -4638,10 +6186,10 @@
     "subtask": "human_sexuality",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_human_sexuality_100_1_5",
-    "id": 419
+    "exp_name": "mistral_human_sexuality_100_4_5",
+    "id": 559
   },
   {
     "model_family": "mistral",
@@ -4652,7 +6200,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_international_law_1_1_2",
-    "id": 420
+    "id": 560
   },
   {
     "model_family": "mistral",
@@ -4663,7 +6211,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_international_law_1_1_5",
-    "id": 421
+    "id": 561
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "international_law",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_international_law_1_4_2",
+    "id": 562
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "international_law",
+    "num_questions": "1",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_international_law_1_4_5",
+    "id": 563
   },
   {
     "model_family": "mistral",
@@ -4674,7 +6244,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_international_law_1_24_2",
-    "id": 422
+    "id": 564
   },
   {
     "model_family": "mistral",
@@ -4685,7 +6255,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_international_law_1_24_5",
-    "id": 423
+    "id": 565
   },
   {
     "model_family": "mistral",
@@ -4693,10 +6263,10 @@
     "subtask": "international_law",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_international_law_1_1_2",
-    "id": 424
+    "exp_name": "mistral_international_law_1_4_2",
+    "id": 566
   },
   {
     "model_family": "mistral",
@@ -4704,10 +6274,10 @@
     "subtask": "international_law",
     "num_questions": "1",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_international_law_1_1_5",
-    "id": 425
+    "exp_name": "mistral_international_law_1_4_5",
+    "id": 567
   },
   {
     "model_family": "mistral",
@@ -4718,7 +6288,7 @@
     "num_permutations": "1",
     "delay": "2",
     "exp_name": "mistral_international_law_100_1_2",
-    "id": 426
+    "id": 568
   },
   {
     "model_family": "mistral",
@@ -4729,7 +6299,29 @@
     "num_permutations": "1",
     "delay": "5",
     "exp_name": "mistral_international_law_100_1_5",
-    "id": 427
+    "id": 569
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "international_law",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "2",
+    "exp_name": "mistral_international_law_100_4_2",
+    "id": 570
+  },
+  {
+    "model_family": "mistral",
+    "model_name": "mistral-small-latest",
+    "subtask": "international_law",
+    "num_questions": "100",
+    "permutation_type": "factorial",
+    "num_permutations": "4",
+    "delay": "5",
+    "exp_name": "mistral_international_law_100_4_5",
+    "id": 571
   },
   {
     "model_family": "mistral",
@@ -4740,7 +6332,7 @@
     "num_permutations": "24",
     "delay": "2",
     "exp_name": "mistral_international_law_100_24_2",
-    "id": 428
+    "id": 572
   },
   {
     "model_family": "mistral",
@@ -4751,7 +6343,7 @@
     "num_permutations": "24",
     "delay": "5",
     "exp_name": "mistral_international_law_100_24_5",
-    "id": 429
+    "id": 573
   },
   {
     "model_family": "mistral",
@@ -4759,10 +6351,10 @@
     "subtask": "international_law",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "2",
-    "exp_name": "mistral_international_law_100_1_2",
-    "id": 430
+    "exp_name": "mistral_international_law_100_4_2",
+    "id": 574
   },
   {
     "model_family": "mistral",
@@ -4770,9 +6362,9 @@
     "subtask": "international_law",
     "num_questions": "100",
     "permutation_type": "circular",
-    "num_permutations": "1",
+    "num_permutations": "4",
     "delay": "5",
-    "exp_name": "mistral_international_law_100_1_5",
-    "id": 431
+    "exp_name": "mistral_international_law_100_4_5",
+    "id": 575
   }
 ]
