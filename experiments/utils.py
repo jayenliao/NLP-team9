@@ -91,6 +91,7 @@ def format_multichoice_question(row, in_style='base', out_style='base', lang="en
         template = None
         # print(row)
         # choice = CHOICE[lang]
+        answer_format_lang = 0
         if in_style == 'json':
             if out_style == 'json':
                 template = templates.QUERY_TEMPLATE_JSON_JSON
@@ -113,8 +114,10 @@ def format_multichoice_question(row, in_style='base', out_style='base', lang="en
                     template = templates.QUERY_TEMPLATE_XML_BASE_FR
         else:
             if out_style == 'json':
+                answer_format_lang = 1
                 template = templates.QUERY_TEMPLATE_BASE_JSON
-            elif out_style == 'xml':   
+            elif out_style == 'xml':
+                answer_format_lang = 1
                 template = templates.QUERY_TEMPLATE_BASE_XML
             else:
                 if lang == 'en':
@@ -124,7 +127,8 @@ def format_multichoice_question(row, in_style='base', out_style='base', lang="en
 
         row['Intro'] = intro
         row['Instruction'] = templates.INSTRUCTION_FORMATTED[lang]
-
+        if answer_format_lang:
+            row['AnswerFormat'] = templates.ANSWER_FORMAT_PROMPT[lang]
 
         #print(template)
         # print(type(template))
@@ -151,8 +155,8 @@ if __name__ == "__main__":
         'D': 'Rome'
     }
 
-    in_type = 'base'
-    out_type = 'xml'
+    in_type = 'xml'
+    out_type = 'base'
     lang_type = ['en', 'fr']
 
     for lang in lang_type:

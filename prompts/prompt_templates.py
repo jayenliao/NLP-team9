@@ -30,6 +30,11 @@ EXPLANATION = {
     "fr": "Expliquez ici."
 }
 
+ANSWER_FORMAT_PROMPT = {
+    "en": "Answer format",
+    "fr": "Format de réponse"
+}
+
 ANSWER_XML = """
 <answer>A | B | C | D</answer>
 """.strip()
@@ -59,7 +64,7 @@ B) {B}
 C) {C}
 D) {D}
 
-Answer Format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD.
+Answer format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD.
 """.strip()
 
 QUERY_TEMPLATE_BASE_BASE_FR = """
@@ -73,7 +78,7 @@ B) {B}
 C) {C}
 D) {D}
 
-Answer Format: « Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD
+Format de réponse: « Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD
 """.strip()
 
 QUERY_TEMPLATE_BASE_JSON = """
@@ -87,7 +92,7 @@ B) {B}
 C) {C}
 D) {D}
 
-Answer Format: 
+{AnswerFormat}: 
 ```json
   {{
     "step_by_step_reasoning": ...,
@@ -107,7 +112,7 @@ B) {B}
 C) {C}
 D) {D}
 
-Answer Format: 
+{AnswerFormat}: 
 ```xml
   <response>
     <step_by_step_reasoning>...</step_by_step_reasoning>
