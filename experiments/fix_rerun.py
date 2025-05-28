@@ -48,8 +48,8 @@ def fix_rerun():
                     shutil.copy(other_failed_path, other_failed_backup_path)
 
                 # Parse experiment name
-                model_name, language, input_format, _ = experiment.split("_")
-                model_family = model_name.split("-")[0]
+                # model_name, language, input_format, _ = experiment.split("_")
+                # model_family = model_name.split("-")[0]
                 # Process api_failed.jsonl
                 rerun_success = True
                 rerun_results = []
@@ -59,7 +59,8 @@ def fix_rerun():
                 with open(api_failed_path, "r") as f:
                     for line in f:
                         question = json.loads(line)
-                        result = run_question_selected(model_family, model_name, language, input_format, question)
+                        model_family = question["model_name"].split("-")[0]
+                        result = run_question_selected(model_family, question["model_name"], question["language"], question, question["input_format"])
 
                         if result["extracted_answer"]:
                             rerun_results.append(result)
