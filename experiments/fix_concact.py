@@ -2,7 +2,10 @@ import os
 import json
 import shutil
 from datetime import datetime
-
+from fix_format import (
+    fix_format
+)
+    
 # Paths
 logs_dir = "results/__logs__"
 backup_dir = os.path.join(logs_dir, "backup")
@@ -106,7 +109,7 @@ def concatenate_results():
         with open(fix_file, "w") as f:
             for obj in filtered_data:
                 f.write(json.dumps(obj, ensure_ascii=False) + "\n")
-
+        fix_format(exp = experiment, ismain=False)
         print(f"Experiment {experiment} concatenated successfully.")
         to_analyze.append(experiment)
 

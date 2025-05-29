@@ -2,16 +2,19 @@ import os
 import json
 import shutil
 
-def main():
-    logs_path = "results/__logs__/5-to-Format"
-    if not os.path.exists(logs_path):
-        print(f"Log file not found: {logs_path}")
-        return
+def fix_format(exp, ismain=False):
+    exp_names = []
+    if (ismain):
+        logs_path = "results/__logs__/5-to-Format"
+        if not os.path.exists(logs_path):
+            print(f"Log file not found: {logs_path}")
+            return
 
-    # Read experiment names
-    with open(logs_path, "r") as f:
-        exp_names = [line.strip() for line in f if line.strip()]
-
+        # Read experiment names
+        with open(logs_path, "r") as f:
+            exp_names = [line.strip() for line in f if line.strip()]
+    else:
+        exp_names = [exp]
     for exp_name in exp_names:
         exp_dir = f"results/{exp_name}"
         fix_path = os.path.join(exp_dir, "fix.jsonl")
@@ -54,4 +57,4 @@ def main():
                 fout.write(json.dumps(new_obj, ensure_ascii=False) + "\n")
 
 if __name__ == "__main__":
-    main()
+    fix_format(ismain=True)

@@ -71,7 +71,10 @@ def update_correctness_one(extracted_answer, option_permutation, ground_truth_la
 
 def update_correctness(file_path):
     with open(file_path, "r", encoding='utf-8') as file:
-        data = json.load(file)
+        try:
+            data = json.load(file)
+        except:
+            print(file_path)
 
     for obj in data:
         if obj.get("extracted_answer"):

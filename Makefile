@@ -23,3 +23,6 @@ print-to-concact:
 	python experiments/fix_print_list.py concact
 print-to-analyze:
 	python experiments/fix_print_list.py analyze		
+
+fix-auto:
+	python experiments/fix_auto_parse.py
