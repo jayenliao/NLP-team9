@@ -6,7 +6,7 @@ from typing import Any
 from google import genai as google_genai
 from mistralai import Mistral
 from utils import load_api_keys, format_multichoice_question
-
+import json
 import logging
 logger = logging.getLogger(__name__)
 
@@ -86,6 +86,28 @@ def parse_response(api_response_text: str) -> str | None:
 
     # pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])"
     # pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])" #Added regex for bold answers
+    
+    # Step 1: 嘗試從 ```json 區塊中解析
+    json_block_pattern = r"```json\s*(\{.*?\})\s*```"
+    json_block_match = re.search(json_block_pattern, api_response_text, re.DOTALL | re.IGNORECASE)
+    if json_block_match:
+        json_text = json_block_match.group(1)
+        try:
+            json_obj = json.loads(json_text)
+            if "answer" in json_obj and json_obj["answer"] in ["A", "B", "C", "D"]:
+                return json_obj["answer"]
+        except json.JSONDecodeError as e:
+            print(f"Warning: Failed to parse JSON block: {e}")
+
+    # Step 2: 嘗試從 ```xml 區塊中解析
+    xml_block_pattern = r"```xml\s*(.*?)\s*```"
+    xml_block_match = re.search(xml_block_pattern, api_response_text, re.DOTALL | re.IGNORECASE)
+    if xml_block_match:
+        xml_text = xml_block_match.group(1)
+        answer_match = re.search(r"<answer>\s*([A-D])\s*</answer>", xml_text, re.IGNORECASE)
+        if answer_match:
+            return answer_match.group(1)
+    
     pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*[$\*\#_]*([A-D])"
 
     match = re.search(pattern, api_response_text, re.IGNORECASE | re.MULTILINE)
