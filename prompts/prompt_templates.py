@@ -96,7 +96,7 @@ D) {D}
 ```json
   {{
     "step_by_step_reasoning": ...,
-    "answer": "A | B | C | D",
+    "answer": "A | B | C | D"
   }}
 ```
 """.strip()
@@ -160,7 +160,7 @@ QUERY_TEMPLATE_XML_JSON = """
   <answer_format>
     <format>
       {{
-        "answer": "A | B | C | D",
+        "answer": "A | B | C | D"
       }}
     </format>
   </answer_format>
@@ -258,7 +258,7 @@ QUERY_TEMPLATE_JSON_JSON = """
     "D": "{D}"
   }},
   "answer_format": {{
-    "answer": "A | B | C | D",
+    "answer": "A | B | C | D"
   }}
  }}
 """.strip()

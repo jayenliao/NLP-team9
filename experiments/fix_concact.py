@@ -95,12 +95,13 @@ def concatenate_results():
             obj for obj in raw_data
             if obj.get("extracted_answer") is not None and obj.get("is_correct") is not None
         ]
-        print(len(temp_a), len(temp_b), len(temp_c))
+        
 
         # Check object counts
         if len(filtered_data) != len(raw_data):
             print(f"Experiment {experiment} requires manual check: total # of objects in raw.jsonl is {len(raw_data)}, "
                   f"while there are {len(filtered_data)} objects to be concatenated.")
+            print(len(temp_a), len(temp_b), len(temp_c))
             updated_to_concact.append(experiment)
             continue
 
