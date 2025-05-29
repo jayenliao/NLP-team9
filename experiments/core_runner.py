@@ -6,22 +6,22 @@ from typing import Any
 from google import genai as google_genai
 from mistralai import Mistral
 from utils import load_api_keys, format_multichoice_question
-
+import json
 import logging
 logger = logging.getLogger(__name__)
 
-def load_prompt_template(format_name: str) -> str | None:
-    """Loads the content of a prompt template file."""
-    template_dir = os.path.join(os.path.dirname(__file__), '..', 'prompts')
-    template_filename = f"{format_name}_prompt.txt"
-    template_path = os.path.join(template_dir, template_filename)
-    try:
-        with open(template_path, 'r', encoding='utf-8') as f:
-            return f.read()
-    except Exception: 
-        return None
+# def load_prompt_templat(format_name: str) -> str | None:
+#     """Loads the content of a prompt template file."""
+#     template_dir = os.path.join(os.path.dirname(__file__), '..', 'prompts')
+#     template_filename = f"{format_name}_prompt.txt"
+#     template_path = os.path.join(template_dir, template_filename)
+#     try:
+#         with open(template_path, 'r', encoding='utf-8') as f:
+#             return f.read()
+#     except Exception: 
+#         return None
 
-def format_prompt(template_content: str, data_item: dict, option_order: list[str], lang: str, style: str) -> str | None:
+def format_prompt(data_item: dict, option_order: list[str], lang: str, in_style: str, out_style: str) -> str | None:
     """Formats the prompt template with question data and specified option order."""
     try:
         if len(data_item['choices']) != 4 or len(option_order) != 4:
@@ -36,7 +36,7 @@ def format_prompt(template_content: str, data_item: dict, option_order: list[str
             'D': original_choices[option_order[3]],
         }
         # return template_content.format(**format_context)
-        return format_multichoice_question(format_context, style=style, lang=lang)
+        return format_multichoice_question(format_context, in_style=in_style, out_style=out_style, lang=lang)
     except (KeyError, IndexError): # Handle missing keys or incorrect list sizes
         return None
     except Exception: # Generic catch-all
@@ -85,7 +85,31 @@ def parse_response(api_response_text: str) -> str | None:
     # pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])\s*$" #from common.py, but too strict
 
     # pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])"
-    pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])" #Added regex for bold answers
+    # pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])" #Added regex for bold answers
+    
+    # Step 1: 嘗試從 ```json 區塊中解析
+    json_block_pattern = r"```json\s*(\{.*?\})\s*```"
+    json_block_match = re.search(json_block_pattern, api_response_text, re.DOTALL | re.IGNORECASE)
+    if json_block_match:
+        json_text = json_block_match.group(1)
+        try:
+            json_obj = json.loads(json_text)
+            if "answer" in json_obj and json_obj["answer"] in ["A", "B", "C", "D"]:
+                return json_obj["answer"]
+        except json.JSONDecodeError as e:
+            print(f"Warning: Failed to parse JSON block: {e}")
+
+    # Step 2: 嘗試從 ```xml 區塊中解析
+    xml_block_pattern = r"```xml\s*(.*?)\s*```"
+    xml_block_match = re.search(xml_block_pattern, api_response_text, re.DOTALL | re.IGNORECASE)
+    if xml_block_match:
+        xml_text = xml_block_match.group(1)
+        answer_match = re.search(r"<answer>\s*([A-D])\s*</answer>", xml_text, re.IGNORECASE)
+        if answer_match:
+            return answer_match.group(1)
+    
+    pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*[$\*\#_]*([A-D])"
+
     match = re.search(pattern, api_response_text, re.IGNORECASE | re.MULTILINE)
 
     if match:
@@ -139,12 +163,14 @@ def structure_result(
     language: str,
     model_name: str,
     input_format: str,
+    output_format: str,
     option_permutation: list[str], # e.g., ['C', 'A', 'D', 'B']
     api_raw_response: Any | None,
     api_call_successful: bool,
     extracted_answer: str | None, # e.g., 'B' (the positional answer chosen)
     log_probabilities: dict | None = None, # We'll keep this None as requested
-    question_index: int = -1
+    question_index: int = -1,
+    api_response_text: str | None = None
 ) -> dict:
     """
     Structures the results of a single experiment trial into a dictionary.
@@ -227,14 +253,16 @@ def structure_result(
         "language": language,
         "model_name": model_name,
         "input_format": input_format,
+        "output_format": output_format,
         "option_permutation": "".join(option_permutation), # Save the permutation used
         "api_call_successful": api_call_successful,
-        "api_raw_response": str(api_raw_response) if api_raw_response is not None else None,
         "extracted_answer": extracted_answer, # The positional answer (A/B/C/D relative to permutation)
         "model_choice_original_label": model_choice_original_label, # **The added field** (Original A/B/C/D based on content)
         "log_probabilities": log_probabilities, # Keeping as None
         "ground_truth_answer": ground_truth_label, # The original correct label ('A'/'B'/'C'/'D')
-        "is_correct": is_correct # Boolean or None
+        "is_correct": is_correct, # Boolean or None
+        "api_response_text": api_response_text, # Raw text from the API
+        "api_raw_response": str(api_raw_response) if api_raw_response is not None else None,
     }
     logger.info(f"Result structured for q_idx {question_index}, perm {''.join(option_permutation)}: "
                 f"Extracted='{extracted_answer}', Orig='{model_choice_original_label}', GT='{ground_truth_label}', Correct={is_correct}")

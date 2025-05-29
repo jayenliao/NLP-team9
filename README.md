@@ -102,9 +102,12 @@ nlp-team9/
 ### Experiment Flow
 #### Run Experiment
 0. Before start, check whether `./commands/params.json` exists. If not, run `make gen-params`
-1. Search the experiment id with `./commands/run_exp.sh --search [requirements]`. For example, `./commands/run_exp.sh --search gemini history`. Use `./commands/run_exp.sh -h` command for more information.
-2. Run the experiment by `./commands/run_exp.sh {id} --{lang} --{format}`
-3. Results would be save at `./results/{model_name}_{lang}_{format}_{time_stamp}/raw.jsonl`
+1. Search the experiment id with `./commands/run_exp.sh --search [requirements]`. For example, `./commands/run_exp.sh --search gemini history circular`. Use `./commands/run_exp.sh -h` command for more information.
+2. Run the experiment by `./commands/run_exp.sh {id} --{lang} --i-{input_format} --o-{output_format}`. For example
+```bash
+$ ./commands/run_exp.sh 16 --en --i-base --o-json --dry-run
+```
+3. Results would be saved at `./results/{model_name}_{lang}_i-{input_format}_o-{output_format}_{permutation_type}_{time_stamp}/raw.jsonl`
 
 #### Fix Experiment Results
 0. Before {commit d614ba3}'s result: 

@@ -2,17 +2,20 @@
     "model_family": ["gemini", "mistral"],
     "model_name": ["gemini-2.0-flash-lite", "mistral-small-latest"],
     "subtask": ["all", "abstract_algebra", "anatomy", "astronomy", "business_ethics", "college_biology", "college_chemistry", "college_computer_science", "econometrics", "electrical_engineering", "formal_logic", "global_facts", "high_school_european_history", "high_school_geography", "high_school_government_and_politics", "high_school_psychology", "human_sexuality", "international_law"],
-    "num_questions": [1, 50, 100],
-    "num_permutations": { "range": [1, 25, 23] },
+    "num_questions": [1, 100],
+    "permutation_type": ["factorial", "circular"],
+    "num_permutations": [1, 4, 24],
     "delay": [2, 5],
     "concat_fields": ["model_family", "subtask", "num_questions", "num_permutations", "delay"],
     "constraints": [
         { "model_family": "gemini", "model_name": "gemini-2.0-flash-lite" },
-        { "model_family": "mistral", "model_name": "mistral-small-latest" } 
+        { "model_family": "mistral", "model_name": "mistral-small-latest" },
+        { "permutation_type": "circular", "num_permutations": [1] }
     ],
     "include_if": [
         { "if": { "model_family": "gemini" }, "then": { "model_name": "gemini-2.0-flash-lite" } },
-        { "if": { "model_family": "mistral" }, "then": { "model_name": "mistral-small-latest" } }
+        { "if": { "model_family": "mistral" }, "then": { "model_name": "mistral-small-latest" } },
+        { "if": { "permutation_type": "circular" }, "then": { "num_permutations": [4] } }
     ]
   }
   

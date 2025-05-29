@@ -24,15 +24,5 @@ print-to-concact:
 print-to-analyze:
 	python experiments/fix_print_list.py analyze		
 
-filter-results:
-	python ./experiments/fix_1_filter.py
-
-rerun:
-	python experiments/fix_2_rerun.py
-
-check-manual:
-	python experiments/fix_3_check_manual.py
-
-concact:
-	python experiments/fix_4_concact.py
->>>>>>> f8f11c9 (chore(.gitignore): rebasing)
+fix-auto:
+	python experiments/fix_auto_parse.py

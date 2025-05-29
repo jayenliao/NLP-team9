@@ -11,14 +11,7 @@ import sys
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(ROOT_DIR)
 
-from prompts.prompt_templates import (
-    QUERY_TEMPLATE_PLAIN,
-    QUERY_TEMPLATE_JSON,
-    QUERY_TEMPLATE_XML,
-    INTRO,
-    INSTRUCTION,
-    CHOICE
-)
+import prompts.prompt_templates as templates
 
 def load_prepared_dataset():
     """
@@ -69,7 +62,7 @@ def load_api_keys():
 #         print("Example English question:", first_question_en)
 
 
-def format_multichoice_question(row, style='plain', lang="en"):
+def format_multichoice_question(row, in_style='base', out_style='base', lang="en"):
     # print("in utils")
     ###################################
     # Input:                          #
@@ -79,26 +72,80 @@ def format_multichoice_question(row, style='plain', lang="en"):
     # Output: formatted prompt        #
     ###################################
     try:
-        intro = INTRO[lang]
-        instruction = INSTRUCTION[lang]
+        intro = templates.INTRO[lang]
         template = None
         # print(row)
         # choice = CHOICE[lang]
-        if style == 'json':
-            template = QUERY_TEMPLATE_JSON
-        elif style == 'xml':
-            template = QUERY_TEMPLATE_XML
+        answer_format_lang = 0
+        if in_style == 'json':
+            if out_style == 'json':
+                template = templates.QUERY_TEMPLATE_JSON_JSON
+            elif out_style == 'xml':   
+                template = templates.QUERY_TEMPLATE_JSON_XML
+            else:
+                if lang == 'en':
+                    template = templates.QUERY_TEMPLATE_JSON_BASE_EN
+                else:   
+                    template = templates.QUERY_TEMPLATE_JSON_BASE_FR
+        elif in_style == 'xml':
+            if out_style == 'json':
+                template = templates.QUERY_TEMPLATE_XML_JSON
+            elif out_style == 'xml':   
+                template = templates.QUERY_TEMPLATE_XML_XML
+            else:
+                if lang == 'en':
+                    template = templates.QUERY_TEMPLATE_XML_BASE_EN
+                else:   
+                    template = templates.QUERY_TEMPLATE_XML_BASE_FR
         else:
-            template = QUERY_TEMPLATE_PLAIN
+            if out_style == 'json':
+                answer_format_lang = 1
+                template = templates.QUERY_TEMPLATE_BASE_JSON
+            elif out_style == 'xml':
+                answer_format_lang = 1
+                template = templates.QUERY_TEMPLATE_BASE_XML
+            else:
+                if lang == 'en':
+                    template = templates.QUERY_TEMPLATE_BASE_BASE_EN
+                else:   
+                    template = templates.QUERY_TEMPLATE_BASE_BASE_FR
+
         row['Intro'] = intro
-        row['Instruction'] = instruction
-        # print(template)
+        row['Instruction'] = templates.INSTRUCTION_FORMATTED[lang]
+        if answer_format_lang:
+            row['AnswerFormat'] = templates.ANSWER_FORMAT_PROMPT[lang]
+
+        #print(template)
         # print(type(template))
         test = template.format(**row)
         # print(test)
         return test #Choice = choice
-    except (KeyError, IndexError): # Handle missing keys or incorrect list sizes
+    except KeyError as e:
+        print(f"KeyError: {e}")
         return None
-    except Exception: # Generic catch-all
-        return None
+    # except (KeyError, IndexError): # Handle missing keys or incorrect list sizes
+    #     print(KeyError, IndexError)
+    #     return None
+    # except Exception: # Generic catch-all
+    #     print(Exception)
+    #     return None
 
+if __name__ == "__main__":
+    # Test for format_multichoice_question
+    row = {
+        'Question': 'What is the capital of France?',
+        'A': 'Berlin',
+        'B': 'Madrid',
+        'C': 'Paris',
+        'D': 'Rome'
+    }
+
+    in_type = 'xml'
+    out_type = 'base'
+    lang_type = ['en', 'fr']
+
+    for lang in lang_type:
+        formatted_question = format_multichoice_question(row, in_style=in_type, out_style=out_type, lang=lang)
+        print(f"Formatted question ({in_type}, {out_type}, {lang}):")
+        print(formatted_question)
+        print("-" * 40)

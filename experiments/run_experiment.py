@@ -11,7 +11,8 @@ from collections import deque # For circular shifts
 
 # Assuming core_runner and utils are in the same directory or PYTHONPATH is set
 from core_runner import (
-    load_prompt_template, format_prompt, parse_response,
+    # load_prompt_template,
+    format_prompt, parse_response,
     structure_result, get_api_client, call_llm_api
 )
 from utils import load_prepared_dataset, load_api_keys
@@ -83,6 +84,7 @@ def main():
     parser.add_argument("--model_name", type=str, required=True, help="Specific model name (e.g., 'gemini-1.5-flash-latest', 'mistral-small-latest').")
     parser.add_argument("--language", type=str, default='en', choices=['en', 'fr'], help="Language code ('en' or 'fr').")
     parser.add_argument("--prompt_format", type=str, default='base', choices=['base', 'json', 'xml'], help="Prompt format ('base', 'json', 'xml'). This corresponds to 'style' in format_prompt.")
+    parser.add_argument("--output_format", type=str, default='base', choices=['base', 'json', 'xml'], help="Prompt format ('base', 'json', 'xml'). This corresponds to 'style' in format_prompt.")
     parser.add_argument("--subtasks", type=str, default='all', help="Comma-separated list of subtasks, or 'all'.")
     parser.add_argument("--num_questions", type=int, default=100, help="Number of questions per subtask to process from the start_index.")
     
@@ -115,11 +117,10 @@ def main():
         logger.critical("Fatal: Failed to load prepared dataset (expected ds_selected.pkl).")
         return
 
-    logger.info(f"Loading prompt file for format: {args.prompt_format}_prompt.txt (Note: actual template used by format_prompt might depend on 'style' argument)")
-    template_content_from_file = load_prompt_template(args.prompt_format) # args.prompt_format is 'base', 'json', or 'xml'
-    if not template_content_from_file:
-        logger.warning(f"Warning: Failed to load prompt template file for '{args.prompt_format}_prompt.txt'. "
-                       "The experiment will proceed if format_prompt uses internally defined templates based on the 'style' (prompt_format argument).")
+    # template_content = load_prompt_template(args.prompt_format, args.output_format)
+    # if not template_content:
+    #     print(f"Fatal: Failed to load prompt template 'i: {args.prompt_format}, o: {args.output_format}'.")
+    #     return
 
     # Determine Subtasks
     if args.subtasks.lower() == 'all':
@@ -135,7 +136,7 @@ def main():
     # Prepare Output File Path
     if args.output_file is None:
         timestamp = time.strftime("%Y%m%d-%H%M%S")
-        filename = f"{args.model_family}_{args.model_name}_{args.language}_{args.prompt_format}_{args.permutation_type}_{timestamp}.jsonl"
+        filename = f"{args.model_family}_{args.model_name}_{args.language}_i-{args.prompt_format}_o-{args.output_format}_{args.permutation_type}_{timestamp}.jsonl"
     else:
         filename = args.output_file if args.output_file.endswith(".jsonl") else f"{args.output_file}.jsonl"
 
@@ -211,11 +212,11 @@ def main():
                         logger.info(f"    Q_idx:{i}, Permutation {p_idx + 1}/{total_permutations_for_this_question} (Order: {perm_string})")
                         
                         current_prompt = format_prompt(
-                            template_content_from_file, # May be unused if style dictates template
                             data_item,
                             current_option_order, # This is the key list for remapping choices
                             args.language,
-                            args.prompt_format # This is the 'style' for format_multichoice_question
+                            args.prompt_format, # This is the 'style' for format_multichoice_question
+                            args.output_format
                         )
                         if not current_prompt:
                             logger.warning(f"Failed to format prompt for Q_idx:{i}, Perm:{perm_string}. Skipping this trial.")
@@ -228,8 +229,10 @@ def main():
                             logger.warning(f"API call failed for Q_idx:{i}, Perm:{perm_string}. Raw response will be logged if available.")
 
                         parsed_answer = None # Positional answer (A/B/C/D) relative to the permuted prompt
+                        
+                        response_text = None
                         if api_ok and api_response:
-                            response_text = None
+                            # response_text = None
                             try:
                                 if args.model_family == 'gemini':
                                     if hasattr(api_response, 'text'): # Simplest case
@@ -261,12 +264,14 @@ def main():
                             language=args.language,
                             model_name=args.model_name,
                             input_format=args.prompt_format,
+                            output_format=args.output_format,
                             option_permutation=current_option_order, # The list like ['D', 'A', 'B', 'C']
                             api_raw_response=str(api_response) if api_response is not None else None,
                             api_call_successful=api_ok,
                             extracted_answer=parsed_answer, # e.g., 'A', 'B', 'C', or 'D'
                             log_probabilities=None,
-                            question_index=i # Absolute index from the dataset for this subtask/language
+                            question_index=i, # Absolute index from the dataset for this subtask/language
+                            api_response_text = response_text, # Raw text from the API response
                         )
 
                         try:
@@ -294,10 +299,12 @@ def main():
         logs_for_filter_dir = os.path.join(project_root, "results", "__logs__")
         os.makedirs(logs_for_filter_dir, exist_ok=True)
         to_fix_log_path = os.path.join(logs_for_filter_dir, '0-to-Filter-Runs.log')
-
+        to_fix_path = os.path.join(logs_for_filter_dir, '0-to-Filter')
         try:
             with open(to_fix_log_path, 'a', encoding='utf-8') as f_log_filter:
                 f_log_filter.write(f"Run completed at {time.strftime('%Y-%m-%d %H:%M:%S')}: Output directory '{output_path_dir}', File '{filename}'\n")
+            with open(to_fix_path, 'a', encoding='utf-8') as f_log_filter:
+                f_log_filter.write(f"{args.output_dir}\n")
         except Exception as e_log_write:
             logger.error(f"Failed to write to '{to_fix_log_path}': {e_log_write}")
 
@@ -311,6 +318,7 @@ if __name__ == "__main__":
     --model_name gemini-1.5-flash-latest \
     --language en \
     --prompt_format base \
+    --output_format base \
     --subtasks abstract_algebra \
     --num_questions 2 \
     --permutation_type circular \
@@ -322,6 +330,7 @@ if __name__ == "__main__":
     --model_name mistral-small-latest \
     --language fr \
     --prompt_format xml \
+    --output_format json \
     --subtasks anatomy \
     --num_questions 1 \
     --permutation_type factorial \

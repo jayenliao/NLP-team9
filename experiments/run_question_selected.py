@@ -5,14 +5,14 @@ from core_runner import (
 )
 from utils import load_prepared_dataset
 
-def run_one_problem(client, model_family, model_name, language, input_format, task_problem, permutation):
+def run_one_problem(client, model_family, model_name, language, task_problem, permutation, input_format, output_format="base"):
     """
     Run a single problem through the model and return the result.
     """
     # Format the prompt
     data_item = task_problem
     template_content = ""
-    prompt = format_prompt(template_content, data_item, permutation, language, input_format)
+    prompt = format_prompt(data_item, permutation, language, input_format, output_format)
     if not prompt:
         print(f"Warning: Skipping This question - Failed to format prompt.")
         return None
@@ -23,8 +23,9 @@ def run_one_problem(client, model_family, model_name, language, input_format, ta
 
     # Parse Response
     parsed_answer = None
+    response_text = None
     if api_ok and api_response:
-        response_text = None
+        # response_text = None
         try:
             if model_family == 'gemini':
                 response_text = api_response.text
@@ -52,19 +53,29 @@ def run_one_problem(client, model_family, model_name, language, input_format, ta
     return {
         "api_raw_response": api_response,
         "api_ok": api_ok,
-        "parsed_answer": parsed_answer
+        "parsed_answer": parsed_answer,
+        "api_text": response_text
     }
 
-def run_question_selected(model_family, model_name, language, input_format, question):
+def run_question_selected(model_family, model_name, language, question, input_format, output_format="base"):
     """
     Run a single question through the model and return the result.
     """ 
     # Initialize the model based on the model name
+    model_family = question["model_name"].split("-")[0]
     client = get_api_client(model_family)
     if not client:
         print(f"Fatal: Failed to initialize API client for {model_family}.")
         return
-
+    output_format = ""
+    try:
+        output_format = question["output_format"]
+    except KeyError:
+        output_format = "base"
+    # if not question["output_format"]:
+    #     output_format = "base"
+    # else:
+    #     output_format = question["output_format"]
     subtask = question["subtask"]
     # load the dataset
     full_dataset = load_prepared_dataset()
@@ -80,7 +91,7 @@ def run_question_selected(model_family, model_name, language, input_format, ques
     # Run the question through the model
     id = question["option_permutation"]
     print(f"Processing {subtask} - {language} - Question: {id} - Running Permutation {permutation}")
-    result = run_one_problem(client, model_family, model_name, language, input_format, task_problem, permutation)
+    result = run_one_problem(client, model_family, model_name, language, task_problem, permutation, input_format, output_format)
     if not result:
         print(f"Warning: Failed to run question {question['question_index']} with permutation {permutation}.")
         return question
@@ -88,14 +99,16 @@ def run_question_selected(model_family, model_name, language, input_format, ques
     result_dict = structure_result(
         data_item=task_problem,
         subtask=subtask,
-        language=language,
-        model_name=model_name,
-        input_format=input_format,
+        language=question["language"],
+        model_name=question["model_name"],
+        input_format=question["input_format"],
+        output_format=output_format,
         option_permutation=permutation,
         api_raw_response=result["api_raw_response"],
         api_call_successful=result["api_ok"],
         extracted_answer=result["parsed_answer"],
         log_probabilities=None,
-        question_index=question["question_index"]
+        question_index=question["question_index"],
+        api_response_text=result["api_text"]
     )
     return result_dict

@@ -2,7 +2,10 @@ import os
 import json
 import shutil
 from datetime import datetime
-
+from fix_format import (
+    fix_format
+)
+    
 # Paths
 logs_dir = "results/__logs__"
 backup_dir = os.path.join(logs_dir, "backup")
@@ -78,6 +81,22 @@ def concatenate_results():
             if obj.get("extracted_answer") is not None and obj.get("is_correct") is not None
         ]
 
+        temp_a = [
+            obj for obj in rerun_data
+            if obj.get("extracted_answer") is not None and obj.get("is_correct") is not None
+        ]
+
+        temp_b = [
+            obj for obj in other_failed_data
+            if obj.get("extracted_answer") is not None and obj.get("is_correct") is not None
+        ]
+
+        temp_c = [
+            obj for obj in raw_data
+            if obj.get("extracted_answer") is not None and obj.get("is_correct") is not None
+        ]
+        print(len(temp_a), len(temp_b), len(temp_c))
+
         # Check object counts
         if len(filtered_data) != len(raw_data):
             print(f"Experiment {experiment} requires manual check: total # of objects in raw.jsonl is {len(raw_data)}, "
@@ -90,7 +109,7 @@ def concatenate_results():
         with open(fix_file, "w") as f:
             for obj in filtered_data:
                 f.write(json.dumps(obj, ensure_ascii=False) + "\n")
-
+        fix_format(exp = experiment, ismain=False)
         print(f"Experiment {experiment} concatenated successfully.")
         to_analyze.append(experiment)
 
