@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 #     except Exception: 
 #         return None
 
-def format_prompt(data_item: dict, option_order: list[str], lang: str, in_style: str, out_style) -> str | None:
+def format_prompt(data_item: dict, option_order: list[str], lang: str, in_style: str, out_style: str) -> str | None:
     """Formats the prompt template with question data and specified option order."""
     try:
         if len(data_item['choices']) != 4 or len(option_order) != 4:

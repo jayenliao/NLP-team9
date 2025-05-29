@@ -11,21 +11,6 @@ import sys
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(ROOT_DIR)
 
-# from prompts.prompt_templates import (
-#     # QUERY_TEMPLATE_PLAIN,
-#     # QUERY_TEMPLATE_JSON,
-#     # QUERY_TEMPLATE_XML,
-#     INTRO,
-#     # INSTRUCTION,
-#     INSTRUCTION_FORMATTED,
-#     # ANSWER_BASE,
-#     # ANSWER_JSON,
-#     # ANSWER_XML,
-#     # CHOICE
-#     QUERY_TEMPLATE_XML_BASE_FR,
-#     QUERY_TEMPLATE_XML_JSON,
-#     QUERY_TEMPLATE_XML_XML
-#     QUERY_TEMPLATE_JSON_BASE_EN,)
 import prompts.prompt_templates as templates
 
 def load_prepared_dataset():

@@ -116,7 +116,7 @@ if [[ "$1" == "--search" ]]; then
 
   echo "Searching for experiments matching: $*"
 
-  SEARCHABLE_FIELDS=("exp_name" "model_name" "subtask" "num_questions" "permutation_type" s"num_permutations" "delay")
+  SEARCHABLE_FIELDS=("exp_name" "model_name" "subtask" "num_questions" "permutation_type" "num_permutations" "delay")
   JQ_FILTER='true'
 
   for raw_kw in "$@"; do
