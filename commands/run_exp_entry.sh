@@ -1,3 +1,4 @@
+#run_exp_entry.sh
 #!/bin/bash
 
 # Default values

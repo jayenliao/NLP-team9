@@ -1,4 +1,4 @@
-# experiments/run_experiment.py
+# experiments/run_prob_selected.py
 import logging
 import sys
 import os

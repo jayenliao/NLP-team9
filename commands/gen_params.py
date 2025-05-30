@@ -1,3 +1,4 @@
+#gen_params.py
 import json
 import itertools
 import argparse
