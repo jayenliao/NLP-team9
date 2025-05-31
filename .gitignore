@@ -47,3 +47,7 @@ show_data_structure.py
 logs/
 results/
 archive/
+
+# v2
+v2_results/
+v2_tests/
