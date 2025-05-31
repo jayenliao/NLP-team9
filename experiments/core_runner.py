@@ -108,8 +108,10 @@ def parse_response(api_response_text: str) -> str | None:
         if answer_match:
             return answer_match.group(1)
     
-    pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*[$\*\#_]*([A-D])"
-
+    # pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*[$\*\#_]*([A-D])"
+    # Simpler but comprehensive pattern
+    QUOTE_CHARS = r"""[«»\"''"'"'„"〈〉【】〔〕‹›❝❞❮❯⟨⟩]"""
+    pattern = rf"^\s*[*\#_]*\s*{QUOTE_CHARS}?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*{QUOTE_CHARS}?\s*:?\s*[*\#_$]*\s*([A-D])\s*{QUOTE_CHARS}?"
     match = re.search(pattern, api_response_text, re.IGNORECASE | re.MULTILINE)
 
     if match:
