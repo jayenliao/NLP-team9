@@ -4,7 +4,53 @@ Here are tools for analyzing experiment results.
 
 ## `analyze_results.py`
 
-To be filled in ...
+### Examples of getting accuracy metrics
+
+#### Use all default accuracy metrics
+
+```bash
+python3 analysis/analyze_results.py \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
+    --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
+```
+
+#### Specify accuracy metrics
+
+```bash
+python3 analysis/analyze_results.py \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
+    --accuracy_metrics overall_accuracy by_model_name by_input_format \
+    --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
+```
+
+### Examples of getting confidence metrics
+
+#### Use all default confidence metrics
+
+```bash
+python3 analysis/analyze_results.py \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
+    --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
+```
+
+#### Sepecify confidence metric(s)
+
+```bash
+python3 analysis/analyze_results.py \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
+    --confidence_metrics confidence_high \
+    --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
+```
+
+#### Use `--confidence_to_csv` to save confidence scores as csv files
+
+```bash
+python3 analysis/analyze_results.py \
+    "results/gemini-2.0-flash-lite_en_*/raw.jsonl" \
+    --confidence_metrics confidence_high \
+    --output_file_path results_summary/0_abstract_algebra_gemini-2.0-flash-lite_en.json
+    --confidence_to_csv
+```
 
 ## `get_failure_rate.py`: Model Prediction Error Analysis
 
