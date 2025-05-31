@@ -1,3 +1,4 @@
+# commands/run_exp_entry.sh
 #!/bin/bash
 
 # Default values
@@ -45,7 +46,7 @@ done
 if [[ "$OUTPUT_FILE" = "" ]]; then
   timestamp=$(date +"%Y%m%d-%H%M%S")
   OUTPUT_DIR="${SUBTASK}_${MODEL_NAME}_${LANGUAGE}_i-${PROMPT_FORMAT}_o-${OUTPUT_FORMAT}_${PERMUTATION_TYPE}_${timestamp}"
-else:
+else
   timestamp=$(date +"%Y%m%d-%H%M%S")
   OUTPUT_DIR="${OUTPUT_FILE}_${timestamp}"
 fi

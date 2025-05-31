@@ -1,3 +1,4 @@
+# commands/run_exp.sh
 #!/bin/bash
 
 JSON_FILE="commands/params.json"
