@@ -86,7 +86,7 @@ def load_question(subtask: str, question_idx: int = 0) -> Question:
     from pathlib import Path
     
     # Get project root (parent of v2 directory)
-    project_root = Path(__file__).parent.parent
+    project_root = Path(__file__).parent
     data_path = project_root / "data" / "ds_selected.pkl"
     
     with open(data_path, 'rb') as f:
