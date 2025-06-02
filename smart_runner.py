@@ -1,12 +1,26 @@
 #!/usr/bin/env python3
 """
-Smart Experiment Runner with Single JSON per subtask
-Handles failures gracefully without blocking
+Smart Experiment Runner with JSONL output and complete data storage
+Saves ALL API responses and experimental data as required
+
+Output format:
+- {experiment_id}.jsonl: Complete results, one JSON object per line (one per API call)
+- {experiment_id}_summary.json: Summary statistics and progress tracking
+
+Each line in the JSONL file contains:
+- Complete prompt sent
+- Full API response (raw and text)
+- Parsing results and mapping
+- Timing information
+- Error details if any
+- All question and permutation details
 """
 
 import json
 import time
 import os
+import uuid
+import importlib
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from datetime import datetime, timedelta
@@ -16,24 +30,17 @@ import sys
 # Add project directory to path
 sys.path.append(str(Path(__file__).parent))
 
+# Force reload of single_question module to get latest changes
+import importlib
+if 'single_question' in sys.modules:
+    importlib.reload(sys.modules['single_question'])
+
 from single_question import run_single_experiment
 from format_handlers import Question
 
 
-@dataclass
-class TaskResult:
-    """Result for a single task"""
-    question_id: str
-    status: str  # "completed", "failed", "abandoned"
-    attempts: int
-    result: Optional[dict] = None
-    error: Optional[str] = None
-    last_attempt: Optional[str] = None
-    next_retry: Optional[str] = None
-
-
 class SmartExperimentRunner:
-    """Runner that uses single JSON file per experiment"""
+    """Runner that saves complete data in JSONL format"""
     
     def __init__(self, 
                  subtask: str,
@@ -57,10 +64,15 @@ class SmartExperimentRunner:
         # Experiment ID
         self.experiment_id = f"{subtask}_{model_name}_{language}_i{input_format}_o{output_format}"
         
-        # Results file
+        # File paths
         self.results_dir = Path("results")
         self.results_dir.mkdir(exist_ok=True)
-        self.results_file = self.results_dir / f"{self.experiment_id}.json"
+        
+        # JSONL file for complete results (one line per API call)
+        self.results_file = self.results_dir / f"{self.experiment_id}.jsonl"
+        
+        # Summary JSON file for quick status checking
+        self.summary_file = self.results_dir / f"{self.experiment_id}_summary.json"
         
         # Permutations (circular only for now)
         self.permutations = [
@@ -70,58 +82,74 @@ class SmartExperimentRunner:
             [1, 2, 3, 0],  # BCDA
         ]
         
-        # Load existing results if any
-        self.data = self._load_or_create_data()
-    
-    def _load_or_create_data(self) -> dict:
-        """Load existing data or create new structure"""
-        if self.results_file.exists():
-            with open(self.results_file, 'r') as f:
-                return json.load(f)
+        # Load or create summary
+        self.summary = self._load_or_create_summary()
         
-        # Create new data structure
-        total_tasks = self.num_questions * len(self.permutations)
-        return {
-            "metadata": {
-                "experiment_id": self.experiment_id,
-                "subtask": self.subtask,
-                "model": self.model_name,
-                "language": self.language,
-                "input_format": self.input_format,
-                "output_format": self.output_format,
-                "num_questions": self.num_questions,
-                "start_question": self.start_question,
-                "start_time": datetime.now().isoformat(),
-                "status": "running",
-                "total_expected": total_tasks,
-                "completed": 0,
-                "failed": 0,
-                "abandoned": 0
-            },
-            "retry_queue": {},
-            "abandoned": {},
-            "results": {}
+        # Track current session stats
+        self.session_stats = {
+            "started": datetime.now().isoformat(),
+            "completed": 0,
+            "failed": 0,
+            "retried": 0
         }
     
-    def _save_data(self):
-        """Save current data to file"""
-        with open(self.results_file, 'w') as f:
-            json.dump(self.data, f, indent=2)
+    def _load_or_create_summary(self) -> dict:
+        """Load existing summary or create new one"""
+        if self.summary_file.exists():
+            with open(self.summary_file, 'r') as f:
+                return json.load(f)
+        
+        # Create new summary
+        total_tasks = self.num_questions * len(self.permutations)
+        return {
+            "experiment_id": self.experiment_id,
+            "subtask": self.subtask,
+            "model": self.model_name,
+            "language": self.language,
+            "input_format": self.input_format,
+            "output_format": self.output_format,
+            "num_questions": self.num_questions,
+            "start_question": self.start_question,
+            "created_at": datetime.now().isoformat(),
+            "status": "running",
+            "total_expected": total_tasks,
+            "completed": 0,
+            "failed": 0,
+            "abandoned": 0,
+            "retry_queue": {},
+            "abandoned_tasks": {},
+            "completed_tasks": set()  # Will be converted to list for JSON
+        }
+    
+    def _save_summary(self):
+        """Save summary to file"""
+        # Convert set to list for JSON serialization
+        summary_to_save = self.summary.copy()
+        summary_to_save["completed_tasks"] = list(self.summary.get("completed_tasks", set()))
+        
+        with open(self.summary_file, 'w') as f:
+            json.dump(summary_to_save, f, indent=2)
+    
+    def _append_result(self, result: dict):
+        """Append a result to the JSONL file"""
+        with open(self.results_file, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(result, ensure_ascii=False) + '\n')
     
     def _get_task_id(self, question_idx: int, perm_idx: int) -> str:
         """Generate task ID"""
         return f"q{question_idx}_p{perm_idx}"
     
-    def _update_stats(self):
-        """Update metadata statistics"""
-        completed = len([r for r in self.data["results"].values() 
-                        if r.get("status") == "completed"])
-        failed = len(self.data["retry_queue"])
-        abandoned = len(self.data["abandoned"])
-        
-        self.data["metadata"]["completed"] = completed
-        self.data["metadata"]["failed"] = failed
-        self.data["metadata"]["abandoned"] = abandoned
+    def _is_task_completed(self, task_id: str) -> bool:
+        """Check if task is already completed"""
+        completed_tasks = set(self.summary.get("completed_tasks", []))
+        return task_id in completed_tasks
+    
+    def _mark_task_completed(self, task_id: str):
+        """Mark a task as completed in summary"""
+        if isinstance(self.summary.get("completed_tasks"), list):
+            self.summary["completed_tasks"] = set(self.summary["completed_tasks"])
+        self.summary["completed_tasks"].add(task_id)
+        self.summary["completed"] = len(self.summary["completed_tasks"])
     
     def run(self):
         """Run the experiment"""
@@ -129,7 +157,8 @@ class SmartExperimentRunner:
         print(f"Starting Smart Experiment: {self.experiment_id}")
         print(f"{'='*60}")
         print(f"Questions: {self.start_question} to {self.start_question + self.num_questions - 1}")
-        print(f"Total tasks: {self.data['metadata']['total_expected']}")
+        print(f"Total tasks: {self.summary['total_expected']}")
+        print(f"Output: {self.results_file}")
         print(f"{'='*60}\n")
         
         # Phase 1: Initial run through all tasks
@@ -137,15 +166,15 @@ class SmartExperimentRunner:
         self._run_all_tasks()
         
         # Phase 2: Retry failed tasks once
-        if self.data["retry_queue"]:
-            print(f"\nPhase 2: Retrying {len(self.data['retry_queue'])} failed tasks")
+        if self.summary.get("retry_queue"):
+            print(f"\nPhase 2: Retrying {len(self.summary['retry_queue'])} failed tasks")
             time.sleep(30)  # Wait 30 seconds before retry
             self._retry_failed_tasks()
         
         # Mark experiment as completed
-        self.data["metadata"]["status"] = "completed"
-        self.data["metadata"]["end_time"] = datetime.now().isoformat()
-        self._save_data()
+        self.summary["status"] = "completed"
+        self.summary["completed_at"] = datetime.now().isoformat()
+        self._save_summary()
         
         # Print final summary
         self._print_summary()
@@ -153,7 +182,7 @@ class SmartExperimentRunner:
     def _run_all_tasks(self):
         """Run through all tasks once"""
         task_count = 0
-        total_tasks = self.data["metadata"]["total_expected"]
+        total_tasks = self.summary["total_expected"]
         
         for q_idx in range(self.start_question, self.start_question + self.num_questions):
             for p_idx, permutation in enumerate(self.permutations):
@@ -161,7 +190,8 @@ class SmartExperimentRunner:
                 task_id = self._get_task_id(q_idx, p_idx)
                 
                 # Skip if already completed
-                if task_id in self.data["results"]:
+                if self._is_task_completed(task_id):
+                    print(f"[{task_count}/{total_tasks}] Skipping {task_id} (already completed)")
                     continue
                 
                 print(f"[{task_count}/{total_tasks}] Running {task_id}...", end=" ")
@@ -179,69 +209,80 @@ class SmartExperimentRunner:
                         language=self.language
                     )
                     
-                    # Check if successful
+                    # Convert result to dict and add task_id
+                    result_dict = asdict(result)
+                    result_dict["task_id"] = task_id
+                    
+                    # Save the complete result
+                    self._append_result(result_dict)
+                    
+                    # Update summary based on success/failure
                     if result.error:
                         # API error
                         print(f"❌ API Error: {result.error}")
-                        self.data["retry_queue"][task_id] = {
+                        self.summary["retry_queue"][task_id] = {
                             "attempts": 1,
-                            "last_attempt": datetime.now().isoformat(),
-                            "next_retry": (datetime.now() + timedelta(seconds=30)).isoformat(),
-                            "error": result.error,
+                            "last_error": result.error,
                             "question_idx": q_idx,
-                            "permutation": permutation
+                            "perm_idx": p_idx
                         }
+                        self.session_stats["failed"] += 1
                     elif not result.parsed_answer:
                         # Parse error
                         print(f"❌ Parse Error")
-                        self.data["retry_queue"][task_id] = {
+                        self.summary["retry_queue"][task_id] = {
                             "attempts": 1,
-                            "last_attempt": datetime.now().isoformat(),
-                            "next_retry": (datetime.now() + timedelta(seconds=30)).isoformat(),
-                            "error": "Failed to parse answer from response",
+                            "last_error": "Failed to parse answer",
                             "question_idx": q_idx,
-                            "permutation": permutation,
-                            "raw_response": result.raw_response[:200]  # Store first 200 chars
+                            "perm_idx": p_idx
                         }
+                        self.session_stats["failed"] += 1
                     else:
-                        # Success
-                        print(f"✅ Answer: {result.parsed_answer}, Correct: {result.is_correct}")
-                        self.data["results"][task_id] = {
-                            "status": "completed",
-                            "attempts": 1,
-                            "question_id": result.question_id,
-                            "parsed_answer": result.parsed_answer,
-                            "is_correct": result.is_correct,
-                            "timestamp": result.timestamp
-                        }
+                        # Success - use dict to access fields safely
+                        original_label = result_dict.get("model_choice_original_label", "?")
+                        print(f"✅ Answer: {result.parsed_answer} → {original_label}, Correct: {result.is_correct}")
+                        self._mark_task_completed(task_id)
+                        self.session_stats["completed"] += 1
                     
                 except Exception as e:
                     # Unknown error
                     print(f"❌ Unknown Error: {str(e)}")
-                    self.data["retry_queue"][task_id] = {
-                        "attempts": 1,
-                        "last_attempt": datetime.now().isoformat(),
-                        "next_retry": (datetime.now() + timedelta(seconds=30)).isoformat(),
+                    
+                    # Still try to save what we can
+                    error_result = {
+                        "task_id": task_id,
+                        "trial_id": str(uuid.uuid4()),
+                        "question_index": q_idx,
+                        "subtask": self.subtask,
                         "error": f"Unknown error: {str(e)}",
-                        "question_idx": q_idx,
-                        "permutation": permutation
+                        "api_call_successful": False,
+                        "timestamp": datetime.now().isoformat()
                     }
+                    self._append_result(error_result)
+                    
+                    self.summary["retry_queue"][task_id] = {
+                        "attempts": 1,
+                        "last_error": str(e),
+                        "question_idx": q_idx,
+                        "perm_idx": p_idx
+                    }
+                    self.session_stats["failed"] += 1
                 
-                # Update stats and save periodically
+                # Save summary periodically
                 if task_count % 10 == 0:
-                    self._update_stats()
-                    self._save_data()
+                    self._save_summary()
                 
                 # Rate limiting
                 time.sleep(1)
         
         # Final save
-        self._update_stats()
-        self._save_data()
+        self._save_summary()
     
     def _retry_failed_tasks(self):
         """Retry failed tasks once"""
-        retry_tasks = list(self.data["retry_queue"].items())
+        import uuid
+        
+        retry_tasks = list(self.summary["retry_queue"].items())
         
         for task_id, task_info in retry_tasks:
             print(f"Retrying {task_id}...", end=" ")
@@ -253,69 +294,82 @@ class SmartExperimentRunner:
                     api_key=self.api_key,
                     subtask=self.subtask,
                     question_idx=task_info["question_idx"],
-                    permutation=task_info["permutation"],
+                    permutation=self.permutations[task_info["perm_idx"]],
                     input_format=self.input_format,
                     output_format=self.output_format,
                     language=self.language
                 )
                 
+                # Convert result and add metadata
+                result_dict = asdict(result)
+                result_dict["task_id"] = task_id
+                result_dict["retry_attempt"] = 2
+                
+                # Save the result
+                self._append_result(result_dict)
+                
                 # Check if successful
                 if result.error:
                     # Still failing - abandon
                     print(f"❌ Still failing: {result.error}")
-                    self.data["abandoned"][task_id] = {
+                    self.summary["abandoned_tasks"][task_id] = {
                         "attempts": 2,
-                        "abandoned_at": datetime.now().isoformat(),
                         "final_error": result.error,
-                        "question_idx": task_info["question_idx"],
-                        "permutation": task_info["permutation"]
+                        "abandoned_at": datetime.now().isoformat()
                     }
-                    del self.data["retry_queue"][task_id]
+                    del self.summary["retry_queue"][task_id]
+                    self.summary["abandoned"] = len(self.summary["abandoned_tasks"])
                     
                 elif not result.parsed_answer:
                     # Still can't parse - abandon
                     print(f"❌ Still can't parse")
-                    self.data["abandoned"][task_id] = {
+                    self.summary["abandoned_tasks"][task_id] = {
                         "attempts": 2,
-                        "abandoned_at": datetime.now().isoformat(),
                         "final_error": "Parse error after retry",
-                        "question_idx": task_info["question_idx"],
-                        "permutation": task_info["permutation"],
-                        "raw_response": result.raw_response[:200]
+                        "abandoned_at": datetime.now().isoformat()
                     }
-                    del self.data["retry_queue"][task_id]
+                    del self.summary["retry_queue"][task_id]
+                    self.summary["abandoned"] = len(self.summary["abandoned_tasks"])
                     
                 else:
                     # Success on retry!
-                    print(f"✅ Fixed! Answer: {result.parsed_answer}")
-                    self.data["results"][task_id] = {
-                        "status": "completed",
-                        "attempts": 2,
-                        "question_id": result.question_id,
-                        "parsed_answer": result.parsed_answer,
-                        "is_correct": result.is_correct,
-                        "timestamp": result.timestamp
-                    }
-                    del self.data["retry_queue"][task_id]
+                    original_label = result_dict.get("model_choice_original_label", "?")
+                    print(f"✅ Fixed! Answer: {result.parsed_answer} → {original_label}")
+                    self._mark_task_completed(task_id)
+                    del self.summary["retry_queue"][task_id]
+                    self.session_stats["retried"] += 1
                     
             except Exception as e:
                 # Still unknown error - abandon
                 print(f"❌ Still unknown error: {str(e)}")
-                self.data["abandoned"][task_id] = {
-                    "attempts": 2,
-                    "abandoned_at": datetime.now().isoformat(),
-                    "final_error": f"Unknown error: {str(e)}",
-                    "question_idx": task_info["question_idx"],
-                    "permutation": task_info["permutation"]
+                
+                # Save error result
+                error_result = {
+                    "task_id": task_id,
+                    "trial_id": str(uuid.uuid4()),
+                    "retry_attempt": 2,
+                    "error": f"Unknown error on retry: {str(e)}",
+                    "api_call_successful": False,
+                    "timestamp": datetime.now().isoformat()
                 }
-                del self.data["retry_queue"][task_id]
+                self._append_result(error_result)
+                
+                self.summary["abandoned_tasks"][task_id] = {
+                    "attempts": 2,
+                    "final_error": str(e),
+                    "abandoned_at": datetime.now().isoformat()
+                }
+                del self.summary["retry_queue"][task_id]
+                self.summary["abandoned"] = len(self.summary["abandoned_tasks"])
             
             # Save after each retry
-            self._update_stats()
-            self._save_data()
+            self._save_summary()
             
             # Rate limiting
             time.sleep(1)
+        
+        # Clear retry queue
+        self.summary["failed"] = 0
     
     def _print_summary(self):
         """Print final summary"""
@@ -323,10 +377,9 @@ class SmartExperimentRunner:
         print(f"EXPERIMENT COMPLETE: {self.experiment_id}")
         print(f"{'='*60}")
         
-        meta = self.data["metadata"]
-        total = meta["total_expected"]
-        completed = meta["completed"]
-        abandoned = meta["abandoned"]
+        total = self.summary["total_expected"]
+        completed = self.summary["completed"]
+        abandoned = self.summary.get("abandoned", 0)
         success_rate = (completed / total * 100) if total > 0 else 0
         
         print(f"Total tasks: {total}")
@@ -335,10 +388,19 @@ class SmartExperimentRunner:
         
         if abandoned > 0:
             print(f"\nAbandoned tasks:")
-            for task_id, info in self.data["abandoned"].items():
+            for task_id, info in list(self.summary["abandoned_tasks"].items())[:5]:
                 print(f"  {task_id}: {info['final_error']}")
+            if abandoned > 5:
+                print(f"  ... and {abandoned - 5} more")
         
-        print(f"\nResults saved to: {self.results_file}")
+        print(f"\nSession stats:")
+        print(f"  Completed in this run: {self.session_stats['completed']}")
+        print(f"  Failed then retried: {self.session_stats['retried']}")
+        print(f"  Initially failed: {self.session_stats['failed']}")
+        
+        print(f"\nResults saved to:")
+        print(f"  Data: {self.results_file}")
+        print(f"  Summary: {self.summary_file}")
 
 
 def run_smart_experiment(subtask: str, model_name: str, api_key: str,

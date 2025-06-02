@@ -109,10 +109,10 @@ def status_command(args):
         print("No experiments found")
         return
     
-    # Get all experiment files
-    experiment_files = list(results_dir.glob("*.json"))
+    # Get all summary files
+    summary_files = list(results_dir.glob("*_summary.json"))
     
-    if not experiment_files:
+    if not summary_files:
         print("No experiments found")
         return
     
@@ -122,17 +122,16 @@ def status_command(args):
     
     total_stats = {"running": 0, "completed": 0, "total_tasks": 0, "completed_tasks": 0}
     
-    for exp_file in sorted(experiment_files):
+    for summary_file in sorted(summary_files):
         try:
-            with open(exp_file, 'r') as f:
+            with open(summary_file, 'r') as f:
                 data = json.load(f)
             
-            meta = data["metadata"]
-            exp_name = exp_file.stem
-            status = meta["status"]
-            completed = meta["completed"]
-            total = meta["total_expected"]
-            abandoned = meta.get("abandoned", 0)
+            exp_name = summary_file.stem.replace("_summary", "")
+            status = data.get("status", "unknown")
+            completed = data.get("completed", 0)
+            total = data.get("total_expected", 0)
+            abandoned = data.get("abandoned", 0)
             
             # Calculate progress
             progress_pct = (completed / total * 100) if total > 0 else 0
@@ -156,7 +155,7 @@ def status_command(args):
             total_stats["completed_tasks"] += completed
             
         except Exception as e:
-            print(f"{exp_file.stem:<50} ❌ Error reading file")
+            print(f"{summary_file.stem:<50} ❌ Error reading file")
     
     # Print summary
     print(f"{'='*80}")
@@ -165,39 +164,58 @@ def status_command(args):
     
     # If specific experiment requested, show details
     if args.experiment:
-        exp_file = results_dir / f"{args.experiment}.json"
-        if exp_file.exists():
-            with open(exp_file, 'r') as f:
+        summary_file = results_dir / f"{args.experiment}_summary.json"
+        data_file = results_dir / f"{args.experiment}.jsonl"
+        
+        if summary_file.exists():
+            with open(summary_file, 'r') as f:
                 data = json.load(f)
             
             print(f"\n{'='*60}")
             print(f"Details for: {args.experiment}")
             print(f"{'='*60}")
             
-            meta = data["metadata"]
-            for key, value in meta.items():
-                if key not in ["start_time", "end_time"]:
-                    print(f"{key}: {value}")
+            # Show configuration
+            for key in ["subtask", "model", "language", "input_format", "output_format", 
+                       "num_questions", "total_expected", "completed", "abandoned"]:
+                if key in data:
+                    print(f"{key}: {data[key]}")
             
-            if data.get("abandoned"):
-                print(f"\nAbandoned tasks ({len(data['abandoned'])}):")
-                for task_id, info in list(data["abandoned"].items())[:5]:
+            # Show file sizes
+            if data_file.exists():
+                size_mb = data_file.stat().st_size / (1024 * 1024)
+                print(f"\nData file size: {size_mb:.2f} MB")
+                
+                # Count lines
+                with open(data_file, 'r') as f:
+                    line_count = sum(1 for _ in f)
+                print(f"Total records: {line_count}")
+            
+            # Show abandoned tasks
+            if data.get("abandoned_tasks"):
+                print(f"\nAbandoned tasks ({len(data['abandoned_tasks'])}):")
+                for task_id, info in list(data["abandoned_tasks"].items())[:5]:
                     print(f"  {task_id}: {info['final_error']}")
-                if len(data["abandoned"]) > 5:
-                    print(f"  ... and {len(data['abandoned']) - 5} more")
+                if len(data["abandoned_tasks"]) > 5:
+                    print(f"  ... and {len(data['abandoned_tasks']) - 5} more")
 
 
 def test_command(args):
     """Run tests"""
     if args.type == "single":
         # Test single question across all settings
+        from test_single_question_all_settings import test_all_settings
         test_all_settings(args.subtask, args.question)
     elif args.type == "failures":
         # Test failure handling
         from test_failure_handling import test_failure_handling
         test_failure_handling()
+    elif args.type == "data":
+        # Test complete data saving
+        from single_question import test_single_question
+        test_single_question()
     else:
-        print("Please specify test type: --type single or --type failures")
+        print("Please specify test type: --type single, --type failures, or --type data")
 
 
 def main():
@@ -222,11 +240,18 @@ Examples:
   # Check specific experiment
   python smart_cli.py status --experiment abstract_algebra_gemini-2.0-flash-lite_en_ibase_obase
   
-  # Test single question
+  # Test single question across all settings
   python smart_cli.py test --type single --subtask anatomy
   
   # Test failure handling
   python smart_cli.py test --type failures
+  
+  # Test complete data saving
+  python smart_cli.py test --type data
+
+Output Files:
+  - {experiment_id}.jsonl: Complete data (one line per API call)
+  - {experiment_id}_summary.json: Summary and progress tracking
 """
     )
     
@@ -255,7 +280,7 @@ Examples:
     
     # Test command
     test_parser = subparsers.add_parser('test', help='Run tests')
-    test_parser.add_argument('--type', choices=['single', 'failures'],
+    test_parser.add_argument('--type', choices=['single', 'failures', 'data'],
                            help='Test type')
     test_parser.add_argument('--subtask', default='abstract_algebra',
                            help='Subtask for testing')

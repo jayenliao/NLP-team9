@@ -11,12 +11,22 @@ import time
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Tuple
+import importlib
+from dataclasses import asdict
 
-# Add project directory to path
+# Add parent directory to path
 sys.path.append(str(Path(__file__).parent))
 
-from single_question import run_single_experiment
-from format_handlers import Question, PromptFormatter, ResponseParser
+# Force reload to get latest changes
+if 'single_question' in sys.modules:
+    importlib.reload(sys.modules['single_question'])
+
+from single_question import (
+    run_single_experiment,
+    load_question,
+    Question,
+    ExperimentResult
+)
 from dotenv import load_dotenv
 
 
@@ -83,11 +93,17 @@ def test_all_settings(subtask: str = "abstract_algebra", question_idx: int = 0):
         }
     }
     
+    # Also save raw JSONL for inspection
+    output_dir = Path("results")
+    output_dir.mkdir(exist_ok=True)
+    test_jsonl = output_dir / f"test_all_settings_{subtask}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jsonl"
+    
     print(f"🧪 SINGLE QUESTION TEST")
     print(f"{'='*60}")
     print(f"Subtask: {subtask}")
     print(f"Question Index: {question_idx}")
     print(f"Total API calls to make: {len(models) * len(languages) * len(format_combinations) * len(circular_permutations)}")
+    print(f"Output: {test_jsonl}")
     print(f"{'='*60}\n")
     
     test_number = 0
@@ -121,7 +137,15 @@ def test_all_settings(subtask: str = "abstract_algebra", question_idx: int = 0):
                             language=language
                         )
                         
-                        # Record result
+                        # Convert to dict for storage
+                        result_dict = asdict(result)
+                        result_dict["test_id"] = test_id
+                        
+                        # Save to JSONL
+                        with open(test_jsonl, 'a', encoding='utf-8') as f:
+                            f.write(json.dumps(result_dict, ensure_ascii=False) + '\n')
+                        
+                        # Record test result
                         test_result = {
                             "test_id": test_id,
                             "model": model_name,
@@ -131,8 +155,11 @@ def test_all_settings(subtask: str = "abstract_algebra", question_idx: int = 0):
                             "permutation": permutation,
                             "success": not bool(result.error),
                             "parsed_answer": result.parsed_answer,
+                            "model_choice_original_label": result.model_choice_original_label,
                             "is_correct": result.is_correct,
-                            "error": result.error
+                            "error": result.error,
+                            "response_length": len(result.api_response_text) if result.api_response_text else 0,
+                            "response_time_ms": result.response_time_ms
                         }
                         
                         test_results["results"].append(test_result)
@@ -144,7 +171,7 @@ def test_all_settings(subtask: str = "abstract_algebra", question_idx: int = 0):
                         else:
                             test_results["summary"]["successful"] += 1
                             if result.parsed_answer:
-                                print(f"  ✅ Success! Answer: {result.parsed_answer}, Correct: {result.is_correct}")
+                                print(f"  ✅ Success! Answer: {result.parsed_answer} → {result.model_choice_original_label}, Correct: {result.is_correct}")
                             else:
                                 print(f"  ⚠️  Success but couldn't parse answer from response")
                                 test_results["summary"]["parse_failures"] += 1
@@ -162,14 +189,11 @@ def test_all_settings(subtask: str = "abstract_algebra", question_idx: int = 0):
                         test_results["summary"]["failed"] += 1
                         test_results["summary"]["total_tests"] += 1
     
-    # Save test results
-    output_dir = Path("test_results")
-    output_dir.mkdir(exist_ok=True)
-    
+    # Save test summary
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_file = output_dir / f"single_question_test_{timestamp}.json"
+    summary_file = output_dir / f"test_single_question_summary_{timestamp}.json"
     
-    with open(output_file, 'w') as f:
+    with open(summary_file, 'w') as f:
         json.dump(test_results, f, indent=2)
     
     # Print summary
@@ -180,7 +204,9 @@ def test_all_settings(subtask: str = "abstract_algebra", question_idx: int = 0):
     print(f"Successful: {test_results['summary']['successful']}")
     print(f"Failed: {test_results['summary']['failed']}")
     print(f"Parse failures: {test_results['summary']['parse_failures']}")
-    print(f"\nResults saved to: {output_file}")
+    print(f"\nResults saved to:")
+    print(f"  Full data: {test_jsonl}")
+    print(f"  Summary: {summary_file}")
     
     # Detailed breakdown by format
     print(f"\n{'='*60}")
@@ -192,14 +218,18 @@ def test_all_settings(subtask: str = "abstract_algebra", question_idx: int = 0):
         if result.get("success"):
             key = f"{result['input_format']} → {result['output_format']}"
             if key not in format_stats:
-                format_stats[key] = {"total": 0, "parsed": 0}
+                format_stats[key] = {"total": 0, "parsed": 0, "correct": 0}
             format_stats[key]["total"] += 1
             if result.get("parsed_answer"):
                 format_stats[key]["parsed"] += 1
+                if result.get("is_correct"):
+                    format_stats[key]["correct"] += 1
     
     for fmt, stats in format_stats.items():
         parse_rate = (stats["parsed"] / stats["total"] * 100) if stats["total"] > 0 else 0
-        print(f"{fmt}: {stats['parsed']}/{stats['total']} parsed ({parse_rate:.1f}%)")
+        correct_rate = (stats["correct"] / stats["total"] * 100) if stats["total"] > 0 else 0
+        print(f"{fmt}: {stats['parsed']}/{stats['total']} parsed ({parse_rate:.1f}%), "
+              f"{stats['correct']}/{stats['total']} correct ({correct_rate:.1f}%)")
     
     return test_results
 

@@ -46,6 +46,7 @@ apikey.txt
 show_data_structure.py
 logs/
 results/
+test_results/
 archive/
 
 # v2

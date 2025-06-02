@@ -98,17 +98,24 @@ high_school_psychology human_sexuality      international_law
 
 ```
 results/
-├── abstract_algebra_gemini-2.0-flash-lite_en_ibase_obase.json
-├── abstract_algebra_gemini-2.0-flash-lite_en_ibase_ojson.json
-├── abstract_algebra_gemini-2.0-flash-lite_fr_ixml_obase.json
-└── ... (one file per experiment)
+├── abstract_algebra_gemini-2.0-flash-lite_en_ibase_obase.jsonl         # Complete data
+├── abstract_algebra_gemini-2.0-flash-lite_en_ibase_obase_summary.json  # Summary
+├── abstract_algebra_gemini-2.0-flash-lite_en_ibase_ojson.jsonl
+├── abstract_algebra_gemini-2.0-flash-lite_en_ibase_ojson_summary.json
+└── ... (two files per experiment)
 ```
 
-Each JSON contains:
-- `metadata`: Experiment configuration and progress
-- `results`: Successful completions
-- `retry_queue`: Current failures (cleared after retry)
-- `abandoned`: Tasks that failed twice
+Each JSONL file contains:
+- One line per API call (400 lines for 100 questions × 4 permutations)
+- Complete prompt sent
+- Full API response (raw and text)
+- Parsing results and correctness
+- Timing and metadata
+
+Summary JSON contains:
+- Experiment configuration
+- Progress tracking
+- Abandoned tasks list
 
 ## 🎯 Running the Full Experiment
 
@@ -147,17 +154,26 @@ done
 
 ## 📈 After Experiments
 
-Results are in clean JSON format, ready for analysis:
+Results are in JSONL format (one JSON per line), ready for analysis:
 ```python
 import json
-import glob
+import pandas as pd
 
-# Load all results
-all_results = []
-for result_file in glob.glob("results/*.json"):
-    with open(result_file) as f:
-        data = json.load(f)
-        all_results.append(data)
+# Load JSONL results
+results = []
+with open("results/abstract_algebra_gemini-2.0-flash-lite_en_ibase_obase.jsonl") as f:
+    for line in f:
+        results.append(json.loads(line))
 
-# Now analyze for order sensitivity...
+# Convert to DataFrame for analysis
+df = pd.DataFrame(results)
+
+# Analyze order sensitivity
+by_permutation = df.groupby('permutation_string')['is_correct'].mean()
+print("Accuracy by permutation order:")
+print(by_permutation)
+
+# Check parsing success rate
+parse_rate = df['parsed_answer'].notna().mean()
+print(f"Parse success rate: {parse_rate:.2%}")
 ```
