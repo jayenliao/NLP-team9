@@ -282,7 +282,7 @@ class SmartExperimentRunner:
                     self._save_summary()
                 
                 # Rate limiting
-                time.sleep(1)
+                time.sleep(5)
         
         # Final save
         self._save_summary()
