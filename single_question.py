@@ -1,4 +1,3 @@
-# single_question.py
 #!/usr/bin/env python3
 """
 Phase 1: Single Question Pipeline
@@ -20,7 +19,11 @@ from mistralai import Mistral
 from dotenv import load_dotenv
 
 # Import our format handlers (assuming they're in the same v2 directory)
-from format_handlers import Question, PromptFormatter, ResponseParser
+try:
+    from format_handlers import Question, PromptFormatter, ResponseParser
+except ImportError:
+    # If running as a module
+    from .format_handlers import Question, PromptFormatter, ResponseParser
 
 
 @dataclass

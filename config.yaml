@@ -1,0 +1,70 @@
+# Configuration for MMMLU Order Sensitivity Experiments
+
+models:
+  gemini:
+    models:
+      - gemini-2.0-flash-lite
+    rate_limit: 60  # requests per minute
+    timeout: 30
+    retry_delay: 1.0
+  mistral:
+    models:
+      - mistral-small-latest
+    rate_limit: 30
+    timeout: 45
+    retry_delay: 2.0
+
+experiment:
+  default_num_questions: 100
+  max_retries: 3
+  batch_size: 10
+  checkpoint_interval: 50  # Save progress every N tasks
+
+subtasks:
+  main:  # 17 subtasks for main experiment
+    - abstract_algebra
+    - anatomy
+    - astronomy
+    - business_ethics
+    - college_biology
+    - college_chemistry
+    - college_computer_science
+    - econometrics
+    - electrical_engineering
+    - formal_logic
+    - global_facts
+    - high_school_european_history
+    - high_school_geography
+    - high_school_government_and_politics
+    - high_school_psychology
+    - human_sexuality
+    - international_law
+  
+  deep_dive:  # For factorial permutation analysis
+    - formal_logic
+    - abstract_algebra
+    - high_school_psychology
+
+formats:
+  combinations:
+    - input: base
+      output: base
+    - input: base
+      output: json
+    - input: base
+      output: xml
+    - input: json
+      output: base
+    - input: xml
+      output: base
+
+languages:
+  - en
+  - fr
+
+permutations:
+  circular:
+    - [0, 1, 2, 3]  # ABCD
+    - [3, 0, 1, 2]  # DABC
+    - [2, 3, 0, 1]  # CDAB
+    - [1, 2, 3, 0]  # BCDA

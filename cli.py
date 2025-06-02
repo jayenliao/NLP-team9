@@ -13,7 +13,7 @@ sys.path.append(str(Path(__file__).parent))
 
 from batch_runner import ExperimentConfig, run_batch_experiment, retry_pending_tasks
 from single_question import run_single_experiment
-from test_permutations import test_permutations_on_question
+from tests.test_permutations import test_permutations_on_question
 
 
 def load_api_key(model_family: str) -> str:

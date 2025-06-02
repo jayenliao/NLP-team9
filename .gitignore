@@ -51,3 +51,16 @@ archive/
 # v2
 v2_results/
 v2_tests/
+# Legacy code
+legacy/
+
+# Experiment results
+results/
+
+# Environment
+.env
+__pycache__/
+*.pyc
+
+# Logs
+*.log
