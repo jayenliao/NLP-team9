@@ -97,7 +97,16 @@ class SmartExperimentRunner:
         """Load existing summary or create new one"""
         if self.summary_file.exists():
             with open(self.summary_file, 'r') as f:
-                return json.load(f)
+                summary = json.load(f)
+            
+            # Check if experiment parameters have changed
+            expected_total = self.num_questions * len(self.permutations)
+            if summary.get("total_expected") != expected_total:
+                print(f"⚠️  Experiment parameters changed (was {summary.get('total_expected')} tasks, now {expected_total})")
+                summary["total_expected"] = expected_total
+                summary["num_questions"] = self.num_questions
+                
+            return summary
         
         # Create new summary
         total_tasks = self.num_questions * len(self.permutations)
@@ -182,7 +191,7 @@ class SmartExperimentRunner:
     def _run_all_tasks(self):
         """Run through all tasks once"""
         task_count = 0
-        total_tasks = self.summary["total_expected"]
+        total_tasks = self.num_questions * len(self.permutations)  # Calculate fresh, don't use summary
         
         for q_idx in range(self.start_question, self.start_question + self.num_questions):
             for p_idx, permutation in enumerate(self.permutations):
