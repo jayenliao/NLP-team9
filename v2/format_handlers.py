@@ -180,15 +180,7 @@ class ResponseParser:
             answer = self._parse_xml_format(response_text)
         else:
             answer = None
-        
-        # If format-specific parsing failed, try fallback strategies
-        if not answer:
-            answer = self._parse_with_fallback_patterns(response_text)
-        
-        # Last resort
-        if not answer:
-            answer = self._parse_last_resort(response_text)
-        
+
         return answer
     
     def _parse_base_format(self, text: str, language: str) -> Optional[str]:
@@ -281,66 +273,6 @@ class ResponseParser:
                 potential_answer = match.group(1).upper()
                 if potential_answer in ['A', 'B', 'C', 'D']:
                     return potential_answer
-        
-        return None
-    
-    def _parse_with_fallback_patterns(self, text: str) -> Optional[str]:
-        """Try common answer patterns regardless of format"""
-        
-        # Common patterns across formats
-        patterns = [
-            # Direct answer patterns
-            r"the answer is\s*:?\s*([A-D])",
-            r"correct answer is\s*:?\s*([A-D])",
-            r"my answer is\s*:?\s*([A-D])",
-            r"final answer\s*:?\s*([A-D])",
-            
-            # Letter in parentheses or with punctuation
-            r"\(([A-D])\)",
-            r"\b([A-D])\)",
-            r"\b([A-D])\.",
-            
-            # Choosing patterns
-            r"choose\s*:?\s*([A-D])",
-            r"select\s*:?\s*([A-D])",
-            r"pick\s*:?\s*([A-D])",
-            
-            # Answer patterns with quotes
-            r"[\"']([A-D])[\"']",
-            r"answer[\"']\s*:\s*[\"']([A-D])[\"']",
-            
-            # Standalone letter at end of text
-            r"([A-D])\s*$"
-        ]
-        
-        for pattern in patterns:
-            match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
-            if match:
-                return match.group(1).upper()
-        
-        return None
-    
-    def _parse_last_resort(self, text: str) -> Optional[str]:
-        """Last resort: find the last occurrence of A, B, C, or D"""
-        
-        # Split into lines and check from bottom up
-        lines = text.strip().split('\n')
-        for line in reversed(lines):
-            # Check if line contains just a letter
-            line = line.strip()
-            if line in ['A', 'B', 'C', 'D']:
-                return line
-            
-            # Check for letter with minimal surrounding text
-            if len(line) < 20:  # Short line
-                matches = re.findall(r'\b([A-D])\b', line, re.IGNORECASE)
-                if matches:
-                    return matches[-1].upper()
-        
-        # Final attempt: last isolated letter in entire text
-        matches = list(re.finditer(r'\b([A-D])\b', text, re.IGNORECASE))
-        if matches:
-            return matches[-1].group(1).upper()
         
         return None
 
