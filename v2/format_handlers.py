@@ -23,23 +23,6 @@ class Question:
 class PromptFormatter:
     """Handles all prompt formatting combinations"""
     
-    TEMPLATES = {
-        'en': {
-            'intro': "Answer the following multiple choice question.",
-            'instruction': "The last line of your response should be of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD.",
-            'instruction_think': "Think step by step before answering.",
-            'answer_prefix': "Answer:",
-            'choice_label': "choices"
-        },
-        'fr': {
-            'intro': "Répondez à la question à choix multiples suivante.",
-            'instruction': "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD.",
-            'instruction_think': "Réfléchissez étape par étape avant de répondre.",
-            'answer_prefix': "Réponse:",
-            'choice_label': "choix"
-        }
-    }
-    
     def format_prompt(self, question: Question, permutation: List[int], 
                      input_format: str, output_format: str, language: str) -> str:
         """
@@ -56,107 +39,261 @@ class PromptFormatter:
         # Reorder choices based on permutation
         reordered_choices = [question.choices[i] for i in permutation]
         
-        # Get language templates
-        lang_templates = self.TEMPLATES[language]
-        
         # Build the prompt based on format combination
         if input_format == "base":
             if output_format == "base":
-                return self._format_base_to_base(question, reordered_choices, lang_templates)
+                return self._format_base_to_base(question, reordered_choices, language)
             elif output_format == "json":
-                return self._format_base_to_json(question, reordered_choices, lang_templates)
+                return self._format_base_to_json(question, reordered_choices, language)
             elif output_format == "xml":
-                return self._format_base_to_xml(question, reordered_choices, lang_templates)
+                return self._format_base_to_xml(question, reordered_choices, language)
         
         elif input_format == "json":
             if output_format == "base":
-                return self._format_json_to_base(question, reordered_choices, lang_templates, language)
+                return self._format_json_to_base(question, reordered_choices, language)
             
         elif input_format == "xml":
             if output_format == "base":
-                return self._format_xml_to_base(question, reordered_choices, lang_templates, language)
+                return self._format_xml_to_base(question, reordered_choices, language)
         
         raise ValueError(f"Unsupported format combination: {input_format} -> {output_format}")
     
-    def _format_base_to_base(self, question: Question, choices: List[str], templates: dict) -> str:
-        """Base input -> Base output (original format)"""
-        prompt = f"{templates['intro']}\n"
-        prompt += f"{templates['instruction']}\n\n"
-        prompt += f"{question.question}\n\n"
+    def _format_base_to_base(self, question: Question, choices: List[str], language: str) -> str:
+        """Base input -> Base output using exact templates"""
+        if language == "en":
+            # QUERY_TEMPLATE_BASE_BASE_EN
+            template = """Answer the following multiple choice question.
+The last line of your response should be your answer of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering.
+
+{Question}
+
+A) {A}
+B) {B}
+C) {C}
+D) {D}
+
+Answer format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD.""".strip()
+        else:  # fr
+            # QUERY_TEMPLATE_BASE_BASE_FR
+            template = """Répondez à la question à choix multiples suivante.
+La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre.
+
+{Question}
+
+A) {A}
+B) {B}
+C) {C}
+D) {D}
+
+Format de réponse: « Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD""".strip()
         
-        for i, choice in enumerate(choices):
-            prompt += f"{chr(65+i)}) {choice}\n"
-        
-        return prompt.strip()
+        return template.format(
+            Question=question.question,
+            A=choices[0],
+            B=choices[1],
+            C=choices[2],
+            D=choices[3]
+        )
     
-    def _format_base_to_json(self, question: Question, choices: List[str], templates: dict) -> str:
-        """Base input -> JSON output"""
-        prompt = f"{templates['intro']}\n"
-        prompt += f"{templates['instruction_think']}\n\n"
-        prompt += f"{question.question}\n\n"
+    def _format_base_to_json(self, question: Question, choices: List[str], language: str) -> str:
+        """Base input -> JSON output using QUERY_TEMPLATE_BASE_JSON"""
+        intro = "Answer the following multiple choice question." if language == "en" else "Répondez à la question à choix multiples suivante."
         
-        for i, choice in enumerate(choices):
-            prompt += f"{chr(65+i)}) {choice}\n"
+        if language == "en":
+            instruction = "The last line of your response should be your answer of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering."
+        else:
+            instruction = "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre."
         
-        prompt += f"\n{templates['answer_prefix']}\n"
-        prompt += "```json\n"
-        prompt += "{\n"
-        prompt += '  "reasoning": "Your step-by-step reasoning here",\n'
-        prompt += '  "answer": "A | B | C | D"\n'
-        prompt += "}\n"
-        prompt += "```"
+        answer_format = "Answer format" if language == "en" else "Format de réponse"
         
-        return prompt.strip()
+        template = """{Intro}
+{Instruction}
+
+{Question}
+
+A) {A}
+B) {B}
+C) {C}
+D) {D}
+
+{AnswerFormat}: 
+```json
+  {{
+    "step_by_step_reasoning": ...,
+    "answer": "A | B | C | D",
+  }}
+```""".strip()
+        
+        return template.format(
+            Intro=intro,
+            Instruction=instruction,
+            Question=question.question,
+            A=choices[0],
+            B=choices[1],
+            C=choices[2],
+            D=choices[3],
+            AnswerFormat=answer_format
+        )
     
-    def _format_base_to_xml(self, question: Question, choices: List[str], templates: dict) -> str:
-        """Base input -> XML output"""
-        prompt = f"{templates['intro']}\n"
-        prompt += f"{templates['instruction_think']}\n\n"
-        prompt += f"{question.question}\n\n"
+    def _format_base_to_xml(self, question: Question, choices: List[str], language: str) -> str:
+        """Base input -> XML output using QUERY_TEMPLATE_BASE_XML"""
+        intro = "Answer the following multiple choice question." if language == "en" else "Répondez à la question à choix multiples suivante."
         
-        for i, choice in enumerate(choices):
-            prompt += f"{chr(65+i)}) {choice}\n"
+        if language == "en":
+            instruction = "The last line of your response should be your answer of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering."
+        else:
+            instruction = "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre."
         
-        prompt += f"\n{templates['answer_prefix']}\n"
-        prompt += "```xml\n"
-        prompt += "<response>\n"
-        prompt += "  <reasoning>Your step-by-step reasoning here</reasoning>\n"
-        prompt += "  <answer>A | B | C | D</answer>\n"
-        prompt += "</response>\n"
-        prompt += "```"
+        answer_format = "Answer format" if language == "en" else "Format de réponse"
         
-        return prompt.strip()
+        template = """{Intro}
+{Instruction}
+
+{Question}
+
+A) {A}
+B) {B}
+C) {C}
+D) {D}
+
+{AnswerFormat}: 
+```xml
+  <response>
+    <step_by_step_reasoning>...</step_by_step_reasoning>
+    <answer>A | B | C | D</answer>
+  </response>
+```""".strip()
+        
+        return template.format(
+            Intro=intro,
+            Instruction=instruction,
+            Question=question.question,
+            A=choices[0],
+            B=choices[1],
+            C=choices[2],
+            D=choices[3],
+            AnswerFormat=answer_format
+        )
     
-    def _format_json_to_base(self, question: Question, choices: List[str], templates: dict, language: str) -> str:
-        """JSON input -> Base output"""
-        # Create JSON structure
-        json_data = {
-            "instruction": templates['intro'],
-            "output_format": templates['instruction'],
-            "question": question.question,
-            templates['choice_label']: {
-                chr(65+i): choice for i, choice in enumerate(choices)
-            }
-        }
+    def _format_json_to_base(self, question: Question, choices: List[str], language: str) -> str:
+        """JSON input -> Base output using exact templates"""
+        intro = "Answer the following multiple choice question." if language == "en" else "Répondez à la question à choix multiples suivante."
         
-        prompt = json.dumps(json_data, ensure_ascii=False, indent=2)
-        return prompt
+        if language == "en":
+            instruction = "The last line of your response should be your answer of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering."
+        else:
+            instruction = "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre."
+        
+        if language == "en":
+            # QUERY_TEMPLATE_JSON_BASE_EN
+            template = """// "{Intro}"
+// "{Instruction}"
+
+{{
+  "question": "{Question}",
+  "choices": {{
+    "A": "{A}",
+    "B": "{B}",
+    "C": "{C}",
+    "D": "{D}"
+  }},
+  "answer_format": "'Answer: $LETTER' (without quotes) where LETTER is one of ABCD."
+ }}""".strip()
+        else:  # fr
+            # QUERY_TEMPLATE_JSON_BASE_FR
+            template = """// "{Intro}"
+// "{Instruction}"
+
+{{
+  "question": "{Question}",
+  "choices": {{
+    "A": "{A}",
+    "B": "{B}",
+    "C": "{C}",
+    "D": "{D}"
+  }},
+  "answer_format": "« Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD."
+ }}""".strip()
+        
+        # Escape quotes in question and choices
+        escaped_question = question.question.replace('"', '\\"')
+        escaped_choices = [c.replace('"', '\\"') for c in choices]
+        
+        return template.format(
+            Intro=intro,
+            Instruction=instruction,
+            Question=escaped_question,
+            A=escaped_choices[0],
+            B=escaped_choices[1],
+            C=escaped_choices[2],
+            D=escaped_choices[3]
+        )
     
-    def _format_xml_to_base(self, question: Question, choices: List[str], templates: dict, language: str) -> str:
-        """XML input -> Base output"""
-        prompt = f"""<task>
-  <instruction>{templates['intro']}</instruction>
-  <output_format>{templates['instruction']}</output_format>
-  <question>{question.question}</question>
-  <{templates['choice_label']}>
-    <A>{choices[0]}</A>
-    <B>{choices[1]}</B>
-    <C>{choices[2]}</C>
-    <D>{choices[3]}</D>
-  </{templates['choice_label']}>
-</task>"""
+    def _format_xml_to_base(self, question: Question, choices: List[str], language: str) -> str:
+        """XML input -> Base output using exact templates"""
+        intro = "Answer the following multiple choice question." if language == "en" else "Répondez à la question à choix multiples suivante."
         
-        return prompt
+        if language == "en":
+            instruction = "The last line of your response should be your answer of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering."
+        else:
+            instruction = "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre."
+        
+        if language == "en":
+            # QUERY_TEMPLATE_XML_BASE_EN
+            template = """<!--
+{Intro}
+{Instruction}
+-->
+
+<question>
+  <text>{Question}</text>
+  <choices>
+    <A>{A}</A>
+    <B>{B}</B>
+    <C>{C}</C>
+    <D>{D}</D>
+  </choices>
+  <answer_format>
+    <format>
+      'Answer: $LETTER' (without quotes) where LETTER is one of ABCD
+    </format>
+  </answer_format>
+</question>""".strip()
+        else:  # fr
+            # QUERY_TEMPLATE_XML_BASE_FR
+            template = """<!--
+{Intro}
+{Instruction}
+-->
+
+<question>
+  <text>{Question}</text>
+  <choices>
+    <A>{A}</A>
+    <B>{B}</B>
+    <C>{C}</C>
+    <D>{D}</D>
+  </choices>
+  <answer_format>
+    <format>
+      « Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD
+    </format>
+  </answer_format>
+</question>""".strip()
+        
+        # Escape XML special characters
+        escaped_question = question.question.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        escaped_choices = [c.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;') for c in choices]
+        
+        return template.format(
+            Intro=intro,
+            Instruction=instruction,
+            Question=escaped_question,
+            A=escaped_choices[0],
+            B=escaped_choices[1],
+            C=escaped_choices[2],
+            D=escaped_choices[3]
+        )
 
 
 class ResponseParser:
@@ -181,33 +318,35 @@ class ResponseParser:
         else:
             answer = None
         
-        # If format-specific parsing failed, try fallback strategies
+        # If format-specific parsing failed, check for common issues
         if not answer:
-            answer = self._parse_with_fallback_patterns(response_text)
-        
+            # Check if model indicates no answer
+            if self._indicates_no_answer(response_text):
+                return None
+            
+            # Only use fallback if response seems to contain an answer
+            if self._likely_contains_answer(response_text, language):
+                answer = self._parse_with_fallback(response_text, language)
         
         return answer
     
     def _parse_base_format(self, text: str, language: str) -> Optional[str]:
         """Parse expected base format"""
-        patterns = {
-            'en': [
+        if language == "en":
+            # Look for the exact format specified in template
+            patterns = [
                 r"Answer:\s*([A-D])",
                 r"answer:\s*([A-D])",
-                r"Answer\s*:\s*([A-D])",
                 r"^([A-D])$"  # Just the letter on its own line
-            ],
-            'fr': [
+            ]
+        else:  # French
+            patterns = [
                 r"Réponse\s*:\s*([A-D])",
                 r"réponse\s*:\s*([A-D])",
-                r"Réponse:\s*([A-D])",
                 r"^([A-D])$"
             ]
-        }
         
-        lang_patterns = patterns.get(language, patterns['en'])
-        
-        for pattern in lang_patterns:
+        for pattern in patterns:
             match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
             if match:
                 return match.group(1).upper()
@@ -217,35 +356,39 @@ class ResponseParser:
     def _parse_json_format(self, text: str) -> Optional[str]:
         """Parse JSON format response"""
         
-        # Try to extract JSON block
-        json_pattern = r'```json\s*(.*?)\s*```'
-        json_match = re.search(json_pattern, text, re.DOTALL | re.IGNORECASE)
+        # Look for JSON code block first
+        json_block_pattern = r'```json\s*(.*?)\s*```'
+        json_match = re.search(json_block_pattern, text, re.DOTALL | re.IGNORECASE)
         
+        json_str = None
         if json_match:
-            json_str = json_match.group(1)
+            json_str = json_match.group(1).strip()
+        else:
+            # Try to find JSON object in the text
+            brace_start = text.find('{')
+            brace_end = text.rfind('}')
+            if brace_start != -1 and brace_end != -1 and brace_end > brace_start:
+                json_str = text[brace_start:brace_end+1]
+        
+        if json_str:
             try:
+                # Clean up common issues
+                json_str = json_str.replace('...', '"..."')  # Replace ellipsis
+                json_str = re.sub(r',\s*}', '}', json_str)  # Remove trailing commas
+                
                 data = json.loads(json_str)
-                answer = data.get('answer', '').strip().upper()
-                if answer in ['A', 'B', 'C', 'D']:
-                    return answer
+                
+                # Look for 'answer' field
+                if 'answer' in data:
+                    answer = data['answer'].strip().upper()
+                    # Make sure it's a single letter, not the template
+                    if answer in ['A', 'B', 'C', 'D']:
+                        return answer
+                
             except json.JSONDecodeError:
                 pass
         
-        # Try to find JSON without code block
-        try:
-            # Look for JSON-like structure
-            json_start = text.find('{')
-            json_end = text.rfind('}')
-            if json_start != -1 and json_end != -1:
-                json_str = text[json_start:json_end+1]
-                data = json.loads(json_str)
-                answer = data.get('answer', '').strip().upper()
-                if answer in ['A', 'B', 'C', 'D']:
-                    return answer
-        except:
-            pass
-        
-        # Look for answer field pattern
+        # Fallback: look for answer field in text
         answer_pattern = r'"answer"\s*:\s*"([A-D])"'
         match = re.search(answer_pattern, text, re.IGNORECASE)
         if match:
@@ -256,64 +399,86 @@ class ResponseParser:
     def _parse_xml_format(self, text: str) -> Optional[str]:
         """Parse XML format response"""
         
-        # Try to extract XML block
-        xml_pattern = r'```xml\s*(.*?)\s*```'
-        xml_match = re.search(xml_pattern, text, re.DOTALL | re.IGNORECASE)
+        # Look for XML code block first
+        xml_block_pattern = r'```xml\s*(.*?)\s*```'
+        xml_match = re.search(xml_block_pattern, text, re.DOTALL | re.IGNORECASE)
         
         if xml_match:
-            xml_str = xml_match.group(1)
+            xml_content = xml_match.group(1)
         else:
-            xml_str = text
+            xml_content = text
         
-        # Look for answer tag
-        answer_patterns = [
-            r'<answer>([A-D])</answer>',
-            r'<answer>\s*([A-D])\s*</answer>',
-            r'<answer>.*?([A-D]).*?</answer>'  # Answer might have extra text
-        ]
-        
-        for pattern in answer_patterns:
-            match = re.search(pattern, xml_str, re.IGNORECASE)
-            if match:
-                potential_answer = match.group(1).upper()
-                if potential_answer in ['A', 'B', 'C', 'D']:
-                    return potential_answer
+        # Look for <answer> tag
+        answer_pattern = r'<answer>\s*([A-D])\s*</answer>'
+        match = re.search(answer_pattern, xml_content, re.IGNORECASE)
+        if match:
+            return match.group(1).upper()
         
         return None
     
-    def _parse_with_fallback_patterns(self, text: str) -> Optional[str]:
-        """Try common answer patterns regardless of format"""
-        
-        # Common patterns across formats
-        patterns = [
-            # Direct answer patterns
-            r"the answer is\s*:?\s*([A-D])",
-            r"correct answer is\s*:?\s*([A-D])",
-            r"my answer is\s*:?\s*([A-D])",
-            r"final answer\s*:?\s*([A-D])",
-            
-            # Letter in parentheses or with punctuation
-            r"\(([A-D])\)",
-            r"\b([A-D])\)",
-            r"\b([A-D])\.",
-            
-            # Choosing patterns
-            r"choose\s*:?\s*([A-D])",
-            r"select\s*:?\s*([A-D])",
-            r"pick\s*:?\s*([A-D])",
-            
-            # Answer patterns with quotes
-            r"[\"']([A-D])[\"']",
-            r"answer[\"']\s*:\s*[\"']([A-D])[\"']",
-            
-            # Standalone letter at end of text
-            r"([A-D])\s*$"
+    def _indicates_no_answer(self, text: str) -> bool:
+        """Check if model explicitly says no answer"""
+        no_answer_patterns = [
+            r"none of the (?:above )?options",
+            r"no correct answer",
+            r"cannot determine",
+            r"insufficient information",
+            r"aucune.*réponse.*correcte",
+            r"pas de réponse correcte"
         ]
         
+        text_lower = text.lower()
+        return any(re.search(pattern, text_lower) for pattern in no_answer_patterns)
+    
+    def _likely_contains_answer(self, text: str, language: str) -> bool:
+        """Check if response likely contains an answer attempt"""
+        if language == "en":
+            indicators = [
+                r"answer is",
+                r"correct answer",
+                r"choose",
+                r"select",
+                r"my answer"
+            ]
+        else:
+            indicators = [
+                r"réponse est",
+                r"réponse correcte",
+                r"choisis",
+                r"sélectionne",
+                r"ma réponse"
+            ]
+        
+        text_lower = text.lower()
+        return any(indicator in text_lower for indicator in indicators)
+    
+    def _parse_with_fallback(self, text: str, language: str) -> Optional[str]:
+        """Fallback parsing - only for clear cases"""
+        
+        # Common patterns that indicate a clear answer
+        if language == "en":
+            patterns = [
+                r"the answer is\s*:?\s*([A-D])",
+                r"correct answer is\s*:?\s*([A-D])",
+                r"i choose\s*:?\s*([A-D])",
+                r"therefore,?\s*([A-D])"
+            ]
+        else:
+            patterns = [
+                r"la réponse est\s*:?\s*([A-D])",
+                r"réponse correcte est\s*:?\s*([A-D])",
+                r"je choisis\s*:?\s*([A-D])"
+            ]
+        
         for pattern in patterns:
-            match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
+            match = re.search(pattern, text, re.IGNORECASE)
             if match:
                 return match.group(1).upper()
+        
+        # Last resort: look for letter in parentheses at end
+        match = re.search(r'\(([A-D])\)\s*\.?\s*$', text, re.IGNORECASE)
+        if match:
+            return match.group(1).upper()
         
         return None
 

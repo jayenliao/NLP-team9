@@ -79,7 +79,7 @@ class APIClient:
             return "", str(e)
 
 
-def load_question(subtask: str, question_idx: int = 0) -> Question:
+def load_question(subtask: str, question_idx: int = 0, language: str = "en") -> Question:
     """Load a single question from the dataset"""
     # Path relative to project root
     import sys
@@ -91,8 +91,9 @@ def load_question(subtask: str, question_idx: int = 0) -> Question:
     
     with open(data_path, 'rb') as f:
         dataset = pickle.load(f)
-    # Get the English questions for now
-    questions = dataset[subtask]['en']
+    
+    # Use the language parameter instead of hardcoded 'en'
+    questions = dataset[subtask][language]  # ← Fixed!
     q_data = questions[question_idx]
     
     return Question(
@@ -122,7 +123,7 @@ def run_single_experiment(
     api_client = APIClient(model_name, api_key)
     
     # Load question
-    question = load_question(subtask, question_idx)
+    question = load_question(subtask, question_idx, language)
     
     # Format prompt
     prompt = formatter.format_prompt(
