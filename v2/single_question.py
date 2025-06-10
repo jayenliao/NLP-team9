@@ -1,3 +1,4 @@
+# single_question.py
 #!/usr/bin/env python3
 """
 Phase 1: Single Question Pipeline
@@ -106,7 +107,7 @@ def load_question(subtask: str, question_idx: int = 0, language: str = "en") -> 
 
 
 def run_single_experiment(
-    model_name: str = "gemini-2.0-flash-lite",
+    model_name: str = "gemini-2.0-flash",
     api_key: str = "",
     subtask: str = "abstract_algebra",
     question_idx: int = 0,
@@ -219,7 +220,7 @@ def test_single_question():
     print("Running single question test...")
     
     result = run_single_experiment(
-        model_name="gemini-2.0-flash-lite",
+        model_name="gemini-2.0-flash",
         api_key=GOOGLE_API_KEY,
         subtask="abstract_algebra",
         question_idx=0,

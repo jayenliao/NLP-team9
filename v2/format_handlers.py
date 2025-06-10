@@ -96,13 +96,14 @@ Format de réponse: « Réponse : $LETTRE » (sans les guillemets) où LETTRE es
         )
     
     def _format_base_to_json(self, question: Question, choices: List[str], language: str) -> str:
-        """Base input -> JSON output using QUERY_TEMPLATE_BASE_JSON"""
+        """Base input -> JSON output - UPDATED to avoid conflicting instructions"""
         intro = "Answer the following multiple choice question." if language == "en" else "Répondez à la question à choix multiples suivante."
         
+        # Use INSTRUCTION_FORMATTED to avoid conflict with JSON format
         if language == "en":
-            instruction = "The last line of your response should be your answer of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering."
+            instruction = "The last line of your response should be your answer in the format specified below. Think step by step before answering."
         else:
-            instruction = "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre."
+            instruction = "La dernière ligne de votre réponse doit être votre réponse au format spécifié ci-dessous. Réfléchissez étape par étape avant de répondre."
         
         answer_format = "Answer format" if language == "en" else "Format de réponse"
         
@@ -118,10 +119,10 @@ D) {D}
 
 {AnswerFormat}: 
 ```json
-  {{
-    "step_by_step_reasoning": ...,
-    "answer": "A | B | C | D",
-  }}
+{{
+  "step_by_step_reasoning": "...",
+  "answer": "A | B | C | D"
+}}
 ```""".strip()
         
         return template.format(
@@ -136,13 +137,14 @@ D) {D}
         )
     
     def _format_base_to_xml(self, question: Question, choices: List[str], language: str) -> str:
-        """Base input -> XML output using QUERY_TEMPLATE_BASE_XML"""
+        """Base input -> XML output - UPDATED to avoid conflicting instructions"""
         intro = "Answer the following multiple choice question." if language == "en" else "Répondez à la question à choix multiples suivante."
         
+        # Use INSTRUCTION_FORMATTED to avoid conflict with XML format
         if language == "en":
-            instruction = "The last line of your response should be your answer of the following format: 'Answer: $LETTER' (without quotes) where LETTER is one of ABCD. Think step by step before answering."
+            instruction = "The last line of your response should be your answer in the format specified below. Think step by step before answering."
         else:
-            instruction = "La dernière ligne de votre réponse doit être au format suivant : « Réponse : $LETTRE » (sans les guillemets). Réfléchissez étape par étape avant de répondre."
+            instruction = "La dernière ligne de votre réponse doit être votre réponse au format spécifié ci-dessous. Réfléchissez étape par étape avant de répondre."
         
         answer_format = "Answer format" if language == "en" else "Format de réponse"
         
@@ -158,10 +160,10 @@ D) {D}
 
 {AnswerFormat}: 
 ```xml
-  <response>
-    <step_by_step_reasoning>...</step_by_step_reasoning>
-    <answer>A | B | C | D</answer>
-  </response>
+<response>
+  <step_by_step_reasoning>...</step_by_step_reasoning>
+  <answer>A | B | C | D</answer>
+</response>
 ```""".strip()
         
         return template.format(
@@ -198,7 +200,7 @@ D) {D}
     "D": "{D}"
   }},
   "answer_format": "'Answer: $LETTER' (without quotes) where LETTER is one of ABCD."
- }}""".strip()
+}}""".strip()
         else:  # fr
             # QUERY_TEMPLATE_JSON_BASE_FR
             template = """// "{Intro}"
@@ -213,7 +215,7 @@ D) {D}
     "D": "{D}"
   }},
   "answer_format": "« Réponse : $LETTRE » (sans les guillemets) où LETTRE est l'une des lettres ABCD."
- }}""".strip()
+}}""".strip()
         
         # Escape quotes in question and choices
         escaped_question = question.question.replace('"', '\\"')
@@ -337,13 +339,31 @@ class ResponseParser:
             patterns = [
                 r"Answer:\s*([A-D])",
                 r"answer:\s*([A-D])",
-                r"^([A-D])$"  # Just the letter on its own line
+                r"Answer:\s*\$([A-D])\$",  # LaTeX style: Answer: $B$
+                r"answer:\s*\$([A-D])\$",
+                r"Answer:\s*\$([A-D])",     # Single dollar at start: Answer: $B
+                r"answer:\s*\$([A-D])",
+                r"Answer:\s*([A-D])\$",     # Single dollar at end: Answer: B$
+                r"answer:\s*([A-D])\$",
+                r"^([A-D])$",  # Just the letter on its own line
+                r"^\$([A-D])\$$",  # Just $A$ on its own line
+                r"^\$([A-D])$",    # Just $A on its own line
+                r"^([A-D])\$$"     # Just A$ on its own line
             ]
         else:  # French
             patterns = [
                 r"Réponse\s*:\s*([A-D])",
                 r"réponse\s*:\s*([A-D])",
-                r"^([A-D])$"
+                r"Réponse\s*:\s*\$([A-D])\$",  # LaTeX style
+                r"réponse\s*:\s*\$([A-D])\$",
+                r"Réponse\s*:\s*\$([A-D])",    # Single dollar at start
+                r"réponse\s*:\s*\$([A-D])",
+                r"Réponse\s*:\s*([A-D])\$",    # Single dollar at end
+                r"réponse\s*:\s*([A-D])\$",
+                r"^([A-D])$",
+                r"^\$([A-D])\$$",
+                r"^\$([A-D])$",
+                r"^([A-D])\$$"
             ]
         
         for pattern in patterns:
@@ -380,19 +400,39 @@ class ResponseParser:
                 
                 # Look for 'answer' field
                 if 'answer' in data:
-                    answer = data['answer'].strip().upper()
-                    # Make sure it's a single letter, not the template
-                    if answer in ['A', 'B', 'C', 'D']:
-                        return answer
+                    answer = data['answer'].strip()
+                    
+                    # Handle various formats in JSON
+                    if answer.upper() in ['A', 'B', 'C', 'D']:
+                        return answer.upper()
+                    
+                    # Handle LaTeX formats in JSON
+                    latex_patterns = [
+                        r'^\$([A-D])\$$',  # $A$
+                        r'^\$([A-D])$',    # $A
+                        r'^([A-D])\$$',    # A$
+                    ]
+                    
+                    for pattern in latex_patterns:
+                        match = re.match(pattern, answer.upper())
+                        if match:
+                            return match.group(1)
                 
             except json.JSONDecodeError:
                 pass
         
         # Fallback: look for answer field in text
-        answer_pattern = r'"answer"\s*:\s*"([A-D])"'
-        match = re.search(answer_pattern, text, re.IGNORECASE)
-        if match:
-            return match.group(1).upper()
+        answer_patterns = [
+            r'"answer"\s*:\s*"([A-D])"',
+            r'"answer"\s*:\s*"\$([A-D])\$"',  # "$A$"
+            r'"answer"\s*:\s*"\$([A-D])"',    # "$A"
+            r'"answer"\s*:\s*"([A-D])\$"',    # "A$"
+        ]
+        
+        for pattern in answer_patterns:
+            match = re.search(pattern, text, re.IGNORECASE)
+            if match:
+                return match.group(1).upper()
         
         return None
     
@@ -409,10 +449,17 @@ class ResponseParser:
             xml_content = text
         
         # Look for <answer> tag
-        answer_pattern = r'<answer>\s*([A-D])\s*</answer>'
-        match = re.search(answer_pattern, xml_content, re.IGNORECASE)
-        if match:
-            return match.group(1).upper()
+        answer_patterns = [
+            r'<answer>\s*([A-D])\s*</answer>',
+            r'<answer>\s*\$([A-D])\$\s*</answer>',  # <answer>$A$</answer>
+            r'<answer>\s*\$([A-D])\s*</answer>',    # <answer>$A</answer>
+            r'<answer>\s*([A-D])\$\s*</answer>',    # <answer>A$</answer>
+        ]
+        
+        for pattern in answer_patterns:
+            match = re.search(pattern, xml_content, re.IGNORECASE)
+            if match:
+                return match.group(1).upper()
         
         return None
     

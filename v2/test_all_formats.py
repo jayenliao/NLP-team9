@@ -42,7 +42,7 @@ def test_all_format_combinations():
     # Test parameters
     subtask = "abstract_algebra"
     question_idx = 0
-    model_name = "gemini-2.0-flash-lite"
+    model_name = "gemini-2.0-flash"
     language = "en"
     
     # Load the question once to display it
@@ -159,7 +159,7 @@ def test_specific_format(input_format: str, output_format: str):
         print(f"Q: {question.question[:80]}...")
         
         result = run_single_experiment(
-            model_name="gemini-2.0-flash-lite",
+            model_name="gemini-2.0-flash",
             api_key=API_KEY,
             subtask=subtask,
             question_idx=q_idx,

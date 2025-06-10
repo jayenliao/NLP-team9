@@ -34,7 +34,7 @@ def get_circular_permutations():
 def test_permutations_on_question(
     subtask: str = "abstract_algebra",
     question_idx: int = 0,
-    model_name: str = "gemini-2.0-flash-lite"
+    model_name: str = "gemini-2.0-flash"
 ):
     """Test all 4 circular permutations on a single question"""
     
@@ -192,7 +192,7 @@ def test_specific_permutation():
                 
                 # Test with original order
                 result = run_single_experiment(
-                    model_name="gemini-2.0-flash-lite",
+                    model_name="gemini-2.0-flash",
                     api_key=API_KEY,
                     subtask=subtask,
                     question_idx=q_idx,

@@ -248,7 +248,7 @@ Examples:
     run_parser = subparsers.add_parser('run', help='Run experiments')
     run_parser.add_argument('--subtask', required=True, 
                           help='Subtask(s) to run (comma-separated)')
-    run_parser.add_argument('--model', default='gemini-2.0-flash-lite',
+    run_parser.add_argument('--model', default='gemini-2.0-flash',
                           help='Model name')
     run_parser.add_argument('--en', action='store_true', help='Run English')
     run_parser.add_argument('--fr', action='store_true', help='Run French')

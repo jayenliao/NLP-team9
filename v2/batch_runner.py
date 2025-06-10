@@ -1,3 +1,4 @@
+# batch_runner.py
 #!/usr/bin/env python3
 """
 Phase 2: Batch Runner with Retry Logic
@@ -247,7 +248,7 @@ def run_batch_experiment(config: ExperimentConfig, api_key: str, max_retries: in
                 print(f"\n{status.get_progress_str()}\n")
             
             # Rate limiting
-            time.sleep(2)
+            time.sleep(0)
             
         except KeyboardInterrupt:
             print("\n\nExperiment interrupted by user")
@@ -398,7 +399,7 @@ def main():
     parser.add_argument("action", choices=["run", "retry", "status", "reset"], 
                        help="Action to perform")
     parser.add_argument("--subtask", help="Subtask to run")
-    parser.add_argument("--model", default="gemini-2.0-flash-lite", 
+    parser.add_argument("--model", default="gemini-2.0-flash", 
                        help="Model name")
     parser.add_argument("--language", default="en", choices=["en", "fr"],
                        help="Language")

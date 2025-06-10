@@ -148,8 +148,15 @@ python cli.py run --subtask abstract_algebra,anatomy,astronomy --format all --en
 Experiments are **automatically resumable** - if interrupted, just run the same command again.
 
 ### 4. Upload to HuggingFace
-Final results are in `results/{experiment_id}/final.jsonl`
 
+# Combine all final.jsonl files that exist
+find v2_results -name "final.jsonl" -exec cat {} \; > combined_results.jsonl
+
+# Count how many experiments are complete
+echo "Complete experiments: $(find v2_results -name "final.jsonl" | wc -l)"
+
+# Upload
+huggingface-cli upload r13922a24/nlptestrun combined_results.jsonl --repo-type=dataset
 ## 🔄 Key Improvements Over v1
 
 | Feature | Old System | New v2 System |
@@ -167,7 +174,7 @@ Each result in `final.jsonl`:
 {
   "question_id": "abstract_algebra_0",
   "subtask": "abstract_algebra",
-  "model": "gemini-2.0-flash-lite",
+  "model": "gemini-2.0-flash",
   "language": "en",
   "input_format": "base",
   "output_format": "base",

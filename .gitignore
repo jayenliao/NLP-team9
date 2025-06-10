@@ -51,3 +51,5 @@ archive/
 # v2
 v2_results/
 v2_tests/
+test_res/
+mistral_results_backup/
