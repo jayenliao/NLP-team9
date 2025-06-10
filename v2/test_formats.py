@@ -40,3 +40,7 @@ for in_fmt in formats:
             
         except Exception as e:
             print(f"Error: {e}")
+            
+
+
+            # subtask list: abstract_algebra,anatomy,astronomy,business_ethics,college_biology,college_chemistry,college_computer_science,econometrics,electrical_engineering,formal_logic,global_facts,high_school_european_history,high_school_geography,high_school_government_and_politics,high_school_psychology,human_sexuality,international_law
