@@ -53,3 +53,7 @@ v2_results/
 v2_tests/
 test_res/
 mistral_results_backup/
+
+# analysis_new
+analysis_new/ds_saved/
+analysis_new/ds_selected.pkl
