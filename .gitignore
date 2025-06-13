@@ -55,6 +55,7 @@ test_res/
 mistral_results_backup/
 v2_results_correct/
 v2_results_engq/
+mistral_en_prompt/
 
 # analysis_new
 analysis_new/ds_saved/
