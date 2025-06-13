@@ -1,3 +1,4 @@
+# data/categories.py
 # This script is part of the OpenAI API documentation (https://github.com/hendrycks/test/blob/master/categories.py).
 # Four main topics with 17 categories and 57 subcategories are listed here.
 

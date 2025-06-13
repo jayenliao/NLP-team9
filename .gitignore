@@ -46,4 +46,17 @@ apikey.txt
 show_data_structure.py
 logs/
 results/
+archive/
 
+# v2
+v2_results/
+v2_tests/
+test_res/
+mistral_results_backup/
+v2_results_correct/
+v2_results_engq/
+mistral_en_prompt/
+
+# analysis_new
+analysis_new/ds_saved/
+analysis_new/ds_selected.pkl

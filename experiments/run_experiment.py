@@ -136,10 +136,11 @@ def main():
     # Prepare Output File Path
     if args.output_file is None:
         timestamp = time.strftime("%Y%m%d-%H%M%S")
-        filename = f"{args.model_family}_{args.model_name}_{args.language}_i-{args.prompt_format}_o-{args.output_format}_{args.permutation_type}_{timestamp}.jsonl"
+        # Get the first subtask if 'all' is specified, otherwise use the provided subtask
+        subtask_name = subtasks_to_run[0] if args.subtasks != 'all' else args.subtasks
+        filename = f"{subtask_name}_{args.model_family}_{args.model_name}_{args.language}_i-{args.prompt_format}_o-{args.output_format}_{args.permutation_type}_{timestamp}.jsonl"
     else:
         filename = args.output_file if args.output_file.endswith(".jsonl") else f"{args.output_file}.jsonl"
-
     # Ensure output directory is within project_root/results/
     results_base_dir = os.path.join(project_root, "results")
     output_path_dir = os.path.join(results_base_dir, args.output_dir)

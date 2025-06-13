@@ -56,10 +56,7 @@ COMBINED_ANSWER_PREFIX_REGEX = r"(?:" + "|".join(ANSWER_PREFIXES) + r")"
 def parse_response(api_response_text: str) -> str | None:
     """
     Parses the API response text to extract the answer choice (A, B, C, or D),
-    handling multilingual prefixes for "Answer:".
-
-    Looks for a line starting with known 'Answer:' equivalents followed by A, B, C, or D.
-    It tries to be flexible regarding whitespace and case.
+    handling multilingual prefixes for "Answer:" and multiple output formats.
 
     Args:
         api_response_text: The raw text output from the LLM.
@@ -68,93 +65,80 @@ def parse_response(api_response_text: str) -> str | None:
         The normalized extracted answer ('A', 'B', 'C', 'D') or None if parsing fails.
     """
     
-    # Regex Reference:
-    # ^                 - Start of a line (due to re.MULTILINE)
-    # \s* - Optional leading whitespace
-    # (?:...)           - Non-capturing group for the OR condition of prefixes
-    #   Answer\s*:      - English prefix
-    #   |               - OR
-    #   Réponse\s*:     - French prefix
-    # \s* - Optional whitespace after the prefix/colon
-    # ([A-D])           - Capturing group 1: Exactly one character that is A, B, C, or D
-    #                     (We assume the model follows instructions to use A-D)
-    # \s* - Optional trailing whitespace
-    # $                 - End of the line (due to re.MULTILINE)
-    # We use COMBINED_ANSWER_PREFIX_REGEX which expands to (?:Answer\s*:|Réponse\s*:)
+    if not api_response_text or not isinstance(api_response_text, str):
+        return None
     
-    # pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])\s*$" #from common.py, but too strict
-
-    # pattern = rf"^\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])"
-    # pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*([A-D])" #Added regex for bold answers
-    
-    # Step 1: 嘗試從 ```json 區塊中解析
+    # Step 1: Try to extract from JSON code block
     json_block_pattern = r"```json\s*(\{.*?\})\s*```"
     json_block_match = re.search(json_block_pattern, api_response_text, re.DOTALL | re.IGNORECASE)
+    
     if json_block_match:
         json_text = json_block_match.group(1)
         try:
             json_obj = json.loads(json_text)
-            if "answer" in json_obj and json_obj["answer"] in ["A", "B", "C", "D"]:
-                return json_obj["answer"]
+            # Check various possible key names
+            answer = json_obj.get("answer", json_obj.get("Answer", json_obj.get("ANSWER")))
+            if answer and str(answer).upper() in ["A", "B", "C", "D"]:
+                return str(answer).upper()
         except json.JSONDecodeError as e:
-            print(f"Warning: Failed to parse JSON block: {e}")
-
-    # Step 2: 嘗試從 ```xml 區塊中解析
+            logger.warning(f"Failed to parse JSON block: {e}")
+    
+    # Step 2: Try to extract from XML code block
     xml_block_pattern = r"```xml\s*(.*?)\s*```"
     xml_block_match = re.search(xml_block_pattern, api_response_text, re.DOTALL | re.IGNORECASE)
+    
     if xml_block_match:
         xml_text = xml_block_match.group(1)
         answer_match = re.search(r"<answer>\s*([A-D])\s*</answer>", xml_text, re.IGNORECASE)
         if answer_match:
-            return answer_match.group(1)
+            return answer_match.group(1).upper()
     
-    pattern = rf"^\s*(?:[*\#_]*)?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*[$\*\#_]*([A-D])"
-
+    # Step 3: Try to parse raw JSON (not in code block)
+    json_patterns = [
+        r'\{[^{}]*["\']answer["\']\s*:\s*["\']([A-D])["\'][^{}]*\}',
+        r'"answer"\s*:\s*"([A-D])"',
+    ]
+    
+    for pattern in json_patterns:
+        match = re.search(pattern, api_response_text, re.IGNORECASE)
+        if match:
+            return match.group(1).upper()
+    
+    # Step 4: Try to parse raw XML (not in code block)
+    xml_answer_pattern = r"<answer>\s*([A-D])\s*</answer>"
+    xml_match = re.search(xml_answer_pattern, api_response_text, re.IGNORECASE)
+    
+    if xml_match:
+        return xml_match.group(1).upper()
+    
+    # Step 5: Fall back to original plain text parsing
+    ANSWER_PREFIXES = [
+        r"Answer\s*:",         # English
+        r"Réponse\s*:",        # French
+    ]
+    COMBINED_ANSWER_PREFIX_REGEX = r"(?:" + "|".join(ANSWER_PREFIXES) + r")"
+    
+    # Enhanced pattern with better quote handling
+    QUOTE_CHARS = r"""[«»\"''"'"'„"〈〉【】〔〕‹›❝❞❮❯⟨⟩]"""
+    pattern = rf"^\s*[*\#_]*\s*{QUOTE_CHARS}?\s*{COMBINED_ANSWER_PREFIX_REGEX}\s*{QUOTE_CHARS}?\s*:?\s*[*\#_$]*\s*([A-D])\s*{QUOTE_CHARS}?"
     match = re.search(pattern, api_response_text, re.IGNORECASE | re.MULTILINE)
-
-    if match:
-        extracted_raw = match.group(1) # Get the captured group (the letter A-D)
-        normalized_answer = extracted_raw
-        return normalized_answer
     
-    # If want to add more languages like Japanese use this
-    #     # Normalize the extracted letter (e.g., to uppercase, handle potential future non-Latin chars)
-    #     normalized_answer = normalize_extracted_answer(extracted_raw)
-    #     if normalized_answer in ['A', 'B', 'C', 'D']:
-    #          logger.info(f"Successfully parsed and normalized answer: {normalized_answer}")
-    #          return normalized_answer
-    #     else:
-    #          logger.warning(f"Pattern matched but normalization resulted in unexpected value: '{normalized_answer}' from raw '{extracted_raw}'.")
-    #          return None # Or handle as needed
-    # else:
-    #     logger.warning(f"Parsing response failed: Could not find pattern matching known prefixes and [A-D].")
-    #     return None
-
-# # --- normalize_extracted_answer function in case want to add japanese (from simple-evals) ---
-# def normalize_extracted_answer(extracted_answer: str) -> str:
-#     """
-#     Normalizes the extracted answer string.
-#     For now, mainly handles potential non-Latin chars if the regex were broader,
-#     and standardizes to uppercase Latin A-D, stripping whitespace.
-#     (Adapted from simple-evals common.py)
-#     """
-
-#     # Basic normalization: uppercase and strip whitespace
-#     normalized = extracted_answer.upper().strip()
-
-#     # Add specific character replacements if the regex were capturing non-Latin chars
-#     # (Based on simple-evals: Arabic, Bengali, Japanese Full-width)
-#     replacements = {
-#         "أ": "A", "ب": "B", "ج": "C", "د": "D", # Arabic
-#         "অ": "A", "ব": "B", "ড": "C", "ঢ": "D", # Bengali
-#         "Ａ": "A", "Ｂ": "B", "Ｃ": "C", "Ｄ": "D", # Japanese Full-width
-#     }
-
-#     for original, replacement in replacements.items():
-#         normalized = normalized.replace(original, replacement)
-
-#     # Return the final standardized character, stripped of any extra space added during replacement
-#     return normalized.strip()
+    if match:
+        return match.group(1).upper()
+    
+    # Step 6: Try more lenient patterns
+    lenient_patterns = [
+        rf"{COMBINED_ANSWER_PREFIX_REGEX}.*?([A-D])\b",  # Answer anywhere after prefix
+        r"^\s*\(?([A-D])\)?\s*$",  # Just (A) or A alone on a line
+        r"\b([A-D])\b\s*$",  # Letter at the end
+    ]
+    
+    for pattern in lenient_patterns:
+        match = re.search(pattern, api_response_text, re.IGNORECASE | re.MULTILINE)
+        if match:
+            return match.group(1).upper()
+    
+    return None
 
 
 def structure_result(
