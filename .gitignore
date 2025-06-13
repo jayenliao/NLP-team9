@@ -53,6 +53,8 @@ v2_results/
 v2_tests/
 test_res/
 mistral_results_backup/
+v2_results_correct/
+v2_results_engq/
 
 # analysis_new
 analysis_new/ds_saved/

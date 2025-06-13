@@ -12,9 +12,9 @@ import sys
 # Add v2 directory to path
 sys.path.append(str(Path(__file__).parent))
 
-from batch_runner import ExperimentConfig, run_batch_experiment, retry_pending_tasks
-from single_question import run_single_experiment
-from test_permutations import test_permutations_on_question
+from src.batch_runner import ExperimentConfig, run_batch_experiment, retry_pending_tasks
+from src.single_question import run_single_experiment
+from src.test_permutations import test_permutations_on_question
 
 
 def load_api_key(model_family: str) -> str:
@@ -109,7 +109,7 @@ def run_subtask(args):
 
 def status_command(args):
     """Show status of experiments"""
-    from batch_runner import ExperimentStatus
+    from src.batch_runner import ExperimentStatus
     import json
     
     results_dir = Path("v2_results")
@@ -190,7 +190,7 @@ def retry_command(args):
 
 def reset_command(args):
     """Reset an experiment"""
-    from batch_runner import reset_experiment
+    from src.batch_runner import reset_experiment
     reset_experiment(args.experiment_id)
 
 

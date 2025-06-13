@@ -34,10 +34,10 @@ for exp_dir in v2_results.iterdir():
 print(f"\n📊 Total results: {len(all_results)}")
 
 # Save the file
-with open("dataset_for_huggingface.jsonl", "w") as f:
+with open("dataset_for_huggingface_engq.jsonl", "w") as f:
     for result in all_results:
         f.write(json.dumps(result) + "\n")
 
-print("✅ Saved to dataset_for_huggingface.jsonl")
+print("✅ Saved to dataset_for_huggingface_engq.jsonl")
 
 #huggingface-cli upload r13922a24/nlptestrun dataset_for_huggingface.jsonl data/results.jsonl --repo-type=dataset
